@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ui_producto</class>
+ <widget class="QWidget" name="ui_producto">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1113</width>
+    <height>794</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>46</y>
+     <width>807</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>1101</width>
+     <height>641</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="Tab1_2">
+    <attribute name="title">
+     <string>Lista</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_17">
+     <item row="1" column="0">
+      <widget class="QTableView" name="tableView_productos">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>130</number>
+       </attribute>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_editar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Editar</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/1349716425_doc_edit.png</normaloff>:/Icons/1349716425_doc_edit.png</iconset>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+E</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="pushButton_eliminar">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Eliminar</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/1349716432_round_minus.png</normaloff>:/Icons/1349716432_round_minus.png</iconset>
+         </property>
+         <property name="shortcut">
+          <string>Del</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_agregar_2">
+         <property name="text">
+          <string>Agregar</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/1349716423_sq_plus.png</normaloff>:/Icons/1349716423_sq_plus.png</iconset>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+N</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Lista  de Productos</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Etiquetas</string>
+    </attribute>
+    <widget class="QLabel" name="draw_label">
+     <property name="geometry">
+      <rect>
+       <x>542</x>
+       <y>51</y>
+       <width>291</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::WinPanel</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>542</x>
+       <y>13</y>
+       <width>313</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="lineEdit_pag">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>0/0</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Normal</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_anterior">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>&lt;&lt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_siguiente">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>&gt;&gt;</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>430</y>
+       <width>274</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer_9">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_previsualizar">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Previsualizar</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../Icons/Icons.qrc">
+          <normaloff>:/Icons/1349716430_zoom.png</normaloff>:/Icons/1349716430_zoom.png</iconset>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+Alt+P</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_imprimir">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Imprimir</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../Icons/Icons.qrc">
+          <normaloff>:/Icons/1349716426_print.png</normaloff>:/Icons/1349716426_print.png</iconset>
+        </property>
+        <property name="shortcut">
+         <string>Ctrl+P</string>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTableWidget" name="tableView_etiquetas">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>38</y>
+       <width>501</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>Codigo</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Color</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Calidad</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Ubicación</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Precio</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>15</y>
+       <width>207</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Lista  de Productos a Etiquetar:</string>
+     </property>
+    </widget>
+    <zorder>lineEdit_pag</zorder>
+    <zorder>draw_label</zorder>
+    <zorder>pushButton_anterior</zorder>
+    <zorder>layoutWidget</zorder>
+    <zorder>pushButton_siguiente</zorder>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="">
+   <layout class="QGridLayout" name="gridLayout_15">
+    <item row="0" column="4">
+     <spacer name="horizontalSpacer_8">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer_7">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>11</width>
+        <height>11</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="comboBox_tipoProducto">
+      <property name="minimumSize">
+       <size>
+        <width>180</width>
+        <height>0</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>Lunas</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Monturas</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Lentes de Contacto</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Otros</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Trabajos Extras</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Tipo de Luna   </string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <layout class="QGridLayout" name="gridLayout_16">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Buscar</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_buscar">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="pushButton_buscar">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../Icons/Icons.qrc">
+          <normaloff>:/Icons/1349716430_zoom.png</normaloff>:/Icons/1349716430_zoom.png</iconset>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QPushButton" name="pushButton_busquedaAvanzada">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../Icons/Icons.qrc">
+          <normaloff>:/Icons/1349716435_cog.png</normaloff>:/Icons/1349716435_cog.png</iconset>
+        </property>
+        <property name="flat">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>lineEdit_buscar</tabstop>
+  <tabstop>pushButton_buscar</tabstop>
+  <tabstop>pushButton_busquedaAvanzada</tabstop>
+  <tabstop>comboBox_tipoProducto</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>tableView_productos</tabstop>
+  <tabstop>pushButton_agregar_2</tabstop>
+  <tabstop>pushButton_editar</tabstop>
+  <tabstop>pushButton_eliminar</tabstop>
+  <tabstop>tableView_etiquetas</tabstop>
+  <tabstop>lineEdit_pag</tabstop>
+  <tabstop>pushButton_anterior</tabstop>
+  <tabstop>pushButton_siguiente</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../Icons/Icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
