@@ -1,5 +1,6 @@
 #include "ui_item_posicion.h"
 #include "ui_ui_item_posicion.h"
+#include <QTime>
 
 ui_item_posicion::ui_item_posicion(QWidget *parent) :
     QWidget(parent),
@@ -146,19 +147,24 @@ void ui_item_posicion::on_pushButton_guardar_clicked()
     {
 
         QSqlQuery query;
-        query.prepare("SELECT idproducto FROM producto WHERE codigo=?");
+        query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
         query.bindValue(0,producto_codigo);
         query.exec();
         query.next();
 
         QString idProducto = query.value(0).toString();
+        QString fecha = QTime::currentTime().toString();
+        Sesion* s=Sesion::getSesion();               //PROBABLY NOT THE BEST WAY TO DO IT ^^
+        int idCol=s->getIdColaborador();
 
-        query.prepare("INSERT INTO item_posicion(idproducto,idvitrina,fila,columna,nivel) VALUES(?,?,?,?,?)");
+        query.prepare("INSERT INTO Producto_has_Vitrina(Producto_idProducto,Vitrina_Ubicacion_idUbicacion,fila,columna,nivel,fecha,Colaborador_Persona_idPersona) VALUES(?,?,?,?,?,?,?)");
         query.bindValue(0,idProducto);
         query.bindValue(1,ui_tienda_actual->get_idVitrina());
         query.bindValue(2,fila_actual);
         query.bindValue(3,columna_actual);
         query.bindValue(4,nivel_actual);
+        query.bindValue(5,fecha);
+        query.bindValue(6,idCol);
         query.exec();
 
 

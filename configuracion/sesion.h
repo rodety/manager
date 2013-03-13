@@ -23,6 +23,7 @@ public:
     static int Iniciar(QString user,QString pass);
     static void Configurar(int nminI,int nmaxI,int tEspera);
     Usuario * get_Usuario(){return s_user;}
+    static int getIdColaborador() { return mp_instance->s_user->get_id(); }
     /// @return Retorna el tiempo en milisegundos desde que se inicio la sesion
     int get_time(){return s_time.elapsed();}
     std::map<int,bool> get_Permisos();
