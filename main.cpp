@@ -15,6 +15,7 @@
 
 int main(int argc,char *argv[])
 {
+
     QApplication a(argc, argv);
 
     if(a.arguments().contains("--without-login"))
