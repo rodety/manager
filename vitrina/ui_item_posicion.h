@@ -4,6 +4,9 @@
 #include <QWidget>
 #include "ui_tienda.h"
 #include "item_posicion.h"
+#include "configuracion/sesion.h"
+#include "configuracion/usuario.h"
+
 namespace Ui {
 class ui_item_posicion;
 }
