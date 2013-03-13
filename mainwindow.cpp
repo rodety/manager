@@ -72,3 +72,9 @@ void MainWindow::on_actionVitrina_triggered()
     ui_tienda* form = new ui_tienda;
     setCentralWidget(form);
 }
+
+void MainWindow::on_actionAlmacen_triggered()
+{
+    ui_almacen* form = new ui_almacen;
+    setCentralWidget(form);
+}

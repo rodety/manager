@@ -40,9 +40,9 @@ void ui_contenedor_datos::clear_widget_list_productos()
 
 void ui_contenedor_datos::uptate_widget_list_productos()
 {
-    QString s_query = "SELECT idproducto,codigo as Codigo,descripcion as Descripcion,idmarca as Marca,stock,precio_venta,accesorios,p_descuento,habilitado FROM producto ";
-            s_query+=           "INNER JOIN producto_contenedor ON idproducto = producto_idproducto ";
-            s_query+=                   "WHERE contenedor_idcontenedor = "+idContenedor;
+    QString s_query = "SELECT idProducto,codigo as Codigo,descripcion as Descripcion,Marca_idMarca as Marca,stock,precioVenta,accesorios,precioDescuento,Estado_idEstado FROM Producto ";
+            s_query+= "INNER JOIN Contenedor_has_Producto ON idProducto = Producto_idProducto ";
+            s_query+= "WHERE contenedor_idcontenedor = "+idContenedor;
 
     QSqlQuery query;
     query.prepare(s_query);
@@ -103,7 +103,7 @@ void ui_contenedor_datos::update_form()
     ui->lineEdit_descripcion->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT nombre,descripcion,pos_fila,pos_columna,capacidad FROM contenedor WHERE idcontenedor=?");
+    query.prepare("SELECT nombre,descripcion,posFila,posColumna,capacidad FROM Contenedor WHERE idContenedor=?");
     query.bindValue(0,idContenedor);
     query.exec();
 
@@ -147,7 +147,7 @@ void ui_contenedor_datos::on_pushButton_addProducto_clicked()
         QString producto_codigo = ui->lineEdit_codigoProducto->text(); //verificar si el producto existe;
 
         QSqlQuery query;
-        query.prepare("SELECT idproducto FROM producto WHERE codigo=?");
+        query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
         query.bindValue(0,producto_codigo);
         query.exec();
         if(!query.next())
@@ -165,7 +165,7 @@ void ui_contenedor_datos::on_pushButton_addProducto_clicked()
         {
             QString idProducto = query.value(0).toString();
 
-            query.prepare("select * from producto_contenedor where producto_idproducto=? and contenedor_idcontenedor=?");
+            query.prepare("select * from Contenedor_has_Producto where Producto_idProducto=? and Contenedor_idContenedor=?");
             query.bindValue(0,idProducto);
             query.bindValue(1,idContenedor);
             query.exec();
@@ -183,9 +183,10 @@ void ui_contenedor_datos::on_pushButton_addProducto_clicked()
             }
             else
             {
-                query.prepare("INSERT INTO producto_contenedor(producto_idproducto,contenedor_idcontenedor) VALUES(?,?)");
-                query.bindValue(0,idProducto);
-                query.bindValue(1,idContenedor);
+                query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,) VALUES(?,?)");
+                query.bindValue(0,idContenedor);
+                query.bindValue(1,idProducto);
+
                 if(query.exec())
                 {
                     query.prepare("INSERT INTO historial_almacen(entidad_1,id_1,entidad_2,id_2,operacion,fecha) VALUES('Producto',?,'Contenedor',?,'agregar',now())");

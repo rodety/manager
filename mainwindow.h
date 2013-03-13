@@ -6,6 +6,7 @@
 #include <producto/ui_producto.h>
 #include <cliente/ui_cliente.h>
 #include <vitrina/ui_tienda.h>
+#include <vitrina/ui_almacen.h>
 #include <configuracion/usuariosform.h>
 #include <configuracion/sesion.h>
 
@@ -28,6 +29,8 @@ private slots:
     void on_actionUsuario_triggered();
     void on_actionCliente_triggered();
     void on_actionVitrina_triggered();
+
+    void on_actionAlmacen_triggered();
 
 private:
     Ui::MainWindow *ui;

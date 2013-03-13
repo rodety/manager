@@ -49,7 +49,7 @@ void ui_almacen::update_comboBox_Empresa()
     ui->comboBox_Empresa->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT idempresa,raz_social FROM empresa");
+    query.prepare("SELECT idEmpresa,razonSocial FROM Empresa");
     query.exec();
 
     int c = 0;
@@ -71,7 +71,7 @@ void ui_almacen::update_comboBox_Tienda(QString idEmpresa)
     ui->comboBox_Tienda->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT idtienda,alias FROM tienda WHERE idempresa=?");
+    query.prepare("SELECT idTienda,nombre FROM Tienda WHERE Empresa_idEmpresa=?");
     query.bindValue(0,idEmpresa);
     query.exec();
 
@@ -96,7 +96,7 @@ void ui_almacen::update_comboBox_Almacen(QString idTienda)
     ui->comboBox_Almacen->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT idalmacen,nombre FROM almacen WHERE idtienda=?");
+    query.prepare("SELECT idAlmacen,nombre FROM Almacen WHERE Tienda_idTienda=?");
     query.bindValue(0,idTienda);
     query.exec();
 
@@ -119,7 +119,7 @@ void ui_almacen::update_comboBox_Andamio(QString idAlmacen)
     ui->comboBox_Andamio->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT idandamio,nombre FROM andamio WHERE idalmacen=?");
+    query.prepare("SELECT idAndamio,nombre FROM Andamio WHERE Almacen_idAlmacen=?");
     query.bindValue(0,idAlmacen);
     query.exec();
 
@@ -151,7 +151,7 @@ void ui_almacen::set_dimension_widget_Contenedores()
     clear_widget_Contenedores();
 
     QSqlQuery query;
-    query.prepare("SELECT fila,columna FROM andamio WHERE idandamio=?");
+    query.prepare("SELECT fila,columna FROM Andamio WHERE idAndamio=?");
     query.bindValue(0,currentIdAndamio);
     query.exec();
 
@@ -171,7 +171,7 @@ void ui_almacen::update_widget_Contenedores()
 {
     Contenedor.clear();
     QSqlQuery query;
-    query.prepare("SELECT nombre,descripcion,pos_fila,pos_columna,idcontenedor FROM contenedor WHERE idandamio=?");
+    query.prepare("SELECT nombre,descripcion,posFila,poColumna,idContenedor FROM Contenedor WHERE Andamio_idAndamio=?");
     query.bindValue(0,currentIdAndamio);
     query.exec();
 
@@ -442,8 +442,8 @@ void ui_almacen::on_botonGenerarReporte_clicked()
     NCReportOutput *output=0;
 
     output = new NCReportPreviewOutput();
-    output->setAutoDelete(0);
-    report->setOutput(output);
+    output->setAutoDelete( FALSE );
+    report->setOutput( output );
 
 
     /*QString fileName = QFileDialog::getSaveFileName(this, tr("Save PDF File"),

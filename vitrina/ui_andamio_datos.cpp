@@ -17,6 +17,7 @@ ui_andamio_datos::~ui_andamio_datos()
 }
 
 QString ui_andamio_datos::get_idAlmacen(){return idAlmacen;}
+
 void ui_andamio_datos::set_idAlmacen(QString an){idAlmacen = an;}
 
 ui_almacen* ui_andamio_datos::get_ui_almacen_parent(){return ui_almacen_parent;}
@@ -31,7 +32,7 @@ void ui_andamio_datos::update_form()
     ui->lineEdit_descripcion->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT nombre,descripcion,fila,columna FROM andamio WHERE idandamio=?");
+    query.prepare("SELECT nombre,descripcion,fila,columna FROM Andamio WHERE idAndamio=?");
     query.bindValue(0,ui_almacen_parent->get_currentIdAndamio());
     query.exec();
     query.next();
@@ -45,7 +46,6 @@ void ui_andamio_datos::update_form()
     ui->lineEdit_descripcion->insert(descripcion);
     ui->spinBox_fila->setValue(fila);
     ui->spinBox_columna->setValue(columna);
-
 }
 
 void ui_andamio_datos::on_pushButton_cancelar_clicked()

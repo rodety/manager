@@ -15,6 +15,7 @@ contenedor::contenedor(QString idC, QString idAn, QString n, QString d, QString 
     capacidad = cap;
 }
 
+
 QString contenedor::getIdContenedor()
 {
     return idContenedor;
@@ -89,7 +90,7 @@ void contenedor::setCapacidad(QString cap)
 bool contenedor::agregar()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO contenedor(idandamio,nombre,descripcion,pos_fila,pos_columna,capacidad) VALUES(?,?,?,?,?,?)");
+    query.prepare("INSERT INTO Contenedor(Andamio_idAndamio,nombre,descripcion,posFila,posColumna,capacidad) VALUES(?,?,?,?,?,?)");
     query.bindValue(0,idAndamio);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
@@ -106,7 +107,7 @@ bool contenedor::agregar()
 bool contenedor::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE contenedor SET idandamio=?,nombre=?,descripcion=?,pos_fila=?,pos_columna=?,capacidad=? WHERE idcontenedor=?");
+    query.prepare("UPDATE Contenedor SET Andamio_idAndamio=?,nombre=?,descripcion=?,posFila=?,posColumna=?,capacidad=? WHERE idContenedor=?");
     query.bindValue(0,idAndamio);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
@@ -126,7 +127,7 @@ bool contenedor::actualizar()
 bool contenedor::eliminar()
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM contenedor WHERE idcontenedor='"+idContenedor+"'");
+    query.prepare("DELETE FROM Contenedor WHERE idContenedor='"+idContenedor+"'");
 
     if(query.exec())
         return true;

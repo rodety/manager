@@ -75,10 +75,11 @@ void andamio::setColumna(QString c)
     columna = c;
 }
 
+
 bool andamio::agregar()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO andamio(idalmacen,nombre,descripcion,fila,columna) VALUES(?,?,?,?,?)");
+    query.prepare("INSERT INTO Andamio(Almacen_idAlmacen,nombre,descripcion,fila,columna) VALUES(?,?,?,?,?)");
     query.bindValue(0,idAlmacen);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
@@ -94,7 +95,7 @@ bool andamio::agregar()
 bool andamio::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE andamio SET idalmacen=?,nombre=?,descripcion=?,fila=?,columna=? WHERE idandamio=?");
+    query.prepare("UPDATE Andamio SET Almacen_idAlmacen=?,nombre=?,descripcion=?,fila=?,columna=? WHERE idAndamio=?");
     query.bindValue(0,idAlmacen);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
@@ -112,7 +113,7 @@ bool andamio::actualizar()
 bool andamio::eliminar()
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM andamio WHERE idandamio='"+idAndamio+"'");
+    query.prepare("DELETE FROM Andamio WHERE idAndamio='"+idAndamio+"'");
 
     if(query.exec())
         return true;

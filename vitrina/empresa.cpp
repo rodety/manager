@@ -3,13 +3,16 @@
 empresa::empresa()
 {
 }
-empresa::empresa(QString idEmpresa, QString ruc, QString raz_social, QString domicilio, QString telefono)
+empresa::empresa(QString idEmpresa,QString raz_social, QString ruc,QString domicilio,QString telefono, QString representante, QString email, QString web)
 {
     id = idEmpresa;
-    this->ruc = ruc;
     razonSocial = raz_social;
-    domilicioFiscal = domicilio;
+    this->ruc = ruc;
+    this->domilicioFiscal = domicilio;
     this->telefono = telefono;
+    this->representante = representante;
+    this->email = email;
+    this->web = web;
 }
 
 QString empresa::getId()
@@ -61,15 +64,29 @@ void empresa::setTelefono(QString tmp)
 {
     telefono=tmp;
 }
-
+void empresa::setRepresentante(QString tmp)
+{
+    representante = tmp;
+}
+void empresa::setWeb(QString tmp)
+{
+    web = tmp;
+}
+void empresa::setEmail(QString tmp)
+{
+    email = tmp;
+}
 bool empresa::agregar()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO empresa(ruc,raz_social,domicilio_fiscal,telefono) VALUES(?,?,?,?)");
-    query.bindValue(0,ruc);
-    query.bindValue(1,razonSocial);
+    query.prepare("INSERT INTO Empresa(razonSocial,ruc,direccion,telefono,representa_legal,email,web) VALUES(?,?,?,?,?,?,?)");
+    query.bindValue(0,razonSocial);
+    query.bindValue(1,ruc);
     query.bindValue(2,domilicioFiscal);
     query.bindValue(3,telefono);
+    query.bindValue(4,representante);
+    query.bindValue(5,email);
+    query.bindValue(6,web);
 
     if(query.exec())
         return true;
@@ -79,12 +96,15 @@ bool empresa::agregar()
 bool empresa::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE empresa SET ruc=?,raz_social=?,domicilio_fiscal=?,telefono=? where idempresa=?");
-    query.bindValue(0,ruc);
-    query.bindValue(1,razonSocial);
+    query.prepare("UPDATE Empresa SET razonSocial=?,ruc=?,direccion=?,telefono=?,representa_legal=?,email=?,web=? where idEmpresa=?");
+    query.bindValue(0,razonSocial);
+    query.bindValue(1,ruc);
     query.bindValue(2,domilicioFiscal);
     query.bindValue(3,telefono);
-    query.bindValue(4,id);
+    query.bindValue(4,representante);
+    query.bindValue(5,email);
+    query.bindValue(6,web);
+    query.bindValue(7,id);
 
     if(query.exec())
         return true;
@@ -94,7 +114,7 @@ bool empresa::actualizar()
 bool empresa::eliminar()
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM empresa WHERE idempresa='"+id+"'");
+    query.prepare("DELETE FROM Empresa WHERE idEmpresa='"+id+"'");
 
     if(query.exec())
         return true;

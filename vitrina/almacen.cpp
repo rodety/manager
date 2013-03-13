@@ -4,6 +4,7 @@ almacen::almacen()
 {
 }
 
+
 almacen::almacen(QString idA, QString idT, QString n, QString d)
 {
     idAlmacen = idA;
@@ -55,7 +56,7 @@ void almacen::setDescripcion(QString d)
 bool almacen::agregar()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO almacen(idtienda,nombre,descripcion) VALUES(?,?,?)");
+    query.prepare("INSERT INTO Almacen(Tienda_idTienda,nombre,descripcion) VALUES(?,?,?)");
     query.bindValue(0,idTienda);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
@@ -69,7 +70,7 @@ bool almacen::agregar()
 bool almacen::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE almacen SET idtienda=?,nombre=?,descripcion=? where idalmacen=?");
+    query.prepare("UPDATE Almacen SET Tienda_idtienda=?,nombre=?,descripcion=? where idAlmacen=?");
     query.bindValue(0,idTienda);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
@@ -84,7 +85,7 @@ bool almacen::actualizar()
 bool almacen::eliminar()
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM almacen WHERE idalmacen='"+idAlmacen+"'");
+    query.prepare("DELETE FROM almacen WHERE idAlmacen='"+idAlmacen+"'");
 
     if(query.exec())
         return true;

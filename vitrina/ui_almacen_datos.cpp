@@ -30,7 +30,8 @@ void ui_almacen_datos::update_form()
     ui->lineEdit_descripcion->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT nombre,descripcion FROM almacen WHERE idalmacen=?");
+    query.prepare("SELECT nombre,descripcion FROM Almacen WHERE idAlmacen=?");
+
     query.bindValue(0,ui_almacen_parent->get_currentIdAlmacen());
     query.exec();
     query.next();
