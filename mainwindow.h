@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include <producto/ui_producto.h>
 #include <cliente/ui_cliente.h>
 #include <vitrina/ui_tienda.h>

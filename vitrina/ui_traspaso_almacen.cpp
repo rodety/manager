@@ -2,6 +2,8 @@
 #include "ui_ui_traspaso_almacen.h"
 #include "ui_item_posicion.h"
 #include <QtGui>
+#include <QTextEdit>
+#include <QPrintDialog>
 
 ui_traspaso_almacen::ui_traspaso_almacen(QWidget *parent) :
     QWidget(parent),

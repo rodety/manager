@@ -4,9 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+
 QT      += sql
 QT      += network
+QT      += gui
+QT      += widgets
+QT      += printsupport
+QT       += core gui
 
 TARGET = opticalManager
 TEMPLATE = app

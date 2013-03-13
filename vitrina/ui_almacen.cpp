@@ -442,8 +442,8 @@ void ui_almacen::on_botonGenerarReporte_clicked()
     NCReportOutput *output=0;
 
     output = new NCReportPreviewOutput();
-    output->setAutoDelete( FALSE );
-    report->setOutput( output );
+    output->setAutoDelete(0);
+    report->setOutput(output);
 
 
     /*QString fileName = QFileDialog::getSaveFileName(this, tr("Save PDF File"),

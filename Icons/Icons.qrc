@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/Icons" lang="1348112114_notification_add.png">
+    <qresource prefix="/Icons">
         <file>1329798558_demographic.ico</file>
         <file>1329798560_animation.png</file>
         <file>1329798918_Text-Document.ico</file>

@@ -1,4 +1,4 @@
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "mainwindow.h"
 #include "configuracion/ui_login.h"
 #include "configuracion/conexionbd.h"
@@ -16,7 +16,8 @@
 int main(int argc,char *argv[])
 {
 
-    QApplication a(argc, argv);
+    QApplication a (argc,argv);
+
 
     if(a.arguments().contains("--without-login"))
     {
@@ -27,8 +28,8 @@ int main(int argc,char *argv[])
     }
 
     QTextCodec* linuxCodec=QTextCodec::codecForName("UTF-8");
-    QTextCodec::setCodecForTr(linuxCodec);
-    QTextCodec::setCodecForCStrings(linuxCodec);
+    //QTextCodec::setCodecForTr(linuxCodec);
+    //QTextCodec::setCodecForCStrings(linuxCodec);
     QTextCodec::setCodecForLocale(linuxCodec);
 
 

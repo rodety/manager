@@ -2,7 +2,7 @@
 #define ETIQUETA_H
 
 #include <QString>
-#include <zint.h>
+#include <include/zint.h>
 #include <QSqlQuery>
 #include <QDebug>
 
