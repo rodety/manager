@@ -4,6 +4,9 @@
 #include "ui_vitrina_agregar.h"
 #include "ui_item_posicion.h"
 #include "ui_traspaso_almacen.h"
+#include "empresa.h"
+#include "ui_datos_empresa.h"
+#include "ui_agregar_empresa.h"
 //#include "sesion.h"
 #include "mainwindow.h"
 #include <QtGui>
@@ -529,6 +532,68 @@ void ui_tienda::deshabilitarVitrina()
                 break;
         }
     }
+}
+
+void ui_tienda::agregarEmpresa(bool b)
+{
+
+
+    ui_agregar_empresa* add_empresa = new ui_agregar_empresa;
+    add_empresa->show();
+
+    add_empresa->set_ui_empresa_parent(this);
+    add_empresa->set_behavior(b);
+
+    if (!b)
+    {
+        add_empresa->setWindowTitle("Editar Empresa");
+        add_empresa->set_idEmpresa(get_idEmpresa());
+        add_empresa->update_form();
+
+    }
+    else
+        add_empresa->setWindowTitle("Agregar Empresa");
+    add_empresa->show();
+}
+void ui_tienda::deshabilitarEmpresa()
+{
+    if(get_idEmpresa().compare("")==0)
+    {
+        QMessageBox *msgBox =new QMessageBox;
+        msgBox->setIcon(QMessageBox::Information);
+        msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
+        msgBox->setWindowTitle("Información");
+        msgBox->setStandardButtons(QMessageBox::Ok);
+        msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
+        msgBox->setText("Debe seleccionarse una empresa");
+        msgBox->exec();
+    }
+    else
+    {
+        empresa *del=new empresa;
+        del->setId(get_idEmpresa());
+        QMessageBox *msgBox =new QMessageBox;
+        msgBox->setIcon(QMessageBox::Warning);
+        msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
+        msgBox->setWindowTitle("Confirmar");
+        msgBox->setText("Desea eliminar la empresa?");
+        msgBox->setStandardButtons(QMessageBox::Ok|QMessageBox::Cancel);
+        msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
+        msgBox->setButtonText(QMessageBox::Cancel,"Cancelar");
+
+        int ret = msgBox->exec();
+
+        switch(ret)
+        {
+            case QMessageBox::Ok:
+                del->eliminar();
+                actualizar_combo_empresa();
+                break;
+            case QMessageBox::Cancel:
+                break;
+        }
+    }
+
 }
 
 void ui_tienda::on_imprimir_vitrina_clicked()
@@ -1111,6 +1176,7 @@ void ui_tienda::on_btnAgregar_clicked()
     switch(actual)
     {
         case Empresa:
+            agregarEmpresa(true);
             break;
 
         case Tienda:
@@ -1128,6 +1194,7 @@ void ui_tienda::on_btnEditar_clicked()
     switch(actual)
     {
         case Empresa:
+            agregarEmpresa(false);
             break;
 
         case Tienda:
@@ -1145,6 +1212,7 @@ void ui_tienda::on_btnDeshabilitar_clicked()
     switch(actual)
     {
         case Empresa:
+            deshabilitarEmpresa();
             break;
 
         case Tienda:

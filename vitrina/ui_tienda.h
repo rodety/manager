@@ -6,7 +6,6 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <vitrina/tienda.h>
-//#include "ui_vitrina.h"
 #include <map>
 #include<iostream>
 #include <fstream>
@@ -16,6 +15,8 @@
 #include <ctype.h>
 #include <QMessageBox>
 #include "ui_almacen.h"
+
+
 using namespace std;
 
 enum lbls {Empresa,Tienda,Vitrina};
@@ -97,6 +98,8 @@ public:
     void deshabilitarTienda();
     void agregarVitrina(bool b);
     void deshabilitarVitrina();
+    void agregarEmpresa(bool b);
+    void deshabilitarEmpresa();
 
 public:
     explicit ui_tienda(QWidget *parent = 0);
