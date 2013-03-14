@@ -27,13 +27,12 @@ void ui_item_posicion::actualizar()
 //    QString idpro=query1.value(0).toString();
 
     QSqlQuery query;
-    query.prepare("SELECT codigo FROM producto WHERE idproducto=?  ");
+    query.prepare("SELECT codigo FROM Producto WHERE idProducto=?  ");
     query.bindValue(0,idItem);
     query.exec();
     query.next();
 
     QString codigo = query.value(0).toString();
-
 
     ui->lineEdit_codigoProducto->setText(codigo);
     actualizar_producto();
@@ -49,7 +48,7 @@ void ui_item_posicion::actualizar_producto()
 
     //QString idpro=query1.value(0).toString();
     QSqlQuery query;
-    query.prepare("SELECT codigo,descripcion,Marca_idMarca,stock,precioVenta FROM Producto WHERE Producto_idProducto=?  ");
+    query.prepare("SELECT codigo,descripcion,Marca_idMarca,stock,precioVenta FROM Producto WHERE idProducto=?  ");
     query.bindValue(0,idItem);
     query.exec();
     query.next();
@@ -184,4 +183,18 @@ void ui_item_posicion::on_pushButton_guardar_clicked()
         msgBox->exec();
     }
 
+}
+
+void ui_item_posicion::deshabilitar()
+{
+    ui->pushButton_addProducto->setEnabled(false);
+    ui->pushButton_deleteProducto->setEnabled(false);
+    ui->pushButton_guardar->setEnabled(false);
+}
+
+void ui_item_posicion::habilitar()
+{
+    ui->pushButton_addProducto->setEnabled(true);
+    ui->pushButton_deleteProducto->setEnabled(true);
+    ui->pushButton_guardar->setEnabled(true);
 }
