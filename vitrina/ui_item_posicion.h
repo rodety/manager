@@ -32,6 +32,9 @@ public:
     void set_ui_tienda_actual(ui_tienda* tmp){ui_tienda_actual=tmp;}
     void set_posicion(int a,int b,int c){fila_actual=a;columna_actual=b;nivel_actual=c;}
 
+    void deshabilitar();
+    void habilitar();
+
     void actualizar_producto();
     void limpiar_producto();
     void actualizar();
