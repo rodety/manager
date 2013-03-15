@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTableWidgetItem>
 #include <map>
+#include <QSqlQuery>
 
 using namespace std;
 
@@ -16,6 +17,9 @@ class ui_almacen : public QWidget
     Q_OBJECT
 
 private:
+    QSqlQuery sqlQuery;
+    bool fromVitrina;
+
     QString currentIdEmpresa;
     QString currentIdTienda;
     QString currentIdAlmacen;
@@ -37,11 +41,14 @@ public:
     QString get_currentIdAndamio();
     QString get_currentIdContenedor();
 
+    void setFromVitrina(bool b);
+
     void set_currentIdEmpresa(QString);
     void set_currentIdTienda(QString);
     void set_currentIdAlmacen(QString);
     void set_currentIdAndamio(QString);
     void set_currentIdContenedor(QString);
+    void set_query(QSqlQuery query);
 
     void update_comboBox_Empresa();
     void update_comboBox_Tienda(QString idEmpresa);
@@ -51,7 +58,6 @@ public:
     void clear_widget_Contenedores();
     void set_dimension_widget_Contenedores();
     void update_widget_Contenedores();
-
     
 public:
     explicit ui_almacen(QWidget *parent = 0);

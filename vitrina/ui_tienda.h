@@ -40,8 +40,6 @@ private:
     ui_tienda * ui_tienda_traspaso;
     ui_almacen * ui_almacen_traspaso;
     int actual_nivel;
-//    int actual_row;
-//    int actual_col;
     int row_traspaso;
     bool caso;
     bool caso_traspaso;
@@ -75,7 +73,6 @@ public:
 
     void set_ui_almacen_traspaso(ui_almacen* tmp)   { ui_almacen_traspaso=tmp; }
 
-
     void set_idEmpresa(QString tmp)         {idEmpresa=tmp;}
     void set_idTienda(QString tmp)          {idTienda=tmp;}
     void set_idVitrina(QString tmp)         {idVitrina=tmp;}
@@ -87,9 +84,8 @@ public:
     void set_actual_nivel(int tmp)          {actual_nivel=tmp;}
     void set_row_traspaso(int tmp)          {row_traspaso=tmp;}
     void set_query(QSqlQuery q)             {sqlQuery=q;}
-//    void set_row(int tmp) { actual_row=tmp; }
-//    void set_col(int tmp) { actual_col=tmp; }
 
+    void enableButtonAceptar();
 
     void actualizar_combo_empresa();
     void actualizar_combo_tienda(QString);

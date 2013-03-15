@@ -38,11 +38,15 @@ QString ui_almacen::get_currentIdAlmacen(){return currentIdAlmacen;}
 QString ui_almacen::get_currentIdAndamio(){return currentIdAndamio;}
 QString ui_almacen::get_currentIdContenedor(){return currentIdContenedor;}
 
+void ui_almacen::setFromVitrina(bool b){fromVitrina=b;}
+
 void ui_almacen::set_currentIdEmpresa(QString e){currentIdEmpresa = e;}
 void ui_almacen::set_currentIdTienda(QString t){currentIdTienda = t;}
 void ui_almacen::set_currentIdAlmacen(QString al){currentIdAlmacen = al;}
 void ui_almacen::set_currentIdAndamio(QString an){currentIdAndamio = an;}
 void ui_almacen::set_currentIdContenedor(QString c){currentIdContenedor = c;}
+void ui_almacen::set_query(QSqlQuery query){ sqlQuery=query;}
+
 
 void ui_almacen::update_comboBox_Empresa()
 {
@@ -60,9 +64,7 @@ void ui_almacen::update_comboBox_Empresa()
         QString raz_social = query.value(1).toString();
 
         Empresas[raz_social] = idempresa;
-        ui->comboBox_Empresa->insertItem(c,raz_social);
-
-        c++;
+        ui->comboBox_Empresa->insertItem(c++,raz_social);
     }
 }
 
@@ -84,9 +86,7 @@ void ui_almacen::update_comboBox_Tienda(QString idEmpresa)
 
         Tiendas[alias] = idtienda;
 
-        ui->comboBox_Tienda->insertItem(c,alias);
-
-        c++;
+        ui->comboBox_Tienda->insertItem(c++,alias);
     }
 }
 
@@ -140,10 +140,7 @@ void ui_almacen::update_comboBox_Andamio(QString idAlmacen)
 
 void ui_almacen::clear_widget_Contenedores()
 {
-    for(int i=ui->tableWidget_griContenedores->rowCount()-1; i>=0;--i)
-        ui->tableWidget_griContenedores->removeRow(i);
-    for(int i=ui->tableWidget_griContenedores->columnCount()-1;i>=0;--i)
-        ui->tableWidget_griContenedores->removeColumn(i);
+    ui->tableWidget_griContenedores->clear();
 }
 
 void ui_almacen::set_dimension_widget_Contenedores()
@@ -160,18 +157,15 @@ void ui_almacen::set_dimension_widget_Contenedores()
     int fila = query.value(0).toInt();
     int columna = query.value(1).toInt();
 
-    for(int i = 0;i<columna;i++)
-        ui->tableWidget_griContenedores->insertColumn(i);
-    for(int i = 0;i<fila;i++)
-        ui->tableWidget_griContenedores->insertRow(i);
-
+    ui->tableWidget_griContenedores->setRowCount(fila);
+    ui->tableWidget_griContenedores->setColumnCount(columna);
 }
 
 void ui_almacen::update_widget_Contenedores()
 {
     Contenedor.clear();
     QSqlQuery query;
-    query.prepare("SELECT nombre,descripcion,posFila,poColumna,idContenedor FROM Contenedor WHERE Andamio_idAndamio=?");
+    query.prepare("SELECT nombre,descripcion,posFila,posColumna,idContenedor FROM Contenedor WHERE Andamio_idAndamio=?");
     query.bindValue(0,currentIdAndamio);
     query.exec();
 
@@ -419,10 +413,42 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
     }
     else
     {
-        contenedor_form->set_idContenedor(currentIdContenedor);
-        contenedor_form->set_behavior(1);
-        contenedor_form->update_form();
-        contenedor_form->setWindowTitle("Editar Contenedor");
+        if(fromVitrina)
+        {
+            QString idProducto=sqlQuery.value(0).toString();
+            int fila=sqlQuery.value(2).toInt(),
+                col=sqlQuery.value(3).toInt(),
+                nivel=sqlQuery.value(4).toInt();
+
+            QSqlQuery query;
+            query.prepare("SELECT codigo FROM Producto WHERE idProducto=?");
+            query.bindValue(0,idProducto);
+            query.exec();   query.next();
+            QString cod=query.value(0).toString();
+
+            contenedor_form->set_idContenedor(currentIdContenedor);
+            contenedor_form->set_behavior(1);
+            contenedor_form->update_form();
+            contenedor_form->setWindowTitle("Editar Contenedor");
+            contenedor_form->set_idProducto(cod);
+            bool add=contenedor_form->add_Product();
+            if(add)
+            {
+                query.prepare("DELETE FROM Producto_has_Vitrina WHERE Producto_idProducto=? and fila=? and columna=? and nivel=?");
+                query.bindValue(0,idProducto);
+                query.bindValue(1,fila);
+                query.bindValue(2,col);
+                query.bindValue(3,nivel);
+                query.exec();
+            }
+        }
+        else
+        {
+            contenedor_form->set_idContenedor(currentIdContenedor);
+            contenedor_form->set_behavior(1);
+            contenedor_form->update_form();
+            contenedor_form->setWindowTitle("Editar Contenedor");
+        }
     }
 
     contenedor_form->show();

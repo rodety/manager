@@ -3,9 +3,9 @@
 #include "ui_tienda_agregar.h"
 #include "ui_vitrina_agregar.h"
 #include "ui_item_posicion.h"
-#include "ui_traspaso_almacen.h"
+#include "vitrina/ui_almacen.h"
 #include "empresa.h"
-#include "ui_datos_empresa.h"
+//#include "ui_datos_empresa.h"
 #include "ui_agregar_empresa.h"
 //#include "sesion.h"
 #include "mainwindow.h"
@@ -21,6 +21,7 @@ ui_tienda::ui_tienda(QWidget *parent) :
     caso=false;
     habilitar_botones();
     actual=Empresa;
+    ui->pushButton_aceptar_traspaso->hide();
 }
 
 ui_tienda::~ui_tienda()
@@ -517,6 +518,7 @@ void ui_tienda::on_pushButton_traspaso_clicked()
         query.next();
 
         ui_tienda * tienda_traspaso=new ui_tienda;
+        tienda_traspaso->enableButtonAceptar();
         tienda_traspaso->set_query(query);
         tienda_traspaso->set_caso(true);
         tienda_traspaso->set_idItem_tras(get_idItem());
@@ -561,52 +563,8 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
             query.bindValue(4,oldRow);
             query.bindValue(5,oldCol);
             query.bindValue(6,oldLevel);
-            if(query.exec())
-                cout<<"wiiiiiii";
-            else
-                cout<<"wooooooo";
-             qDebug()<<query.lastError().text();
+            query.exec();
 
-
-//            QSqlQuery query1;
-//            query1.prepare("SELECT idproducto, fila ,columna,nivel FROM Producto_has_Vitrina WHERE Producto_idProducto=?");
-//            query1.bindValue(0,idItem_tras);
-//            query1.exec();
-//            query1.next();
-//            QString idpro=query1.value(0).toString();
-//            int a_fila=query1.value(1).toInt();
-//            int a_columna=query1.value(2).toInt();
-//            int a_nivel=query1.value(3).toInt();
-//            item_posicion *del = new item_posicion(idItem_tras,"",0,0,0,"");
-//            del->eliminar();
-
-//            QSqlQuery query;
-//            query.prepare("SELECT codigo, descripcion FROM producto WHERE idproducto=?");
-//            query.bindValue(0,idpro);
-//            query.exec();
-//            query.next();
-//            QString cpro=query.value(0).toString();
-//            QString dpro=query.value(1).toString();
-
-//            query.prepare("SELECT codigo FROM vitrina WHERE idvitrina=?");
-//            query.bindValue(0,ui_tienda_traspaso->get_idVitrina());
-//            query.exec();
-//            query.next();
-//            QString c_vitrina=query.value(0).toString();
-
-//            query.prepare("SELECT alias FROM tienda WHERE idtienda=?");
-//            query.bindValue(0,ui_tienda_traspaso->get_idTienda());
-//            query.exec();
-//            query.next();
-//            QString t_alias=query.value(0).toString();
-
-//            query.prepare("INSERT INTO item_posicion(idproducto,idvitrina,fila,columna,nivel) VALUES(?,?,?,?,?)");
-//            query.bindValue(0,idpro);
-//            query.bindValue(1,get_idVitrina());
-//            query.bindValue(2,fila);
-//            query.bindValue(3,columna);
-//            query.bindValue(4,nivel);
-//            query.exec();
             close();
             ui_tienda_traspaso->limpiar_grilla();
             ui_tienda_traspaso->set_dimension_grilla();
@@ -614,75 +572,75 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
         }
         else
         {
-            int fila=ui->grilla->currentRow()+1;
-            int columna=ui->grilla->currentColumn()+1;
-            int nivel=actual_nivel;
+            int row=ui->grilla->currentRow()+1;
+            int col=ui->grilla->currentColumn()+1;
+            int level=actual_nivel;
 
-            QSqlQuery query;
-            query.prepare("INSERT INTO item_posicion(idproducto,idvitrina,fila,columna,nivel) VALUES(?,?,?,?,?)");
-            query.bindValue(0,idProducto_tras);
-            query.bindValue(1,get_idVitrina());
-            query.bindValue(2,fila);
-            query.bindValue(3,columna);
-            query.bindValue(4,nivel);
-            query.exec();
-
-
-            query.prepare("DELETE FROM producto_contenedor WHERE producto_idproducto=?");
-            query.bindValue(0,idProducto_tras);
-            query.exec();
-
-            query.prepare("INSERT INTO historial_almacen(entidad_1,id_1,entidad_2,id_2,operacion,fecha) VALUES('Producto',?,'Contenedor',?,'quitar',now())");
-            query.bindValue(0,idProducto_tras);
-            query.bindValue(1,ui_almacen_traspaso->get_currentIdContenedor());
-            query.exec();
-
-            close();
-            ui_tienda_traspaso->limpiar_grilla();
-            ui_tienda_traspaso->set_dimension_grilla();
-            ui_tienda_traspaso->actualizar_grilla();
+//            QSqlQuery query;
+//            query.prepare("INSERT INTO item_posicion(idproducto,idvitrina,fila,columna,nivel) VALUES(?,?,?,?,?)");
+//            query.bindValue(0,idProducto_tras);
+//            query.bindValue(1,get_idVitrina());
+//            query.bindValue(2,fila);
+//            query.bindValue(3,columna);
+//            query.bindValue(4,nivel);
+//            query.exec();
 
 
-            query.prepare("SELECT codigo, descripcion FROM producto WHERE idproducto=?");
-            query.bindValue(0,idProducto_tras);
-            query.exec();
-            query.next();
-            QString cpro=query.value(0).toString();
-            QString dpro=query.value(1).toString();
+//            query.prepare("DELETE FROM producto_contenedor WHERE producto_idproducto=?");
+//            query.bindValue(0,idProducto_tras);
+//            query.exec();
+
+//            query.prepare("INSERT INTO historial_almacen(entidad_1,id_1,entidad_2,id_2,operacion,fecha) VALUES('Producto',?,'Contenedor',?,'quitar',now())");
+//            query.bindValue(0,idProducto_tras);
+//            query.bindValue(1,ui_almacen_traspaso->get_currentIdContenedor());
+//            query.exec();
+
+//            close();
+//            ui_tienda_traspaso->limpiar_grilla();
+//            ui_tienda_traspaso->set_dimension_grilla();
+//            ui_tienda_traspaso->actualizar_grilla();
 
 
-            query.prepare("SELECT codigo FROM vitrina WHERE idvitrina=?");
-            query.bindValue(0,ui_tienda_traspaso->get_idVitrina());
-            query.exec();
-            query.next();
-            QString c_vitrina=query.value(0).toString();
+//            query.prepare("SELECT codigo, descripcion FROM producto WHERE idproducto=?");
+//            query.bindValue(0,idProducto_tras);
+//            query.exec();
+//            query.next();
+//            QString cpro=query.value(0).toString();
+//            QString dpro=query.value(1).toString();
+
+
+//            query.prepare("SELECT codigo FROM vitrina WHERE idvitrina=?");
+//            query.bindValue(0,ui_tienda_traspaso->get_idVitrina());
+//            query.exec();
+//            query.next();
+//            QString c_vitrina=query.value(0).toString();
 
 
 
-            query.prepare("SELECT alias FROM tienda WHERE idtienda=?");
-            query.bindValue(0,ui_tienda_traspaso->get_idTienda());
-            query.exec();
-            query.next();
-            QString t_alias=query.value(0).toString();
+//            query.prepare("SELECT alias FROM tienda WHERE idtienda=?");
+//            query.bindValue(0,ui_tienda_traspaso->get_idTienda());
+//            query.exec();
+//            query.next();
+//            QString t_alias=query.value(0).toString();
 
 
-            query.prepare("SELECT nombre FROM almacen WHERE idalmacen=?");
-            query.bindValue(0,ui_almacen_traspaso->get_currentIdAlmacen());
-            query.exec();
-            query.next();
-            QString al_nombre=query.value(0).toString();
+//            query.prepare("SELECT nombre FROM almacen WHERE idalmacen=?");
+//            query.bindValue(0,ui_almacen_traspaso->get_currentIdAlmacen());
+//            query.exec();
+//            query.next();
+//            QString al_nombre=query.value(0).toString();
 
-            query.prepare("SELECT nombre FROM andamio WHERE idandamio=?");
-            query.bindValue(0,ui_almacen_traspaso->get_currentIdAndamio());
-            query.exec();
-            query.next();
-            QString an_nombre=query.value(0).toString();
+//            query.prepare("SELECT nombre FROM andamio WHERE idandamio=?");
+//            query.bindValue(0,ui_almacen_traspaso->get_currentIdAndamio());
+//            query.exec();
+//            query.next();
+//            QString an_nombre=query.value(0).toString();
 
-            query.prepare("SELECT nombre FROM contenedor WHERE idcontenedor=?");
-            query.bindValue(0,ui_almacen_traspaso->get_currentIdContenedor());
-            query.exec();
-            query.next();
-            QString c_nombre=query.value(0).toString();
+//            query.prepare("SELECT nombre FROM contenedor WHERE idcontenedor=?");
+//            query.bindValue(0,ui_almacen_traspaso->get_currentIdContenedor());
+//            query.exec();
+//            query.next();
+//            QString c_nombre=query.value(0).toString();
         }
     }
     else
@@ -697,9 +655,18 @@ void ui_tienda::on_button_traspaso_almacen_clicked()
 {
     if(!idItem.isEmpty())
     {
-        ui_traspaso_almacen* traspaso_almacen=new ui_traspaso_almacen;
-        traspaso_almacen->set_ui_tienda_traspaso(this);
-        traspaso_almacen->set_idItem_tras(get_idItem());
+        QSqlQuery query;
+        query.prepare("SELECT * FROM Producto_has_Vitrina WHERE Vitrina_Ubicacion_idUbicacion=? and nivel=? and fila=? and columna=? ");
+        query.bindValue(0,idVitrina);
+        query.bindValue(1,actual_nivel);
+        query.bindValue(2,ui->grilla->currentRow()+1);
+        query.bindValue(3,ui->grilla->currentColumn()+1);
+        query.exec();
+        query.next();
+
+        ui_almacen* traspaso_almacen=new ui_almacen;
+        traspaso_almacen->set_query(query);
+        traspaso_almacen->setFromVitrina(true);
         traspaso_almacen->show();
     }
     else
@@ -777,4 +744,9 @@ void ui_tienda::on_comboBox_empresa_activated(const QString &arg1)
 void ui_tienda::on_comboBox_tienda_activated(const QString &arg1)
 {
     changeActual(Tienda);
+}
+
+void ui_tienda::enableButtonAceptar()
+{
+    ui->pushButton_aceptar_traspaso->show();
 }

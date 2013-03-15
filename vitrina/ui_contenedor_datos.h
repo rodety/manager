@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "ui_almacen.h"
+#include "configuracion/sesion.h"
 
 namespace Ui {
 class ui_contenedor_datos;
@@ -29,6 +30,9 @@ public:
     int get_behavior();
     void set_behavior(int);
 
+    void set_idProducto(QString);
+    bool add_Product();
+
     void set_spinBox_fila(int);
     void set_spinBox_columna(int);
 
@@ -44,7 +48,7 @@ public:
 private slots:
     void on_pushButton_salir_clicked();
 
-    void on_pushButton_addProducto_clicked();
+    bool on_pushButton_addProducto_clicked();
 
     void on_pushButton_saveContenedor_clicked();
 

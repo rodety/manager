@@ -19,19 +19,6 @@
      <item row="0" column="1">
       <widget class="QComboBox" name="comboBox_empresa"/>
      </item>
-     <item row="0" column="8">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
      <item row="3" column="1">
       <widget class="QComboBox" name="comboBox_niveles">
        <item>
@@ -40,19 +27,6 @@
         </property>
        </item>
       </widget>
-     </item>
-     <item row="1" column="8">
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="5" column="0" colspan="9">
       <widget class="QTableWidget" name="grilla"/>
@@ -63,19 +37,6 @@
         <string>Empresa: </string>
        </property>
       </widget>
-     </item>
-     <item row="2" column="8">
-      <spacer name="horizontalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="2" column="1">
       <widget class="QComboBox" name="comboBox_vitrina">
@@ -132,48 +93,6 @@
          <string/>
         </property>
        </item>
-      </widget>
-     </item>
-     <item row="6" column="8">
-      <widget class="QPushButton" name="pushButton_aceptar_traspaso">
-       <property name="text">
-        <string>Aceptar</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../Icons/Icons.qrc">
-         <normaloff>:/Icons/notification_done.png</normaloff>:/Icons/notification_done.png</iconset>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="4" colspan="2">
-      <widget class="QPushButton" name="pushButton_traspaso">
-       <property name="text">
-        <string>Traspaso a Vitrina</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../Icons/Icons.qrc">
-         <normaloff>:/Icons/stock_task-assigned-to.png</normaloff>:/Icons/stock_task-assigned-to.png</iconset>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="6" colspan="2">
-      <widget class="QPushButton" name="button_traspaso_almacen">
-       <property name="text">
-        <string>Traspaso a Almacen</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../Icons/Icons.qrc">
-         <normaloff>:/Icons/stock_task-assigned-to.png</normaloff>:/Icons/stock_task-assigned-to.png</iconset>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
       </widget>
      </item>
      <item row="0" column="2">
@@ -255,6 +174,61 @@
         <bool>true</bool>
        </property>
       </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QPushButton" name="pushButton_traspaso">
+       <property name="text">
+        <string>a Vitrina</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/stock_task-assigned-to.png</normaloff>:/Icons/stock_task-assigned-to.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="8">
+      <widget class="QPushButton" name="button_traspaso_almacen">
+       <property name="text">
+        <string>a Almacen</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/stock_task-assigned-to.png</normaloff>:/Icons/stock_task-assigned-to.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="6">
+      <widget class="QPushButton" name="pushButton_aceptar_traspaso">
+       <property name="text">
+        <string>Aceptar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/notification_done.png</normaloff>:/Icons/notification_done.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="6">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>

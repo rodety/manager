@@ -14,6 +14,7 @@ ui_contenedor_datos::ui_contenedor_datos(QWidget *parent) :
     ui->setupUi(this);
 }
 
+
 ui_contenedor_datos::~ui_contenedor_datos()
 {
     delete ui;
@@ -27,6 +28,9 @@ void ui_contenedor_datos::set_ui_almacen_parent(ui_almacen * al){ui_almacen_pare
 
 int ui_contenedor_datos::get_behavior(){return behavior;}
 void ui_contenedor_datos::set_behavior(int b){behavior = b;}
+
+void ui_contenedor_datos::set_idProducto(QString tmp){ui->lineEdit_codigoProducto->setText(tmp);}
+bool ui_contenedor_datos::add_Product(){return on_pushButton_addProducto_clicked();}
 
 void ui_contenedor_datos::set_spinBox_fila(int f){ui->spinBox_fila->setValue(f);}
 void ui_contenedor_datos::set_spinBox_columna(int c){ui->spinBox_columna->setValue(c);}
@@ -129,7 +133,7 @@ void ui_contenedor_datos::on_pushButton_salir_clicked()
     close();
 }
 
-void ui_contenedor_datos::on_pushButton_addProducto_clicked()
+bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
 {
     if(ui->lineEdit_codigoProducto->text().compare("")==0)
     {
@@ -165,27 +169,54 @@ void ui_contenedor_datos::on_pushButton_addProducto_clicked()
         {
             QString idProducto = query.value(0).toString();
 
-            query.prepare("select * from Contenedor_has_Producto where Producto_idProducto=? and Contenedor_idContenedor=?");
+            query.prepare("SELECT * from Contenedor_has_Producto WHERE Producto_idProducto=?");
             query.bindValue(0,idProducto);
-            query.bindValue(1,idContenedor);
             query.exec();
 
             if(query.next())
             {
+                QString idCont=query.value(1).toString();
+                query.prepare("SELECT nombre,Andamio_idAndamio from Contenedor WHERE idContenedor=?");
+                query.bindValue(0,idCont);
+                query.exec();   query.next();
+
+                QString contenedorName=query.value(0).toString(), idAndamio=query.value(1).toString();
+
+                query.prepare("SELECT nombre,Almacen_idAlmacen from Andamio WHERE idAndamio=?");
+                query.bindValue(0,idAndamio);
+                query.exec();   query.next();
+
+                QString andamioName=query.value(0).toString(), idAlmacen=query.value(1).toString();
+
+                query.prepare("SELECT nombre,Tienda_idTienda from Almacen WHERE idAlmacen=?");
+                query.bindValue(0,idAlmacen);
+                query.exec();   query.next();
+
+                QString almacenName=query.value(0).toString(), idTienda=query.value(1).toString();
+
+                query.prepare("SELECT nombre FROM Tienda WHERE IdTienda=?");
+                query.bindValue(0,idTienda);
+                query.exec();   query.next();
+
+                QString tiendaName=query.value(0).toString();
+
                 QMessageBox *msgBox =new QMessageBox;
                 msgBox->setIcon(QMessageBox::Warning);
                 msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
-                msgBox->setWindowTitle("Información");
+                msgBox->setWindowTitle("Informacion");
                 msgBox->setStandardButtons(QMessageBox::Ok);
                 msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
-                msgBox->setText("El producto ya está asignado a otro contenedor!");
+                msgBox->setText("El producto ya esta asignado a otro contenedor : Tienda:'"+tiendaName+"', Almacen:'"+almacenName+"', Andamio:'"+andamioName+"', Contenedor:'"+contenedorName+"' ");
                 msgBox->exec();
             }
             else
             {
-                query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,) VALUES(?,?)");
+                Sesion* s=Sesion::getSesion();
+
+                query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona) VALUES(?,?,now(),?)");
                 query.bindValue(0,idContenedor);
                 query.bindValue(1,idProducto);
+                query.bindValue(2,s->getIdColaborador());
 
                 if(query.exec())
                 {
@@ -199,7 +230,9 @@ void ui_contenedor_datos::on_pushButton_addProducto_clicked()
 
                     clear_widget_list_productos();
                     uptate_widget_list_productos();
+                    return true;
                 }
+                else return false;
             }
         }
     }
