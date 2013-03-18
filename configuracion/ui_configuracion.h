@@ -15,6 +15,11 @@ public:
     explicit ui_configuracion(QWidget *parent = 0);
     ~ui_configuracion();
     
+private slots:
+
+
+    void on_btn_testConexion_clicked();
+
 private:
     Ui::ui_configuracion *ui;
 };

@@ -20,7 +20,6 @@ private:
     bool leerConfiguracion();
     QString nombreArchivo;
     ConexionBD *conexiondb;
-
 };
 
 #endif // CONFIGURADOR_H

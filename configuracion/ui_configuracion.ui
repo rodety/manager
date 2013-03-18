@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>521</width>
+    <width>646</width>
     <height>425</height>
    </rect>
   </property>
@@ -67,7 +67,7 @@
       </widget>
      </item>
      <item row="10" column="1">
-      <widget class="QComboBox" name="comboBox_3"/>
+      <widget class="QComboBox" name="comboBox_tipoUsuario"/>
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="label_8">
@@ -90,7 +90,7 @@
       </spacer>
      </item>
      <item row="9" column="1">
-      <widget class="QComboBox" name="comboBox_2"/>
+      <widget class="QComboBox" name="comboBox_Documento"/>
      </item>
      <item row="6" column="2">
       <widget class="QLabel" name="label_9">
@@ -113,14 +113,14 @@
       </spacer>
      </item>
      <item row="2" column="2">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btn_testConexion">
        <property name="text">
         <string>Probar Conexion</string>
        </property>
       </widget>
      </item>
      <item row="6" column="1">
-      <widget class="QLineEdit" name="lineEdit_6"/>
+      <widget class="QLineEdit" name="lineEdit_IGV"/>
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="lblTienda">
@@ -170,7 +170,7 @@
         <string>Añadir</string>
        </property>
        <property name="icon">
-        <iconset resource="Icons/Icons.qrc">
+        <iconset resource="../Icons/Icons.qrc">
          <normaloff>:/Icons/1348112114_notification_add.png</normaloff>:/Icons/1348112114_notification_add.png</iconset>
        </property>
        <property name="flat">
@@ -179,10 +179,10 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lineEdit_ipdatabase"/>
      </item>
      <item row="2" column="3">
-      <widget class="QLabel" name="label_6">
+      <widget class="QLabel" name="label_result">
        <property name="text">
         <string>Resultado.</string>
        </property>
@@ -196,7 +196,7 @@
       </widget>
      </item>
      <item row="0" column="3">
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="lineEdit_portDatabase"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_3">
@@ -206,14 +206,14 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_5">
+      <widget class="QLineEdit" name="lineEdit_passwordUser">
        <property name="readOnly">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_3"/>
+      <widget class="QLineEdit" name="lineEdit_nameDatabase"/>
      </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_5">
@@ -223,7 +223,7 @@
       </widget>
      </item>
      <item row="1" column="3">
-      <widget class="QLineEdit" name="lineEdit_4"/>
+      <widget class="QLineEdit" name="lineEdit_userDatabase"/>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_4">
@@ -251,14 +251,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btn_script">
          <property name="text">
           <string>Ejecutar scrip de inicio</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="btn_backup">
          <property name="text">
           <string>Crear backup de la base de datos</string>
          </property>
@@ -287,7 +287,7 @@
       </widget>
      </item>
      <item row="11" column="1">
-      <widget class="QComboBox" name="comboBox_4"/>
+      <widget class="QComboBox" name="comboBox_estadoProductos"/>
      </item>
      <item row="10" column="0">
       <widget class="QLabel" name="label_13">
@@ -297,7 +297,7 @@
       </widget>
      </item>
      <item row="6" column="3">
-      <widget class="QLineEdit" name="lineEdit_7"/>
+      <widget class="QLineEdit" name="lineEdit_boleta"/>
      </item>
      <item row="9" column="2">
       <widget class="QPushButton" name="btnAgregar_2">
@@ -311,7 +311,7 @@
         <string>Añadir</string>
        </property>
        <property name="icon">
-        <iconset resource="Icons/Icons.qrc">
+        <iconset resource="../Icons/Icons.qrc">
          <normaloff>:/Icons/1348112114_notification_add.png</normaloff>:/Icons/1348112114_notification_add.png</iconset>
        </property>
        <property name="flat">
@@ -344,7 +344,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="Icons/Icons.qrc"/>
+  <include location="../Icons/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -12,3 +12,10 @@ ui_configuracion::~ui_configuracion()
 {
     delete ui;
 }
+
+
+void ui_configuracion::on_btn_testConexion_clicked()
+{
+    QString ip = ui->lineEdit_ipdatabase->text();
+    //QString port = ui->lineEdit_//
+}
