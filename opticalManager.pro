@@ -99,7 +99,8 @@ SOURCES += main.cpp\
     configuracion/dialogbuscarusuarios.cpp \
     configuracion/configurador.cpp \
     configuracion/conexionbd.cpp \
-    vitrina/ui_agregar_empresa.cpp
+    vitrina/ui_agregar_empresa.cpp \
+    configuracion/ui_configuracion.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -168,7 +169,8 @@ HEADERS  += mainwindow.h \
     configuracion/dialogbuscarusuarios.h \
     configuracion/configurador.h \
     configuracion/conexionbd.h \
-    vitrina/ui_agregar_empresa.h
+    vitrina/ui_agregar_empresa.h \
+    configuracion/ui_configuracion.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \
@@ -194,10 +196,12 @@ FORMS    += mainwindow.ui \
     configuracion/ui_cambiarpassdialog.ui \
     configuracion/dialoglogin.ui \
     configuracion/dialogbuscarusuarios.ui \
-    vitrina/ui_agregar_empresa.ui
+    vitrina/ui_agregar_empresa.ui \
+    configuracion/ui_configuracion.ui
 
 RESOURCES += \
     Icons/Icons.qrc \
+
 
 OTHER_FILES += \
     configuracion/config.ini

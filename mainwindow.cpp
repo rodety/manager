@@ -78,3 +78,9 @@ void MainWindow::on_actionAlmacen_triggered()
     ui_almacen* form = new ui_almacen;
     setCentralWidget(form);
 }
+
+void MainWindow::on_actionConfiguracion_triggered()
+{
+    ui_configuracion *form = new ui_configuracion;
+    setCentralWidget(form);
+}

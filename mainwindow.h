@@ -9,7 +9,7 @@
 #include <vitrina/ui_almacen.h>
 #include <configuracion/usuariosform.h>
 #include <configuracion/sesion.h>
-
+#include "configuracion/ui_configuracion.h"
 namespace Ui {
 class MainWindow;
 }
@@ -31,6 +31,8 @@ private slots:
     void on_actionVitrina_triggered();
 
     void on_actionAlmacen_triggered();
+
+    void on_actionConfiguracion_triggered();
 
 private:
     Ui::MainWindow *ui;

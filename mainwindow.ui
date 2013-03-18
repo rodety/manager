@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>969</width>
+    <width>812</width>
     <height>408</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>969</width>
+     <width>812</width>
      <height>25</height>
     </rect>
    </property>
@@ -48,6 +48,7 @@
    <addaction name="actionCompras"/>
    <addaction name="actionReportes"/>
    <addaction name="actionVentas"/>
+   <addaction name="actionConfiguracion"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionProducto">
@@ -153,6 +154,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Alt+N</string>
+   </property>
+  </action>
+  <action name="actionConfiguracion">
+   <property name="icon">
+    <iconset resource="Icons/Icons.qrc">
+     <normaloff>:/Icons/1349716392_monotone_wrench_settings.png</normaloff>:/Icons/1349716392_monotone_wrench_settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>Configuracion</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
  </widget>

@@ -18,9 +18,18 @@ bool configurador::leerConfiguracion()
     QString namefile = nombreArchivo;
     QFile file(namefile);
     file.open(QIODevice::ReadOnly|QIODevice::Text);
+
     if(!file.isOpen())
     {
-      qDebug()<<"Error archivo de configuración";
+      file.open(QIODevice::WriteOnly|QIODevice::Text);
+      if(!file.isOpen())
+        qDebug()<<"Error archivo de configuración";
+      else
+      {
+          QTextStream out(&file);
+              out << "192.168.1.241#optical#root#jose-123#3306#";
+              return false;
+      }
     }
     QString str_db;
     QTextStream in(&file);
