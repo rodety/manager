@@ -15,12 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
     modulos.push_back(ui->actionCompras);
     modulos.push_back(ui->actionReportes);
     modulos.push_back(ui->actionVentas);
+    modulos.push_back(ui->actionConfiguracion);
 
     for(size_t i = 0; i<modulos.size();i++)
         modulos[i]->setEnabled(false);
     aplicarPermisos();
-    ui->actionUsuario->setEnabled(true);
-
+//    ui->actionUsuario->setEnabled(true);
 }
 
 void MainWindow::aplicarPermisos()
@@ -39,9 +39,7 @@ void MainWindow::aplicarPermisos()
     }
 
     for(;it!=v.end();it++)
-    {
         modulos[(*it).first-1]->setEnabled((*it).second);
-    }
 }
 
 MainWindow::~MainWindow()
