@@ -2,6 +2,8 @@
 
 producto::producto()
 {
+    cantidadVitrina=0;
+    cantidadAlmacen=0;
 }
 
 QString producto::getIdProducto()
@@ -94,4 +96,38 @@ void producto::setMarca(marca tmp)
 {
     pMarca=tmp;
 }
+
+void producto::addToVitrina(int tmp)
+{
+    cantidadVitrina+=tmp;
+    QSqlQuery query;
+    query.prepare("UPDATE Producto SET cantidadVitrina=?");
+    query.bindValue(0,cantidadVitrina);
+    query.exec();
+}
+
+void producto::addToAlmacen(int tmp)
+{
+    cantidadAlmacen+=tmp;
+    QSqlQuery query;
+    query.prepare("UPDATE Producto SET cantidadAlmacen=?");
+    query.bindValue(0,cantidadAlmacen);
+    query.exec();
+}
+
+void producto::almacenToVitrina()
+{
+    cantidadAlmacen--;
+    cantidadVitrina++;
+    QSqlQuery query;
+    query.prepare("UPDATE Producto SET cantidadVitrina=?");
+    query.bindValue(0,cantidadVitrina);
+    query.exec();
+
+    query.prepare("UPDATE Producto SET cantidadAlmacen=?");
+    query.bindValue(0,cantidadAlmacen);
+
+    query.exec();
+}
+
 //setColaborador

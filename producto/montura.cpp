@@ -1,6 +1,4 @@
 #include "montura.h"
-#include <iostream>
-using namespace std;
 
 montura::montura()
 {
@@ -44,7 +42,7 @@ void montura::setCalidad(calidad tmp)
 bool montura::agregar()
 {
     Sesion* s =Sesion::getSesion();
-    int idCol=s->getIdColaborador(),vitrina=0,almacen=0;
+    int idCol=s->getIdColaborador();
 
     QSqlQuery query;
     query.prepare("INSERT INTO Producto(codigo,descripcion,precioCompra,precioVenta,precioDescuento,accesorios,stock,observaciones,Estado_idEstado,Marca_idMarca,Colaborador_Persona_idPersona,cantidadVitrina,cantidadAlmacen) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -59,8 +57,8 @@ bool montura::agregar()
     query.bindValue(8,pEstado.getIdEstado());
     query.bindValue(9,pMarca.getIdMarca());
     query.bindValue(10,idCol);
-    query.bindValue(11,vitrina);
-    query.bindValue(12,almacen);
+    query.bindValue(11,cantidadVitrina);
+    query.bindValue(12,cantidadAlmacen);
     if(query.exec())
     {
         query.clear();

@@ -409,7 +409,6 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
         contenedor_form->setWindowTitle("Nuevo Contenedor");
         contenedor_form->set_spinBox_fila(row+1);
         contenedor_form->set_spinBox_columna(column+1);
-
     }
     else
     {
