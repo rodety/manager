@@ -18,11 +18,21 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>447</width>
-     <height>270</height>
+     <width>272</width>
+     <height>262</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="4" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Representante</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit__ruc"/>
+    </item>
     <item row="8" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -67,11 +77,8 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit_raz_social"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_telefono"/>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="lineEdit_representante"/>
     </item>
     <item row="7" column="0">
      <widget class="QLabel" name="label_7">
@@ -80,21 +87,15 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit__direccion"/>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="lineEdit_representante"/>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="lineEdit_telefono"/>
     </item>
     <item row="0" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Razón Social:</string>
+       <string>Razón Social*:</string>
       </property>
      </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit__ruc"/>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="label_6">
@@ -103,6 +104,12 @@
       </property>
      </widget>
     </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="lineEdit_email"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="lineEdit__direccion"/>
+    </item>
     <item row="3" column="0">
      <widget class="QLabel" name="label_5">
       <property name="text">
@@ -110,32 +117,25 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QLineEdit" name="lineEdit_email"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Ruc:</string>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>Dirección:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Representante</string>
+       <string>Dirección*:</string>
       </property>
      </widget>
     </item>
     <item row="7" column="1">
      <widget class="QLineEdit" name="lineEdit_web"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_raz_social"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Ruc*:</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

@@ -25,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::aplicarPermisos()
 {
-
     Sesion * s = Sesion::getSesion();
     std::map<int,bool> v ;
 
