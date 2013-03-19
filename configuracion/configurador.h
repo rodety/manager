@@ -14,12 +14,13 @@ public:
     configurador(QString);
     ~configurador();
 
-    bool actualizarConfiguracion();
+    bool actualizarConfiguracion(QString,QString,QString,QString,QString);
     bool conectar_db();
 private:
     bool leerConfiguracion();
     QString nombreArchivo;
     ConexionBD *conexiondb;
+    QString nameConfig;
 };
 
 #endif // CONFIGURADOR_H

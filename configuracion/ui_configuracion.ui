@@ -118,19 +118,6 @@
      <item row="1" column="1">
       <widget class="QLineEdit" name="lineEdit_ipdatabase"/>
      </item>
-     <item row="6" column="2" colspan="2">
-      <spacer name="horizontalSpacer_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
      <item row="10" column="0">
       <widget class="QLabel" name="label_12">
        <property name="text">
@@ -155,6 +142,9 @@
        </property>
       </widget>
      </item>
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="lineEdit_userDatabase"/>
+     </item>
      <item row="10" column="1">
       <widget class="QComboBox" name="comboBox_Documento"/>
      </item>
@@ -164,12 +154,6 @@
         <string>Seleccione su ubicacion</string>
        </property>
       </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QLineEdit" name="lineEdit_userDatabase"/>
-     </item>
-     <item row="11" column="1">
-      <widget class="QComboBox" name="comboBox_tipoUsuario"/>
      </item>
      <item row="7" column="1">
       <widget class="QLineEdit" name="lineEdit_IGV"/>
@@ -181,15 +165,18 @@
        </property>
       </widget>
      </item>
+     <item row="11" column="1">
+      <widget class="QComboBox" name="comboBox_tipoUsuario"/>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="lineEdit_portDatabase"/>
+     </item>
      <item row="1" column="2">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Puerto de Servidor</string>
        </property>
       </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QLineEdit" name="lineEdit_portDatabase"/>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="label_8">
@@ -225,13 +212,6 @@
       <widget class="QPushButton" name="btn_testConexion">
        <property name="text">
         <string>Probar Conexion</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="2">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Serie de boleta</string>
        </property>
       </widget>
      </item>
@@ -275,20 +255,17 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="lblTienda">
-       <property name="text">
-        <string>Tienda: </string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="3">
-      <widget class="QLineEdit" name="lineEdit_boleta"/>
-     </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="lineEdit_passwordUser">
        <property name="readOnly">
         <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="lblTienda">
+       <property name="text">
+        <string>Tienda: </string>
        </property>
       </widget>
      </item>
@@ -339,6 +316,23 @@
        </property>
       </spacer>
      </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Serie de boleta</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLineEdit" name="lineEdit_boleta"/>
+     </item>
+     <item row="7" column="2">
+      <widget class="QPushButton" name="btn_saveConfiguration">
+       <property name="text">
+        <string>Guardar</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item row="1" column="0">
@@ -356,6 +350,26 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_ipdatabase</tabstop>
+  <tabstop>lineEdit_portDatabase</tabstop>
+  <tabstop>lineEdit_nameDatabase</tabstop>
+  <tabstop>lineEdit_userDatabase</tabstop>
+  <tabstop>lineEdit_passwordUser</tabstop>
+  <tabstop>btn_testConexion</tabstop>
+  <tabstop>comboBox_empresa</tabstop>
+  <tabstop>btnAgregar</tabstop>
+  <tabstop>comboBox_tienda</tabstop>
+  <tabstop>lineEdit_boleta</tabstop>
+  <tabstop>lineEdit_IGV</tabstop>
+  <tabstop>btn_saveConfiguration</tabstop>
+  <tabstop>comboBox_Documento</tabstop>
+  <tabstop>btnAgregar_2</tabstop>
+  <tabstop>comboBox_tipoUsuario</tabstop>
+  <tabstop>comboBox_estadoProductos</tabstop>
+  <tabstop>btn_script</tabstop>
+  <tabstop>btn_backup</tabstop>
+ </tabstops>
  <resources>
   <include location="../Icons/Icons.qrc"/>
  </resources>

@@ -5,6 +5,7 @@
 #include "configuracion/sesion.h"
 #include "configuracion/configurador.h"
 #include "configuracion/dialoglogin.h"
+#include "configuracion/ui_configuracion.h"
 
 #include <QMessageBox>
 #include <QTextCodec>
@@ -33,6 +34,8 @@ int main(int argc,char *argv[])
     QTextCodec::setCodecForLocale(linuxCodec);
 
 
+
+
     QPixmap pix(":/Icons/splash.png");
     pix = pix.scaled(800,450);
 
@@ -57,8 +60,8 @@ int main(int argc,char *argv[])
     }
     else
     {
-//        ConfigProgram* windowConfig =  new ConfigProgram;
-//        windowConfig->show();
+        ui_configuracion *form = new ui_configuracion;
+        form->show();
     }
 
     return a.exec();
