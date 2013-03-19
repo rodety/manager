@@ -413,7 +413,6 @@ void ui_contenedor_datos::on_traspaso_clicked()
 
         idproducto = query.value(0).toString();
 
-
         ui_tienda * tienda_traspaso=new ui_tienda;
         tienda_traspaso->set_caso(true);
         tienda_traspaso->set_idProducto_tras(idproducto);
@@ -421,6 +420,7 @@ void ui_contenedor_datos::on_traspaso_clicked()
         tienda_traspaso->habilitar_botones();
         tienda_traspaso->set_ui_almacen_traspaso(get_ui_almacen_parent());
         tienda_traspaso->set_caso_traspaso(false);
+        tienda_traspaso->enableButtonAceptar();
         tienda_traspaso->show();
     }
     else
@@ -429,5 +429,4 @@ void ui_contenedor_datos::on_traspaso_clicked()
         msgBox.setText("Seleccione un producto");
         msgBox.exec();
     }
-
 }

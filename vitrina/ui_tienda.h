@@ -104,6 +104,8 @@ public:
     void agregarEmpresa(bool b);
     void deshabilitarEmpresa();
 
+    void on_btn_traspaso() { on_pushButton_traspaso_clicked();}
+
 public:
     explicit ui_tienda(QWidget *parent = 0);
     ~ui_tienda();

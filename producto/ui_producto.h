@@ -7,6 +7,7 @@
 #include <producto/ui_agregarlente.h>
 #include <producto/ui_agregarotros.h>
 #include <extras/ui_trabajosextras.h>
+#include <vitrina/ui_tienda.h>
 
 #include <extras/etiqueta.h>
 #include <QPrinter>
@@ -43,6 +44,10 @@ private slots:
     void on_pushButton_anterior_clicked();
     void on_pushButton_siguiente_clicked();
     void on_tabWidget_currentChanged(int index);
+
+    void on_btnToVitrina_clicked();
+
+    void on_btnToAlmacen_clicked();
 
 private:
     Ui::ui_producto *ui;

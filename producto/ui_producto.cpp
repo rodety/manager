@@ -640,3 +640,35 @@ void ui_producto::on_tabWidget_currentChanged(int index)
     }
 }
 
+
+void ui_producto::on_btnToVitrina_clicked()
+{
+    int index=ui->comboBox_tipoProducto->currentIndex();
+    if(index<1 || index>3)
+    {
+        QMessageBox box;
+        box.setIcon(QMessageBox::Warning);
+        box.setWindowTitle("Advertencia");
+        box.setText("EL tipo de luna actual no se puede transferir a una Vitrina");
+        box.setStandardButtons(QMessageBox::Ok);
+        box.exec();
+        return;
+    }
+    if(ui->tableView_productos->currentIndex().row() <0)
+    {
+        QMessageBox box;
+        box.setIcon(QMessageBox::Warning);
+        box.setWindowTitle("Advertencia");
+        box.setText("Seleccione el producto que desea mover");
+        box.setStandardButtons(QMessageBox::Ok);
+        box.exec();
+        return;
+    }
+    ui_tienda* tienda= new ui_tienda;
+    tienda->show();
+}
+
+void ui_producto::on_btnToAlmacen_clicked()
+{
+
+}

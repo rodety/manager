@@ -575,72 +575,7 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
             int row=ui->grilla->currentRow()+1;
             int col=ui->grilla->currentColumn()+1;
             int level=actual_nivel;
-
-//            QSqlQuery query;
-//            query.prepare("INSERT INTO item_posicion(idproducto,idvitrina,fila,columna,nivel) VALUES(?,?,?,?,?)");
-//            query.bindValue(0,idProducto_tras);
-//            query.bindValue(1,get_idVitrina());
-//            query.bindValue(2,fila);
-//            query.bindValue(3,columna);
-//            query.bindValue(4,nivel);
-//            query.exec();
-
-
-//            query.prepare("DELETE FROM producto_contenedor WHERE producto_idproducto=?");
-//            query.bindValue(0,idProducto_tras);
-//            query.exec();
-
-//            query.prepare("INSERT INTO historial_almacen(entidad_1,id_1,entidad_2,id_2,operacion,fecha) VALUES('Producto',?,'Contenedor',?,'quitar',now())");
-//            query.bindValue(0,idProducto_tras);
-//            query.bindValue(1,ui_almacen_traspaso->get_currentIdContenedor());
-//            query.exec();
-
-//            close();
-//            ui_tienda_traspaso->limpiar_grilla();
-//            ui_tienda_traspaso->set_dimension_grilla();
-//            ui_tienda_traspaso->actualizar_grilla();
-
-
-//            query.prepare("SELECT codigo, descripcion FROM producto WHERE idproducto=?");
-//            query.bindValue(0,idProducto_tras);
-//            query.exec();
-//            query.next();
-//            QString cpro=query.value(0).toString();
-//            QString dpro=query.value(1).toString();
-
-
-//            query.prepare("SELECT codigo FROM vitrina WHERE idvitrina=?");
-//            query.bindValue(0,ui_tienda_traspaso->get_idVitrina());
-//            query.exec();
-//            query.next();
-//            QString c_vitrina=query.value(0).toString();
-
-
-
-//            query.prepare("SELECT alias FROM tienda WHERE idtienda=?");
-//            query.bindValue(0,ui_tienda_traspaso->get_idTienda());
-//            query.exec();
-//            query.next();
-//            QString t_alias=query.value(0).toString();
-
-
-//            query.prepare("SELECT nombre FROM almacen WHERE idalmacen=?");
-//            query.bindValue(0,ui_almacen_traspaso->get_currentIdAlmacen());
-//            query.exec();
-//            query.next();
-//            QString al_nombre=query.value(0).toString();
-
-//            query.prepare("SELECT nombre FROM andamio WHERE idandamio=?");
-//            query.bindValue(0,ui_almacen_traspaso->get_currentIdAndamio());
-//            query.exec();
-//            query.next();
-//            QString an_nombre=query.value(0).toString();
-
-//            query.prepare("SELECT nombre FROM contenedor WHERE idcontenedor=?");
-//            query.bindValue(0,ui_almacen_traspaso->get_currentIdContenedor());
-//            query.exec();
-//            query.next();
-//            QString c_nombre=query.value(0).toString();
+            //aki va traspaso de almacen a vitrina
         }
     }
     else

@@ -99,19 +99,29 @@ void producto::setMarca(marca tmp)
 
 void producto::addToVitrina(int tmp)
 {
-    cantidadVitrina+=tmp;
     QSqlQuery query;
-    query.prepare("UPDATE Producto SET cantidadVitrina=?");
+    query.prepare("SELECT cantidadVitrina FROM Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();
+    cantidadVitrina=query.value(0).toInt() + tmp;
+
+    query.prepare("UPDATE Producto SET cantidadVitrina=? WHERE idProducto=?");
     query.bindValue(0,cantidadVitrina);
+    query.bindValue(1,idProducto);
     query.exec();
 }
 
 void producto::addToAlmacen(int tmp)
 {
-    cantidadAlmacen+=tmp;
     QSqlQuery query;
-    query.prepare("UPDATE Producto SET cantidadAlmacen=?");
+    query.prepare("SELECT cantidadAlmacen FROM Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();
+    cantidadAlmacen=query.value(0).toInt() + tmp;
+
+    query.prepare("UPDATE Producto SET cantidadAlmacen=? WHERE idProducto=?");
     query.bindValue(0,cantidadAlmacen);
+    query.bindValue(1,idProducto);
     query.exec();
 }
 
@@ -120,13 +130,15 @@ void producto::almacenToVitrina()
     cantidadAlmacen--;
     cantidadVitrina++;
     QSqlQuery query;
-    query.prepare("UPDATE Producto SET cantidadVitrina=?");
+    query.prepare("UPDATE Producto SET cantidadVitrina=? WHERE idProducto=?");
     query.bindValue(0,cantidadVitrina);
+    query.bindValue(1,idProducto);
     query.exec();
+    //cantidadVitrina
 
-    query.prepare("UPDATE Producto SET cantidadAlmacen=?");
+    query.prepare("UPDATE Producto SET cantidadAlmacen=? WHERE idProducto=?");
     query.bindValue(0,cantidadAlmacen);
-
+    query.bindValue(1,idProducto);
     query.exec();
 }
 
