@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
     for(size_t i = 0; i<modulos.size();i++)
         modulos[i]->setEnabled(false);
     aplicarPermisos();
-//    ui->actionUsuario->setEnabled(true);
 }
 
 void MainWindow::aplicarPermisos()

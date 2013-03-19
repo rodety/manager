@@ -5,7 +5,7 @@
 #include <QObject>
 #include "usuario.h"
 #include <map>
-
+#include <QPair>
 /**
  * @class Sesion
  * @brief Clase singletone que representa el la sesion de el sistema
@@ -27,6 +27,8 @@ public:
     /// @return Retorna el tiempo en milisegundos desde que se inicio la sesion
     int get_time(){return s_time.elapsed();}
     std::map<int,bool> get_Permisos();
+    QPair < int,int > getUbicacion();
+    void setUbicacion(int,int);
 private:
     Sesion(Usuario * usr = 0);
     static Sesion* mp_instance;  ///<instancia de la clase singletone
@@ -36,9 +38,12 @@ private:
     static int numMinIntentos;  ///<Numero minimo de intentos de inicio
     static int numMaxIntentos;  ///<Numero maximo de intentos de inicio
     static int tiempoEspera;    ///<Tiempo de bloqueo de el inicio
+    static int idEmpresa;       ///<Empresa en la que se inicio sesion
+    static int idTienda;       ///<Tienda en la que se inicio sesion
 
     QTime s_time;               ///<tiempo de inicio de sesion
     Usuario * s_user;           ///<referencia a un usuario
+
 };
 
 #endif // SESION_H

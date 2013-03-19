@@ -4,6 +4,15 @@
  * @brief Constructor
  *
  */
+ConexionBD* ConexionBD::pInstance = 0;
+
+ConexionBD* ConexionBD::Instance()
+{
+    if(pInstance == 0)
+        pInstance = new ConexionBD;
+    return pInstance;
+
+}
 ConexionBD::ConexionBD()
     :db_host(""),db_name(""),db_user(""),db_pass(""),db_driver("")
 {

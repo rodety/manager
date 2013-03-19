@@ -1,14 +1,21 @@
 #include "ui_configuracion.h"
 #include "ui_ui_configuracion.h"
-#include "configuracion/configurador.h"
+#include "conexionbd.h"
 #include <QSqlQuery>
 #include <QDebug>
+#include "configurador.h"
 ui_configuracion::ui_configuracion(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ui_configuracion)
 {
     ui->setupUi(this);
     ui->btn_saveConfiguration->setEnabled(false);
+    config = new configurador("config.ini");
+    if(config->leerConfiguracion())
+    {
+        loadConfiguration();
+        res = config->getConfig();
+    }
 }
 
 ui_configuracion::~ui_configuracion()
@@ -25,13 +32,20 @@ void ui_configuracion::on_btn_testConexion_clicked()
     QString pass = ui->lineEdit_passwordUser->text();
     QString port = ui->lineEdit_portDatabase->text();
 
-    configurador* config = new configurador("config.ini");
     config->actualizarConfiguracion(ip,db,user,pass,port);
     if(config->conectar_db())
     {
         ui->label_result->setText("Conexion exitosa");
         update_comboBox_Empresa();
         ui->btn_saveConfiguration->setEnabled(true);
+
+        currentIdEmpresa = res[5];
+        currentIdTienda = res[6];
+        QString id_Empresa = (res[5]);
+        QString id_Tienda =  (res[6]);
+        ui->comboBox_empresa->setCurrentIndex(id_Empresa.toInt(0));
+        ui->comboBox_tienda->setCurrentIndex(id_Tienda.toInt(0));
+
     }
     else
         ui->label_result->setText("No se logro conectar con la base de datos");
@@ -56,6 +70,7 @@ void ui_configuracion::update_comboBox_Empresa()
         Empresas[raz_social] = idempresa;
         ui->comboBox_empresa->insertItem(c++,raz_social);
     }
+
 }
 
 void ui_configuracion::update_comboBox_Tienda(QString idEmpresa)
@@ -101,6 +116,9 @@ void ui_configuracion::saveConfiguration()
 
 void ui_configuracion::on_btn_saveConfiguration_clicked()
 {
+    set_currentIdEmpresa(Empresas[ui->comboBox_empresa->currentText()]);
+    set_currentIdTienda(Tiendas[ui->comboBox_tienda->currentText()]);
+
     QString igv = ui->lineEdit_IGV->text();
     QString serie = ui->lineEdit_boleta->text();
     QSqlQuery query;
@@ -112,11 +130,32 @@ void ui_configuracion::on_btn_saveConfiguration_clicked()
     if(!query.exec())
     {
         query.prepare("UPDATE Configuracion SET (igv,serieBoleta) VALUES (?,?) WHERE (Tienda_idTienda = ?)");
-
         query.bindValue(0,igv);
         query.bindValue(1,serie);
         query.bindValue(2,currentIdTienda);
         query.exec();
     }
 
+    QString ip = ui->lineEdit_ipdatabase->text();
+    QString db = ui->lineEdit_nameDatabase->text();
+    QString user = ui->lineEdit_userDatabase->text();
+    QString pass = ui->lineEdit_passwordUser->text();
+    QString port = ui->lineEdit_portDatabase->text();
+    config->guardarConfiguracion(ip,db,user,pass,port,currentIdEmpresa,currentIdTienda);
+}
+
+void ui_configuracion::loadConfiguration()
+{
+
+    ui->lineEdit_ipdatabase->setText(res[0]);
+    ui->lineEdit_nameDatabase->setText(res[1]);
+    ui->lineEdit_userDatabase->setText(res[2]);
+    ui->lineEdit_passwordUser->setText(res[3]);
+    ui->lineEdit_portDatabase->setText(res[4]);
+
+}
+
+void ui_configuracion::on_comboBox_tienda_currentTextChanged(const QString &arg1)
+{
+    set_currentIdTienda(Tiendas[arg1]);
 }

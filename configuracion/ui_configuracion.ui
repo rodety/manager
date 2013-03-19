@@ -329,7 +329,7 @@
      <item row="7" column="2">
       <widget class="QPushButton" name="btn_saveConfiguration">
        <property name="text">
-        <string>Guardar</string>
+        <string>Guardar Configuracion</string>
        </property>
       </widget>
      </item>

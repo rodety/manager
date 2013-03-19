@@ -16,7 +16,7 @@
 class ConexionBD: public QObject
 {
 public:
-    ConexionBD();
+    static ConexionBD* Instance();
     bool connect();
 
     void setDriver(QString val){db_driver = val;}
@@ -36,9 +36,12 @@ public:
     QString getPort( ){return db_port;}
 
     QSqlError & getConError(){return conErr;}
+protected:
+    ConexionBD();
 /*TO DO: Clase de configuracion para obtener estos datos de un archivo
 */
 private:
+    static ConexionBD* pInstance;
     QString db_host;    ///<Host servidor
     QString db_name;    ///<Nombre de la base de datos
     QString db_user;    ///<Usuario de la bd

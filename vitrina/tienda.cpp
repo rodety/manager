@@ -15,37 +15,6 @@ tienda::tienda(QString _idtienda, QString _idempresa, QString _alias, QString _d
     email = _email;
 }
 
-
-////////////////////////////    ta cagao
-
-
-/*bool tienda::validar(QString texto_a_validar, QString tipo_validacion)
-{
-    bool tmp=false;
-    string cadena=texto_a_validar.toStdString();
-    if(tipo_validacion=="numerico")
-    {
-        for (int i = 0; i <texto_a_validar.size() - 1; i++)
-        {
-              if ( (isdigit ((int)(cadena[i])) ) )
-              {
-                 tmp=true;
-              }
-              else
-              {
-                  tmp=false;
-              }
-        }
-        return tmp;
-    }
-    else
-    {
-        return false;
-    }
-
-}
-*/
-
 bool tienda::agregar()
 {
     QSqlQuery query;
@@ -99,6 +68,6 @@ bool tienda::eliminar()
 QSqlQueryModel* tienda::mostrar()
 {
     QSqlQueryModel* model=new QSqlQueryModel;
-    model->setQuery("select alias,direccion,telefono,permiso_municipal from tienda");
+    model->setQuery("select nombre,direccion,telefono,permisoMunicipal from Tienda");
     return model;
 }

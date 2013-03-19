@@ -1,14 +1,19 @@
 #include "configurador.h"
 #include <QMessageBox>
 #include<vector>
-
+#include "sesion.h"
+#include "ui_configuracion.h"
+#include <QString>
 using namespace std;
 configurador::configurador(QString archivoBD)
 {
-    conexiondb = new ConexionBD;
+    conexiondb =  ConexionBD::Instance();
     nombreArchivo =  archivoBD;
-    leerConfiguracion();
-    nameConfig = "config.ini";
+    if(!leerConfiguracion())
+    {
+        ui_configuracion * form = new ui_configuracion;
+        form->show();
+    }
 }
 configurador::~configurador()
 {
@@ -22,15 +27,7 @@ bool configurador::leerConfiguracion()
 
     if(!file.isOpen())
     {
-      file.open(QIODevice::WriteOnly|QIODevice::Text);
-      if(!file.isOpen())
-        qDebug()<<"Error archivo de configuración";
-      else
-      {
-          QTextStream out(&file);
-              out << "192.168.1.241#optical#root#jose-123#3306#";
-              return false;
-      }
+      return false;
     }
     QString str_db;
     QTextStream in(&file);
@@ -43,22 +40,25 @@ bool configurador::leerConfiguracion()
     conexiondb->setName(tokens[1]);
     conexiondb->setUser(tokens[2]);
     conexiondb->setPass(tokens[3]);
-    conexiondb->setPort(tokens[4]);
+    conexiondb->setPort(tokens[4]);  
+    Sesion * actual = Sesion::getSesion();
+    actual->setUbicacion(tokens[5].toInt(),tokens[6].toInt());
+
+    for (int i = 0; i < tokens.size(); ++i)
+    {
+        res[i] = tokens.at(i);
+    }
+
+    return true;
 }
 
 bool configurador::actualizarConfiguracion(QString a, QString b, QString c, QString d, QString e)
 {
-    QFile file(nameConfig);
-    file.open(QIODevice::ReadOnly|QIODevice::Text);
-
-    if(!file.isOpen())
-    {
-        qDebug()<<"Error de apertura de archivo de configuracion"<<endl;
-      return false;
-    }
-    QTextStream out(&file);
-    out <<a<<"#"<<b<<"#"<<c<<"#"<<d<<"#"<<e<<"#";
-    file.close();
+    conexiondb->setHost(a);
+    conexiondb->setName(b);
+    conexiondb->setUser(c);
+    conexiondb->setPass(d);
+    conexiondb->setPort(e);
 }
 
 bool configurador::conectar_db()
@@ -72,4 +72,21 @@ bool configurador::conectar_db()
         return false;
     }
 
+}
+
+void configurador::guardarConfiguracion(QString a, QString b, QString c, QString d, QString e, QString f, QString g)
+{
+    QString namefile = nombreArchivo;
+    QFile file(namefile);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QTextStream out(&file);
+    out <<a<<"#"<<b<<"#"<<c<<"#"<<d<<"#"<<e<<"#"<<f<<"#"<<g<<"#";
+    file.close();
+}
+
+std::map <int,QString> configurador::getConfig()
+{
+    return res;
 }

@@ -15,6 +15,8 @@ QTime Sesion::tiempoBloqueo = QTime();
 int Sesion::numMinIntentos = 0;
 int Sesion::numMaxIntentos = 0;
 int Sesion::tiempoEspera = 0;
+int Sesion::idEmpresa = 0;
+int Sesion::idTienda = 0;
 
 Sesion::Sesion(Usuario * usr)
 {
@@ -101,4 +103,18 @@ std::map<int,bool> Sesion::get_Permisos()
         res[q.value(1).toInt()] = (q.value(0).toBool());
     }
     return res;
+}
+
+QPair<int,int> Sesion::getUbicacion()
+{
+    QPair<int,int> a;
+    a.first = idEmpresa;
+    a.second = idTienda;
+
+}
+
+void Sesion::setUbicacion(int a, int b)
+{
+    idEmpresa = a;
+    idTienda = b;
 }
