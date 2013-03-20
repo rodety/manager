@@ -29,6 +29,8 @@ private slots:
     void on_btn_saveConfiguration_clicked();
     void on_comboBox_tienda_currentTextChanged(const QString &arg1);
 
+    void on_comboBox_tienda_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::ui_configuracion *ui;
     void saveConfiguration();

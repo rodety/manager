@@ -13,8 +13,14 @@ ui_configuracion::ui_configuracion(QWidget *parent) :
     config = new configurador("config.ini");
     if(config->leerConfiguracion())
     {
-        loadConfiguration();
         res = config->getConfig();
+        loadConfiguration();
+
+    }
+    else
+    {
+        qDebug()<<"No logro abrir el fichero"<<endl;
+
     }
 }
 
@@ -122,19 +128,26 @@ void ui_configuracion::on_btn_saveConfiguration_clicked()
     QString igv = ui->lineEdit_IGV->text();
     QString serie = ui->lineEdit_boleta->text();
     QSqlQuery query;
-    query.prepare("INSERT INTO Configuracion (Tienda_idTienda,igv,serieBoleta) VALUES (?,?,?)");
-    qDebug()<<currentIdTienda<<igv<<serie<<endl;
+    query.prepare("SELECT idConfiguracion FROM Configuracion WHERE Tienda_idTienda = ?");
     query.bindValue(0,currentIdTienda);
-    query.bindValue(1,igv);
-    query.bindValue(2,serie);
-    if(!query.exec())
+    query.exec();
+    qDebug()<<currentIdTienda<<igv<<serie<<endl;
+    if(query.next())
     {
-        query.prepare("UPDATE Configuracion SET (igv,serieBoleta) VALUES (?,?) WHERE (Tienda_idTienda = ?)");
+        QString id = query.value(0).toString();
+        query.prepare("UPDATE Configuracion SET igv = ?,serieBoleta = ? WHERE (idConfiguracion = ?)");
         query.bindValue(0,igv);
         query.bindValue(1,serie);
-        query.bindValue(2,currentIdTienda);
-        query.exec();
+        query.bindValue(2,id);
     }
+    else
+    {        
+        query.prepare("INSERT INTO Configuracion (Tienda_idTienda,igv,serieBoleta) VALUES (?,?,?)");
+        query.bindValue(0,currentIdTienda);
+        query.bindValue(1,igv);
+        query.bindValue(2,serie);
+    }
+    query.exec();
 
     QString ip = ui->lineEdit_ipdatabase->text();
     QString db = ui->lineEdit_nameDatabase->text();
@@ -158,4 +171,16 @@ void ui_configuracion::loadConfiguration()
 void ui_configuracion::on_comboBox_tienda_currentTextChanged(const QString &arg1)
 {
     set_currentIdTienda(Tiendas[arg1]);
+}
+
+void ui_configuracion::on_comboBox_tienda_currentIndexChanged(const QString &arg1)
+{
+    set_currentIdTienda(Tiendas[arg1]);
+    QSqlQuery query;
+    query.prepare("SELECT igv,serieBoleta FROM Configuracion WHERE (Tienda_idTienda = ?)");
+    query.bindValue(0,currentIdTienda);
+    query.exec();
+    query.next();
+    ui->lineEdit_IGV->setText(query.value(0).toString());
+    ui->lineEdit_boleta->setText(query.value(1).toString());
 }
