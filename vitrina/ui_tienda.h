@@ -15,8 +15,12 @@
 #include <ctype.h>
 #include <QMessageBox>
 #include "ui_almacen.h"
+#include <vitrina/ui_agregar_empresa.h>
+#include <vitrina/ui_tienda_agregar.h>
 
+class ui_tienda_agregar;
 
+class ui_agregar_empresa;
 using namespace std;
 
 enum lbls {Empresa,Tienda,Vitrina};
@@ -43,13 +47,14 @@ private:
     int row_traspaso;
     bool caso;
     bool caso_traspaso;
+    ui_agregar_empresa* add_empresa;
 
     lbls actual;     // puntero para los botones agregar,editar....
-
     map<QString,QString> Empresas;
     map<QString,QString> Tiendas;
     map<QString,QString> Vitrinas;
     map<QString,QString> Posiciones;
+    ui_tienda_agregar* tienda_agregar;
 
 public:
 
@@ -87,8 +92,7 @@ public:
 
     void enableButtonAceptar();
 
-    void actualizar_combo_empresa();
-    void actualizar_combo_tienda(QString);
+
     void actualizar_combo_vitrina(QString);
     void actualizar_combo_niveles(QString);
 
@@ -145,6 +149,10 @@ private slots:
     void on_comboBox_empresa_activated(const QString &arg1);
 
     void on_comboBox_tienda_activated(const QString &arg1);
+
+public slots:
+    void actualizar_combo_empresa();
+    void actualizar_combo_tienda(QString idEmpresa);
 
 private:
     Ui::ui_tienda *ui;

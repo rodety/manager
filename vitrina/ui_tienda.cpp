@@ -21,7 +21,7 @@ ui_tienda::ui_tienda(QWidget *parent) :
     caso=false;
     habilitar_botones();
     actual=Empresa;
-    ui->pushButton_aceptar_traspaso->hide();
+    ui->pushButton_aceptar_traspaso->hide();    
 }
 
 ui_tienda::~ui_tienda()
@@ -48,13 +48,13 @@ void ui_tienda::actualizar_combo_empresa()
     }
 }
 
-void ui_tienda::actualizar_combo_tienda(QString tienda)
+void ui_tienda::actualizar_combo_tienda(QString empresa)
 {
     ui->comboBox_tienda->clear();
 
     QSqlQuery query;
     query.prepare("SELECT idTienda,nombre FROM Tienda WHERE Empresa_idEmpresa=?");
-    query.bindValue(0,tienda);
+    query.bindValue(0,empresa);
     query.exec();
 
     int c = 0;
@@ -288,11 +288,13 @@ void ui_tienda::agregarTienda(bool b)
     }
     else
     {
-        ui_tienda_agregar* tienda_agregar=new ui_tienda_agregar;
+
+        tienda_agregar = new ui_tienda_agregar;
+        connect(tienda_agregar,SIGNAL(actualizarParent(QString)),this,SLOT(actualizar_combo_tienda(QString)));
         tienda_agregar->set_idEmpresa(get_idEmpresa());
-        tienda_agregar->set_ui_tienda_actual(this);
+        tienda_agregar->set_idTienda(idTienda);
         tienda_agregar->set_caso(b);
-        tienda_agregar->setWindowTitle("Tienda");
+        tienda_agregar->setWindowTitle("Agregar Tienda");
         tienda_agregar->show();
     }
 }
@@ -406,12 +408,9 @@ void ui_tienda::deshabilitarVitrina()
 
 void ui_tienda::agregarEmpresa(bool b)
 {
-
-
-    ui_agregar_empresa* add_empresa = new ui_agregar_empresa;
-    add_empresa->show();
-
-    add_empresa->set_ui_empresa_parent(this);
+    add_empresa = new ui_agregar_empresa;
+    connect(add_empresa,SIGNAL(actualizarParent()),this,SLOT(actualizar_combo_empresa()));
+    add_empresa->show();    
     add_empresa->set_behavior(b);
 
     if (!b)

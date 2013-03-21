@@ -3,6 +3,10 @@
 #include "configurador.h"
 #include <QWidget>
 #include <map>
+#include <vitrina/ui_agregar_empresa.h>
+#include <vitrina/ui_tienda_agregar.h>
+
+class ui_agregar_empresa;
 using namespace std;
 namespace Ui {
 class ui_configuracion;
@@ -16,12 +20,14 @@ public:
     explicit ui_configuracion(QWidget *parent = 0);
     ~ui_configuracion();
 public:
-    void update_comboBox_Empresa();
-    void update_comboBox_Tienda(QString idEmpresa);
+
     QString get_currentIdEmpresa();
     QString get_currentIdTienda();
     void set_currentIdEmpresa(QString);
-    void set_currentIdTienda(QString);
+    void set_currentIdTienda(QString);    
+public slots:
+    void update_comboBox_Empresa();
+    void update_comboBox_Tienda(QString idEmpresa);
 
 private slots:
     void on_btn_testConexion_clicked();
@@ -48,6 +54,8 @@ private slots:
 
     void on_btnAgregar_empresa_clicked();
 
+    void on_btnAgregar_Tienda_clicked();
+
 private:
     Ui::ui_configuracion *ui;
     void saveConfiguration();
@@ -59,6 +67,8 @@ private:
     configurador* config;
     std::map<int,QString> res;
     void controlbotones(bool a);
+    ui_agregar_empresa* add_empresa;
+    ui_tienda_agregar* tienda_agregar;
 
 };
 

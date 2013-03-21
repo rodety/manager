@@ -242,23 +242,11 @@ void ui_configuracion::on_comboBox_estadoProductos_currentIndexChanged(const QSt
 
 void ui_configuracion::on_btnAgregar_empresa_clicked()
 {
-    /*ui_agregar_empresa* add_empresa = new ui_agregar_empresa;
-    add_empresa->show();
-
-    add_empresa->set_ui_empresa_parent(this);
+    add_empresa = new ui_agregar_empresa;
+    connect(add_empresa,SIGNAL(actualizarParent()),this,SLOT(update_comboBox_Empresa()));
     add_empresa->set_behavior(1);
-
-    if (!b)
-    {
-        add_empresa->setWindowTitle("Editar Empresa");
-        add_empresa->set_idEmpresa(get_idEmpresa());
-        add_empresa->update_form();
-
-    }
-    else
-        add_empresa->setWindowTitle("Agregar Empresa");
-    add_empresa->show();*/
-    //slot
+    add_empresa->setWindowTitle("Agregar Empresa");
+    add_empresa->show();
 
 }
 
@@ -272,4 +260,33 @@ void ui_configuracion::controlbotones(bool a)
     ui->btnAgregar_Tienda->setEnabled(a);
     ui->btn_backup->setEnabled(a);
     ui->btn_script->setEnabled(a);
+}
+
+void ui_configuracion::on_btnAgregar_Tienda_clicked()
+{
+
+
+    if(currentIdEmpresa.compare("")==0)
+    {
+        QMessageBox *msgBox =new QMessageBox;
+        msgBox->setIcon(QMessageBox::Information);
+        msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
+        msgBox->setWindowTitle("Información");
+        msgBox->setStandardButtons(QMessageBox::Ok);
+        msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
+        msgBox->setText("Debe seleccionarse una Empresa válida!");
+        msgBox->exec();
+    }
+    else
+    {
+
+        tienda_agregar = new ui_tienda_agregar;
+        connect(tienda_agregar,SIGNAL(actualizarParent(QString)),this,SLOT(update_comboBox_Tienda(QString)));
+        tienda_agregar->set_idEmpresa(currentIdEmpresa);
+        tienda_agregar->set_idTienda(currentIdTienda);
+        tienda_agregar->set_caso(1);
+        tienda_agregar->setWindowTitle("Agregar Tienda");
+        tienda_agregar->show();
+    }
+
 }

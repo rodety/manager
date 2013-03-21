@@ -35,10 +35,14 @@ class vitrina:public ObjetoPersistente
         void setHabilitado(int tmp)    { habilitado=tmp;}
 
 //        static QSqlQueryModel* mostrar();
-        bool agregar();
-        bool actualizar();
+        bool agregar();        
         bool eliminar();
+        bool actualizar();
+
 //        bool buscar();   //parece que no se usa
+
+
+
 };
 
 

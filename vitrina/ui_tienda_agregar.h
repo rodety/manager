@@ -14,23 +14,25 @@ class ui_tienda_agregar : public QDialog
 private:
     bool caso;
     QString idEmpresa;
-    ui_tienda * ui_tienda_actual;
+    QString idTienda;
 
 public:
     bool get_caso(){return caso;}
-    QString get_idEmpresa(){return idEmpresa;}
-    ui_tienda* get_ui_tienda_actual(){return ui_tienda_actual;}
-
+    QString get_idEmpresa(){return idEmpresa;}   
     void set_caso(bool tmp){caso=tmp;}
-    void set_idEmpresa(QString tmp){idEmpresa=tmp;}
-    void set_ui_tienda_actual(ui_tienda* tmp){ui_tienda_actual=tmp;}
+    void set_idEmpresa(QString tmp){idEmpresa=tmp;}    
     void actualizar();
     bool validar_tienda();
+    void set_idTienda(QString temp){ idTienda = temp;}
+    QString get_idTienda(){return idTienda;}
+
 
 public:
     explicit ui_tienda_agregar(QWidget *parent = 0);
     ~ui_tienda_agregar();
-    
+public slots:
+signals:
+    void actualizarParent(QString idEmpresa);
 private slots:
     void on_pushButton_Aceptar_clicked();
 
@@ -38,6 +40,8 @@ private slots:
 
 private:
     Ui::ui_tienda_agregar *ui;
+
+
 };
 
 #endif // UI_TIENDA_AGREGAR_H

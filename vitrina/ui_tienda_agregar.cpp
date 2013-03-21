@@ -22,7 +22,7 @@ void ui_tienda_agregar::actualizar()
 
     QSqlQuery query;
     query.prepare("SELECT nombre,direccion,telefono,permisoMunicipal,email FROM Tienda WHERE idTienda=?");
-    query.bindValue(0,ui_tienda_actual->get_idTienda());
+    query.bindValue(0,idTienda);
     query.exec();
     query.next();
 
@@ -139,13 +139,14 @@ void ui_tienda_agregar::on_pushButton_Aceptar_clicked()
         }
     else//actualizar tienda
         {
-            QString idTienda=ui_tienda_actual->get_idTienda();
+
             nueva_tienda=new tienda(idTienda,idEmpresa,nombre,direccion,telefono,permiso,email);
             nueva_tienda->actualizar();
             msgBox->setText("Datos actualizados correctamente.");
         }
         close();
-        ui_tienda_actual->actualizar_combo_tienda(idEmpresa);
+        emit actualizarParent(idEmpresa);
+
         msgBox->exec();
     }
 

@@ -22,15 +22,6 @@ QString ui_agregar_empresa::get_idEmpresa()
     return idEmpresa;
 }
 
-void ui_agregar_empresa::set_ui_empresa_parent(ui_tienda* p)
-{
-    this->ui_empresa_parent = p;
-}
-ui_tienda* ui_agregar_empresa::get_ui_empresa_parent()
-{
-    return ui_empresa_parent;
-}
-
 int ui_agregar_empresa::get_behavior()
 {
     return behavior;
@@ -89,16 +80,16 @@ void ui_agregar_empresa::on_pushButton_accept_clicked()
     switch(behavior)
     {
         case 0:
-            empresa_data  = new empresa(ui_empresa_parent->get_idEmpresa(),raz_social,ruc,direccion,telefono,representante,email,web);
+            empresa_data  = new empresa(idEmpresa,raz_social,ruc,direccion,telefono,representante,email,web);
             empresa_data->actualizar();
             break;
         case 1:
-            empresa_data  = new empresa(get_idEmpresa(),raz_social,ruc,direccion,telefono,representante,email,web);
+            empresa_data  = new empresa(idEmpresa,raz_social,ruc,direccion,telefono,representante,email,web);
             empresa_data->agregar();
             break;
     }
     close();
-    ui_empresa_parent->actualizar_combo_empresa();
+    emit actualizarParent();
 }
 
 void ui_agregar_empresa::on_pushButton_cancel_clicked()
