@@ -161,6 +161,20 @@ void MyComboBox::agregar()
         pTalla.agregar();
         ActualizarItems(talla::mostrar());
     }
+    if(tipo=="tusuario")
+    {
+        tusuario pTusuario;
+        pTusuario.setNombre(this->itemText(this->count()-1));
+        pTusuario.agregar();
+        ActualizarItems(tusuario::mostrar());
+    }
+    if(tipo=="documento")
+    {
+        tipodoc_ident pDocumento;
+        pDocumento.setNombre(this->itemText(this->count()-1));
+        pDocumento.agregar();
+        ActualizarItems(tipodoc_ident::mostrar());
+    }
     this->setCurrentIndex(this->count()-2);
 }
 
@@ -325,6 +339,26 @@ void MyComboBox::eliminar()
         pTalla.completar();
         if(pTalla.eliminar())
             ActualizarItems(talla::mostrar());
+        else
+            error=true;
+    }
+    if(tipo=="tusuario")
+    {
+        tusuario ptuauario;
+        ptuauario.setNombre(this->currentText());
+        ptuauario.completar();
+        if(ptuauario.eliminar())
+            ActualizarItems(tusuario::mostrar());
+        else
+            error=true;
+    }
+    if(tipo=="documento")
+    {
+        tipodoc_ident pdocumento;
+        pdocumento.setNombre(this->currentText());
+        pdocumento.completar();
+        if(pdocumento.eliminar())
+            ActualizarItems(tipodoc_ident::mostrar());
         else
             error=true;
     }

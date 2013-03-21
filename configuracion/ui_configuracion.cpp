@@ -4,12 +4,15 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include "configurador.h"
+#include <configuracion/tusuario.h>
+#include <producto/estado.h>
+#include <vitrina/ui_agregar_empresa.h>
 ui_configuracion::ui_configuracion(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ui_configuracion)
 {
     ui->setupUi(this);
-    ui->btn_saveConfiguration->setEnabled(false);
+    controlbotones(false);
     config = new configurador("config.ini");
     if(config->leerConfiguracion())
     {
@@ -22,6 +25,10 @@ ui_configuracion::ui_configuracion(QWidget *parent) :
         qDebug()<<"No logro abrir el fichero"<<endl;
 
     }
+
+    ui->comboBox_tipoUsuario->setTipo("tusuario");
+    ui->comboBox_Documento->setTipo("documento");
+    ui->comboBox_estadoProductos->setTipo("estado");
 }
 
 ui_configuracion::~ui_configuracion()
@@ -43,7 +50,7 @@ void ui_configuracion::on_btn_testConexion_clicked()
     {
         ui->label_result->setText("Conexion exitosa");
         update_comboBox_Empresa();
-        ui->btn_saveConfiguration->setEnabled(true);
+        controlbotones(true);
 
         currentIdEmpresa = res[5];
         currentIdTienda = res[6];
@@ -51,6 +58,9 @@ void ui_configuracion::on_btn_testConexion_clicked()
         QString id_Tienda =  (res[6]);
         ui->comboBox_empresa->setCurrentIndex(id_Empresa.toInt(0));
         ui->comboBox_tienda->setCurrentIndex(id_Tienda.toInt(0));
+        ui->comboBox_tipoUsuario->ActualizarItems(tusuario::mostrar());
+        ui->comboBox_Documento->ActualizarItems(tipodoc_ident::mostrar());
+        ui->comboBox_estadoProductos->ActualizarItems(estado::mostrar());
 
     }
     else
@@ -183,4 +193,83 @@ void ui_configuracion::on_comboBox_tienda_currentIndexChanged(const QString &arg
     query.next();
     ui->lineEdit_IGV->setText(query.value(0).toString());
     ui->lineEdit_boleta->setText(query.value(1).toString());
+}
+
+void ui_configuracion::on_btn_eliminar_ducumento_clicked()
+{
+    ui->comboBox_Documento->eliminar();
+}
+
+void ui_configuracion::on_btn_eliminar_tusuario_clicked()
+{
+    ui->comboBox_tipoUsuario->eliminar();
+}
+
+void ui_configuracion::on_btn_eliminar_estado_clicked()
+{
+    ui->comboBox_estadoProductos->eliminar();
+}
+
+void ui_configuracion::on_btn_script_clicked()
+{
+
+    //Inicializando Base de datos con tablas necesarias
+    QSqlQuery query;
+    query.exec("INSERT INTO `Modulo` VALUES (1,'Modulo General','Para Pruebas')");
+    query.exec("INSERT INTO `Colaborador` VALUES ('-','-','-',1,'admin',1,1,'123456778','',1,'1993-05-15','34235463','','354354','354354',0,'','63a9f0ea7bb98050796b649e85481845',1)");
+    query.exec("INSERT INTO `Permiso` VALUES (1,1,1,1,'2013-03-02'),(2,1,2,1,'2013-03-02'),(3,1,3,1,'2013-03-02'),(4,1,4,1,'2013-03-02'),(5,1,5,1,'2013-03-02'),(6,1,6,1,'2013-03-02'),(7,1,7,1,'2013-03-02'),(8,1,8,1,'2013-03-02'),(9,1,9,1,'2013-03-02')");
+    query.exec("INSERT INTO `FuncionModulo` VALUES (1,1,'Producto','pro'),(2,1,'Usuario','usu'),(3,1,'Cliente','cli'),(4,1,'Vitrina','vit'),(5,1,'Almacen','alm'),(6,1,'Compras','comp'),(7,1,'Reportes','rep'),(8,1,'Ventas','ven'),(9,1,'Configuracion','con')");
+    query.exec("INSERT INTO `Documento` VALUES (1,'documento nacional de identidad','DNI'),(2,'carnet de extrangeria','CE'),(3,'pasaporte','PP')");
+    query.exec("INSERT INTO `SiNo` VALUES (0,'No','F'),(1,'Si','M')");
+    query.exec("INSERT INTO `TipoColaborador` VALUES (1,'Administrador'),(2,'Ventas')");
+    query.exec("INSERT INTO `Estado` (nombre) VALUES ('Activo'),('Inactivo')");
+}
+
+void ui_configuracion::on_comboBox_Documento_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void ui_configuracion::on_comboBox_tipoUsuario_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void ui_configuracion::on_comboBox_estadoProductos_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void ui_configuracion::on_btnAgregar_empresa_clicked()
+{
+    /*ui_agregar_empresa* add_empresa = new ui_agregar_empresa;
+    add_empresa->show();
+
+    add_empresa->set_ui_empresa_parent(this);
+    add_empresa->set_behavior(1);
+
+    if (!b)
+    {
+        add_empresa->setWindowTitle("Editar Empresa");
+        add_empresa->set_idEmpresa(get_idEmpresa());
+        add_empresa->update_form();
+
+    }
+    else
+        add_empresa->setWindowTitle("Agregar Empresa");
+    add_empresa->show();*/
+    //slot
+
+}
+
+void ui_configuracion::controlbotones(bool a)
+{
+    ui->btn_saveConfiguration->setEnabled(a);
+    ui->btn_eliminar_ducumento->setEnabled(a);
+    ui->btn_eliminar_estado->setEnabled(a);
+    ui->btn_eliminar_tusuario->setEnabled(a);
+    ui->btnAgregar_empresa->setEnabled(a);
+    ui->btnAgregar_Tienda->setEnabled(a);
+    ui->btn_backup->setEnabled(a);
+    ui->btn_script->setEnabled(a);
 }

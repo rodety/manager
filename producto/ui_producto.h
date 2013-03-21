@@ -8,7 +8,7 @@
 #include <producto/ui_agregarotros.h>
 #include <extras/ui_trabajosextras.h>
 #include <vitrina/ui_tienda.h>
-
+#include <producto/estado.h>
 #include <extras/etiqueta.h>
 #include <QPrinter>
 #include <QPrintDialog>

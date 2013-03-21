@@ -31,6 +31,23 @@ private slots:
 
     void on_comboBox_tienda_currentIndexChanged(const QString &arg1);
 
+    void on_btn_eliminar_ducumento_clicked();
+
+    void on_btn_eliminar_tusuario_clicked();
+
+
+    void on_btn_eliminar_estado_clicked();
+
+    void on_btn_script_clicked();
+
+    void on_comboBox_Documento_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_tipoUsuario_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_estadoProductos_currentIndexChanged(const QString &arg1);
+
+    void on_btnAgregar_empresa_clicked();
+
 private:
     Ui::ui_configuracion *ui;
     void saveConfiguration();
@@ -41,6 +58,7 @@ private:
     void loadConfiguration();
     configurador* config;
     std::map<int,QString> res;
+    void controlbotones(bool a);
 
 };
 

@@ -26,17 +26,30 @@ void tipodoc_ident::setNombre(QString tmp)
 
 bool tipodoc_ident::agregar()
 {
-
+    QSqlQuery query;
+    query.prepare("INSERT INTO Documento(nombre) VALUES(?)");
+    query.bindValue(0,nombre);
+    if(query.exec())
+        return true;
+    else
+        return false;
 }
 
 bool tipodoc_ident::actualizar()
 {
+    return false;
 
 }
 
 bool tipodoc_ident::eliminar()
 {
-
+    QSqlQuery query;
+    query.prepare("DELETE FROM Documento WHERE idDocumento=?");
+    query.bindValue(0,idTipoDocIdent);
+    if(query.exec())
+        return true;
+    else
+        return false;
 }
 
 QSqlQueryModel* tipodoc_ident::mostrar()
@@ -64,4 +77,24 @@ bool tipodoc_ident::buscar()
     else
         return false;
     return true;
+}
+
+
+bool tipodoc_ident::completar()
+{
+    QSqlQuery query;
+    query.prepare("SELECT idDocumento FROM Documento WHERE nombre=?");
+    query.bindValue(0,nombre);
+    if(query.exec())
+    {
+        if(query.size()!=0)
+        {
+            query.first();
+            idTipoDocIdent=query.value(0).toString();
+            return true;
+        }
+        return false;
+    }
+    else
+        return false;
 }

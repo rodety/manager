@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>646</width>
-    <height>425</height>
+    <height>633</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,30 +19,31 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
+     <item row="8" column="2">
+      <widget class="QPushButton" name="btn_saveConfiguration">
+       <property name="text">
+        <string>Guardar Configuracion</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/notification_done.png</normaloff>:/Icons/notification_done.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Password</string>
        </property>
       </widget>
      </item>
-     <item row="10" column="3">
-      <spacer name="horizontalSpacer_8">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+     <item row="13" column="1">
+      <widget class="MyComboBox" name="comboBox_estadoProductos"/>
      </item>
-     <item row="12" column="1">
-      <widget class="QComboBox" name="comboBox_estadoProductos"/>
-     </item>
-     <item row="6" column="1">
+     <item row="5" column="1">
       <widget class="QComboBox" name="comboBox_tienda">
        <item>
         <property name="text">
@@ -51,20 +52,7 @@
        </item>
       </widget>
      </item>
-     <item row="5" column="3">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="13" column="0" colspan="4">
+     <item row="14" column="0" colspan="4">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <spacer name="horizontalSpacer_3">
@@ -108,14 +96,28 @@
        </item>
       </layout>
      </item>
-     <item row="11" column="0">
+     <item row="2" column="2">
+      <widget class="QPushButton" name="btn_testConexion">
+       <property name="text">
+        <string>Probar Conexion</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/1349716377_monotone_cog_settings_gear.png</normaloff>:/Icons/1349716377_monotone_cog_settings_gear.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
       <widget class="QLabel" name="label_13">
        <property name="text">
         <string>Tipos de Usuarios</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="0" column="1">
       <widget class="QLineEdit" name="lineEdit_ipdatabase"/>
      </item>
      <item row="10" column="0">
@@ -125,8 +127,11 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
+     <item row="4" column="1">
       <widget class="QComboBox" name="comboBox_empresa"/>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="lineEdit_userDatabase"/>
      </item>
      <item row="9" column="0" colspan="4">
       <widget class="QLabel" name="label_11">
@@ -135,88 +140,204 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="lblEmpresa">
        <property name="text">
         <string>Empresa: </string>
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
-      <widget class="QLineEdit" name="lineEdit_userDatabase"/>
-     </item>
      <item row="10" column="1">
-      <widget class="QComboBox" name="comboBox_Documento"/>
+      <widget class="MyComboBox" name="comboBox_Documento"/>
      </item>
-     <item row="4" column="0" colspan="4">
+     <item row="3" column="0" colspan="4">
       <widget class="QLabel" name="label_7">
        <property name="text">
         <string>Seleccione su ubicacion</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
+     <item row="6" column="1">
       <widget class="QLineEdit" name="lineEdit_IGV"/>
      </item>
-     <item row="12" column="0">
+     <item row="12" column="1">
+      <widget class="MyComboBox" name="comboBox_tipoUsuario"/>
+     </item>
+     <item row="13" column="0">
       <widget class="QLabel" name="label_14">
        <property name="text">
         <string>Estado de Productos</string>
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
-      <widget class="QComboBox" name="comboBox_tipoUsuario"/>
-     </item>
-     <item row="1" column="3">
+     <item row="0" column="3">
       <widget class="QLineEdit" name="lineEdit_portDatabase"/>
      </item>
-     <item row="1" column="2">
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_nameDatabase"/>
+     </item>
+     <item row="0" column="2">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Puerto de Servidor</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
+     <item row="6" column="0">
       <widget class="QLabel" name="label_8">
        <property name="text">
         <string>I.G.V.</string>
        </property>
       </widget>
      </item>
-     <item row="12" column="2" colspan="2">
-      <spacer name="horizontalSpacer_10">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_nameDatabase"/>
-     </item>
-     <item row="2" column="2">
+     <item row="1" column="2">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Usuario</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="2">
-      <widget class="QPushButton" name="btn_testConexion">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>Probar Conexion</string>
+        <string>Servidor de base de datos: </string>
        </property>
       </widget>
      </item>
-     <item row="11" column="2" colspan="2">
-      <spacer name="horizontalSpacer_9">
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_passwordUser">
+       <property name="readOnly">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="lblTienda">
+       <property name="text">
+        <string>Tienda: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_result">
+       <property name="font">
+        <font>
+         <family>Ubuntu</family>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Resultado.</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::RichText</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Nombre de la base de datos:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QPushButton" name="btnAgregar_empresa">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Añadir</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/1348112114_notification_add.png</normaloff>:/Icons/1348112114_notification_add.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Serie de boleta</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QPushButton" name="btnAgregar_Tienda">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Añadir</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/1348112114_notification_add.png</normaloff>:/Icons/1348112114_notification_add.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="lineEdit_boleta"/>
+     </item>
+     <item row="10" column="2">
+      <widget class="QPushButton" name="btn_eliminar_ducumento">
+       <property name="text">
+        <string>Eliminar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/notification_error.png</normaloff>:/Icons/notification_error.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="2">
+      <widget class="QPushButton" name="btn_eliminar_tusuario">
+       <property name="text">
+        <string>Eliminar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/notification_error.png</normaloff>:/Icons/notification_error.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="13" column="2">
+      <widget class="QPushButton" name="btn_eliminar_estado">
+       <property name="text">
+        <string>Eliminar</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/notification_error.png</normaloff>:/Icons/notification_error.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="3">
+      <spacer name="horizontalSpacer_4">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -228,110 +349,31 @@
        </property>
       </spacer>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Servidor de base de datos: </string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="2">
-      <widget class="QPushButton" name="btnAgregar_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Añadir</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../Icons/Icons.qrc">
-         <normaloff>:/Icons/1348112114_notification_add.png</normaloff>:/Icons/1348112114_notification_add.png</iconset>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_passwordUser">
-       <property name="readOnly">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="lblTienda">
-       <property name="text">
-        <string>Tienda: </string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="3">
-      <widget class="QLabel" name="label_result">
-       <property name="text">
-        <string>Resultado.</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Nombre de la base de datos:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="2">
-      <widget class="QPushButton" name="btnAgregar">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Añadir</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../Icons/Icons.qrc">
-         <normaloff>:/Icons/1348112114_notification_add.png</normaloff>:/Icons/1348112114_notification_add.png</iconset>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <spacer name="verticalSpacer_2">
+     <item row="4" column="3">
+      <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
-         <height>40</height>
+         <width>40</width>
+         <height>20</height>
         </size>
        </property>
       </spacer>
      </item>
-     <item row="6" column="2">
-      <widget class="QLabel" name="label_9">
-       <property name="text">
-        <string>Serie de boleta</string>
+     <item row="8" column="3">
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-      </widget>
-     </item>
-     <item row="6" column="3">
-      <widget class="QLineEdit" name="lineEdit_boleta"/>
-     </item>
-     <item row="7" column="2">
-      <widget class="QPushButton" name="btn_saveConfiguration">
-       <property name="text">
-        <string>Guardar Configuracion</string>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
        </property>
-      </widget>
+      </spacer>
      </item>
     </layout>
    </item>
@@ -350,6 +392,16 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyComboBox</class>
+   <extends>QComboBox</extends>
+   <header location="global">mycombobox.h</header>
+   <slots>
+    <slot>Eliminar_Item()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>lineEdit_ipdatabase</tabstop>
   <tabstop>lineEdit_portDatabase</tabstop>
@@ -358,13 +410,10 @@
   <tabstop>lineEdit_passwordUser</tabstop>
   <tabstop>btn_testConexion</tabstop>
   <tabstop>comboBox_empresa</tabstop>
-  <tabstop>btnAgregar</tabstop>
+  <tabstop>btnAgregar_empresa</tabstop>
   <tabstop>comboBox_tienda</tabstop>
-  <tabstop>lineEdit_boleta</tabstop>
   <tabstop>lineEdit_IGV</tabstop>
-  <tabstop>btn_saveConfiguration</tabstop>
   <tabstop>comboBox_Documento</tabstop>
-  <tabstop>btnAgregar_2</tabstop>
   <tabstop>comboBox_tipoUsuario</tabstop>
   <tabstop>comboBox_estadoProductos</tabstop>
   <tabstop>btn_script</tabstop>

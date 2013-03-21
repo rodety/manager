@@ -24,6 +24,8 @@ public:
 
     static QSqlQueryModel* mostrar();
     bool buscar();
+    bool completar();
+
 };
 
 #endif // TIPODOC_IDENT_H

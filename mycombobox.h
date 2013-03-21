@@ -8,7 +8,8 @@
 #include <QSqlRecord>
 #include <QMessageBox>
 #include <producto/producto.h>
-
+#include <configuracion/tusuario.h>
+#include <persona/documento.h>
 class MyComboBox:public QComboBox
 {
     Q_OBJECT

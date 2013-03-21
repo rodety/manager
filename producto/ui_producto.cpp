@@ -3,7 +3,6 @@
 #include <QPrinter>
 #include <QPainter>
 #include <QPixmap>
-
 ui_producto::ui_producto(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ui_producto)
