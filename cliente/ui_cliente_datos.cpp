@@ -6,10 +6,11 @@ ui_cliente_datos::ui_cliente_datos(QWidget *parent) :
     ui(new Ui::ui_cliente_datos)
 {
     ui->setupUi(this);
-    ui->comboBox_tipoDoc->setModel(tipodoc_ident::mostrar());
-    ui->lineEdit_nombres->setFocus();
+    ui->comboBox_tipoDoc->setTipo("documento");
+    ui->comboBox_tipoDoc->ActualizarItems(documento::mostrar());
     QDate hoy=QDate::currentDate();
     ui->dateEdit->setMaximumDate(hoy);
+    ui->gridFrame->hide();
 }
 
 ui_cliente_datos::~ui_cliente_datos()
@@ -17,23 +18,30 @@ ui_cliente_datos::~ui_cliente_datos()
     delete ui;
 }
 
-void ui_cliente_datos::setCliente(persona * p)
+void ui_cliente_datos::setCliente(cliente *c)
 {
-    cliente_act=*p;
-    ui->lineEdit_nombres->setText(p->getNombres());
-    ui->lineEdit_primerApellido->setText(p->getPrimerApellido());
-    ui->lineEdit_segundoApellido->setText(p->getSegundoApellido());
-    ui->comboBox_tipoDoc->setCurrentIndex(p->getIdTipoDocIdent().toInt()-1);///////
-    ui->lineEdit_nroDoc->setText(p->getNroDoc());
-    ui->lineEdit_correo->setText(p->getCorreo());
-    QDate fecha=QDate::fromString(p->getFechaNacimiento(),"yyyy-MM-dd");
+    cliente_act=*c;
+    ui->lineEdit_nombres->setText(cliente_act.getNombres());
+    ui->lineEdit_primerApellido->setText(cliente_act.getPrimerApellido());
+    ui->lineEdit_segundoApellido->setText(cliente_act.getSegundoApellido());
+    ui->comboBox_tipoDoc->buscarValor(cliente_act.getDocumento().getNombre());
+    ui->lineEdit_nroDoc->setText(cliente_act.getNumeroDocumento());
+    ui->lineEdit_correo->setText(cliente_act.getEmail());
+    QDate fecha=QDate::fromString(cliente_act.getFechaNacimiento(),"yyyy-MM-dd");
     ui->dateEdit->setDate(fecha);
-    ui->comboBox_sexo->setCurrentIndex(p->getSexo().toInt());
-    ui->lineEdit_direccion->setText(p->getDireccion());
-    ui->lineEdit_nacionalidad->setText(p->getNacionalidad());
-    ui->lineEdit_telefono->setText(p->getTelefono());
-    ui->lineEdit_telefono2->setText(p->getTelefono2());
-    ui->celular->setText(p->getCelular());
+    ui->comboBox_sexo->setCurrentIndex(cliente_act.getSexo().toInt());
+    ui->lineEdit_direccion->setText(cliente_act.getDireccion());
+    ui->lineEdit_nacionalidad->setText(cliente_act.getNacionalidad());
+    ui->lineEdit_telefono->setText(cliente_act.getTelefono());
+    ui->lineEdit_telefono2->setText(cliente_act.getTelefono2());
+    ui->celular->setText(cliente_act.getMovil());
+    if(cliente_act.getRuc()!="0")
+    {
+        ui->gridFrame->show();
+        ui->lineEdit_ruc->setText(cliente_act.getRuc());
+        ui->lineEdit_razonSocial->setText(cliente_act.getRazonSocial());
+        ui->lineEdit_direccionEmpresa->setText(cliente_act.getDireccion2());
+    }
 }
 
 bool ui_cliente_datos::verificaRestriccionesCliente()
@@ -142,25 +150,37 @@ bool ui_cliente_datos::verificaRestriccionesCliente()
         ui->celular->setFocus();
         return false;
     }
+    if(ui->lineEdit_ruc->text().contains(noNumeros))
+    {
+        box.setText("El RUC no puede contener letras");
+        box.exec();
+        ui->celular->setFocus();
+        return false;
+    }
+    if(!ui->comboBox_tipoDoc->selecciono())
+    {
+        box.setText("Seleccione algun tipo de documento");
+        box.exec();
+        ui->comboBox_tipoDoc->setFocus();
+        return false;
+    }
     return true;
 }
 
 void ui_cliente_datos::on_pushButton_Aceptar_clicked()
 {
-    cliente nuevo_cliente;
-    tipodoc_ident documento;
-    documento.setNombre(ui->comboBox_tipoDoc->currentText());
-    documento.buscar();
-
     if(!verificaRestriccionesCliente())
         return;
+    documento pDocumento;
+    pDocumento.setNombre(ui->comboBox_tipoDoc->currentText());
+    pDocumento.completar();
 
     cliente_act.setNombres(ui->lineEdit_nombres->text());
     cliente_act.setPrimerApellido(ui->lineEdit_primerApellido->text());
     cliente_act.setSegundoApellido(ui->lineEdit_segundoApellido->text());
-    cliente_act.setNroDoc(ui->lineEdit_nroDoc->text());
+    cliente_act.setNumeroDocumento(ui->lineEdit_nroDoc->text());
     cliente_act.setDireccion(ui->lineEdit_direccion->text());
-    cliente_act.setCorreo(ui->lineEdit_correo->text());
+    cliente_act.setEmail(ui->lineEdit_correo->text());
     QString sx;sx=sx.setNum(ui->comboBox_sexo->currentIndex());
     cliente_act.setSexo(sx);
     QString year;year=year.setNum(ui->dateEdit->date().year());
@@ -171,29 +191,60 @@ void ui_cliente_datos::on_pushButton_Aceptar_clicked()
     cliente_act.setTelefono(ui->lineEdit_telefono->text());
     cliente_act.setTelefono2(ui->lineEdit_telefono2->text());
     cliente_act.setNacionalidad(ui->lineEdit_nacionalidad->text());
-    cliente_act.setCelular(ui->celular->text());
-    cliente_act.setIdTipoDocIdent(documento.getIdTipoDocIdent());
+    cliente_act.setMovil(ui->celular->text());
+    cliente_act.setDocumento(pDocumento);
+    cliente_act.setRuc(ui->lineEdit_ruc->text());
+    cliente_act.setRazonSocial(ui->lineEdit_razonSocial->text());
+    cliente_act.setDireccion2(ui->lineEdit_direccionEmpresa->text());
 
     if(strcmp(this->windowTitle().toStdString().c_str(),"Nuevo Cliente")==0)
         if(cliente_act.agregar())
         {
-            cliente_act.buscar();
-            nuevo_cliente.setIdCliente(cliente_act.getIdPersona());
-            if(nuevo_cliente.agregar())
-            {
-                this->close();
-                guarde();
-            }
+            emit guarde();
+            this->close();
+        }
+        else
+        {
+            QMessageBox box;
+            box.setIcon(QMessageBox::Critical);
+            box.setWindowTitle("Error");
+            box.setText("El Cliente no se pudo agregar!");
+            box.setStandardButtons(QMessageBox::Ok);
+            box.setDefaultButton(QMessageBox::Ok);
+            box.exec();
         }
     if(strcmp(this->windowTitle().toStdString().c_str(),"Editar Cliente")==0)
         if(cliente_act.actualizar())
         {
+            emit guarde();
             this->close();
-            guarde();
+        }
+        else
+        {
+            QMessageBox box;
+            box.setIcon(QMessageBox::Critical);
+            box.setWindowTitle("Error");
+            box.setText("El Cliente no se pudo actualizar!");
+            box.setStandardButtons(QMessageBox::Ok);
+            box.setDefaultButton(QMessageBox::Ok);
+            box.exec();
         }
 }
 
 void ui_cliente_datos::on_pushButton_Cancelar_clicked()
 {
     this->close();
+}
+
+void ui_cliente_datos::on_pushButton_clicked()
+{
+    if(ui->gridFrame->isHidden())
+        ui->gridFrame->show();
+    else
+        ui->gridFrame->hide();
+}
+
+void ui_cliente_datos::on_pushButton_xDocumento_clicked()
+{
+
 }

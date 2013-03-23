@@ -2,9 +2,7 @@
 #define UI_CLIENTE_DATOS_H
 
 #include <QWidget>
-#include <persona/persona.h>
 #include <cliente/cliente.h>
-#include <persona/documento.h>
 #include <QMessageBox>
 
 namespace Ui {
@@ -18,8 +16,8 @@ class ui_cliente_datos : public QWidget
 public:
     explicit ui_cliente_datos(QWidget *parent = 0);
     ~ui_cliente_datos();
-    
-    void setCliente(persona*);
+
+    void setCliente(cliente*);
 signals:
     void guarde();
 private slots:
@@ -28,10 +26,14 @@ private slots:
     void on_pushButton_Aceptar_clicked();
     void on_pushButton_Cancelar_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_xDocumento_clicked();
+
 private:
     Ui::ui_cliente_datos *ui;
 
-    persona cliente_act;
+    cliente cliente_act;
 };
 
 #endif // UI_CLIENTE_DATOS_H

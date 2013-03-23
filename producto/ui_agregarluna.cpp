@@ -22,6 +22,8 @@ ui_agregarLuna::ui_agregarLuna(QWidget *parent) :
     ui->label_estado->hide();
     ui->comboBox_estado->hide();
     ui->pushButton_xEstado->hide();
+    ui->label_precio->hide();
+    ui->checkBox_precio->hide();
 }
 
 ui_agregarLuna::~ui_agregarLuna()
@@ -44,13 +46,34 @@ void ui_agregarLuna::setLuna(luna *l)
     ui->spinBox_stock->setValue(pLuna.getStock().toInt());
     ui->lineEdit_observaciones->setText(pLuna.getObservaciones());
     ui->comboBox_estado->buscarValor(pLuna.getEstado().getNombre());
+    ui->checkBox_precio->setChecked(pLuna.getPrecio().toInt());
     ui->comboBox_diametro->buscarValor(pLuna.getDiametro().getValor());
     ui->comboBox_calidad->buscarValor(pLuna.getCalidad().getNombre());
     ui->comboBox_tipoLuna->buscarValor(pLuna.getTipoLuna().getNombre());
     ui->comboBox_tratamiento->buscarValor(pLuna.getTratamiento().getNombre());
     ui->lineEdit_vInicial->setText(pLuna.getValorInicial());
     ui->lineEdit_vFinal->setText(pLuna.getValorFinal());
-    ui->checkBox_precio->setChecked(pLuna.getPrecio().toInt());
+    if(pLuna.getPrecio().toInt()==1)
+    {
+        ui->label_precio->show();
+        ui->checkBox_precio->show();
+    }
+    else
+    {
+        if(verificarSelecciones())
+        {
+            if(pLuna.verificarPrecio())
+            {
+                ui->label_precio->hide();
+                ui->checkBox_precio->hide();
+            }
+            else
+            {
+                ui->label_precio->show();
+                ui->checkBox_precio->show();
+            }
+        }
+    }
     ui->label_estado->show();
     ui->comboBox_estado->show();
     ui->pushButton_xEstado->show();
@@ -266,4 +289,191 @@ void ui_agregarLuna::on_pushButton_xTratamiento_clicked()
 void ui_agregarLuna::on_pushButton_xEstado_clicked()
 {
     ui->comboBox_estado->eliminar();
+}
+
+bool ui_agregarLuna::verificarSelecciones()
+{
+    if(ui->comboBox_diametro->selecciono())
+        if(ui->comboBox_calidad->selecciono())
+            if(ui->comboBox_tipoLuna->selecciono())
+                if(ui->comboBox_tratamiento->selecciono())
+                {
+                    diametro pDiametro;pDiametro.setValor(ui->comboBox_diametro->currentText());pDiametro.completar();
+                    calidad pCalidad;pCalidad.setNombre(ui->comboBox_calidad->currentText());pCalidad.completar();
+                    tipoLuna pTipoLuna;pTipoLuna.setNombre(ui->comboBox_tipoLuna->currentText());pTipoLuna.completar();
+                    tratamiento pTratamiento;pTratamiento.setNombre(ui->comboBox_tratamiento->currentText());pTratamiento.completar();
+                    pLuna.setDiametro(pDiametro);
+                    pLuna.setCalidad(pCalidad);
+                    pLuna.setTipoLuna(pTipoLuna);
+                    pLuna.setTratamiento(pTratamiento);
+                    pLuna.setValorInicial(ui->lineEdit_vInicial->text());
+                    pLuna.setValorFinal(ui->lineEdit_vFinal->text());
+                    ui->label_precio->show();
+                    ui->checkBox_precio->show();
+                    return true;
+                }
+                else
+                    return false;
+            else
+                return false;
+        else
+            return false;
+    else
+        return false;
+}
+
+void ui_agregarLuna::on_comboBox_diametro_currentIndexChanged(int index)
+{
+    if(modo==1 && pLuna.getPrecio().toInt()==1)
+        return;
+    else
+        if(ui->comboBox_diametro->selecciono())
+        {
+            if(verificarSelecciones())
+            {
+                if(pLuna.verificarPrecio())
+                {
+                    ui->checkBox_precio->setChecked(0);
+                    ui->lineEdit_precioCompra->setText(pLuna.getPrecioCompra());
+                    ui->lineEdit_precioVenta->setText(pLuna.getPrecioVenta());
+                    ui->lineEdit_precioDescuento->setText(pLuna.getPrecioDescuento());
+                    ui->label_precio->hide();
+                    ui->checkBox_precio->hide();
+                }
+            }
+        }
+}
+
+void ui_agregarLuna::on_comboBox_calidad_currentIndexChanged(int index)
+{
+    if(modo==1 && pLuna.getPrecio().toInt()==1)
+        return;
+    else
+        if(ui->comboBox_calidad->selecciono())
+        {
+            if(verificarSelecciones())
+            {
+                if(pLuna.verificarPrecio())
+                {
+                    ui->checkBox_precio->setChecked(0);
+                    ui->lineEdit_precioCompra->setText(pLuna.getPrecioCompra());
+                    ui->lineEdit_precioVenta->setText(pLuna.getPrecioVenta());
+                    ui->lineEdit_precioDescuento->setText(pLuna.getPrecioDescuento());
+                    ui->label_precio->hide();
+                    ui->checkBox_precio->hide();
+                }
+            }
+        }
+}
+
+void ui_agregarLuna::on_comboBox_tipoLuna_currentIndexChanged(int index)
+{
+    if(modo==1 && pLuna.getPrecio().toInt()==1)
+        return;
+    else
+        if(ui->comboBox_tipoLuna->selecciono())
+        {
+            if(verificarSelecciones())
+            {
+                if(pLuna.verificarPrecio())
+                {
+                    ui->checkBox_precio->setChecked(0);
+                    ui->lineEdit_precioCompra->setText(pLuna.getPrecioCompra());
+                    ui->lineEdit_precioVenta->setText(pLuna.getPrecioVenta());
+                    ui->lineEdit_precioDescuento->setText(pLuna.getPrecioDescuento());
+                    ui->label_precio->hide();
+                    ui->checkBox_precio->hide();
+                }
+            }
+        }
+}
+
+void ui_agregarLuna::on_comboBox_tratamiento_currentIndexChanged(int index)
+{
+    if(modo==1 && pLuna.getPrecio().toInt()==1)
+        return;
+    else
+        if(ui->comboBox_tratamiento->selecciono())
+        {
+            if(verificarSelecciones())
+            {
+                if(pLuna.verificarPrecio())
+                {
+                    ui->checkBox_precio->setChecked(0);
+                    ui->lineEdit_precioCompra->setText(pLuna.getPrecioCompra());
+                    ui->lineEdit_precioVenta->setText(pLuna.getPrecioVenta());
+                    ui->lineEdit_precioDescuento->setText(pLuna.getPrecioDescuento());
+                    ui->label_precio->hide();
+                    ui->checkBox_precio->hide();
+                }
+            }
+        }
+}
+
+void ui_agregarLuna::on_lineEdit_vInicial_editingFinished()
+{
+    QRegExp noNumeros("[a-zA-Z]");
+    QMessageBox box;
+    box.setIcon(QMessageBox::Warning);
+    box.setWindowTitle("Error de Escritura");
+    if(ui->lineEdit_vInicial->text().contains(noNumeros))
+    {
+        box.setText("El Valor Inicial solo puede contener numeros");
+        box.exec();
+        ui->lineEdit_vInicial->setText("");
+        ui->lineEdit_vInicial->setFocus();
+        return;
+    }
+    else
+    {
+        if(modo==1 && pLuna.getPrecio().toInt()==1)
+            return;
+        else
+            if(verificarSelecciones())
+            {
+                if(pLuna.verificarPrecio())
+                {
+                    ui->checkBox_precio->setChecked(0);
+                    ui->lineEdit_precioCompra->setText(pLuna.getPrecioCompra());
+                    ui->lineEdit_precioVenta->setText(pLuna.getPrecioVenta());
+                    ui->lineEdit_precioDescuento->setText(pLuna.getPrecioDescuento());
+                    ui->label_precio->hide();
+                    ui->checkBox_precio->hide();
+                }
+            }
+    }
+}
+
+void ui_agregarLuna::on_lineEdit_vFinal_editingFinished()
+{
+    QRegExp noNumeros("[a-zA-Z]");
+    QMessageBox box;
+    box.setIcon(QMessageBox::Warning);
+    box.setWindowTitle("Error de Escritura");
+    if(ui->lineEdit_vFinal->text().contains(noNumeros))
+    {
+        box.setText("El Valor Final solo puede contener numeros");
+        box.exec();
+        ui->lineEdit_vFinal->setText("");
+        ui->lineEdit_vFinal->setFocus();
+        return;
+    }
+    else
+    {
+        if(modo==1 && pLuna.getPrecio().toInt()==1)
+            return;
+        else
+            if(verificarSelecciones())
+            {
+                if(pLuna.verificarPrecio())
+                {
+                    ui->checkBox_precio->setChecked(0);
+                    ui->lineEdit_precioCompra->setText(pLuna.getPrecioCompra());
+                    ui->lineEdit_precioVenta->setText(pLuna.getPrecioVenta());
+                    ui->lineEdit_precioDescuento->setText(pLuna.getPrecioDescuento());
+                    ui->label_precio->hide();
+                    ui->checkBox_precio->hide();
+                }
+            }
+    }
 }

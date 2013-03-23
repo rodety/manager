@@ -170,10 +170,10 @@ void MyComboBox::agregar()
     }
     if(tipo=="documento")
     {
-        tipodoc_ident pDocumento;
+        documento pDocumento;
         pDocumento.setNombre(this->itemText(this->count()-1));
         pDocumento.agregar();
-        ActualizarItems(tipodoc_ident::mostrar());
+        ActualizarItems(documento::mostrar());
     }
     this->setCurrentIndex(this->count()-2);
 }
@@ -354,11 +354,11 @@ void MyComboBox::eliminar()
     }
     if(tipo=="documento")
     {
-        tipodoc_ident pdocumento;
-        pdocumento.setNombre(this->currentText());
-        pdocumento.completar();
-        if(pdocumento.eliminar())
-            ActualizarItems(tipodoc_ident::mostrar());
+        documento pDocumento;
+        pDocumento.setNombre(this->currentText());
+        pDocumento.completar();
+        if(pDocumento.eliminar())
+            ActualizarItems(documento::mostrar());
         else
             error=true;
     }
@@ -367,7 +367,7 @@ void MyComboBox::eliminar()
         QMessageBox box;
         box.setIcon(QMessageBox::Critical);
         box.setWindowTitle("Error");
-        box.setText("El Dato no se pudo eliminar!\n porque esta siendo usado por algun Producto");
+        box.setText("El Dato no se pudo eliminar!\n porque esta siendo usado");
         box.setStandardButtons(QMessageBox::Ok);
         box.setDefaultButton(QMessageBox::Ok);
         box.exec();

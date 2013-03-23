@@ -36,7 +36,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="Tab1_2">
     <attribute name="title">
@@ -155,13 +155,175 @@
     <attribute name="title">
      <string>Etiquetas</string>
     </attribute>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>4</x>
+       <y>12</y>
+       <width>511</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_21">
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <spacer name="horizontalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_previsualizar">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Previsualizar</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../Icons/Icons.qrc">
+            <normaloff>:/Icons/1349716430_zoom.png</normaloff>:/Icons/1349716430_zoom.png</iconset>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+Alt+P</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_imprimir">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Imprimir</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../Icons/Icons.qrc">
+            <normaloff>:/Icons/1349716426_print.png</normaloff>:/Icons/1349716426_print.png</iconset>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+P</string>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0">
+       <layout class="QGridLayout" name="gridLayout_23">
+        <item row="1" column="0">
+         <widget class="QTableWidget" name="tableView_etiquetas">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>Codigo</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Color</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Calidad</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Ubicación</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Precio</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Lista  de Productos a Etiquetar:</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButton_anterior">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>30</y>
+       <width>51</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&lt;&lt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_siguiente">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>30</y>
+       <width>51</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>&gt;&gt;</string>
+     </property>
+    </widget>
     <widget class="QLabel" name="draw_label">
      <property name="geometry">
       <rect>
-       <x>542</x>
-       <y>51</y>
-       <width>291</width>
-       <height>381</height>
+       <x>660</x>
+       <y>60</y>
+       <width>315</width>
+       <height>445</height>
       </rect>
      </property>
      <property name="frameShape">
@@ -171,196 +333,31 @@
       <string/>
      </property>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QLineEdit" name="lineEdit_pag">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
-       <x>542</x>
-       <y>13</y>
-       <width>313</width>
-       <height>29</height>
+       <x>660</x>
+       <y>30</y>
+       <width>51</width>
+       <height>27</height>
       </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLineEdit" name="lineEdit_pag">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>0/0</string>
-        </property>
-        <property name="echoMode">
-         <enum>QLineEdit::Normal</enum>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_anterior">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>&lt;&lt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_siguiente">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>&gt;&gt;</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>430</y>
-       <width>274</width>
-       <height>29</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <spacer name="horizontalSpacer_9">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_previsualizar">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Previsualizar</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../Icons/Icons.qrc">
-          <normaloff>:/Icons/1349716430_zoom.png</normaloff>:/Icons/1349716430_zoom.png</iconset>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+Alt+P</string>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_imprimir">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Imprimir</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../Icons/Icons.qrc">
-          <normaloff>:/Icons/1349716426_print.png</normaloff>:/Icons/1349716426_print.png</iconset>
-        </property>
-        <property name="shortcut">
-         <string>Ctrl+P</string>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QTableWidget" name="tableView_etiquetas">
-     <property name="geometry">
-      <rect>
-       <x>7</x>
-       <y>38</y>
-       <width>501</width>
-       <height>381</height>
-      </rect>
-     </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <column>
-      <property name="text">
-       <string>Codigo</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Color</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Calidad</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Ubicación</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Precio</string>
-      </property>
-     </column>
-    </widget>
-    <widget class="QLabel" name="label_7">
-     <property name="geometry">
-      <rect>
-       <x>7</x>
-       <y>15</y>
-       <width>207</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
      </property>
      <property name="text">
-      <string>Lista  de Productos a Etiquetar:</string>
+      <string>0/0</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Normal</enum>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
-    <zorder>layoutWidget</zorder>
-    <zorder>tableView_etiquetas</zorder>
-    <zorder>label_7</zorder>
-    <zorder>draw_label</zorder>
-    <zorder>layoutWidget</zorder>
    </widget>
   </widget>
   <widget class="QWidget" name="layoutWidget">
@@ -547,10 +544,6 @@
   <tabstop>pushButton_agregar_2</tabstop>
   <tabstop>pushButton_editar</tabstop>
   <tabstop>pushButton_eliminar</tabstop>
-  <tabstop>tableView_etiquetas</tabstop>
-  <tabstop>lineEdit_pag</tabstop>
-  <tabstop>pushButton_anterior</tabstop>
-  <tabstop>pushButton_siguiente</tabstop>
  </tabstops>
  <resources>
   <include location="../Icons/Icons.qrc"/>

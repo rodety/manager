@@ -58,18 +58,20 @@ void ui_cliente::historial_clinico(const QModelIndex &model)
     int fila=model.row();
     if(fila!=-1)
     {
-        persona persona_selec;
-        persona_selec.setNombres(ui->tableView->model()->data(ui->tableView->model()->index(fila,0)).toString());
-        persona_selec.setPrimerApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,1)).toString());
-        persona_selec.setSegundoApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,2)).toString());
-        if(persona_selec.buscar())
+        cliente cliente_selec;
+        documento pDocumento;pDocumento.setNombre(ui->tableView->model()->data(ui->tableView->model()->index(fila,0)).toString());pDocumento.completar();
+        cliente_selec.setNumeroDocumento(ui->tableView->model()->data(ui->tableView->model()->index(fila,1)).toString());
+        cliente_selec.setNombres(ui->tableView->model()->data(ui->tableView->model()->index(fila,2)).toString());
+        cliente_selec.setPrimerApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,3)).toString());
+        cliente_selec.setSegundoApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,4)).toString());
+        cliente_selec.setTelefono(ui->tableView->model()->data(ui->tableView->model()->index(fila,5)).toString());
+        cliente_selec.setMovil(ui->tableView->model()->data(ui->tableView->model()->index(fila,6)).toString());
+        cliente_selec.setDocumento(pDocumento);
+        if(cliente_selec.completar())
         {
-            clt_his.setIdCliente(persona_selec.getIdPersona());
-            if(clt_his.buscar())
-            {
-                ui->tabWidget->setCurrentIndex(1);
-                listar_historial();
-            }
+            clt_his=cliente_selec;
+            ui->tabWidget->setCurrentIndex(1);
+            listar_historial();
         }
     }
 }
@@ -136,22 +138,22 @@ void ui_cliente::on_pushButton_2_clicked()
     int fila=ui->tableView->currentIndex().row();
     if(fila!=-1)
     {
-        persona persona_selec;
-        persona_selec.setNombres(ui->tableView->model()->data(ui->tableView->model()->index(fila,0)).toString());
-        persona_selec.setPrimerApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,1)).toString());
-        persona_selec.setSegundoApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,2)).toString());
-        if(persona_selec.buscar())
+        cliente cliente_selec;
+        documento pDocumento;pDocumento.setNombre(ui->tableView->model()->data(ui->tableView->model()->index(fila,0)).toString());pDocumento.completar();
+        cliente_selec.setNumeroDocumento(ui->tableView->model()->data(ui->tableView->model()->index(fila,1)).toString());
+        cliente_selec.setNombres(ui->tableView->model()->data(ui->tableView->model()->index(fila,2)).toString());
+        cliente_selec.setPrimerApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,3)).toString());
+        cliente_selec.setSegundoApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,4)).toString());
+        cliente_selec.setTelefono(ui->tableView->model()->data(ui->tableView->model()->index(fila,5)).toString());
+        cliente_selec.setMovil(ui->tableView->model()->data(ui->tableView->model()->index(fila,6)).toString());
+        cliente_selec.setDocumento(pDocumento);
+        if(cliente_selec.completar())
         {
-            cliente cliente_selec;
-            cliente_selec.setIdCliente(persona_selec.getIdPersona());
-            if(cliente_selec.buscar())
-            {
-                ui_cliente_datos* cliente_actualizar=new ui_cliente_datos;
-                cliente_actualizar->setWindowTitle("Editar Cliente");
-                cliente_actualizar->setCliente(&persona_selec);
-                cliente_actualizar->show();
-                connect(cliente_actualizar,SIGNAL(guarde()),this,SLOT(listar_clientes()));
-            }
+            ui_cliente_datos* cliente_actualizar=new ui_cliente_datos;
+            cliente_actualizar->setWindowTitle("Editar Cliente");
+            cliente_actualizar->setCliente(&cliente_selec);
+            cliente_actualizar->show();
+            connect(cliente_actualizar,SIGNAL(guarde()),this,SLOT(listar_clientes()));
         }
     }
 }
@@ -172,19 +174,19 @@ void ui_cliente::on_pushButton_3_clicked()
         {
             case QMessageBox::Ok:
             {
-                persona persona_selec;
-                persona_selec.setNombres(ui->tableView->model()->data(ui->tableView->model()->index(fila,0)).toString());
-                persona_selec.setPrimerApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,1)).toString());
-                persona_selec.setSegundoApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,2)).toString());
-                if(persona_selec.buscar())
+                cliente cliente_selec;
+                documento pDocumento;pDocumento.setNombre(ui->tableView->model()->data(ui->tableView->model()->index(fila,0)).toString());pDocumento.completar();
+                cliente_selec.setNumeroDocumento(ui->tableView->model()->data(ui->tableView->model()->index(fila,1)).toString());
+                cliente_selec.setNombres(ui->tableView->model()->data(ui->tableView->model()->index(fila,2)).toString());
+                cliente_selec.setPrimerApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,3)).toString());
+                cliente_selec.setSegundoApellido(ui->tableView->model()->data(ui->tableView->model()->index(fila,4)).toString());
+                cliente_selec.setTelefono(ui->tableView->model()->data(ui->tableView->model()->index(fila,5)).toString());
+                cliente_selec.setMovil(ui->tableView->model()->data(ui->tableView->model()->index(fila,6)).toString());
+                cliente_selec.setDocumento(pDocumento);
+                if(cliente_selec.completar())
                 {
-                    cliente cliente_selec;
-                    cliente_selec.setIdCliente(persona_selec.getIdPersona());
-                    if(cliente_selec.buscar())
-                    {
-                        cliente_selec.eliminar();
-                        listar_clientes();
-                    }
+                    cliente_selec.eliminar();
+                    listar_clientes();
                 }
                 break;
             }

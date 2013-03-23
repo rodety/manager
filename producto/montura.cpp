@@ -41,11 +41,8 @@ void montura::setCalidad(calidad tmp)
 
 bool montura::agregar()
 {
-    Sesion* s =Sesion::getSesion();
-    int idCol=s->getIdColaborador();
-
     QSqlQuery query;
-    query.prepare("INSERT INTO Producto(codigo,descripcion,precioCompra,precioVenta,precioDescuento,accesorios,stock,observaciones,Estado_idEstado,Marca_idMarca,Colaborador_Persona_idPersona,cantidadVitrina,cantidadAlmacen) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    query.prepare("INSERT INTO Producto(codigo,descripcion,precioCompra,precioVenta,precioDescuento,accesorios,stock,observaciones,Estado_idEstado,Marca_idMarca) VALUES(?,?,?,?,?,?,?,?,?,?)");//falta colaborador
     query.bindValue(0,codigo);
     query.bindValue(1,descripcion);
     query.bindValue(2,precioCompra);
@@ -56,9 +53,6 @@ bool montura::agregar()
     query.bindValue(7,observaciones);
     query.bindValue(8,pEstado.getIdEstado());
     query.bindValue(9,pMarca.getIdMarca());
-    query.bindValue(10,idCol);
-    query.bindValue(11,cantidadVitrina);
-    query.bindValue(12,cantidadAlmacen);
     if(query.exec())
     {
         query.clear();

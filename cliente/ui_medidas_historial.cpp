@@ -56,7 +56,7 @@ void ui_medidas_historial::renderizar()
     pi.end();
     ui->label_izquierdo->setPixmap(*pmi);
     pmd->operator =(*pmi);
-    ui->label_izquierdo->setPixmap(*pmd);
+    ui->label_derecho->setPixmap(*pmd);
 }
 
 void ui_medidas_historial::graficar()
@@ -89,47 +89,47 @@ void ui_medidas_historial::graficar()
         {
             ei=200.0-(10.0*lista->value(i).getMedidasCercaIzquierda().getEsferico().toFloat());
             ci=200.0-(10.0*lista->value(i).getMedidasCercaIzquierda().getCilindrico().toFloat());
-            eji=200.0-(10.0*lista->value(i).getMedidasCercaIzquierda().getEje().toFloat());
-            di=200.0-(10.0*lista->value(i).getMedidasCercaIzquierda().getDistanciaPupilar().toFloat());
+            //eji=200.0-(10.0*lista->value(i).getMedidasCercaIzquierda().getEje().toFloat());
+            //di=200.0-(10.0*lista->value(i).getMedidasCercaIzquierda().getDistanciaPupilar().toFloat());
         }
         else
         {
             ei=200.0-(10.0*lista->value(i).getMedidasLejosIzquierda().getEsferico().toFloat());
             ci=200.0-(10.0*lista->value(i).getMedidasLejosIzquierda().getCilindrico().toFloat());
-            eji=200.0-(10.0*lista->value(i).getMedidasLejosIzquierda().getEje().toFloat());
-            di=200.0-(10.0*lista->value(i).getMedidasLejosIzquierda().getDistanciaPupilar().toFloat());
+            //eji=200.0-(10.0*lista->value(i).getMedidasLejosIzquierda().getEje().toFloat());
+            //di=200.0-(10.0*lista->value(i).getMedidasLejosIzquierda().getDistanciaPupilar().toFloat());
         }
         if(i>0)
         {
             QPoint pe2(val+40,ei);
             QPoint pc2(val+40,ci);
-            QPoint pej2(val+40,eji);
-            QPoint pd2(val+40,di);
+            //QPoint pej2(val+40,eji);
+            //QPoint pd2(val+40,di);
             pi.setPen(Qt::blue);
             pi.drawLine(pei,pe2);
             pi.setPen(Qt::green);
             pi.drawLine(pci,pc2);
-            pi.setPen(Qt::red);
+            /*pi.setPen(Qt::red);
             pi.drawLine(peji,pej2);
             pi.setPen(Qt::yellow);
-            pi.drawLine(pdi,pd2);
+            pi.drawLine(pdi,pd2);*/
         }
         pei.setX(val+40);pei.setY(ei);
         pci.setX(val+40);pci.setY(ci);
-        peji.setX(val+40);peji.setY(eji);
-        pdi.setX(val+40);pdi.setY(di);
+        //peji.setX(val+40);peji.setY(eji);
+        //pdi.setX(val+40);pdi.setY(di);
         pi.setPen(Qt::blue);
         pi.setBrush(Qt::blue);
         pi.drawEllipse(pei,2,2);
         pi.setPen(Qt::green);
         pi.setBrush(Qt::green);
         pi.drawEllipse(pci,2,2);
-        pi.setPen(Qt::red);
+        /*pi.setPen(Qt::red);
         pi.setBrush(Qt::red);
         pi.drawEllipse(peji,2,2);
         pi.setPen(Qt::yellow);
         pi.setBrush(Qt::yellow);
-        pi.drawEllipse(pdi,2,2);
+        pi.drawEllipse(pdi,2,2);*/
         pi.end();
 
         pi.begin(pmd);
@@ -141,47 +141,47 @@ void ui_medidas_historial::graficar()
         {
             ed=200.0-(10.0*lista->value(i).getMedidasCercaDerecha().getEsferico().toFloat());
             cd=200.0-(10.0*lista->value(i).getMedidasCercaDerecha().getCilindrico().toFloat());
-            ejd=200.0-(10.0*lista->value(i).getMedidasCercaDerecha().getEje().toFloat());
-            dd=200.0-(10.0*lista->value(i).getMedidasCercaDerecha().getDistanciaPupilar().toFloat());
+            //ejd=200.0-(10.0*lista->value(i).getMedidasCercaDerecha().getEje().toFloat());
+            //dd=200.0-(10.0*lista->value(i).getMedidasCercaDerecha().getDistanciaPupilar().toFloat());
         }
         else
         {
             ed=200.0-(10.0*lista->value(i).getMedidasLejosDerecha().getEsferico().toFloat());
             cd=200.0-(10.0*lista->value(i).getMedidasLejosDerecha().getCilindrico().toFloat());
-            ejd=200.0-(10.0*lista->value(i).getMedidasLejosDerecha().getEje().toFloat());
-            dd=200.0-(10.0*lista->value(i).getMedidasLejosDerecha().getDistanciaPupilar().toFloat());
+            //ejd=200.0-(10.0*lista->value(i).getMedidasLejosDerecha().getEje().toFloat());
+            //dd=200.0-(10.0*lista->value(i).getMedidasLejosDerecha().getDistanciaPupilar().toFloat());
         }
         if(i>0)
         {
             QPoint pe2(val+40,ed);
             QPoint pc2(val+40,cd);
-            QPoint pej2(val+40,ejd);
-            QPoint pd2(val+40,dd);
+            //QPoint pej2(val+40,ejd);
+            //QPoint pd2(val+40,dd);
             pi.setPen(Qt::blue);
             pi.drawLine(ped,pe2);
             pi.setPen(Qt::green);
             pi.drawLine(pcd,pc2);
-            pi.setPen(Qt::red);
+            /*pi.setPen(Qt::red);
             pi.drawLine(pejd,pej2);
             pi.setPen(Qt::yellow);
-            pi.drawLine(pdd,pd2);
+            pi.drawLine(pdd,pd2);*/
         }
         ped.setX(val+40);ped.setY(ed);
         pcd.setX(val+40);pcd.setY(cd);
-        pejd.setX(val+40);pejd.setY(ejd);
-        pdd.setX(val+40);pdd.setY(dd);
+        //pejd.setX(val+40);pejd.setY(ejd);
+        //pdd.setX(val+40);pdd.setY(dd);
         pi.setPen(Qt::blue);
         pi.setBrush(Qt::blue);
         pi.drawEllipse(ped,2,2);
         pi.setPen(Qt::green);
         pi.setBrush(Qt::green);
         pi.drawEllipse(pcd,2,2);
-        pi.setPen(Qt::red);
+        /*pi.setPen(Qt::red);
         pi.setBrush(Qt::red);
         pi.drawEllipse(pejd,2,2);
         pi.setPen(Qt::yellow);
         pi.setBrush(Qt::yellow);
-        pi.drawEllipse(pdd,2,2);
+        pi.drawEllipse(pdd,2,2);*/
         pi.end();
     }
     ui->label_izquierdo->setPixmap(*pmi);

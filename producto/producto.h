@@ -18,7 +18,6 @@
 #include <producto/tiempouso.h>
 #include <producto/material.h>
 #include <producto/talla.h>
-#include <QSqlQuery>
 
 class producto:public ObjetoPersistente
 {
@@ -34,8 +33,6 @@ protected:
     QString observaciones;
     estado pEstado;
     marca pMarca;
-    int cantidadVitrina;
-    int cantidadAlmacen;
     //colaborador
 public:
     producto();
@@ -64,10 +61,6 @@ public:
     void setObservaciones(QString tmp);
     void setEstado(estado tmp);
     void setMarca(marca tmp);
-
-    void addToVitrina(int tmp=1);
-    void addToAlmacen(int tmp=1);
-    void almacenToVitrina();
     //setColaborador
 };
 

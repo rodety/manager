@@ -19,6 +19,7 @@ public:
     void setModo(bool m);
     void setLuna(luna* l);
     bool verificarRestricciones();
+    bool verificarSelecciones();
     
 signals:
     void guardado();
@@ -29,6 +30,15 @@ private slots:
     void on_pushButton_xTipoLuna_clicked();
     void on_pushButton_xTratamiento_clicked();
     void on_pushButton_xEstado_clicked();
+
+    void on_comboBox_diametro_currentIndexChanged(int index);
+    void on_comboBox_calidad_currentIndexChanged(int index);
+    void on_comboBox_tipoLuna_currentIndexChanged(int index);
+    void on_comboBox_tratamiento_currentIndexChanged(int index);
+
+    void on_lineEdit_vInicial_editingFinished();
+
+    void on_lineEdit_vFinal_editingFinished();
 
 private:
     Ui::ui_agregarLuna *ui;

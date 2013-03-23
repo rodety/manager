@@ -17,7 +17,7 @@ TEMPLATE = app
 DEFINES += NCREPORT_IMPORT
 
 unix {
-    LIBS += -lncreport -L lib -L/usr/local/bin
+    LIBS += -lncreport -Llib -L/usr/local/bin
     LIBS += -lzint
     target.path = /usr/local/bin
 }
@@ -51,7 +51,6 @@ SOURCES += main.cpp\
     producto/tipoluna.cpp \
     producto/tratamiento.cpp \
     producto/ui_agregarluna.cpp \
-    persona/persona.cpp \
     cliente/ui_medidas_historial.cpp \
     cliente/ui_historial_clinico.cpp \
     cliente/ui_cliente_datos.cpp \
@@ -59,7 +58,6 @@ SOURCES += main.cpp\
     cliente/medidashistorial.cpp \
     cliente/historialclinico.cpp \
     cliente/cliente.cpp \
-    persona/documento.cpp \
     producto/tipolente.cpp \
     producto/potencia.cpp \
     producto/curvabase.cpp \
@@ -101,7 +99,8 @@ SOURCES += main.cpp\
     configuracion/conexionbd.cpp \
     vitrina/ui_agregar_empresa.cpp \
     configuracion/ui_configuracion.cpp \
-    configuracion/tusuario.cpp
+    configuracion/tusuario.cpp \
+    cliente/documento.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -122,7 +121,6 @@ HEADERS  += mainwindow.h \
     producto/tipoluna.h \
     producto/tratamiento.h \
     producto/ui_agregarluna.h \
-    persona/persona.h \
     cliente/ui_medidas_historial.h \
     cliente/ui_historial_clinico.h \
     cliente/ui_cliente_datos.h \
@@ -130,7 +128,6 @@ HEADERS  += mainwindow.h \
     cliente/medidashistorial.h \
     cliente/historialclinico.h \
     cliente/cliente.h \
-    persona/documento.h \
     producto/tipolente.h \
     producto/potencia.h \
     producto/curvabase.h \
@@ -172,7 +169,8 @@ HEADERS  += mainwindow.h \
     configuracion/conexionbd.h \
     vitrina/ui_agregar_empresa.h \
     configuracion/ui_configuracion.h \
-    configuracion/tusuario.h
+    configuracion/tusuario.h \
+    cliente/documento.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \

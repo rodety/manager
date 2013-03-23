@@ -2,7 +2,6 @@
 #define MONTURA_H
 
 #include <producto/producto.h>
-#include <configuracion/sesion.h>
 
 class montura:public producto
 {

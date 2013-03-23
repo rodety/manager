@@ -3,6 +3,7 @@
 #include <QPrinter>
 #include <QPainter>
 #include <QPixmap>
+
 ui_producto::ui_producto(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ui_producto)
@@ -131,8 +132,8 @@ void ui_producto::on_pushButton_editar_clicked()
             productoActual.completar();
 
             ui_agregarLuna* form=new ui_agregarLuna;
-            form->setLuna(&productoActual);
             form->setModo(true);
+            form->setLuna(&productoActual);
             form->setWindowTitle("Editar Luna");
             form->show();
             connect(form,SIGNAL(guardado()),this,SLOT(cambiarModeloLuna()));
@@ -161,8 +162,8 @@ void ui_producto::on_pushButton_editar_clicked()
             productoActual.completar();
 
             ui_agregarMontura* form=new ui_agregarMontura;
-            form->setMontura(&productoActual);
             form->setModo(true);
+            form->setMontura(&productoActual);
             form->setWindowTitle("Editar Montura");
             form->show();
             connect(form,SIGNAL(guardado()),this,SLOT(cambiarModeloMontura()));
@@ -199,8 +200,8 @@ void ui_producto::on_pushButton_editar_clicked()
             productoActual.completar();
 
             ui_agregarLente* form=new ui_agregarLente;
-            form->setLenteContacto(&productoActual);
             form->setModo(true);
+            form->setLenteContacto(&productoActual);
             form->setWindowTitle("Editar Lente de Contacto");
             form->show();
             connect(form,SIGNAL(guardado()),this,SLOT(cambiarModeloLenteContacto()));
@@ -227,8 +228,8 @@ void ui_producto::on_pushButton_editar_clicked()
             productoActual.completar();
 
             ui_agregarOtros* form=new ui_agregarOtros;
-            form->setOtros(&productoActual);
             form->setModo(true);
+            form->setOtros(&productoActual);
             form->setWindowTitle("Editar Producto");
             form->show();
             connect(form,SIGNAL(guardado()),this,SLOT(cambiarModeloOtros()));
@@ -241,8 +242,8 @@ void ui_producto::on_pushButton_editar_clicked()
             actual.completar();
 
             ui_trabajosExtras* form=new ui_trabajosExtras;
-            form->setTrabajosExtras(&actual);
             form->setModo(true);
+            form->setTrabajosExtras(&actual);
             form->setWindowTitle("Editar Trabajo Extra");
             form->show();
             connect(form,SIGNAL(guardado()),this,SLOT(cambiarModeloTrabajosExtras()));

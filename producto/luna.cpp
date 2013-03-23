@@ -4,6 +4,7 @@ luna::luna()
 {
 }
 
+
 diametro luna::getDiametro()
 {
     return pDiametro;
@@ -187,6 +188,35 @@ bool luna::completar()
             query.first();
             idProducto=query.value(0).toString();
             observaciones=query.value(1).toString();
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+#include <QSqlError>
+bool luna::verificarPrecio()
+{
+    QSqlQuery query;
+    //query.prepare("SELECT p.precioCompra,p.precioVenta,p.precioDescuento FROM Producto p,Luna l,Diametro d,Calidad c,TipoLuna tl,Tratamiento t WHERE p.idProducto=l.Producto_idProducto AND l.Diametro_idDiametro=d.idDiametro AND l.Calidad_idCalidad=c.idCalidad AND l.TipoLuna_idTipoLuna=tl.idTipoLuna AND l.Tratamiento_idTratamiento=t.idTratamiento AND d.valor=? AND c.nombre=? AND tl.nombre=? AND t.nombre=? AND l.valorInicial=? AND l.valorFinal=? AND l.precio=1");
+    query.prepare("SELECT p.precioCompra,p.precioVenta,p.precioDescuento FROM Producto p,Luna l WHERE p.idProducto=l.Producto_idProducto AND l.Diametro_idDiametro=? AND l.Calidad_idCalidad=? AND l.TipoLuna_idTipoLuna=? AND l.Tratamiento_idTratamiento=? AND l.valorInicial=? AND l.valorFinal=? AND l.precio=1");
+    query.bindValue(0,pDiametro.getIdDiametro());
+    query.bindValue(1,pCalidad.getIdCalidad());
+    query.bindValue(2,pTipoLuna.getIdTipoLuna());
+    query.bindValue(3,pTratamiento.getIdTratamiento());
+    query.bindValue(4,valorInicial);
+    query.bindValue(5,valorFinal);
+    if(query.exec())
+    {
+        if(query.size()!=0)
+        {
+            query.first();
+            precioCompra=query.value(0).toString();
+            precioVenta=query.value(1).toString();
+            precioDescuento=query.value(2).toString();
+            precio="0";
             return true;
         }
         else

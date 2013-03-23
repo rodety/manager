@@ -9,7 +9,8 @@
 #include <QMessageBox>
 #include <producto/producto.h>
 #include <configuracion/tusuario.h>
-#include <persona/documento.h>
+#include <cliente/documento.h>
+
 class MyComboBox:public QComboBox
 {
     Q_OBJECT

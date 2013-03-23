@@ -36,9 +36,6 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1" colspan="2">
-      <widget class="QLineEdit" name="lineEdit_descripcion"/>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_14">
        <property name="text">
@@ -59,6 +56,9 @@
         <string>Precio</string>
        </property>
       </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLineEdit" name="lineEdit_descripcion"/>
      </item>
     </layout>
    </item>
@@ -113,11 +113,6 @@
     </layout>
    </item>
   </layout>
-  <zorder>label_tiulo</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>layoutWidget_2</zorder>
-  <zorder>label_14</zorder>
-  <zorder>label_14</zorder>
  </widget>
  <tabstops>
   <tabstop>lineEdit_descripcion</tabstop>

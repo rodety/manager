@@ -38,6 +38,8 @@ public:
 
     static QSqlQueryModel* mostrar();
     bool completar();
+
+    bool verificarPrecio();
 };
 
 #endif // LUNA_H

@@ -174,7 +174,7 @@ void ui_agregarMontura::on_pushButton_agregar_clicked()
     pMontura.setAccesorios(ui->lineEdit_accesorios->text());
     pMontura.setStock(ui->spinBox_stock->text());
     pMontura.setObservaciones(ui->lineEdit_observaciones->text());
-    estado pEstado; pEstado.setNombre(ui->comboBox_estado->currentText()); pEstado.completar();
+    estado pEstado;pEstado.setNombre(ui->comboBox_estado->currentText());pEstado.completar();
     marca pMarca;pMarca.setNombre(ui->comboBox_marca->currentText());pMarca.completar();
     //colaborador
     forma pForma;pForma.setNombre(ui->comboBox_forma->currentText());pForma.completar();

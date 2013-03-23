@@ -8,7 +8,7 @@
 #include <producto/ui_agregarotros.h>
 #include <extras/ui_trabajosextras.h>
 #include <vitrina/ui_tienda.h>
-#include <producto/estado.h>
+//#include <producto/estado.h>
 #include <extras/etiqueta.h>
 #include <QPrinter>
 #include <QPrintDialog>
@@ -46,7 +46,6 @@ private slots:
     void on_tabWidget_currentChanged(int index);
 
     void on_btnToVitrina_clicked();
-
     void on_btnToAlmacen_clicked();
 
 private:

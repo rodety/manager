@@ -59,7 +59,7 @@ void ui_configuracion::on_btn_testConexion_clicked()
         ui->comboBox_empresa->setCurrentIndex(id_Empresa.toInt(0));
         ui->comboBox_tienda->setCurrentIndex(id_Tienda.toInt(0));
         ui->comboBox_tipoUsuario->ActualizarItems(tusuario::mostrar());
-        ui->comboBox_Documento->ActualizarItems(tipodoc_ident::mostrar());
+        ui->comboBox_Documento->ActualizarItems(documento::mostrar());
         ui->comboBox_estadoProductos->ActualizarItems(estado::mostrar());
 
     }
@@ -222,7 +222,7 @@ void ui_configuracion::on_btn_script_clicked()
     query.exec("INSERT INTO `Documento` VALUES (1,'documento nacional de identidad','DNI'),(2,'carnet de extrangeria','CE'),(3,'pasaporte','PP')");
     query.exec("INSERT INTO `SiNo` VALUES (0,'No','F'),(1,'Si','M')");
     query.exec("INSERT INTO `TipoColaborador` VALUES (1,'Administrador'),(2,'Ventas')");
-    query.exec("INSERT INTO `Estado` (nombre) VALUES ('Activo'),('Inactivo')");
+    query.exec("INSERT INTO `Estado` (nombre) VALUES ('activo'),('inactivo')");
 }
 
 void ui_configuracion::on_comboBox_Documento_currentIndexChanged(const QString &arg1)

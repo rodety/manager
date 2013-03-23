@@ -94,7 +94,7 @@ void historialClinico::setFlag(bool tmp)
 bool historialClinico::agregar()
 {
     QSqlQuery query;
-    query.prepare("SELECT * FROM HistorialClinico where fecha=? and idcliente=?");
+    query.prepare("SELECT * FROM HistorialClinico where fecha=? and idCliente=?");
     query.bindValue(0,fecha);
     query.bindValue(1,idCliente);
     if(query.exec())
