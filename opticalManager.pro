@@ -100,7 +100,9 @@ SOURCES += main.cpp\
     vitrina/ui_agregar_empresa.cpp \
     configuracion/ui_configuracion.cpp \
     configuracion/tusuario.cpp \
-    cliente/documento.cpp
+    cliente/documento.cpp \
+    reporte/ui_reporte.cpp \
+    venta/uiventas.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -170,7 +172,9 @@ HEADERS  += mainwindow.h \
     vitrina/ui_agregar_empresa.h \
     configuracion/ui_configuracion.h \
     configuracion/tusuario.h \
-    cliente/documento.h
+    cliente/documento.h \
+    reporte/ui_reporte.h \
+    venta/uiventas.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \
@@ -197,7 +201,9 @@ FORMS    += mainwindow.ui \
     configuracion/dialoglogin.ui \
     configuracion/dialogbuscarusuarios.ui \
     vitrina/ui_agregar_empresa.ui \
-    configuracion/ui_configuracion.ui
+    configuracion/ui_configuracion.ui \
+    reporte/ui_reporte.ui \
+    venta/uiventas.ui
 
 RESOURCES += \
     Icons/Icons.qrc \

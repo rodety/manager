@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>uiventas</class>
+ <widget class="QWidget" name="uiventas">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>843</width>
+    <height>682</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_6">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <attribute name="title">
+       <string>Ventas</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="5" column="2">
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>Buscar&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Direccion</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="lineEdit_4"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Cod Producto</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lineEdit_3"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lineEdit_2"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Razon Social</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Ruc:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Optica Jireh</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLabel" name="label_19">
+             <property name="text">
+              <string>Numero #001-15</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_17">
+             <property name="text">
+              <string>Fecha</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_18">
+             <property name="text">
+              <string>Entrega</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDateEdit" name="dateEdit"/>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_20">
+             <property name="text">
+              <string>Usuario</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEdit_12"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget">
+         <column>
+          <property name="text">
+           <string>Cod.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Descripci</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Descripción</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Accesorios</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>P. Unit</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Cant.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Entregado</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>M. Adelanto</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="text">
+              <string>Vuelto</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>T. Cancelado</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>M.Restante</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="lineEdit_10"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_8"/>
+           </item>
+           <item row="2" column="2">
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>Completar</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="lineEdit_9"/>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="lineEdit_11"/>
+           </item>
+           <item row="1" column="2">
+            <widget class="QRadioButton" name="radioButton_2">
+             <property name="text">
+              <string>Tarjeta</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>Efectivo</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Tipo de Pago</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="lineEdit_7"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>IGV</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEdit_6"/>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="lineEdit_5"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Total</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>SubTotal</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="text">
+            <string>Guardar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="text">
+            <string>Imprimir</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Lista de Ventas</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_22">
+             <property name="text">
+              <string>Estado</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QComboBox" name="comboBox_4"/>
+           </item>
+           <item row="0" column="3">
+            <widget class="QComboBox" name="comboBox_5"/>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Empresa</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Tienda</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="comboBox"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_23">
+             <property name="text">
+              <string>Colaborador</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3">
+            <widget class="QDateTimeEdit" name="dateTimeEdit_3"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="comboBox_2"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>Documento</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLabel" name="label_24">
+             <property name="text">
+              <string>Hasta</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QLabel" name="label_21">
+             <property name="text">
+              <string>Desde</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QDateTimeEdit" name="dateTimeEdit_2"/>
+           </item>
+           <item row="4" column="1">
+            <widget class="QComboBox" name="comboBox_3"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="label_27">
+             <property name="text">
+              <string>Forma de Pago</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QComboBox" name="comboBox_6"/>
+           </item>
+           <item row="7" column="3">
+            <widget class="QPushButton" name="pushButton_5">
+             <property name="text">
+              <string>Imprimir</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QPushButton" name="pushButton_6">
+             <property name="text">
+              <string>Calcular</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tableWidget_2">
+           <column>
+            <property name="text">
+             <string>Fecha</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Entrega</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Numero</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Raz. Social</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>M. Total</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Adelanto</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Estado</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Entregado</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_25">
+           <property name="text">
+            <string>Total...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_26">
+           <property name="text">
+            <string>Resultlado</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

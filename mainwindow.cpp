@@ -80,3 +80,17 @@ void MainWindow::on_actionConfiguracion_triggered()
     ui_configuracion *form = new ui_configuracion;
     setCentralWidget(form);
 }
+
+void MainWindow::on_actionVentas_triggered()
+{
+    uiventas * form = new uiventas;
+    setCentralWidget(form);
+
+}
+
+void MainWindow::on_actionReportes_triggered()
+{
+    ui_reporte* form = new ui_reporte;
+    setCentralWidget(form);
+
+}

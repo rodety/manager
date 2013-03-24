@@ -10,6 +10,8 @@
 #include <configuracion/usuariosform.h>
 #include <configuracion/sesion.h>
 #include "configuracion/ui_configuracion.h"
+#include <venta/uiventas.h>
+#include <reporte/ui_reporte.h>
 namespace Ui {
 class MainWindow;
 }
@@ -33,6 +35,10 @@ private slots:
     void on_actionAlmacen_triggered();
 
     void on_actionConfiguracion_triggered();
+
+    void on_actionVentas_triggered();
+
+    void on_actionReportes_triggered();
 
 private:
     Ui::MainWindow *ui;

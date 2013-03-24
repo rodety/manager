@@ -1,5 +1,6 @@
 #include "conexionbd.h"
 #include<QDebug>
+#include <configuracion/ui_configuracion.h>
 /**
  * @brief Constructor
  *
@@ -36,6 +37,8 @@ bool ConexionBD::connect()
         QMessageBox::critical(0,"Error de conexion a la Base de Datos"
                               ,conErr.text()+"\nError code: "+num2str.setNum(conErr.number())
                               ,0,0);
+        ui_configuracion* form = new ui_configuracion;
+        form->show();
         return false;
     }
 
