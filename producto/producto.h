@@ -18,6 +18,7 @@
 #include <producto/tiempouso.h>
 #include <producto/material.h>
 #include <producto/talla.h>
+#include <producto/tipootros.h>
 
 class producto:public ObjetoPersistente
 {
