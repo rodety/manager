@@ -565,7 +565,6 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
             query.exec();
 
             close();
-            ui_tienda_traspaso->limpiar_grilla();
             ui_tienda_traspaso->set_dimension_grilla();
             ui_tienda_traspaso->actualizar_grilla();
         }
@@ -575,6 +574,27 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
             int col=ui->grilla->currentColumn()+1;
             int level=actual_nivel;
             //aki va traspaso de almacen a vitrina
+
+            Sesion* s= Sesion::getSesion();
+
+            QSqlQuery query;
+            query.prepare("INSERT INTO Producto_has_Vitrina(Producto_idProducto,Vitrina_Ubicacion_idUbicacion,fila,columna,nivel,fecha,Colaborador_Persona_idPersona) VALUES(?,?,?,?,?,now(),?) ");
+            query.bindValue(0,idProducto_tras);
+            query.bindValue(1,idVitrina);
+            query.bindValue(2,row);
+            query.bindValue(3,col);
+            query.bindValue(4,level);
+            query.bindValue(5,s->getIdColaborador());
+
+            if(query.exec())
+            {
+                montura* mont= new montura;
+                mont->setIdProducto(idProducto_tras);
+                mont->almacenToVitrina();    //resta 1 de cantidadAlmacen y lo añade a cantidadVitrina
+                close();
+            }
+            else
+                cout<<query.lastError().text().toStdString()<<endl;
         }
     }
     else

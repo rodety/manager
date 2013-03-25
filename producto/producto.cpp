@@ -95,3 +95,65 @@ void producto::setMarca(marca tmp)
     pMarca=tmp;
 }
 //setColaborador
+
+void producto::addToVitrina()
+{
+    QSqlQuery query;
+    query.prepare("SELECT cantidadVitrina FROM Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();   query.next();
+    cantidadVitrina= query.value(0).toInt()+ 1;
+
+    query.prepare("UPDATE Producto SET cantidadVitrina=? WHERE idProducto=?");
+    query.bindValue(0,cantidadVitrina);
+    query.bindValue(1,idProducto);
+    query.exec();
+}
+
+void producto::addToAlmacen(int tmp)
+{
+    QSqlQuery query;
+    query.prepare("SELECT cantidadAlmacen FROM Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();   query.next();
+    cantidadAlmacen=query.value(0).toInt() + tmp;
+
+    query.prepare("UPDATE Producto SET cantidadAlmacen=? WHERE idProducto=?");
+    query.bindValue(0,cantidadAlmacen);
+    query.bindValue(1,idProducto);
+    query.exec();
+}
+
+void producto::vitrinaToAlmacen()
+{
+    QSqlQuery query;
+    query.prepare("SELECT cantidadVitrina, cantidadAlmacen FROM Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();   query.next();
+
+    cantidadAlmacen=query.value(0).toInt() + 1;
+    cantidadVitrina=query.value(1).toInt() - 1;
+
+    query.prepare("UPDATE Producto SET cantidadVitrina=?, cantidadAlmacen=? WHERE idProducto=?");
+    query.bindValue(0,cantidadVitrina);
+    query.bindValue(1,cantidadAlmacen);
+    query.bindValue(2,idProducto);
+    query.exec();
+}
+
+void producto::almacenToVitrina()
+{
+    QSqlQuery query;
+    query.prepare("SELECT cantidadVitrina, cantidadAlmacen FROM Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();   query.next();
+
+    cantidadAlmacen=query.value(0).toInt() - 1;
+    cantidadVitrina=query.value(1).toInt() + 1;
+
+    query.prepare("UPDATE Producto SET cantidadVitrina=?, cantidadAlmacen=? WHERE idProducto=?");
+    query.bindValue(0,cantidadVitrina);
+    query.bindValue(1,cantidadAlmacen);
+    query.bindValue(2,idProducto);
+    query.exec();
+}

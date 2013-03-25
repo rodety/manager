@@ -33,6 +33,9 @@ protected:
     QString observaciones;
     estado pEstado;
     marca pMarca;
+    int cantidadVitrina;
+    int cantidadAlmacen;
+
     //colaborador
 public:
     producto();
@@ -61,6 +64,10 @@ public:
     void setObservaciones(QString tmp);
     void setEstado(estado tmp);
     void setMarca(marca tmp);
+    void addToVitrina();
+    void addToAlmacen(int tmp=1);
+    void almacenToVitrina();
+    void vitrinaToAlmacen();
     //setColaborador
 };
 

@@ -7,7 +7,7 @@
 #include <QSqlQuery>
 #include <vitrina/tienda.h>
 #include <map>
-#include<iostream>
+#include <iostream>
 #include <fstream>
 #include <stdlib.h>
 #include <stdio.h>
@@ -17,6 +17,7 @@
 #include "ui_almacen.h"
 #include <vitrina/ui_agregar_empresa.h>
 #include <vitrina/ui_tienda_agregar.h>
+#include <configuracion/sesion.h>
 
 class ui_tienda_agregar;
 

@@ -406,7 +406,7 @@ void ui_contenedor_datos::on_traspaso_clicked()
         column = 0;
         codigo_producto = ui->tableWidget_list_productos->itemAt(row,column)->text();
 
-        query.prepare("SELECT idproducto FROM producto WHERE codigo=?");
+        query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
         query.bindValue(0,codigo_producto);
         query.exec();
         query.next();
