@@ -204,10 +204,31 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
                 msgBox->setIcon(QMessageBox::Warning);
                 msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
                 msgBox->setWindowTitle("Informacion");
-                msgBox->setStandardButtons(QMessageBox::Ok);
-                msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
-                msgBox->setText("El producto ya esta asignado a otro contenedor : Tienda:'"+tiendaName+"', Almacen:'"+almacenName+"', Andamio:'"+andamioName+"', Contenedor:'"+contenedorName+"' ");
-                msgBox->exec();
+                msgBox->setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+                msgBox->setText("El producto ya esta asignado a otro contenedor : Tienda:'"+tiendaName+"', Almacen:'"+almacenName+"', Andamio:'"+andamioName+"', Contenedor:'"+contenedorName+"' ¿Aun desea asignarlo en esta posicion? ");
+                int op=msgBox->exec();
+                Sesion* s=Sesion::getSesion();
+                switch(op)
+                {
+                    case QMessageBox::Ok:
+
+                        query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona) VALUES(?,?,now(),?)");
+                        query.bindValue(0,idContenedor);
+                        query.bindValue(1,idProducto);
+                        query.bindValue(2,s->getIdColaborador());
+
+                        if(query.exec())
+                        {
+                            //algo con historial de almacen
+                            return true;
+                        }
+                        else return false;
+                        break;
+
+                    case QMessageBox::Cancel:
+                        return false;
+                        break;
+                }
             }
             else
             {
@@ -220,16 +241,7 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
 
                 if(query.exec())
                 {
-                    query.prepare("INSERT INTO historial_almacen(entidad_1,id_1,entidad_2,id_2,operacion,fecha) VALUES('Producto',?,'Contenedor',?,'agregar',now())");
-                    query.bindValue(0,idProducto);
-                    query.bindValue(1,idContenedor);
-                    query.exec();
-
-                    qDebug()<<"idproducto : "<<idProducto<<endl;
-                    qDebug()<<"idcontendor : "<<idContenedor<<endl;
-
-                    clear_widget_list_productos();
-                    uptate_widget_list_productos();
+                    //algo con historial de almacen
                     return true;
                 }
                 else return false;

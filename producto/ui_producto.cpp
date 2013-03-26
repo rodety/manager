@@ -4,6 +4,8 @@
 #include <QPainter>
 #include <QPixmap>
 
+#include <iostream> using namespace std;
+
 ui_producto::ui_producto(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ui_producto)
@@ -664,11 +666,24 @@ void ui_producto::on_btnToVitrina_clicked()
         box.exec();
         return;
     }
+    int row=ui->tableView_productos->currentIndex().row();
+    QPoint point(0,row);
+    QString cod=ui->tableView_productos->indexAt(point).data().toString(), idProducto;
+
+    QSqlQuery query;
+    query.prepare("SELECT idProducto FROM Producto WHERE codigo =?");
+    query.bindValue(0,cod);
+    query.exec();   query.next();
+    idProducto=query.value(0).toString();
+
     ui_tienda* tienda= new ui_tienda;
+    tienda->set_idItem_tras(idProducto);
+    tienda->set_traspaso(true);
     tienda->show();
 }
 
 void ui_producto::on_btnToAlmacen_clicked()
 {
+
 
 }

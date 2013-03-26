@@ -470,8 +470,20 @@ void ui_tienda::on_imprimir_vitrina_clicked()
 
 void ui_tienda::on_grilla_cellDoubleClicked(int row, int column)
 {
+    cout<<idItem.toStdString()<<endl;
     ui_item_posicion* posicion_agregar = new ui_item_posicion;
     posicion_agregar->set_ui_tienda_actual(this);
+    if(traspaso)
+    {
+        posicion_agregar->set_caso(true);
+        posicion_agregar->setWindowTitle("Nueva Posicion");
+        posicion_agregar->set_posicion(row+1,column+1,actual_nivel);
+        posicion_agregar->habilitar();
+//        posicion_agregar->set_iditem(get_idItem_tras());
+        posicion_agregar->fillText(get_idItem_tras());
+//        posicion_agregar->on_pushButton_addProducto_clicked();
+//        posicion_agregar->on_pushButton_guardar_clicked();
+    }
     if(idItem.isEmpty())
     {
         posicion_agregar->set_caso(true);

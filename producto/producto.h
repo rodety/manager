@@ -66,7 +66,7 @@ public:
     void setMarca(marca tmp);
     void addToVitrina();
     void addToAlmacen(int tmp=1);
-    void almacenToVitrina();
+    void almacenToVitrina();    //se debe de borrar si es que cantidadAlmacen llega a 0
     void vitrinaToAlmacen();
     //setColaborador
 };

@@ -198,3 +198,8 @@ void ui_item_posicion::habilitar()
     ui->pushButton_deleteProducto->setEnabled(true);
     ui->pushButton_guardar->setEnabled(true);
 }
+
+void ui_item_posicion::fillText(QString tmp)
+{
+    ui->lineEdit_codigoProducto->setText(tmp);
+}

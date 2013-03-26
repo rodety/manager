@@ -48,6 +48,7 @@ private:
     int row_traspaso;
     bool caso;
     bool caso_traspaso;
+    bool traspaso;  //de producto hasta vitrina
     ui_agregar_empresa* add_empresa;
 
     lbls actual;     // puntero para los botones agregar,editar....
@@ -90,6 +91,7 @@ public:
     void set_actual_nivel(int tmp)          {actual_nivel=tmp;}
     void set_row_traspaso(int tmp)          {row_traspaso=tmp;}
     void set_query(QSqlQuery q)             {sqlQuery=q;}
+    void set_traspaso(bool tmp)             {traspaso=tmp;}
 
     void enableButtonAceptar();
 

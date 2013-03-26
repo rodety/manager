@@ -13,6 +13,7 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextEdit>
+#include <QPoint>
 
 namespace Ui {
 class ui_producto;

@@ -43,6 +43,15 @@ private slots:
 private:
     Ui::MainWindow *ui;
     std::vector<QAction*> modulos;
+
+    ui_producto* formProducto;
+    UsuariosForm* formUsuarios;
+    ui_cliente* formCliente;
+    ui_tienda* formTienda;
+    ui_almacen* formAlmacen;
+    ui_configuracion *formConfiguracion;
+    uiventas * formVentas;
+    ui_reporte* formReporte;
 };
 
 #endif // MAINWINDOW_H

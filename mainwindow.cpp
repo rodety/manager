@@ -20,6 +20,15 @@ MainWindow::MainWindow(QWidget *parent) :
     for(size_t i = 0; i<modulos.size();i++)
         modulos[i]->setEnabled(false);
     aplicarPermisos();
+
+
+
+
+
+
+
+
+
 }
 
 void MainWindow::aplicarPermisos()
@@ -47,50 +56,48 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionProducto_triggered()
 {
-    ui_producto* form=new ui_producto;
-    setCentralWidget(form);
+    formProducto=new ui_producto;
+    setCentralWidget(formProducto);
 }
 
 void MainWindow::on_actionUsuario_triggered()
 {
-    UsuariosForm* form= new UsuariosForm;
-    setCentralWidget(form);
+    formUsuarios= new UsuariosForm;
+    setCentralWidget(formUsuarios);
 }
 
 void MainWindow::on_actionCliente_triggered()
 {
-    ui_cliente* form=new ui_cliente;
-    setCentralWidget(form);
+    formCliente=new ui_cliente;
+    setCentralWidget(formCliente);
 }
 
 void MainWindow::on_actionVitrina_triggered()
 {
-    ui_tienda* form = new ui_tienda;
-    setCentralWidget(form);
+    formTienda = new ui_tienda;
+    setCentralWidget(formTienda);
 }
 
 void MainWindow::on_actionAlmacen_triggered()
 {
-    ui_almacen* form = new ui_almacen;
-    setCentralWidget(form);
+    formAlmacen = new ui_almacen;
+    setCentralWidget(formAlmacen);
 }
 
 void MainWindow::on_actionConfiguracion_triggered()
 {
-    ui_configuracion *form = new ui_configuracion;
-    setCentralWidget(form);
+    formConfiguracion = new ui_configuracion;
+    setCentralWidget(formConfiguracion);
 }
 
 void MainWindow::on_actionVentas_triggered()
 {
-    uiventas * form = new uiventas;
-    setCentralWidget(form);
-
+    formVentas = new uiventas;
+    setCentralWidget(formVentas);
 }
 
 void MainWindow::on_actionReportes_triggered()
 {
-    ui_reporte* form = new ui_reporte;
-    setCentralWidget(form);
-
+    formReporte = new ui_reporte;
+    setCentralWidget(formReporte);
 }
