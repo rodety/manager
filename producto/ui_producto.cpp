@@ -222,11 +222,13 @@ void ui_producto::on_pushButton_editar_clicked()
             color pColor;pColor.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString());pColor.completar();
             talla pTalla;pTalla.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pTalla.completar();
             calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pCalidad.completar();
+            tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pTipoOtros.completar();
             productoActual.setEstado(pEstado);
             productoActual.setMarca(pMarca);
             productoActual.setColor(pColor);
             productoActual.setTalla(pTalla);
             productoActual.setCalidad(pCalidad);
+            productoActual.setTipoOtros(pTipoOtros);
             productoActual.completar();
 
             ui_agregarOtros* form=new ui_agregarOtros;
@@ -369,11 +371,13 @@ void ui_producto::on_pushButton_eliminar_clicked()
                     color pColor;pColor.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString());pColor.completar();
                     talla pTalla;pTalla.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pTalla.completar();
                     calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pCalidad.completar();
+                    tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pTipoOtros.completar();
                     productoActual.setEstado(pEstado);
                     productoActual.setMarca(pMarca);
                     productoActual.setColor(pColor);
                     productoActual.setTalla(pTalla);
                     productoActual.setCalidad(pCalidad);
+                    productoActual.setTipoOtros(pTipoOtros);
                     productoActual.completar();
 
                     productoActual.eliminar();

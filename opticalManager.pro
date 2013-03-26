@@ -102,7 +102,8 @@ SOURCES += main.cpp\
     configuracion/tusuario.cpp \
     cliente/documento.cpp \
     reporte/ui_reporte.cpp \
-    venta/uiventas.cpp
+    venta/uiventas.cpp \
+    producto/tipootros.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -174,7 +175,8 @@ HEADERS  += mainwindow.h \
     configuracion/tusuario.h \
     cliente/documento.h \
     reporte/ui_reporte.h \
-    venta/uiventas.h
+    venta/uiventas.h \
+    producto/tipootros.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \

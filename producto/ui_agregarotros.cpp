@@ -17,6 +17,8 @@ ui_agregarOtros::ui_agregarOtros(QWidget *parent) :
     ui->comboBox_color->ActualizarItems(color::mostrar());
     ui->comboBox_estado->setTipo("estado");
     ui->comboBox_estado->ActualizarItems(estado::mostrar());
+    ui->comboBox_estado->setTipo("tipoOtros");
+    ui->comboBox_estado->ActualizarItems(tipoOtros::mostrar());
     modo=0;
     ui->label_estado->hide();
     ui->comboBox_estado->hide();
@@ -49,6 +51,7 @@ void ui_agregarOtros::setOtros(otros* o)
     ui->comboBox_color->buscarValor(pOtros.getColor().getNombre());
     ui->comboBox_talla->buscarValor(pOtros.getTalla().getNombre());
     ui->comboBox_calidad->buscarValor(pOtros.getCalidad().getNombre());
+    ui->comboBox_tipo->buscarValor(pOtros.getTipoOtros().getNombre());
     ui->label_estado->show();
     ui->comboBox_estado->show();
     ui->pushButton_xestado->show();
@@ -147,6 +150,13 @@ bool ui_agregarOtros::verificarRestricciones()
         ui->comboBox_talla->setFocus();
         return false;
     }
+    if(!ui->comboBox_tipo->selecciono())
+    {
+        box.setText("Seleccione algun Tipo");
+        box.exec();
+        ui->comboBox_tipo->setFocus();
+        return false;
+    }
     if(modo==1)
         if(!ui->comboBox_estado->selecciono())
         {
@@ -176,12 +186,14 @@ void ui_agregarOtros::on_pushButton_agregar_clicked()
     color pColor;pColor.setNombre(ui->comboBox_color->currentText());pColor.completar();
     talla pTalla;pTalla.setNombre(ui->comboBox_talla->currentText());pTalla.completar();
     calidad pCalidad;pCalidad.setNombre(ui->comboBox_calidad->currentText());pCalidad.completar();
+    tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->comboBox_tipo->currentText());pTipoOtros.completar();
     pOtros.setEstado(pEstado);
     pOtros.setMarca(pMarca);
     //colaborador
     pOtros.setColor(pColor);
     pOtros.setTalla(pTalla);
     pOtros.setCalidad(pCalidad);
+    pOtros.setTipoOtros(pTipoOtros);
     if(modo==0)//agrego
     {
         pEstado.setNombre("activo");pEstado.completar();
@@ -245,4 +257,9 @@ void ui_agregarOtros::on_pushButton_xestado_clicked()
 void ui_agregarOtros::on_pushButton_xtalla_clicked()
 {
     ui->comboBox_talla->eliminar();
+}
+
+void ui_agregarOtros::on_pushButton_xtipo_clicked()
+{
+    ui->comboBox_tipo->eliminar();
 }

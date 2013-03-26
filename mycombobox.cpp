@@ -175,6 +175,13 @@ void MyComboBox::agregar()
         pDocumento.agregar();
         ActualizarItems(documento::mostrar());
     }
+    if(tipo=="tipoOtros")
+    {
+        tipoOtros pTipo;
+        pTipo.setNombre(this->itemText(this->count()-1));
+        pTipo.agregar();
+        ActualizarItems(tipoOtros::mostrar());
+    }
     this->setCurrentIndex(this->count()-2);
 }
 
@@ -359,6 +366,16 @@ void MyComboBox::eliminar()
         pDocumento.completar();
         if(pDocumento.eliminar())
             ActualizarItems(documento::mostrar());
+        else
+            error=true;
+    }
+    if(tipo=="tipoOtros")
+    {
+        tipoOtros pTipo;
+        pTipo.setNombre(this->currentText());
+        pTipo.completar();
+        if(pTipo.eliminar())
+            ActualizarItems(tipoOtros::mostrar());
         else
             error=true;
     }
