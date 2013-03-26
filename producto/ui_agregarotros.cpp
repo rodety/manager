@@ -17,8 +17,8 @@ ui_agregarOtros::ui_agregarOtros(QWidget *parent) :
     ui->comboBox_color->ActualizarItems(color::mostrar());
     ui->comboBox_estado->setTipo("estado");
     ui->comboBox_estado->ActualizarItems(estado::mostrar());
-    ui->comboBox_estado->setTipo("tipoOtros");
-    ui->comboBox_estado->ActualizarItems(tipoOtros::mostrar());
+    ui->comboBox_tipo->setTipo("tipoOtros");
+    ui->comboBox_tipo->ActualizarItems(tipoOtros::mostrar());
     modo=0;
     ui->label_estado->hide();
     ui->comboBox_estado->hide();
@@ -263,3 +263,5 @@ void ui_agregarOtros::on_pushButton_xtipo_clicked()
 {
     ui->comboBox_tipo->eliminar();
 }
+
+

@@ -671,8 +671,8 @@ void ui_producto::on_btnToVitrina_clicked()
         return;
     }
     int row=ui->tableView_productos->currentIndex().row();
-    QPoint point(0,row);
-    QString cod=ui->tableView_productos->indexAt(point).data().toString(), idProducto;
+    QModelIndex ind=ui->tableView_productos->model()->index(row,0);
+    QString cod=ui->tableView_productos->model()->data(ind).toString(), idProducto;
 
     QSqlQuery query;
     query.prepare("SELECT idProducto FROM Producto WHERE codigo =?");
@@ -681,8 +681,11 @@ void ui_producto::on_btnToVitrina_clicked()
     idProducto=query.value(0).toString();
 
     ui_tienda* tienda= new ui_tienda;
-    tienda->set_idItem_tras(idProducto);
+//    tienda->set_idItem_tras(idProducto);
+    tienda->set_idTraspaso(idProducto);
     tienda->set_traspaso(true);
+    tienda->habilitar_botones();
+    tienda->enableButtonAceptar();
     tienda->show();
 }
 

@@ -36,6 +36,7 @@ class ui_tienda : public QWidget
 private:
     QSqlQuery sqlQuery;
 
+    QString idTraspaso;
     QString idEmpresa;
     QString idTienda;
     QString idVitrina;
@@ -92,6 +93,7 @@ public:
     void set_row_traspaso(int tmp)          {row_traspaso=tmp;}
     void set_query(QSqlQuery q)             {sqlQuery=q;}
     void set_traspaso(bool tmp)             {traspaso=tmp;}
+    void set_idTraspaso(QString tmp)        {idTraspaso=tmp;}
 
     void enableButtonAceptar();
 

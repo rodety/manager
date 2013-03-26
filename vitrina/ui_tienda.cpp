@@ -133,14 +133,6 @@ void ui_tienda::actualizar_combo_niveles(QString vitrin)
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////CHECKED//////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 void ui_tienda::limpiar_grilla()
 {
     ui->grilla->clear();
@@ -153,9 +145,7 @@ void ui_tienda::set_dimension_grilla()      //podria recibir de frente filas y c
     QSqlQuery query;
     query.prepare("SELECT numeroFila,numeroColumna FROM Vitrina WHERE Ubicacion_idUbicacion=?");
     query.bindValue(0,idVitrina);
-    query.exec();
-
-    query.next();
+    query.exec();    query.next();
 
     int fila = query.value(0).toInt();
     int columna = query.value(1).toInt();
@@ -205,8 +195,7 @@ void ui_tienda::habilitar_botones()
         ui->pushButton_traspaso->close();
         ui->button_traspaso_almacen->close();
     }
-    //else
-        //ui->pushButton_aceptar_traspaso->close();
+
 }
 
 //ACCION CUANDO CAMBIA LOS COMBOS
@@ -550,6 +539,30 @@ void ui_tienda::on_pushButton_traspaso_clicked()
 
 void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
 {
+    if(traspaso)
+    {
+        int row=ui->grilla->currentRow()+1;
+        int col=ui->grilla->currentColumn()+1;
+        int level=actual_nivel;
+        //aki va traspaso de almacen a vitrina
+
+        Sesion* s= Sesion::getSesion();
+
+        QSqlQuery query;
+        query.prepare("INSERT INTO Producto_has_Vitrina(Producto_idProducto,Vitrina_Ubicacion_idUbicacion,fila,columna,nivel,fecha,Colaborador_Persona_idPersona) VALUES(?,?,?,?,?,now(),?) ");
+        query.bindValue(0,idTraspaso);
+        query.bindValue(1,idVitrina);
+        query.bindValue(2,row);
+        query.bindValue(3,col);
+        query.bindValue(4,level);
+        query.bindValue(5,s->getIdColaborador());
+        cout<<idTraspaso.toStdString()<<endl;
+        cout<<query.exec()<<endl;
+        cout<<query.lastError().text().toStdString()<<endl;
+
+        close();
+    }
+
     if(caso)
     if(idItem.isEmpty())
     {
