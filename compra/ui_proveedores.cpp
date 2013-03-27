@@ -111,3 +111,16 @@ void ui_proveedores::on_tableWidget_itemClicked(QTableWidgetItem *item)
     QString raz_social = ui->tableWidget->item(count,1)->text();
     set_currentidProveedor(Proveedores[raz_social]);
 }
+
+
+
+void ui_proveedores::on_tableWidget_itemDoubleClicked(QTableWidgetItem *item)
+{
+    int count = item->row();
+    QString ruc = ui->tableWidget->item(count,0)->text();
+    QString raz_social = ui->tableWidget->item(count,1)->text();
+    QString direccion = ui->tableWidget->item(count,2)->text();
+    set_currentidProveedor(Proveedores[raz_social]);
+    emit sentidProveedor(currentIdProveedor,ruc,raz_social,direccion);
+    this->close();
+}

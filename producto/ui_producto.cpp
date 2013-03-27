@@ -22,6 +22,7 @@ ui_producto::ui_producto(QWidget *parent) :
     pag=0;
     connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (agregar_etiqueta(const QModelIndex & )));
     connect(ui->tableView_etiquetas, SIGNAL(doubleClicked(const QModelIndex & )), this, SLOT(eliminar_etiqueta(const QModelIndex &)));
+
 }
 
 
@@ -690,6 +691,12 @@ void ui_producto::on_btnToVitrina_clicked()
 }
 
 void ui_producto::on_btnToAlmacen_clicked()
+{
+
+
+}
+
+void ui_producto::on_tableView_productos_clicked(const QModelIndex &index)
 {
 
 

@@ -25,6 +25,7 @@ compras::compras(QWidget *parent) :
     ui->lineEdit_subtotal->setReadOnly(true);
     ui->lineEdit_igv->setReadOnly(true);
     ui->lineEdit_total->setReadOnly(true);
+    actualCompra = new compra;
 
 }
 
@@ -51,6 +52,8 @@ void compras::on_pushButton_buscar_proveedor_clicked()
 {
     ui_proveedores * form = new ui_proveedores;
     form->show();
+
+    connect(form,SIGNAL(sentidProveedor(QString,QString,QString,QString)),this,SLOT(getProveedor(QString,QString,QString,QString)));
     /*for (int i=ui->tableWidget_proveedores->rowCount()-1; i >= 0; --i)
         ui->tableWidget_proveedores->removeRow(i);
 
@@ -77,6 +80,7 @@ void compras::on_pushButton_buscar_proveedor_clicked()
 void compras::on_pushButton_buscar_producto_clicked()
 {
     ui_producto * form = new ui_producto;
+    form->setWindowTitle("Buscar Proveedor");
     form->show();
     /*for (int i=ui->tableWidget_productos->rowCount()-1; i >= 0; --i)
         ui->tableWidget_productos->removeRow(i);
@@ -411,5 +415,14 @@ void compras::on_pushButton_eliminar_compra_clicked()
         case QMessageBox::Cancel:
             break;
     }
+
+}
+void compras::getProveedor(QString id,QString ruc,QString razon,QString direccion)
+{
+    actualCompra->setDatosProveedor(id,ruc,razon,direccion);
+    ui->lineEdit_ruc->setText(ruc);
+    ui->lineEdit_proveedor->setText(razon);
+    ui->lineEdit_direccion->setText(direccion);
+
 
 }

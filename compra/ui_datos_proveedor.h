@@ -15,6 +15,7 @@ private:
     ui_proveedores* ui_proveedores_parent;
     int behavior;
 
+
 public:
     void setIdProveedor(QString id);
     QString getIdProveedor();
@@ -23,6 +24,10 @@ public:
     int get_behavior();
     void set_behavior(int);
     void update_form();
+public slots:
+signals:
+    void sentIdProveedor(QString);
+
 
 public:
     explicit ui_datos_proveedor(QWidget *parent = 0);
@@ -31,7 +36,6 @@ public:
 private slots:
 
     void on_pushButton_save_clicked();
-
     void on_pushButton_cancel_clicked();
 
 private:

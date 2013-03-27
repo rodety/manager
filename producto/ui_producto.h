@@ -48,6 +48,8 @@ private slots:
 
     void on_btnToVitrina_clicked();
     void on_btnToAlmacen_clicked();
+    void on_tableView_productos_clicked(const QModelIndex &index);
+
 
 private:
     Ui::ui_producto *ui;
@@ -57,6 +59,12 @@ private:
 
     int act;
     int pag;
+
+public slots:
+signals:
+    void sentProductoCompra(QString,QString,QString,QString,QString);//id,codigo,descripcion,precioCompra,Descuento
+    void sentProductoVenta(QString,QString,QString,QString,QString,QString);//id,codigo,descripcion,precioVenta,Descuento,stock
+
 };
 
 #endif // UI_PRODUCTO_H

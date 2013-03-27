@@ -25,6 +25,10 @@ public:
 public:
     explicit ui_proveedores(QWidget *parent = 0);
     ~ui_proveedores();
+public slots:
+signals:
+    void sentidProveedor(QString,QString,QString,QString);//Enviando Id,ruc,razonSocial,Direccion;
+
     
 private slots:
 
@@ -35,6 +39,10 @@ private slots:
     void on_pushButton_sup_proveedor_clicked();
 
     void on_tableWidget_itemClicked(QTableWidgetItem *item);
+
+
+
+    void on_tableWidget_itemDoubleClicked(QTableWidgetItem *item);
 
 private:
     Ui::ui_proveedores *ui;

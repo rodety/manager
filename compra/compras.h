@@ -4,6 +4,7 @@
 #include <QWidget>
 #include<QTableWidgetItem>
 #include<map>
+#include <compra/compra.h>
 using namespace std;
 
 namespace Ui {
@@ -17,6 +18,8 @@ public:
     void setCant(int cant){currentCant = cant;}
     void addItemProductos(int cant, int row);
     void updateListCompras();
+public slots:
+    void getProveedor(QString,QString,QString,QString);
 public:
     explicit compras(QWidget *parent = 0);
     ~compras();
@@ -62,6 +65,7 @@ private:
     double compra_total;
     QString current_idCompras;
     int currentItem;
+    compra* actualCompra;
 };
 
 #endif // COMPRAS_H

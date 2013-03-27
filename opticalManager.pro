@@ -109,7 +109,8 @@ SOURCES += main.cpp\
     compra/compras.cpp \
     compra/ui_proveedores.cpp \
     compra/ui_datos_proveedor.cpp \
-    compra/proveedor.cpp
+    compra/proveedor.cpp \
+    compra/compra.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -188,7 +189,8 @@ HEADERS  += mainwindow.h \
     compra/compras.h \
     compra/ui_proveedores.h \
     compra/ui_datos_proveedor.h \
-    compra/proveedor.h
+    compra/proveedor.h \
+    compra/compra.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \
