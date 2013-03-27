@@ -101,3 +101,9 @@ void MainWindow::on_actionReportes_triggered()
     formReporte = new ui_reporte;
     setCentralWidget(formReporte);
 }
+
+void MainWindow::on_actionCompras_triggered()
+{
+    formCompras = new compras;
+    setCentralWidget(formCompras);
+}

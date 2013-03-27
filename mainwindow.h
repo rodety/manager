@@ -12,6 +12,8 @@
 #include "configuracion/ui_configuracion.h"
 #include <venta/uiventas.h>
 #include <reporte/ui_reporte.h>
+#include <compra/compras.h>
+
 namespace Ui {
 class MainWindow;
 }
@@ -40,6 +42,8 @@ private slots:
 
     void on_actionReportes_triggered();
 
+    void on_actionCompras_triggered();
+
 private:
     Ui::MainWindow *ui;
     std::vector<QAction*> modulos;
@@ -52,6 +56,8 @@ private:
     ui_configuracion *formConfiguracion;
     uiventas * formVentas;
     ui_reporte* formReporte;
+    compras* formCompras;
+
 };
 
 #endif // MAINWINDOW_H

@@ -103,7 +103,13 @@ SOURCES += main.cpp\
     cliente/documento.cpp \
     reporte/ui_reporte.cpp \
     venta/uiventas.cpp \
-    producto/tipootros.cpp
+    producto/tipootros.cpp \
+    compra/ui_cant_item.cpp \
+    compra/ui_datos_compras.cpp \
+    compra/compras.cpp \
+    compra/ui_proveedores.cpp \
+    compra/ui_datos_proveedor.cpp \
+    compra/proveedor.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -176,7 +182,13 @@ HEADERS  += mainwindow.h \
     cliente/documento.h \
     reporte/ui_reporte.h \
     venta/uiventas.h \
-    producto/tipootros.h
+    producto/tipootros.h \
+    compra/ui_cant_item.h \
+    compra/ui_datos_compras.h \
+    compra/compras.h \
+    compra/ui_proveedores.h \
+    compra/ui_datos_proveedor.h \
+    compra/proveedor.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \
@@ -205,10 +217,17 @@ FORMS    += mainwindow.ui \
     vitrina/ui_agregar_empresa.ui \
     configuracion/ui_configuracion.ui \
     reporte/ui_reporte.ui \
-    venta/uiventas.ui
+    venta/uiventas.ui \
+    compra/ui_cant_item.ui \
+    compra/ui_datos_compras.ui \
+    compra/compras.ui \
+    compra/ui_proveedores.ui \
+    compra/ui_datos_proveedor.ui
 
 RESOURCES += \
     Icons/Icons.qrc \
+
+
 
 
 OTHER_FILES += \
