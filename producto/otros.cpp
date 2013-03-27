@@ -131,9 +131,7 @@ bool otros::eliminar()
 QSqlQueryModel* otros::mostrar()
 {
     QSqlQueryModel* model=new QSqlQueryModel;
-//    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',c.nombre as 'Color',t.nombre as 'Talla',ca.nombre as 'Calidad',to.nombre as 'Tipo' FROM Producto p,Otros |o,Estado e,Marca m,Color c,Talla t,Calidad ca,TipoOtros to WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=o.Producto_idProducto AND o.Color_idColor=c.idColor AND o.Talla_idTalla=t.idTalla AND o.Calidad_idCalidad=ca.idCalidad AND o.TipoOtros_idTipoOtros=to.idTipoOtros");
-    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',c.nombre as 'Color',t.nombre as 'Talla',ca.nombre as 'Calidad' FROM Producto p,Otros o,Estado e,Marca m,Color c,Talla t,Calidad ca WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=o.Producto_idProducto AND o.Color_idColor=c.idColor AND o.Talla_idTalla=t.idTalla AND o.Calidad_idCalidad=ca.idCalidad");
-
+    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',c.nombre as 'Color',t.nombre as 'Talla',ca.nombre as 'Calidad',tpo.nombre as 'Tipo' FROM Producto p,Otros o,Estado e,Marca m,Color c,Talla t,Calidad ca,TipoOtros tpo WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=o.Producto_idProducto AND o.Color_idColor=c.idColor AND o.Talla_idTalla=t.idTalla AND o.Calidad_idCalidad=ca.idCalidad AND o.TipoOtros_idTipoOtros=tpo.idTipoOtros");
     return model;
 }
 
