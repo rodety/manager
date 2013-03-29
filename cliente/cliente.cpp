@@ -248,7 +248,7 @@ bool cliente::eliminar()
 QSqlQueryModel* cliente::mostrar()
 {
     QSqlQueryModel* model=new QSqlQueryModel;
-    model->setQuery("SELECT nombre,numeroDocumento as 'Numero de Documento',nombres as 'Nombres',primer_apellido as 'Apellido Paterno',segundo_apellido as 'Apellido Materno',telefono as 'Telefono',movil as 'Celular' FROM Cliente,Documento WHERE idDocumento=Documento_idDocumento1");
+    model->setQuery("SELECT nombre as 'Documento',numeroDocumento as 'Numero de Documento',nombres as 'Nombres',primer_apellido as 'Apellido Paterno',segundo_apellido as 'Apellido Materno',telefono as 'Telefono',movil as 'Celular' FROM Cliente,Documento WHERE idDocumento=Documento_idDocumento1");
     return model;
 }
 

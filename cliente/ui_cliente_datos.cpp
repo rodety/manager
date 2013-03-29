@@ -246,5 +246,5 @@ void ui_cliente_datos::on_pushButton_clicked()
 
 void ui_cliente_datos::on_pushButton_xDocumento_clicked()
 {
-
+    ui->comboBox_tipoDoc->eliminar();
 }

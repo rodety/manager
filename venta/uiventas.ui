@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <property name="styleSheet">
@@ -31,64 +31,71 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="5" column="2">
+           <item row="6" column="2">
             <widget class="QPushButton" name="pushButton">
              <property name="text">
               <string>Buscar&gt;</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
+           <item row="5" column="0">
             <widget class="QLabel" name="label_4">
              <property name="text">
               <string>Direccion</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="1">
+           <item row="6" column="1">
             <widget class="QLineEdit" name="lineEdit_4"/>
            </item>
-           <item row="5" column="0">
+           <item row="6" column="0">
             <widget class="QLabel" name="label_5">
              <property name="text">
               <string>Cod Producto</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
+           <item row="5" column="1">
             <widget class="QLineEdit" name="lineEdit_3"/>
            </item>
-           <item row="3" column="1">
+           <item row="4" column="1">
             <widget class="QLineEdit" name="lineEdit_2"/>
            </item>
-           <item row="2" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="label_2">
              <property name="text">
               <string>Razon Social</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="4" column="0">
             <widget class="QLabel" name="label_3">
              <property name="text">
               <string>Ruc:</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="3" column="1">
             <widget class="QLineEdit" name="lineEdit"/>
            </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="radioButton_3">
              <property name="text">
-              <string>Optica Jireh</string>
+              <string>Boleta</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
-            <widget class="QLabel" name="label_19">
+           <item row="2" column="1">
+            <widget class="QRadioButton" name="radioButton_4">
              <property name="text">
-              <string>Numero #001-15</string>
+              <string>Factura</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>Cotizacion</string>
              </property>
             </widget>
            </item>
@@ -109,35 +116,49 @@
          </item>
          <item>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="1" column="0">
+           <item row="2" column="0">
             <widget class="QLabel" name="label_17">
              <property name="text">
               <string>Fecha</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="3" column="1">
             <widget class="QDateTimeEdit" name="dateTimeEdit"/>
            </item>
-           <item row="2" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="label_18">
              <property name="text">
               <string>Entrega</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="2" column="1">
             <widget class="QDateEdit" name="dateEdit"/>
            </item>
-           <item row="0" column="0">
+           <item row="1" column="0">
             <widget class="QLabel" name="label_20">
              <property name="text">
               <string>Usuario</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
+           <item row="1" column="1">
             <widget class="QLineEdit" name="lineEdit_12"/>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_19">
+             <property name="text">
+              <string>Numero #001-15</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Optica Jireh</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -203,7 +224,7 @@
            <item row="4" column="0">
             <widget class="QLabel" name="label_11">
              <property name="text">
-              <string>T. Cancelado</string>
+              <string>M. Entregado</string>
              </property>
             </widget>
            </item>
@@ -233,24 +254,24 @@
            <item row="5" column="1">
             <widget class="QLineEdit" name="lineEdit_11"/>
            </item>
-           <item row="1" column="2">
-            <widget class="QRadioButton" name="radioButton_2">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_13">
              <property name="text">
-              <string>Tarjeta</string>
+              <string>Tipo de Pago</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QRadioButton" name="radioButton">
+            <widget class="QCheckBox" name="checkBox">
              <property name="text">
               <string>Efectivo</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_13">
+           <item row="1" column="2">
+            <widget class="QCheckBox" name="checkBox_2">
              <property name="text">
-              <string>Tipo de Pago</string>
+              <string>Tarjeta</string>
              </property>
             </widget>
            </item>
