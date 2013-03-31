@@ -36,6 +36,8 @@ private slots:
 
     void on_pushButton_xtipo_clicked();
 
+    void on_pushButton_xgenero_clicked();
+
 private:
     Ui::ui_agregarOtros *ui;
     bool modo;//0 agregar 1 actualizar

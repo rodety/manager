@@ -20,7 +20,8 @@ ui_producto::ui_producto(QWidget *parent) :
     system("mkdir -p etiquetas/imagenes");
     act=-1;
     pag=0;
-    connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (agregar_etiqueta(const QModelIndex & )));
+
+
     connect(ui->tableView_etiquetas, SIGNAL(doubleClicked(const QModelIndex & )), this, SLOT(eliminar_etiqueta(const QModelIndex &)));
 
 }
@@ -696,8 +697,79 @@ void ui_producto::on_btnToAlmacen_clicked()
 
 }
 
-void ui_producto::on_tableView_productos_clicked(const QModelIndex &index)
-{
 
+void ui_producto::setComportamiento(int a)
+{
+    comportamiento = a;
+    if(a == 0)
+    {
+        connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (agregar_etiqueta(const QModelIndex & )));
+    }
+    if(a == 1)
+    {
+        connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (agregar_etiqueta(const QModelIndex & )));
+    }
+}
+
+
+void ui_producto::enviar_producto(const QModelIndex & model)
+{
+    QString codigo,descripcion,precioCompra,descuento,tipoLuna,tratamiento,valorInicial,ValorFinal,marca,forma,color,tamano,calidad,presentacion,
+            tinte,contacuoso,diseno,tipoLente,potencia,curva,diametro,tiempouso,material;
+    int fila =0;
+    codigo=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString();
+
+    if(codigo.size()==0)
+        return;
+    if(posicion==1)
+    {
+        descripcion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString();
+        precioCompra=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString();
+        descuento=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString();
+        tipoLuna=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString();
+        tratamiento=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString();
+        valorInicial=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString();
+        ValorFinal=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString();
+        descripcion+= " " +tipoLuna+" "+tratamiento+" "+valorInicial+" "+ValorFinal;
+    }
+
+    if(posicion==2)
+    {
+        descripcion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString();
+        precioCompra=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString();
+        descuento=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString();
+
+        marca=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        forma=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString();
+        color=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString();
+        tamano=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString();
+        calidad=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString();
+        descripcion+= " " +marca+" "+forma+" "+color+" "+tamano+" "+calidad;
+    }
+    if(posicion==3)
+    {
+        descripcion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString();
+        precioCompra=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString();
+        descuento=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString();
+
+        marca=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        presentacion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString();
+        tinte=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        contacuoso=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        diseno=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        tipoLente=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        potencia=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        curva=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        diametro=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        tiempouso=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        material=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        descripcion+= " " +marca+" "+presentacion+" "+tinte+" "+contacuoso+" "+diseno+" "+tipoLente+" "+potencia+
+                " "+curva+" "+diametro+" "+tiempouso+" "+material;
+
+    }
+
+    //void sentProductoCompra(QString,QString,QString,QString);//codigo,descripcion,precioCompra,Descuento
+    //emit sentProductoCompra(codigo,)
+    //void sentProductoCompra(QString,QString,QString,QString,QString);//id,codigo,descripcion,precioCompra,Descuento*/
 
 }

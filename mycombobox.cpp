@@ -182,6 +182,14 @@ void MyComboBox::agregar()
         pTipo.agregar();
         ActualizarItems(tipoOtros::mostrar());
     }
+    if(tipo=="genero")
+    {
+        genero pGenero;
+        pGenero.setNombre(this->itemText(this->count()-1));
+        pGenero.agregar();
+        ActualizarItems(genero::mostrar());
+    }
+
     this->setCurrentIndex(this->count()-2);
 }
 
@@ -376,6 +384,16 @@ void MyComboBox::eliminar()
         pTipo.completar();
         if(pTipo.eliminar())
             ActualizarItems(tipoOtros::mostrar());
+        else
+            error=true;
+    }
+    if(tipo=="genero")
+    {
+        genero pGenero;
+        pGenero.setNombre(this->currentText());
+        pGenero.completar();
+        if(pGenero.eliminar())
+            ActualizarItems(genero::mostrar());
         else
             error=true;
     }

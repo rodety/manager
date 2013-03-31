@@ -2,7 +2,7 @@
 #define MONTURA_H
 
 #include <producto/producto.h>
-
+#include <producto/genero.h>
 class montura:public producto
 {
 private:
@@ -10,6 +10,7 @@ private:
     color pColor;
     tamanio pTamanio;
     calidad pCalidad;
+    genero pGenero;
 public:
     montura();
 
@@ -17,11 +18,14 @@ public:
     color getColor();
     tamanio getTamanio();
     calidad getCalidad();
+    genero getGenero();
 
     void setForma(forma tmp);
     void setColor(color tmp);
     void setTamanio(tamanio tmp);
     void setCalidad(calidad tmp);
+    void setGenero(genero tmp);
+
 
     bool agregar();
     bool actualizar();

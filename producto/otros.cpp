@@ -20,6 +20,10 @@ tipoOtros otros::getTipoOtros()
 {
     return pTipoOtros;
 }
+genero otros::getGenero()
+{
+    return pGenero;
+}
 
 void otros::setColor(color tmp)
 {
@@ -36,6 +40,10 @@ void otros::setCalidad(calidad tmp)
 void otros::setTipoOtros(tipoOtros tmp)
 {
     pTipoOtros=tmp;
+}
+void otros::setGenero(genero tmp)
+{
+    pGenero=tmp;
 }
 
 bool otros::agregar()
@@ -63,12 +71,13 @@ bool otros::agregar()
             idProducto=query.value(0).toString();
         }
         query.clear();
-        query.prepare("INSERT INTO Otros(Producto_idProducto,Color_idColor,Talla_idTalla,Calidad_idCalidad,TipoOtros_idTipoOtros) VALUES(?,?,?,?,?)");
+        query.prepare("INSERT INTO Otros(Producto_idProducto,Color_idColor,Talla_idTalla,Calidad_idCalidad,TipoOtros_idTipoOtros,Genero_idGenero) VALUES(?,?,?,?,?,?)");
         query.bindValue(0,idProducto);
         query.bindValue(1,pColor.getIdColor());
         query.bindValue(2,pTalla.getIdTalla());
         query.bindValue(3,pCalidad.getIdCalidad());
         query.bindValue(4,pTipoOtros.getIdTipoOtros());
+        query.bindValue(5,pGenero.getIdgenero());
         if(query.exec())
             return true;
         else
@@ -95,12 +104,13 @@ bool otros::actualizar()
     if(query.exec())
     {
         query.clear();
-        query.prepare("UPDATE Otros SET Color_idColor=?,Talla_idTalla=?,Calidad_idCalidad=?,TipoOtros_idTipoOtros=? WHERE Producto_idProducto=?");
+        query.prepare("UPDATE Otros SET Color_idColor=?,Talla_idTalla=?,Calidad_idCalidad=?,TipoOtros_idTipoOtros=?,Genero_idGenero=? WHERE Producto_idProducto=?");
         query.bindValue(0,pColor.getIdColor());
         query.bindValue(1,pTalla.getIdTalla());
         query.bindValue(2,pCalidad.getIdCalidad());
         query.bindValue(3,pTipoOtros.getIdTipoOtros());
-        query.bindValue(4,idProducto);
+        query.bindValue(4,pGenero.getIdgenero());
+        query.bindValue(5,idProducto);
         if(query.exec())
             return true;
         else
@@ -131,14 +141,14 @@ bool otros::eliminar()
 QSqlQueryModel* otros::mostrar()
 {
     QSqlQueryModel* model=new QSqlQueryModel;
-    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',c.nombre as 'Color',t.nombre as 'Talla',ca.nombre as 'Calidad',tpo.nombre as 'Tipo' FROM Producto p,Otros o,Estado e,Marca m,Color c,Talla t,Calidad ca,TipoOtros tpo WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=o.Producto_idProducto AND o.Color_idColor=c.idColor AND o.Talla_idTalla=t.idTalla AND o.Calidad_idCalidad=ca.idCalidad AND o.TipoOtros_idTipoOtros=tpo.idTipoOtros");
+    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',c.nombre as 'Color',t.nombre as 'Talla',ca.nombre as 'Calidad',tpo.nombre as 'Tipo' FROM Producto p,Otros o,Estado e,Marca m,Color c,Talla t,Calidad ca,TipoOtros tpo, Genero ge WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=o.Producto_idProducto AND o.Color_idColor=c.idColor AND o.Talla_idTalla=t.idTalla AND o.Calidad_idCalidad=ca.idCalidad AND o.TipoOtros_idTipoOtros=tpo.idTipoOtros AND o.Genero_idGenero=ge.idGenero");
     return model;
 }
 
 bool otros::completar()
 {
     QSqlQuery query;
-    query.prepare("SELECT p.idProducto,p.accesorios,p.observaciones FROM Producto p,Otros o WHERE p.idProducto=o.Producto_idProducto AND p.codigo=? AND p.descripcion=? AND p.precioCompra=? AND p.precioVenta=? AND p.precioDescuento=? AND p.stock=? AND p.Estado_idEstado=? AND p.Marca_idMarca=? AND o.Color_idColor=? AND o.Talla_idTalla=? AND o.Calidad_idCalidad=? AND o.TipoOtros_idTipoOtros=?");//falta seleccionar colaborador
+    query.prepare("SELECT p.idProducto,p.accesorios,p.observaciones FROM Producto p,Otros o WHERE p.idProducto=o.Producto_idProducto AND p.codigo=? AND p.descripcion=? AND p.precioCompra=? AND p.precioVenta=? AND p.precioDescuento=? AND p.stock=? AND p.Estado_idEstado=? AND p.Marca_idMarca=? AND o.Color_idColor=? AND o.Talla_idTalla=? AND o.Calidad_idCalidad=? AND o.TipoOtros_idTipoOtros=? AND o.Genero_idGenero=?");//falta seleccionar colaborador
     query.bindValue(0,codigo);
     query.bindValue(1,descripcion);
     query.bindValue(2,precioCompra);
@@ -151,6 +161,7 @@ bool otros::completar()
     query.bindValue(9,pTalla.getIdTalla());
     query.bindValue(10,pCalidad.getIdCalidad());
     query.bindValue(11,pTipoOtros.getIdTipoOtros());
+    query.bindValue(12,pGenero.getIdgenero());
     if(query.exec())
     {
         if(query.size()!=0)

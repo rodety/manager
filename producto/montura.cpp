@@ -1,5 +1,5 @@
 #include "montura.h"
-
+#include <producto/genero.h>
 montura::montura()
 {
 }
@@ -20,6 +20,11 @@ calidad montura::getCalidad()
 {
     return pCalidad;
 }
+genero montura::getGenero()
+{
+    return pGenero;
+}
+
 
 
 void montura::setForma(forma tmp)
@@ -37,6 +42,11 @@ void montura::setTamanio(tamanio tmp)
 void montura::setCalidad(calidad tmp)
 {
     pCalidad=tmp;
+}
+
+void montura::setGenero(genero tmp)
+{
+    pGenero=tmp;
 }
 
 bool montura::agregar()
@@ -64,12 +74,13 @@ bool montura::agregar()
             idProducto=query.value(0).toString();
         }
         query.clear();
-        query.prepare("INSERT INTO Montura(Producto_idProducto,Forma_idForma,Color_idColor,Tamanio_idTamanio,Calidad_idCalidad) VALUES(?,?,?,?,?)");
+        query.prepare("INSERT INTO Montura(Producto_idProducto,Forma_idForma,Color_idColor,Tamanio_idTamanio,Calidad_idCalidad,Genero_idGenero) VALUES(?,?,?,?,?,?)");
         query.bindValue(0,idProducto);
         query.bindValue(1,pForma.getIdForma());
         query.bindValue(2,pColor.getIdColor());
         query.bindValue(3,pTamanio.getIdTamanio());
         query.bindValue(4,pCalidad.getIdCalidad());
+        query.bindValue(5,pGenero.getIdgenero());
         if(query.exec())
             return true;
         else
@@ -96,12 +107,13 @@ bool montura::actualizar()
     if(query.exec())
     {
         query.clear();
-        query.prepare("UPDATE Montura SET Forma_idForma=?,Color_idColor=?,Tamanio_idTamanio=?,Calidad_idCalidad=? WHERE Producto_idProducto=?");
+        query.prepare("UPDATE Montura SET Forma_idForma=?,Color_idColor=?,Tamanio_idTamanio=?,Calidad_idCalidad=?,Genero_idGenero=? WHERE Producto_idProducto=?");
         query.bindValue(0,pForma.getIdForma());
         query.bindValue(1,pColor.getIdColor());
         query.bindValue(2,pTamanio.getIdTamanio());
         query.bindValue(3,pCalidad.getIdCalidad());
-        query.bindValue(4,idProducto);
+        query.bindValue(4,pGenero.getIdgenero());
+        query.bindValue(5,idProducto);
         if(query.exec())
             return true;
         else
@@ -132,14 +144,13 @@ bool montura::eliminar()
 QSqlQueryModel* montura::mostrar()
 {
     QSqlQueryModel* model=new QSqlQueryModel;
-    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',f.nombre as 'Forma',c.nombre as 'Color',t.nombre as 'Tamaño',ca.nombre as 'Calidad' FROM Producto p,Estado e,Montura mn,Marca m,Forma f,Color c,Tamanio t,Calidad ca WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=mn.Producto_idProducto AND mn.Forma_idForma=f.idForma AND mn.Color_idColor=c.idColor AND mn.Tamanio_idTamanio=t.idTamanio AND mn.Calidad_idCalidad=ca.idCalidad");
-    return model;
+    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',f.nombre as 'Forma',c.nombre as 'Color',t.nombre as 'Tamaño',ca.nombre as 'Calidad',ge.nombre as 'Genero' FROM Producto p,Estado e,Montura mn,Marca m,Forma f,Color c,Tamanio t,Calidad ca, Genero ge WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=mn.Producto_idProducto AND mn.Forma_idForma=f.idForma AND mn.Color_idColor=c.idColor AND mn.Tamanio_idTamanio=t.idTamanio AND mn.Calidad_idCalidad=ca.idCalidad AND ge.Genero_idGenero=ge.idGenero");    return model;
 }
 
 bool montura::completar()
 {
     QSqlQuery query;
-    query.prepare("SELECT p.idProducto,p.accesorios,p.observaciones FROM Producto p,Montura m WHERE p.idProducto=m.Producto_idProducto AND p.codigo=? AND p.descripcion=? AND p.precioCompra=? AND p.precioVenta=? AND p.precioDescuento=? AND p.stock=? AND p.Estado_idEstado=? AND p.Marca_idMarca=? AND m.Forma_idForma=? AND m.Color_idColor=? AND m.Tamanio_idTamanio=? AND Calidad_idCalidad=?");//falta seleccionar colaborador
+    query.prepare("SELECT p.idProducto,p.accesorios,p.observaciones FROM Producto p,Montura m WHERE p.idProducto=m.Producto_idProducto AND p.codigo=? AND p.descripcion=? AND p.precioCompra=? AND p.precioVenta=? AND p.precioDescuento=? AND p.stock=? AND p.Estado_idEstado=? AND p.Marca_idMarca=? AND m.Forma_idForma=? AND m.Color_idColor=? AND m.Tamanio_idTamanio=? AND Calidad_idCalidad=? AND Genero_idGenero=?");//falta seleccionar colaborador
     query.bindValue(0,codigo);
     query.bindValue(1,descripcion);
     query.bindValue(2,precioCompra);
@@ -152,6 +163,7 @@ bool montura::completar()
     query.bindValue(9,pColor.getIdColor());
     query.bindValue(10,pTamanio.getIdTamanio());
     query.bindValue(11,pCalidad.getIdCalidad());
+    query.bindValue(11,pGenero.getIdgenero());
     if(query.exec())
     {
         if(query.size()!=0)

@@ -2,7 +2,7 @@
 #define OTROS_H
 
 #include <producto/producto.h>
-
+#include <producto/genero.h>
 class otros:public producto
 {
 private:
@@ -10,6 +10,7 @@ private:
     talla pTalla;
     calidad pCalidad;
     tipoOtros pTipoOtros;
+    genero pGenero;
 public:
     otros();
 
@@ -17,11 +18,13 @@ public:
     talla getTalla();
     calidad getCalidad();
     tipoOtros getTipoOtros();
+    genero getGenero();
 
     void setColor(color tmp);
     void setTalla(talla tmp);
     void setCalidad(calidad tmp);
     void setTipoOtros(tipoOtros tmp);
+    void setGenero(genero tmp);
 
     bool agregar();
     bool actualizar();

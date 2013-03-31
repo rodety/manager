@@ -10,6 +10,7 @@
 #include <producto/producto.h>
 #include <configuracion/tusuario.h>
 #include <cliente/documento.h>
+#include <producto/genero.h>
 
 class MyComboBox:public QComboBox
 {

@@ -19,6 +19,8 @@ ui_agregarOtros::ui_agregarOtros(QWidget *parent) :
     ui->comboBox_estado->ActualizarItems(estado::mostrar());
     ui->comboBox_tipo->setTipo("tipoOtros");
     ui->comboBox_tipo->ActualizarItems(tipoOtros::mostrar());
+    ui->comboBox_tipo->setTipo("genero");
+    ui->comboBox_genero->ActualizarItems(genero::mostrar());
     modo=0;
     ui->label_estado->hide();
     ui->comboBox_estado->hide();
@@ -52,6 +54,7 @@ void ui_agregarOtros::setOtros(otros* o)
     ui->comboBox_talla->buscarValor(pOtros.getTalla().getNombre());
     ui->comboBox_calidad->buscarValor(pOtros.getCalidad().getNombre());
     ui->comboBox_tipo->buscarValor(pOtros.getTipoOtros().getNombre());
+    ui->comboBox_genero->buscarValor(pOtros.getGenero().getNombre());
     ui->label_estado->show();
     ui->comboBox_estado->show();
     ui->pushButton_xestado->show();
@@ -165,6 +168,13 @@ bool ui_agregarOtros::verificarRestricciones()
             ui->comboBox_estado->setFocus();
             return false;
         }
+    if(!ui->comboBox_genero->selecciono())
+    {
+        box.setText("Seleccione algun Genero");
+        box.exec();
+        ui->comboBox_genero->setFocus();
+        return false;
+    }
     return true;
 }
 
@@ -187,6 +197,8 @@ void ui_agregarOtros::on_pushButton_agregar_clicked()
     talla pTalla;pTalla.setNombre(ui->comboBox_talla->currentText());pTalla.completar();
     calidad pCalidad;pCalidad.setNombre(ui->comboBox_calidad->currentText());pCalidad.completar();
     tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->comboBox_tipo->currentText());pTipoOtros.completar();
+    genero pGenero;pGenero.setNombre(ui->comboBox_genero->currentText());pGenero.completar();
+
     pOtros.setEstado(pEstado);
     pOtros.setMarca(pMarca);
     //colaborador
@@ -194,6 +206,8 @@ void ui_agregarOtros::on_pushButton_agregar_clicked()
     pOtros.setTalla(pTalla);
     pOtros.setCalidad(pCalidad);
     pOtros.setTipoOtros(pTipoOtros);
+    pOtros.setGenero(pGenero);
+
     if(modo==0)//agrego
     {
         pEstado.setNombre("activo");pEstado.completar();
@@ -265,3 +279,8 @@ void ui_agregarOtros::on_pushButton_xtipo_clicked()
 }
 
 
+
+void ui_agregarOtros::on_pushButton_xgenero_clicked()
+{
+    ui->comboBox_genero->eliminar();
+}

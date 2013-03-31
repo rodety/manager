@@ -323,16 +323,6 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="3">
-      <widget class="QLabel" name="label_estado">
-       <property name="text">
-        <string>Estado</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="4">
-      <widget class="MyComboBox" name="comboBox_estado"/>
-     </item>
      <item row="3" column="4">
       <widget class="MyComboBox" name="comboBox_calidad">
        <property name="sizePolicy">
@@ -370,20 +360,6 @@
        </property>
        <property name="autoDefault">
         <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="5">
-      <widget class="QPushButton" name="pushButton_xestado">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../Icons/Icons.qrc">
-         <normaloff>:/Icons/1349716373_monotone_close_exit_delete_small.png</normaloff>:/Icons/1349716373_monotone_close_exit_delete_small.png</iconset>
        </property>
        <property name="flat">
         <bool>true</bool>
@@ -447,6 +423,54 @@
      <item row="5" column="1" colspan="2">
       <widget class="QLineEdit" name="lineEdit_descripcion"/>
      </item>
+     <item row="5" column="3">
+      <widget class="QLabel" name="label_estado">
+       <property name="text">
+        <string>Estado</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="4">
+      <widget class="MyComboBox" name="comboBox_estado"/>
+     </item>
+     <item row="5" column="5">
+      <widget class="QPushButton" name="pushButton_xestado">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/1349716373_monotone_close_exit_delete_small.png</normaloff>:/Icons/1349716373_monotone_close_exit_delete_small.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Genero</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="4">
+      <widget class="MyComboBox" name="comboBox_genero"/>
+     </item>
+     <item row="6" column="5">
+      <widget class="QPushButton" name="pushButton_xgenero">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../Icons/Icons.qrc">
+         <normaloff>:/Icons/1349716373_monotone_close_exit_delete_small.png</normaloff>:/Icons/1349716373_monotone_close_exit_delete_small.png</iconset>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item row="0" column="0">
@@ -482,7 +506,6 @@
   <tabstop>comboBox_forma</tabstop>
   <tabstop>comboBox_calidad</tabstop>
   <tabstop>comboBox_color</tabstop>
-  <tabstop>comboBox_estado</tabstop>
   <tabstop>pushButton_agregar</tabstop>
   <tabstop>pushButton_cancelar</tabstop>
   <tabstop>pushButton_xmarca</tabstop>
@@ -490,7 +513,6 @@
   <tabstop>pushButton_xforma</tabstop>
   <tabstop>pushButton_xcalidad</tabstop>
   <tabstop>pushButton_xcolor</tabstop>
-  <tabstop>pushButton_xestado</tabstop>
  </tabstops>
  <resources>
   <include location="../Icons/Icons.qrc"/>

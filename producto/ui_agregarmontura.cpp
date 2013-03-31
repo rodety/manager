@@ -1,6 +1,6 @@
 #include "ui_agregarmontura.h"
 #include "ui_ui_agregarmontura.h"
-
+#include "genero.h"
 ui_agregarMontura::ui_agregarMontura(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ui_agregarMontura)
@@ -19,6 +19,8 @@ ui_agregarMontura::ui_agregarMontura(QWidget *parent) :
     ui->comboBox_color->ActualizarItems(color::mostrar());
     ui->comboBox_estado->setTipo("estado");
     ui->comboBox_estado->ActualizarItems(estado::mostrar());
+    ui->comboBox_estado->setTipo("genero");
+    ui->comboBox_estado->ActualizarItems(genero::mostrar());
     modo=0;
 
     ui->label_estado->hide();
@@ -53,6 +55,7 @@ void ui_agregarMontura::setMontura(montura* m)
     ui->comboBox_color->buscarValor(pMontura.getColor().getNombre());
     ui->comboBox_tamanio->buscarValor(pMontura.getTamanio().getNombre());
     ui->comboBox_calidad->buscarValor(pMontura.getCalidad().getNombre());
+    ui->comboBox_genero->buscarValor(pMontura.getGenero().getNombre());
     ui->label_estado->show();
     ui->comboBox_estado->show();
     ui->pushButton_xestado->show();
@@ -159,6 +162,13 @@ bool ui_agregarMontura::verificarRestricciones()
             ui->comboBox_estado->setFocus();
             return false;
         }
+    if(!ui->comboBox_genero->selecciono())
+    {
+        box.setText("Seleccione algun Genero");
+        box.exec();
+        ui->comboBox_genero->setFocus();
+        return false;
+    }
     return true;
 }
 
@@ -181,6 +191,7 @@ void ui_agregarMontura::on_pushButton_agregar_clicked()
     color pColor;pColor.setNombre(ui->comboBox_color->currentText());pColor.completar();
     tamanio pTamanio;pTamanio.setNombre(ui->comboBox_tamanio->currentText());pTamanio.completar();
     calidad pCalidad;pCalidad.setNombre(ui->comboBox_calidad->currentText());pCalidad.completar();
+    genero pGenero; pGenero.setNombre(ui->comboBox_genero->currentText()); pGenero.completar();
     pMontura.setEstado(pEstado);
     pMontura.setMarca(pMarca);
     //colaborador
@@ -188,6 +199,7 @@ void ui_agregarMontura::on_pushButton_agregar_clicked()
     pMontura.setColor(pColor);
     pMontura.setTamanio(pTamanio);
     pMontura.setCalidad(pCalidad);
+    pMontura.setGenero(pGenero);
     if(modo==0)//agrego
     {
         pEstado.setNombre("activo");pEstado.completar();
@@ -256,4 +268,9 @@ void ui_agregarMontura::on_pushButton_xcolor_clicked()
 void ui_agregarMontura::on_pushButton_xestado_clicked()
 {
     ui->comboBox_estado->eliminar();
+}
+
+void ui_agregarMontura::on_pushButton_xgenero_clicked()
+{
+    ui->comboBox_genero->eliminar();
 }

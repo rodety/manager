@@ -29,6 +29,8 @@ private slots:
     void on_pushButton_xcolor_clicked();
     void on_pushButton_xestado_clicked();
 
+    void on_pushButton_xgenero_clicked();
+
 signals:
     void guardado();
 private:
