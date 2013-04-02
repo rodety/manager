@@ -19,6 +19,7 @@
 #include <producto/material.h>
 #include <producto/talla.h>
 #include <producto/tipootros.h>
+#include <configuracion/sesion.h>
 
 class producto:public ObjetoPersistente
 {

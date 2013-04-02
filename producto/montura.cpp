@@ -26,7 +26,6 @@ genero montura::getGenero()
 }
 
 
-
 void montura::setForma(forma tmp)
 {
     pForma=tmp;
@@ -51,8 +50,10 @@ void montura::setGenero(genero tmp)
 
 bool montura::agregar()
 {
+    Sesion* s=Sesion::getSesion();
+    int cVitri=0, cAlma=0;
     QSqlQuery query;
-    query.prepare("INSERT INTO Producto(codigo,descripcion,precioCompra,precioVenta,precioDescuento,accesorios,stock,observaciones,Estado_idEstado,Marca_idMarca) VALUES(?,?,?,?,?,?,?,?,?,?)");//falta colaborador
+    query.prepare("INSERT INTO Producto(codigo,descripcion,precioCompra,precioVenta,precioDescuento,accesorios,stock,observaciones,Estado_idEstado,Marca_idMarca,idColaborador,cantidadVitrina,cantidadAlmacen) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
     query.bindValue(0,codigo);
     query.bindValue(1,descripcion);
     query.bindValue(2,precioCompra);
@@ -63,6 +64,9 @@ bool montura::agregar()
     query.bindValue(7,observaciones);
     query.bindValue(8,pEstado.getIdEstado());
     query.bindValue(9,pMarca.getIdMarca());
+    query.bindValue(10,s->getIdColaborador());
+    query.bindValue(11,cVitri);
+    query.bindValue(12,cAlma);
     if(query.exec())
     {
         query.clear();
