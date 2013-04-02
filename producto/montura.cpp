@@ -144,7 +144,7 @@ bool montura::eliminar()
 QSqlQueryModel* montura::mostrar()
 {
     QSqlQueryModel* model=new QSqlQueryModel;
-    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',f.nombre as 'Forma',c.nombre as 'Color',t.nombre as 'Tamaño',ca.nombre as 'Calidad',ge.nombre as 'Genero' FROM Producto p,Estado e,Montura mn,Marca m,Forma f,Color c,Tamanio t,Calidad ca, Genero ge WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=mn.Producto_idProducto AND mn.Forma_idForma=f.idForma AND mn.Color_idColor=c.idColor AND mn.Tamanio_idTamanio=t.idTamanio AND mn.Calidad_idCalidad=ca.idCalidad AND ge.Genero_idGenero=ge.idGenero");    return model;
+    model->setQuery("SELECT codigo,descripcion,e.nombre as 'Estado',precioCompra,precioVenta,precioDescuento,stock,m.nombre as 'Marca',f.nombre as 'Forma',c.nombre as 'Color',t.nombre as 'Tamaño',ca.nombre as 'Calidad',ge.nombre as 'Genero' FROM Producto p,Estado e,Montura mn,Marca m,Forma f,Color c,Tamanio t,Calidad ca, Genero ge WHERE p.Estado_idEstado=e.idEstado AND p.Marca_idMarca=m.idMarca AND p.idProducto=mn.Producto_idProducto AND mn.Forma_idForma=f.idForma AND mn.Color_idColor=c.idColor AND mn.Tamanio_idTamanio=t.idTamanio AND mn.Calidad_idCalidad=ca.idCalidad AND mn.Genero_idGenero=ge.idGenero");    return model;
 }
 
 bool montura::completar()
@@ -163,7 +163,7 @@ bool montura::completar()
     query.bindValue(9,pColor.getIdColor());
     query.bindValue(10,pTamanio.getIdTamanio());
     query.bindValue(11,pCalidad.getIdCalidad());
-    query.bindValue(11,pGenero.getIdgenero());
+    query.bindValue(12,pGenero.getIdgenero());
     if(query.exec())
     {
         if(query.size()!=0)

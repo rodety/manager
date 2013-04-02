@@ -40,7 +40,7 @@ bool genero::actualizar()
 bool genero::eliminar()
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM genero WHERE idgenero=?");
+    query.prepare("DELETE FROM Genero WHERE idGenero=?");
     query.bindValue(0,idgenero);
     if(query.exec())
         return true;
@@ -58,7 +58,7 @@ QSqlQueryModel* genero::mostrar()
 bool genero::completar()
 {
     QSqlQuery query;
-    query.prepare("SELECT idgenero FROM Genero WHERE nombre=?");
+    query.prepare("SELECT idGenero FROM Genero WHERE nombre=?");
     query.bindValue(0,nombre);
     if(query.exec())
     {

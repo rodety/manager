@@ -19,7 +19,7 @@ ui_agregarOtros::ui_agregarOtros(QWidget *parent) :
     ui->comboBox_estado->ActualizarItems(estado::mostrar());
     ui->comboBox_tipo->setTipo("tipoOtros");
     ui->comboBox_tipo->ActualizarItems(tipoOtros::mostrar());
-    ui->comboBox_tipo->setTipo("genero");
+    ui->comboBox_genero->setTipo("genero");
     ui->comboBox_genero->ActualizarItems(genero::mostrar());
     modo=0;
     ui->label_estado->hide();

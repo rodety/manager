@@ -157,12 +157,15 @@ void ui_producto::on_pushButton_editar_clicked()
             color pColor;pColor.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pColor.completar();
             tamanio pTamanio;pTamanio.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pTamanio.completar();
             calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pCalidad.completar();
+            genero pGenero;pGenero.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pGenero.completar();
+
             productoActual.setEstado(pEstado);
             productoActual.setMarca(pMarca);
             productoActual.setForma(pForma);
             productoActual.setColor(pColor);
             productoActual.setTamanio(pTamanio);
             productoActual.setCalidad(pCalidad);
+            productoActual.setGenero(pGenero);
             productoActual.completar();
 
             ui_agregarMontura* form=new ui_agregarMontura;
@@ -225,13 +228,17 @@ void ui_producto::on_pushButton_editar_clicked()
             talla pTalla;pTalla.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pTalla.completar();
             calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pCalidad.completar();
             tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pTipoOtros.completar();
+            genero pGenero;pGenero.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pGenero.completar();
+
             productoActual.setEstado(pEstado);
             productoActual.setMarca(pMarca);
             productoActual.setColor(pColor);
             productoActual.setTalla(pTalla);
             productoActual.setCalidad(pCalidad);
             productoActual.setTipoOtros(pTipoOtros);
+            productoActual.setGenero(pGenero);
             productoActual.completar();
+
 
             ui_agregarOtros* form=new ui_agregarOtros;
             form->setModo(true);
@@ -289,6 +296,7 @@ void ui_producto::on_pushButton_eliminar_clicked()
                     productoActual.setValorInicial(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());
                     productoActual.setValorFinal(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());
                     productoActual.setPrecio(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());
+
                     productoActual.setEstado(pEstado);
                     productoActual.setDiametro(pDiametro);
                     productoActual.setCalidad(pCalidad);
@@ -314,12 +322,14 @@ void ui_producto::on_pushButton_eliminar_clicked()
                     color pColor;pColor.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pColor.completar();
                     tamanio pTamanio;pTamanio.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pTamanio.completar();
                     calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pCalidad.completar();
+                    genero pGenero;pGenero.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pGenero.completar();
                     productoActual.setEstado(pEstado);
                     productoActual.setMarca(pMarca);
                     productoActual.setForma(pForma);
                     productoActual.setColor(pColor);
                     productoActual.setTamanio(pTamanio);
                     productoActual.setCalidad(pCalidad);
+                    productoActual.setGenero(pGenero);
                     productoActual.completar();
 
                     productoActual.eliminar();
@@ -353,7 +363,7 @@ void ui_producto::on_pushButton_eliminar_clicked()
                     productoActual.setCurvaBase(pCurvaBase);
                     productoActual.setDiametro(pDiametro);
                     productoActual.setTiempoUso(pTiempoUso);
-                    productoActual.setMaterial(pMaterial);
+                    productoActual.setMaterial(pMaterial);                    
                     productoActual.completar();
 
                     productoActual.eliminar();
@@ -374,12 +384,14 @@ void ui_producto::on_pushButton_eliminar_clicked()
                     talla pTalla;pTalla.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pTalla.completar();
                     calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pCalidad.completar();
                     tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pTipoOtros.completar();
+                    genero pGenero;pGenero.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pGenero.completar();
                     productoActual.setEstado(pEstado);
                     productoActual.setMarca(pMarca);
                     productoActual.setColor(pColor);
                     productoActual.setTalla(pTalla);
                     productoActual.setCalidad(pCalidad);
                     productoActual.setTipoOtros(pTipoOtros);
+                    productoActual.setGenero(pGenero);
                     productoActual.completar();
 
                     productoActual.eliminar();

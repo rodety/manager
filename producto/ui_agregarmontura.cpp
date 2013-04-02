@@ -19,8 +19,8 @@ ui_agregarMontura::ui_agregarMontura(QWidget *parent) :
     ui->comboBox_color->ActualizarItems(color::mostrar());
     ui->comboBox_estado->setTipo("estado");
     ui->comboBox_estado->ActualizarItems(estado::mostrar());
-    ui->comboBox_estado->setTipo("genero");
-    ui->comboBox_estado->ActualizarItems(genero::mostrar());
+    ui->comboBox_genero->setTipo("genero");
+    ui->comboBox_genero->ActualizarItems(genero::mostrar());
     modo=0;
 
     ui->label_estado->hide();
