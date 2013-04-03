@@ -16,9 +16,8 @@ ui_tienda::ui_tienda(QWidget *parent) :
     ui(new Ui::ui_tienda)
 {
     ui->setupUi(this);
-    //ui->grilla->setModel(tienda::mostrar());
     actualizar_combo_empresa();
-    caso=false;
+    caso=false;    traspaso=false;
     habilitar_botones();
     actual=Empresa;
     ui->pushButton_aceptar_traspaso->hide();    

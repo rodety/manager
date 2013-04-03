@@ -5,6 +5,7 @@
 #include <QTableWidgetItem>
 #include <map>
 #include <QSqlQuery>
+#include <producto/montura.h>
 
 using namespace std;
 
@@ -19,12 +20,15 @@ class ui_almacen : public QWidget
 private:
     QSqlQuery sqlQuery;
     bool fromVitrina;
+    bool toAlmacen;
 
     QString currentIdEmpresa;
     QString currentIdTienda;
     QString currentIdAlmacen;
     QString currentIdAndamio;
     QString currentIdContenedor;
+
+    QString currentCod;
 
     //key = name, map = id_entity;
     map<QString,QString> Empresas;
@@ -42,12 +46,14 @@ public:
     QString get_currentIdContenedor();
 
     void setFromVitrina(bool b);
+    void setToAlmacen(bool b);
 
     void set_currentIdEmpresa(QString);
     void set_currentIdTienda(QString);
     void set_currentIdAlmacen(QString);
     void set_currentIdAndamio(QString);
     void set_currentIdContenedor(QString);
+    void set_currentCode(QString);
     void set_query(QSqlQuery query);
 
     void update_comboBox_Empresa();

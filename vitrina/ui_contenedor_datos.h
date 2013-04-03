@@ -18,7 +18,6 @@ private:
     ui_almacen* ui_almacen_parent;
     int behavior;
 
-
 public:
 
     QString get_idContenedor();
@@ -44,7 +43,7 @@ public:
 public:
     explicit ui_contenedor_datos(QWidget *parent = 0);
     ~ui_contenedor_datos();
-    
+
 private slots:
     void on_pushButton_salir_clicked();
 

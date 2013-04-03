@@ -696,7 +696,6 @@ void ui_producto::on_btnToVitrina_clicked()
     idProducto=query.value(0).toString();
 
     ui_tienda* tienda= new ui_tienda;
-//    tienda->set_idItem_tras(idProducto);
     tienda->set_idTraspaso(idProducto);
     tienda->set_traspaso(true);
     tienda->habilitar_botones();
@@ -706,8 +705,14 @@ void ui_producto::on_btnToVitrina_clicked()
 
 void ui_producto::on_btnToAlmacen_clicked()
 {
+    int row=ui->tableView_productos->currentIndex().row();
+    QModelIndex ind=ui->tableView_productos->model()->index(row,0);
+    QString cod=ui->tableView_productos->model()->data(ind).toString();
 
-
+    ui_almacen* almacen= new ui_almacen;
+    almacen->setToAlmacen(true);
+    almacen->set_currentCode(cod);
+    almacen->show();
 }
 
 
