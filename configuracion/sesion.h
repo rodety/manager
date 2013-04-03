@@ -41,9 +41,7 @@ private:
     static int tiempoEspera;    ///<Tiempo de bloqueo de el inicio
     static int idEmpresa;       ///<Empresa en la que se inicio sesion
     static int idTienda;       ///<Tienda en la que se inicio sesion
-    static double impuesto;          ///<Igv
-
-
+    static double impuesto;    ///<Igv
     QTime s_time;               ///<tiempo de inicio de sesion
     Usuario * s_user;           ///<referencia a un usuario
 

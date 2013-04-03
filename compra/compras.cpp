@@ -26,12 +26,8 @@ compras::compras(QWidget *parent) :
     ui->lineEdit_igv->setReadOnly(true);
     ui->lineEdit_total->setReadOnly(true);
     actualCompra = new compra;
-    //igv = Sesion::getIgv();
-
-    //Pendiente de Conversion
-    ui->lineEdit_igv->setText("IGV 18%");
-
-
+    igv = Sesion::getIgv();
+    ui->lineEdit_igv->setText("IGV"+QString::number(igv)+"%");
 }
 
 compras::~compras()
@@ -67,6 +63,7 @@ void compras::on_pushButton_buscar_producto_clicked()
     ui_producto * form = new ui_producto;
     form->setWindowTitle("Buscar Proveedor");
     form->setComportamiento(1);
+    connect(form,SIGNAL(sentProductoCompra(QString,QString,QString,int)),this,SLOT(addItemProductos(QString,QString,QString,int)));
     form->show();
 
 
@@ -204,10 +201,8 @@ void compras::addItemProductos(QString codigo, QString descripcion, QString prec
         ui->tableWidget__items_productos->setItem(contador,2, new QTableWidgetItem(precio));
         ui->tableWidget__items_productos->setItem(contador,3, new QTableWidgetItem(QString::number(cantidad)));
         ui->tableWidget__items_productos->setItem(contador,4, new QTableWidgetItem(QString::number(total)));
-
         contador++;
         Productos_Agregados[codigo] = Productos[codigo];
-
         ui->lineEdit_subtotal->setText(QString::number(monto_sub_total));
         ui->lineEdit_igv->setText(QString::number(monto_impuesto));
         ui->lineEdit_total->setText(QString::number(monto_total));
