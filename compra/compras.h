@@ -16,10 +16,11 @@ class compras : public QWidget
     Q_OBJECT
 public:
     void setCant(int cant){currentCant = cant;}
-    void addItemProductos(QString,QString,QString,int cant);
+
     void updateListCompras();
 public slots:
     void getProveedor(QString,QString,QString,QString);
+    void addItemProductos(QString,QString,QString,int);
 public:
     explicit compras(QWidget *parent = 0);
     ~compras();

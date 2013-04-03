@@ -111,7 +111,12 @@ SOURCES += main.cpp\
     compra/ui_datos_proveedor.cpp \
     compra/proveedor.cpp \
     compra/compra.cpp \
-    producto/genero.cpp
+    producto/genero.cpp \
+    agenda/newtask_agenda_ui.cpp \
+    agenda/newalerta_alerta_ui.cpp \
+    agenda/funciones.cpp \
+    agenda/agenda_ui.cpp \
+    agenda/alertas_ui.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -192,7 +197,12 @@ HEADERS  += mainwindow.h \
     compra/ui_datos_proveedor.h \
     compra/proveedor.h \
     compra/compra.h \
-    producto/genero.h
+    producto/genero.h \
+    agenda/newtask_agenda_ui.h \
+    agenda/newalerta_alerta_ui.h \
+    agenda/funciones.h \
+    agenda/agenda_ui.h \
+    agenda/alertas_ui.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \
@@ -226,10 +236,15 @@ FORMS    += mainwindow.ui \
     compra/ui_datos_compras.ui \
     compra/compras.ui \
     compra/ui_proveedores.ui \
-    compra/ui_datos_proveedor.ui
+    compra/ui_datos_proveedor.ui \
+    agenda/newtask_agenda_ui.ui \
+    agenda/newalerta_alerta_ui.ui \
+    agenda/agenda_ui.ui \
+    agenda/alertas_ui.ui
 
 RESOURCES += \
     Icons/Icons.qrc \
+
 
 
 
