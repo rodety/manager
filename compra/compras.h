@@ -16,7 +16,7 @@ class compras : public QWidget
     Q_OBJECT
 public:
     void setCant(int cant){currentCant = cant;}
-    void addItemProductos(int cant, int row);
+    void addItemProductos(QString,QString,QString,int cant);
     void updateListCompras();
 public slots:
     void getProveedor(QString,QString,QString,QString);
@@ -49,10 +49,10 @@ private slots:
 
     void on_tableWidget_Compras_doubleClicked(const QModelIndex &index);
 
-
     void on_tableWidget__items_productos_itemDoubleClicked(QTableWidgetItem *item);
 
     void on_pushButton_eliminar_compra_clicked();
+
 
 private:
     Ui::compras *ui;
@@ -66,6 +66,7 @@ private:
     QString current_idCompras;
     int currentItem;
     compra* actualCompra;
+    double igv;
 };
 
 #endif // COMPRAS_H

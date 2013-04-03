@@ -158,11 +158,6 @@
        </column>
        <column>
         <property name="text">
-         <string>Accesorios</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
          <string>Precio Unit</string>
         </property>
        </column>

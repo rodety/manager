@@ -3,6 +3,7 @@
 #include <QPrinter>
 #include <QPainter>
 #include <QPixmap>
+#include <QInputDialog>
 
 #include <iostream> using namespace std;
 
@@ -713,13 +714,14 @@ void ui_producto::on_btnToAlmacen_clicked()
 void ui_producto::setComportamiento(int a)
 {
     comportamiento = a;
+    //0 Comportamiento de etiquetas 1 comportamiento ventas
     if(a == 0)
     {
         connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (agregar_etiqueta(const QModelIndex & )));
     }
     if(a == 1)
     {
-        connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (agregar_etiqueta(const QModelIndex & )));
+        connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (enviar_producto(const QModelIndex & )));
     }
 }
 
@@ -727,7 +729,7 @@ void ui_producto::setComportamiento(int a)
 void ui_producto::enviar_producto(const QModelIndex & model)
 {
     QString codigo,descripcion,precioCompra,descuento,tipoLuna,tratamiento,valorInicial,ValorFinal,marca,forma,color,tamano,calidad,presentacion,
-            tinte,contacuoso,diseno,tipoLente,potencia,curva,diametro,tiempouso,material;
+            tinte,contacuoso,diseno,tipoLente,potencia,curva,diametro,tiempouso,material,genero, mtalla,mtipo;
     int fila =0;
     codigo=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString();
 
@@ -756,7 +758,8 @@ void ui_producto::enviar_producto(const QModelIndex & model)
         color=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString();
         tamano=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString();
         calidad=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString();
-        descripcion+= " " +marca+" "+forma+" "+color+" "+tamano+" "+calidad;
+        genero=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,13)).toString();
+        descripcion+= " " +marca+" "+forma+" "+color+" "+tamano+" "+calidad+" "+genero;
     }
     if(posicion==3)
     {
@@ -766,22 +769,42 @@ void ui_producto::enviar_producto(const QModelIndex & model)
 
         marca=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
         presentacion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString();
-        tinte=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        contacuoso=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        diseno=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        tipoLente=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        potencia=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        curva=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        diametro=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        tiempouso=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
-        material=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        tinte=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString();
+        contacuoso=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString();
+        diseno=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString();
+        tipoLente=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,13)).toString();
+        potencia=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,14)).toString();
+        curva=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,15)).toString();
+        diametro=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,16)).toString();
+        tiempouso=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,17)).toString();
+        material=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,18)).toString();
         descripcion+= " " +marca+" "+presentacion+" "+tinte+" "+contacuoso+" "+diseno+" "+tipoLente+" "+potencia+
                 " "+curva+" "+diametro+" "+tiempouso+" "+material;
 
     }
+    if(posicion==4)
+    {
+        descripcion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString();
+        precioCompra=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString();
+        descuento=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString();
 
-    //void sentProductoCompra(QString,QString,QString,QString);//codigo,descripcion,precioCompra,Descuento
-    //emit sentProductoCompra(codigo,)
-    //void sentProductoCompra(QString,QString,QString,QString,QString);//id,codigo,descripcion,precioCompra,Descuento*/
+        marca=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString();
+        color=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString();
+        mtalla=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString();
+        calidad=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString();
+        mtipo=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString();
+        genero=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,13)).toString();
 
+        descripcion+= " " +marca+" "+color+" "+mtalla+" "+calidad+" "+mtipo+" "+genero;
+    }
+    if(posicion==5)
+    {
+        descripcion=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString();
+        precioCompra=ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString();
+    }
+    bool ok;
+    int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+    if(ok)
+        emit sentProductoCompra(codigo,descripcion,precioCompra,cant);
 }
+

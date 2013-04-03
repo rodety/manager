@@ -57,6 +57,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionProducto_triggered()
 {
     formProducto=new ui_producto;
+    formProducto->setComportamiento(0);
     setCentralWidget(formProducto);
 }
 

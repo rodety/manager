@@ -50,7 +50,8 @@ private slots:
     void on_btnToVitrina_clicked();
     void on_btnToAlmacen_clicked();
 
-    void setComportamiento(int);
+
+
 
 
 
@@ -66,9 +67,9 @@ private:
     int comportamiento;
 
 public slots:
-
+    void setComportamiento(int);
 signals:
-    void sentProductoCompra(QString,QString,QString,QString);//codigo,descripcion,precioCompra,Descuento
+    void sentProductoCompra(QString,QString,QString,int);//codigo,descripcion,precioCompra,cantidad
     void sentProductoVenta(QString,QString,QString,QString,QString);//codigo,descripcion,precioVenta,Descuento,stock
 
 };

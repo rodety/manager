@@ -15,6 +15,6 @@ ui_cant_item::~ui_cant_item()
 
 void ui_cant_item::on_pushButton_clicked()
 {
-    currentParent->addItemProductos(ui->spinBox->text().toInt(),row);
+
     close();
 }

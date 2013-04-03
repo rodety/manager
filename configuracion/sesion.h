@@ -29,6 +29,7 @@ public:
     std::map<int,bool> get_Permisos();
     QPair < int,int > getUbicacion();
     void setUbicacion(int,int);
+    static double getIgv() { return impuesto;}
 private:
     Sesion(Usuario * usr = 0);
     static Sesion* mp_instance;  ///<instancia de la clase singletone
@@ -40,6 +41,8 @@ private:
     static int tiempoEspera;    ///<Tiempo de bloqueo de el inicio
     static int idEmpresa;       ///<Empresa en la que se inicio sesion
     static int idTienda;       ///<Tienda en la que se inicio sesion
+    static double impuesto;          ///<Igv
+
 
     QTime s_time;               ///<tiempo de inicio de sesion
     Usuario * s_user;           ///<referencia a un usuario

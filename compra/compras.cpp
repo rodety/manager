@@ -26,6 +26,11 @@ compras::compras(QWidget *parent) :
     ui->lineEdit_igv->setReadOnly(true);
     ui->lineEdit_total->setReadOnly(true);
     actualCompra = new compra;
+    //igv = Sesion::getIgv();
+
+    //Pendiente de Conversion
+    ui->lineEdit_igv->setText("IGV 18%");
+
 
 }
 
@@ -54,61 +59,16 @@ void compras::on_pushButton_buscar_proveedor_clicked()
     form->show();
 
     connect(form,SIGNAL(sentidProveedor(QString,QString,QString,QString)),this,SLOT(getProveedor(QString,QString,QString,QString)));
-    /*for (int i=ui->tableWidget_proveedores->rowCount()-1; i >= 0; --i)
-        ui->tableWidget_proveedores->removeRow(i);
 
-    QString nombre_proveedor,nombre,ruc,idproveedor;
-    nombre_proveedor = ui->lineEdit_proveedor->text();
-    QSqlQuery query;
-    query.prepare("SELECT idproveedor,ruc,raz_social FROM  proveedor WHERE raz_social REGEXP \""+nombre_proveedor+"\"");
-    query.exec();
-    int c = 0;
-
-       while(query.next())
-       {
-           idproveedor = query.value(0).toString();
-           ruc = query.value(1).toString();
-           nombre = query.value(2).toString();
-           Proveedores[nombre] = idproveedor;
-           ui->tableWidget_proveedores->insertRow(c);
-           ui->tableWidget_proveedores->setItem(c,0, new QTableWidgetItem(ruc));
-           ui->tableWidget_proveedores->setItem(c,1, new QTableWidgetItem(nombre));
-           c++;
-       }*/
 }
 
 void compras::on_pushButton_buscar_producto_clicked()
 {
     ui_producto * form = new ui_producto;
     form->setWindowTitle("Buscar Proveedor");
+    form->setComportamiento(1);
     form->show();
-    /*for (int i=ui->tableWidget_productos->rowCount()-1; i >= 0; --i)
-        ui->tableWidget_productos->removeRow(i);
 
-    Productos.clear();
-    QString codigo,descripcion,accesorios,precio,idproducto,descripcion_buscado;
-
-    descripcion_buscado = ui->lineEdit_productos->text();
-    QSqlQuery query;
-    query.prepare("SELECT idproducto,codigo,descripcion,accesorios,precio_compra FROM  producto WHERE descripcion REGEXP \""+descripcion_buscado+"\"");
-    query.exec();
-    int c = 0;
-
-       while(query.next())
-       {
-           idproducto = query.value(0).toString();
-           codigo = query.value(1).toString();
-           descripcion = query.value(2).toString();
-           accesorios = query.value(3).toString();
-           precio = query.value(4).toString();
-           Productos[codigo] = idproducto;
-           ui->tableWidget_productos->insertRow(c);
-           ui->tableWidget_productos->setItem(c,0, new QTableWidgetItem(codigo));
-           ui->tableWidget_productos->setItem(c,1, new QTableWidgetItem(descripcion));
-           ui->tableWidget_productos->setItem(c,2, new QTableWidgetItem(accesorios));
-           ui->tableWidget_productos->setItem(c,3, new QTableWidgetItem(precio));
-           c++;
-       }*/
 
 }
 
@@ -222,14 +182,11 @@ void compras::on_pushButton_guardar_clicked()
     compra_total = 0;
 
 }
-void compras::addItemProductos(int cant,int row)
+void compras::addItemProductos(QString codigo, QString descripcion, QString precio, int cant)
 {
-        /*int cantidad = cant;
-        int count = row;
-        QString codigo = ui->tableWidget_productos->item(count,0)->text();
-        QString descripcion = ui->tableWidget_productos->item(count,1)->text();
-        QString accesorios = ui->tableWidget_productos->item(count,2)->text();
-        QString precio = ui->tableWidget_productos->item(count,3)->text();
+        int cantidad = cant;
+
+
         double total = cantidad*precio.toDouble();
         compra_total += total;
 
@@ -238,23 +195,22 @@ void compras::addItemProductos(int cant,int row)
         double monto_total;
         qDebug()<<compra_total<<endl;
         monto_sub_total = compra_total;
-        monto_impuesto = (monto_sub_total * ui->spinBox->text().toDouble()/100);
+        monto_impuesto = (monto_sub_total * igv/100);
         monto_total = monto_sub_total + monto_impuesto;
 
         ui->tableWidget__items_productos->insertRow(contador);
         ui->tableWidget__items_productos->setItem(contador,0, new QTableWidgetItem(codigo));
-        ui->tableWidget__items_productos->setItem(contador,1, new QTableWidgetItem(descripcion));
-        ui->tableWidget__items_productos->setItem(contador,2, new QTableWidgetItem(accesorios));
-        ui->tableWidget__items_productos->setItem(contador,3, new QTableWidgetItem(precio));
-        ui->tableWidget__items_productos->setItem(contador,4, new QTableWidgetItem(QString::number(cantidad)));
-        ui->tableWidget__items_productos->setItem(contador,5, new QTableWidgetItem(QString::number(total)));
+        ui->tableWidget__items_productos->setItem(contador,1, new QTableWidgetItem(descripcion));        
+        ui->tableWidget__items_productos->setItem(contador,2, new QTableWidgetItem(precio));
+        ui->tableWidget__items_productos->setItem(contador,3, new QTableWidgetItem(QString::number(cantidad)));
+        ui->tableWidget__items_productos->setItem(contador,4, new QTableWidgetItem(QString::number(total)));
 
         contador++;
         Productos_Agregados[codigo] = Productos[codigo];
 
         ui->lineEdit_subtotal->setText(QString::number(monto_sub_total));
         ui->lineEdit_igv->setText(QString::number(monto_impuesto));
-        ui->lineEdit_total->setText(QString::number(monto_total));*/
+        ui->lineEdit_total->setText(QString::number(monto_total));
 }
 void compras::updateListCompras()
 {
@@ -375,7 +331,7 @@ void compras::on_tableWidget__items_productos_itemDoubleClicked(QTableWidgetItem
     double monto_total;
     qDebug()<<compra_total<<endl;
     monto_sub_total = compra_total;
-    monto_impuesto = (monto_sub_total * ui->spinBox->text().toDouble()/100);
+    monto_impuesto = (monto_sub_total * igv/100);
     monto_total = monto_sub_total + monto_impuesto;
     ui->lineEdit_subtotal->setText(QString::number(monto_sub_total));
     ui->lineEdit_igv->setText(QString::number(monto_impuesto));
@@ -423,6 +379,6 @@ void compras::getProveedor(QString id,QString ruc,QString razon,QString direccio
     ui->lineEdit_ruc->setText(ruc);
     ui->lineEdit_proveedor->setText(razon);
     ui->lineEdit_direccion->setText(direccion);
-
-
 }
+
+

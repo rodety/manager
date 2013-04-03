@@ -17,6 +17,7 @@ int Sesion::numMaxIntentos = 0;
 int Sesion::tiempoEspera = 0;
 int Sesion::idEmpresa = 0;
 int Sesion::idTienda = 0;
+double Sesion::impuesto = 0;
 
 Sesion::Sesion(Usuario * usr)
 {
@@ -97,7 +98,7 @@ std::map<int,bool> Sesion::get_Permisos()
     std::map<int,bool> res;
     QSqlQuery q("select habilitado,FuncionModulo_idFuncionModulo from Permiso where Colaborador_Persona_idPersona = "+QString::number(s_user->get_id())+" order by FuncionModulo_idFuncionModulo");
     if(!q.exec())
-        QMessageBox::critical(0,"Error",q.lastError().text(),0,0);
+        QMessageBox::critical(0,"Error permisos",q.lastError().text(),0,0);
     while(q.next())
     {
         res[q.value(1).toInt()] = (q.value(0).toBool());
@@ -117,4 +118,17 @@ void Sesion::setUbicacion(int a, int b)
 {
     idEmpresa = a;
     idTienda = b;
+    QSqlQuery query;
+    query.prepare("SELECT igv FROM Configuracion WHERE Tienda_idTienda =?");
+    query.bindValue(0,idTienda);
+    if(query.exec())
+    {
+        impuesto = query.value(0).toString().toDouble();
+    }
+    else
+    {
+        impuesto = 0;
+        QMessageBox::critical(0,"Error igv",query.lastError().text(),0,0);
+    }
 }
+

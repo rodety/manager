@@ -302,11 +302,6 @@
              </column>
              <column>
               <property name="text">
-               <string>Accesorios</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
                <string>Precio Unt</string>
               </property>
              </column>
@@ -392,13 +387,6 @@
              </item>
              <item row="2" column="2" colspan="2">
               <widget class="QLineEdit" name="lineEdit_total"/>
-             </item>
-             <item row="1" column="2">
-              <widget class="QSpinBox" name="spinBox">
-               <property name="value">
-                <number>18</number>
-               </property>
-              </widget>
              </item>
             </layout>
            </item>
