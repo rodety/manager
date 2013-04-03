@@ -556,11 +556,18 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
         query.bindValue(3,col);
         query.bindValue(4,level);
         query.bindValue(5,s->getIdColaborador());
-        cout<<idTraspaso.toStdString()<<endl;
-        cout<<query.exec()<<endl;
-        cout<<query.lastError().text().toStdString()<<endl;
-
-        close();
+        if(query.exec())
+        {
+            montura * m=new montura;
+            m->setIdProducto(idTraspaso);
+            m->addToVitrina();
+            close();
+        }
+        else
+        {
+            cout<<query.lastError().text().toStdString()<<endl;
+            close();
+        }
     }
 
     if(caso)
