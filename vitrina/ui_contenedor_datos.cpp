@@ -140,11 +140,14 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
         QMessageBox *msgBox =new QMessageBox;
         msgBox->setIcon(QMessageBox::Information);
         msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
-        msgBox->setWindowTitle("Información");
+        msgBox->setWindowTitle("Informacion");
         msgBox->setStandardButtons(QMessageBox::Ok);
         msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
-        msgBox->setText("Debe escribir un código primero.");
+        msgBox->setText("Debe escribir un codigo primero.");
         msgBox->exec();
+
+        close();
+        return false;
     }
     else
     {
@@ -442,3 +445,4 @@ void ui_contenedor_datos::on_traspaso_clicked()
         msgBox.exec();
     }
 }
+

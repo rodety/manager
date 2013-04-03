@@ -23,7 +23,7 @@ ui_almacen::ui_almacen(QWidget *parent) :
     ui(new Ui::ui_almacen)
 {
     ui->setupUi(this);
-
+    fromVitrina=false;  toAlmacen=false;
     update_comboBox_Empresa();
 }
 
@@ -32,20 +32,22 @@ ui_almacen::~ui_almacen()
     delete ui;
 }
 
-QString ui_almacen::get_currentIdEmpresa(){return currentIdEmpresa;}
-QString ui_almacen::get_currentIdTienda(){return currentIdTienda;}
-QString ui_almacen::get_currentIdAlmacen(){return currentIdAlmacen;}
-QString ui_almacen::get_currentIdAndamio(){return currentIdAndamio;}
-QString ui_almacen::get_currentIdContenedor(){return currentIdContenedor;}
+QString ui_almacen::get_currentIdEmpresa()    {return currentIdEmpresa;}
+QString ui_almacen::get_currentIdTienda()     {return currentIdTienda;}
+QString ui_almacen::get_currentIdAlmacen()    {return currentIdAlmacen;}
+QString ui_almacen::get_currentIdAndamio()    {return currentIdAndamio;}
+QString ui_almacen::get_currentIdContenedor() {return currentIdContenedor;}
 
-void ui_almacen::setFromVitrina(bool b){fromVitrina=b;}
+void ui_almacen::setFromVitrina(bool b) {fromVitrina=b;}
+void ui_almacen::setToAlmacen(bool b)   {toAlmacen=b;}
 
-void ui_almacen::set_currentIdEmpresa(QString e){currentIdEmpresa = e;}
-void ui_almacen::set_currentIdTienda(QString t){currentIdTienda = t;}
-void ui_almacen::set_currentIdAlmacen(QString al){currentIdAlmacen = al;}
-void ui_almacen::set_currentIdAndamio(QString an){currentIdAndamio = an;}
-void ui_almacen::set_currentIdContenedor(QString c){currentIdContenedor = c;}
-void ui_almacen::set_query(QSqlQuery query){ sqlQuery=query;}
+void ui_almacen::set_currentIdEmpresa(QString e)     {currentIdEmpresa = e;}
+void ui_almacen::set_currentIdTienda(QString t)      {currentIdTienda = t;}
+void ui_almacen::set_currentIdAlmacen(QString al)    {currentIdAlmacen = al;}
+void ui_almacen::set_currentIdAndamio(QString an)    {currentIdAndamio = an;}
+void ui_almacen::set_currentIdContenedor(QString c)  {currentIdContenedor = c;}
+void ui_almacen::set_currentCode(QString cod)        {currentCod=cod;}
+void ui_almacen::set_query(QSqlQuery query)          { sqlQuery=query;}
 
 
 void ui_almacen::update_comboBox_Empresa()
@@ -412,12 +414,35 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
     }
     else
     {
+        if(toAlmacen)
+        {
+            contenedor_form->set_idContenedor(currentIdContenedor);
+            contenedor_form->set_behavior(1);
+            contenedor_form->update_form();
+            contenedor_form->setWindowTitle("Contenedor");
+            contenedor_form->set_idProducto(currentCod);
+            bool add=contenedor_form->add_Product();
+            if(add)
+            {
+                QSqlQuery query;
+                query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
+                query.bindValue(0,currentCod);
+                query.exec();   query.next();
+                QString id=query.value(0).toString();
+
+                montura* m=new montura;
+                m->setIdProducto(id);
+                m->addToAlmacen();
+
+                close();
+            }
+        }
         if(fromVitrina)
         {
             QString idProducto=sqlQuery.value(0).toString();
-            int fila=sqlQuery.value(2).toInt(),
-                col=sqlQuery.value(3).toInt(),
-                nivel=sqlQuery.value(4).toInt();
+            int fila  =sqlQuery.value(2).toInt(),
+                col   =sqlQuery.value(3).toInt(),
+                nivel =sqlQuery.value(4).toInt();
 
             QSqlQuery query;
             query.prepare("SELECT codigo FROM Producto WHERE idProducto=?");
@@ -439,6 +464,10 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
                 query.bindValue(2,col);
                 query.bindValue(3,nivel);
                 query.exec();
+
+                montura* m=new montura;
+                m->setIdProducto(idProducto);
+                m->vitrinaToAlmacen();
             }
         }
         else
