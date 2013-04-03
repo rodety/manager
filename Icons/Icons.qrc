@@ -77,5 +77,51 @@
         <file>1349716356_save.png</file>
         <file>1354253630_LorryGreen.png</file>
         <file>1354299865_rssshop.png</file>
+        <file>1354339076_picasa.png</file>
+        <file>1354339085_ebooks.png</file>
+        <file>ACP_PDF 2_file_document.png</file>
+        <file>Add-Male-User.png</file>
+        <file>Adobe - Acrobat.png</file>
+        <file>alert.png</file>
+        <file>cancel.png</file>
+        <file>checkbox_checked.png</file>
+        <file>close.png</file>
+        <file>color_swatch.png</file>
+        <file>file.png</file>
+        <file>file_add.png</file>
+        <file>file_delete.png</file>
+        <file>file_edit.png</file>
+        <file>file_search.png</file>
+        <file>flag.png</file>
+        <file>Icons.qrc</file>
+        <file>info.png</file>
+        <file>information_basic_blue.png</file>
+        <file>information_basic_green.png</file>
+        <file>information-frame_basic_green.png</file>
+        <file>kwalletmanager.png</file>
+        <file>lock.png</file>
+        <file>Login Manager.png</file>
+        <file>New_File.png</file>
+        <file>pencil.png</file>
+        <file>pencil_64.png</file>
+        <file>pin_map.png</file>
+        <file>playback_reload.png</file>
+        <file>preferences-system-time.png</file>
+        <file>Print.png</file>
+        <file>printer.png</file>
+        <file>Printer_Picture.png</file>
+        <file>round_checkmark.png</file>
+        <file>round_delete.png</file>
+        <file>round_plus.png</file>
+        <file>schedule.png</file>
+        <file>search.png</file>
+        <file>search_64.png</file>
+        <file>system-software-update.png</file>
+        <file>tag.png</file>
+        <file>trash.png</file>
+        <file>Warning.png</file>
+        <file>Web.png</file>
+        <file>zoom.png</file>
+        <file>old-edit-find.png</file>
     </qresource>
 </RCC>

@@ -24,8 +24,8 @@
           <string>&amp;Ver Alerta</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
-           <normaloff>:/new/old-edit-find.png</normaloff>:/new/old-edit-find.png</iconset>
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/old-edit-find.png</normaloff>:/Icons/old-edit-find.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -47,8 +47,8 @@
           <string>Edita&amp;r Alerta</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
-           <normaloff>:/new/edit.png</normaloff>:/new/edit.png</iconset>
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/file_edit.png</normaloff>:/Icons/file_edit.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -70,8 +70,8 @@
           <string>Eli&amp;minar Alerta</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
-           <normaloff>:/new/close.png</normaloff>:/new/close.png</iconset>
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/file_delete.png</normaloff>:/Icons/file_delete.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -100,8 +100,8 @@
           <string>&amp;Nueva Alerta</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
-           <normaloff>:/new/add1-.png</normaloff>:/new/add1-.png</iconset>
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/file_add.png</normaloff>:/Icons/file_add.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -214,8 +214,8 @@
           <string>Ver T&amp;odas</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
-           <normaloff>:/new/zoom.png</normaloff>:/new/zoom.png</iconset>
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/search.png</normaloff>:/Icons/search.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -234,8 +234,8 @@
           <string>Color</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
-           <normaloff>:/new/color_swatch.png</normaloff>:/new/color_swatch.png</iconset>
+          <iconset resource="../Icons/Icons.qrc">
+           <normaloff>:/Icons/color_swatch.png</normaloff>:/Icons/color_swatch.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -314,7 +314,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="rc.qrc"/>
+  <include location="../Icons/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

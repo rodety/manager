@@ -40,6 +40,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionAgenda"/>
    <addaction name="actionProducto"/>
    <addaction name="actionUsuario"/>
    <addaction name="actionCliente"/>
@@ -166,6 +167,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionAgenda">
+   <property name="icon">
+    <iconset resource="Icons/Icons.qrc">
+     <normaloff>:/Icons/1354339085_ebooks.png</normaloff>:/Icons/1354339085_ebooks.png</iconset>
+   </property>
+   <property name="text">
+    <string>Agenda</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+G</string>
    </property>
   </action>
  </widget>

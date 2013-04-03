@@ -7,15 +7,15 @@
     <x>0</x>
     <y>0</y>
     <width>420</width>
-    <height>153</height>
+    <height>162</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Alerta</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="rc.qrc">
-    <normaloff>:/new/1329798431_Application.png</normaloff>:/new/1329798431_Application.png</iconset>
+   <iconset resource="../Icons/Icons.qrc">
+    <normaloff>:/Icons/Warning.png</normaloff>:/Icons/Warning.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
    <item row="0" column="0">
@@ -198,7 +198,7 @@
   <tabstop>pushButton_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="rc.qrc"/>
+  <include location="../Icons/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -21,14 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
         modulos[i]->setEnabled(false);
     aplicarPermisos();
 
-
-
-
-
-
-
-
-
 }
 
 void MainWindow::aplicarPermisos()
@@ -107,4 +99,10 @@ void MainWindow::on_actionCompras_triggered()
 {
     formCompras = new compras;
     setCentralWidget(formCompras);
+}
+
+void MainWindow::on_actionAgenda_triggered()
+{
+    formAgenda = new agenda_ui;
+    setCentralWidget(formAgenda);
 }

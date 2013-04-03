@@ -6,16 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>568</width>
-    <height>278</height>
+    <width>570</width>
+    <height>316</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Nueva Tarea</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="rc.qrc">
-    <normaloff>:/new/sign-up.png</normaloff>:/new/sign-up.png</iconset>
+   <iconset resource="../Icons/Icons.qrc">
+    <normaloff>:/Icons/schedule.png</normaloff>:/Icons/schedule.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
    <item row="0" column="0">
@@ -132,7 +132,7 @@
           <string>Buscar</string>
          </property>
          <property name="icon">
-          <iconset resource="rc.qrc">
+          <iconset>
            <normaloff>:/new/zoom.png</normaloff>:/new/zoom.png</iconset>
          </property>
          <property name="flat">
@@ -269,7 +269,7 @@
   <tabstop>pushButton_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="rc.qrc"/>
+  <include location="../Icons/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

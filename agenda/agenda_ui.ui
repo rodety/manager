@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1250</width>
+    <width>1301</width>
     <height>650</height>
    </rect>
   </property>
@@ -99,7 +99,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
+              <iconset>
                <normaloff>:/new/playback_reload.png</normaloff>:/new/playback_reload.png</iconset>
              </property>
              <property name="flat">
@@ -151,7 +151,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
+              <iconset>
                <normaloff>:/new/zoom.png</normaloff>:/new/zoom.png</iconset>
              </property>
              <property name="iconSize">
@@ -177,7 +177,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
+              <iconset>
                <normaloff>:/new/color_swatch.png</normaloff>:/new/color_swatch.png</iconset>
              </property>
              <property name="iconSize">
@@ -263,8 +263,8 @@
               <string>Editar</string>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
-               <normaloff>:/new/doc_edit.png</normaloff>:/new/doc_edit.png</iconset>
+              <iconset resource="../Icons/Icons.qrc">
+               <normaloff>:/Icons/1349716425_doc_edit.png</normaloff>:/Icons/1349716425_doc_edit.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -289,8 +289,8 @@
               <string>Nueva</string>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
-               <normaloff>:/new/round_plus.png</normaloff>:/new/round_plus.png</iconset>
+              <iconset resource="../Icons/Icons.qrc">
+               <normaloff>:/Icons/1349716429_doc_plus.png</normaloff>:/Icons/1349716429_doc_plus.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -315,8 +315,8 @@
               <string>Borrar</string>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
-               <normaloff>:/new/trash.png</normaloff>:/new/trash.png</iconset>
+              <iconset resource="../Icons/Icons.qrc">
+               <normaloff>:/Icons/1349716428_trash.png</normaloff>:/Icons/1349716428_trash.png</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -348,7 +348,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
+              <iconset>
                <normaloff>:/new/playback_reload.png</normaloff>:/new/playback_reload.png</iconset>
              </property>
              <property name="flat">
@@ -400,7 +400,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
+              <iconset>
                <normaloff>:/new/zoom.png</normaloff>:/new/zoom.png</iconset>
              </property>
              <property name="iconSize">
@@ -429,7 +429,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="rc.qrc">
+              <iconset>
                <normaloff>:/new/color_swatch.png</normaloff>:/new/color_swatch.png</iconset>
              </property>
              <property name="iconSize">
@@ -500,8 +500,8 @@
             <string>&amp;Ver Tarea</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/file_search.png</normaloff>:/new/file_search.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/file_search.png</normaloff>:/Icons/file_search.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -550,8 +550,8 @@
             <string>Ver T&amp;odas</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/old-edit-find.png</normaloff>:/new/old-edit-find.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/old-edit-find.png</normaloff>:/Icons/old-edit-find.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -597,8 +597,8 @@
             <string>E&amp;ditar Tarea</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/application.png</normaloff>:/new/application.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/file_edit.png</normaloff>:/Icons/file_edit.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -626,8 +626,8 @@
             <string>El&amp;iminar Tarea</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/file_delete.png</normaloff>:/new/file_delete.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/file_delete.png</normaloff>:/Icons/file_delete.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -665,8 +665,8 @@
             <string>&amp;Nueva Tarea</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/file_add.png</normaloff>:/new/file_add.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/file_add.png</normaloff>:/Icons/file_add.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -685,8 +685,8 @@
             <string>Imprimir</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/printer.png</normaloff>:/new/printer.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/Print.png</normaloff>:/Icons/Print.png</iconset>
            </property>
           </widget>
          </item>
@@ -796,8 +796,8 @@
             <string>&amp;Buscar</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/zoom.png</normaloff>:/new/zoom.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/search_64.png</normaloff>:/Icons/search_64.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -828,8 +828,8 @@
             <string>Color</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/color_swatch.png</normaloff>:/new/color_swatch.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/color_swatch.png</normaloff>:/Icons/color_swatch.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -863,8 +863,8 @@
             <string>A&amp;ctualizar</string>
            </property>
            <property name="icon">
-            <iconset resource="rc.qrc">
-             <normaloff>:/new/playback_reload.png</normaloff>:/new/playback_reload.png</iconset>
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/playback_reload.png</normaloff>:/Icons/playback_reload.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -1030,7 +1030,7 @@
   <tabstop>tablaView_Agend</tabstop>
  </tabstops>
  <resources>
-  <include location="rc.qrc"/>
+  <include location="../Icons/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>
