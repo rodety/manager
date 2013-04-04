@@ -5,8 +5,10 @@
 #include <QTableWidgetItem>
 #include <map>
 #include <QSqlQuery>
+#include <QSqlError>
 #include <producto/montura.h>
 
+#include <iostream>
 using namespace std;
 
 namespace Ui {

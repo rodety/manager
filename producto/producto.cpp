@@ -156,4 +156,11 @@ void producto::almacenToVitrina()
     query.bindValue(1,cantidadAlmacen);
     query.bindValue(2,idProducto);
     query.exec();
+
+    if(cantidadAlmacen==0)
+    {
+        query.prepare("DELETE FROM Contenedor_has_Producto WHERE idProducto=?");
+        query.bindValue(0,idProducto);
+        query.exec();
+    }
 }

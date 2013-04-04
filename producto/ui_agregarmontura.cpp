@@ -70,13 +70,29 @@ bool ui_agregarMontura::verificarRestricciones()
     box.setIcon(QMessageBox::Warning);
     box.setWindowTitle("Error de Escritura");
 
-    if(ui->lineEdit_codigo->text().size() == 0)
+    QString text=ui->lineEdit_codigo->text();
+    if(text.size() == 0)
     {
         box.setText("El Codigo es obligatorio");
         box.exec();
+
         ui->lineEdit_codigo->setFocus();
         return false;
     }
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Producto WHERE codigo=?");
+    query.bindValue(0,text);
+    query.exec();
+    if(query.next())
+    {
+        box.setText("El Codigo ya existe");
+        box.exec();
+
+        ui->lineEdit_codigo->setFocus();
+        return false;
+    }
+
     if(ui->lineEdit_precioCompra->text().contains(noNumeros))
     {
         box.setText("El Precio de Compra solo puede contener numeros");

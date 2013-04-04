@@ -215,17 +215,23 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
                 {
                     case QMessageBox::Ok:
 
-                        query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona) VALUES(?,?,now(),?)");
-                        query.bindValue(0,idContenedor);
-                        query.bindValue(1,idProducto);
-                        query.bindValue(2,s->getIdColaborador());
-
-                        if(query.exec())
+                        if(idCont.compare(idContenedor)==0)
                         {
-                            //algo con historial de almacen
                             return true;
                         }
-                        else return false;
+                        else
+                        {   query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona) VALUES(?,?,now(),?)");
+                            query.bindValue(0,idContenedor);
+                            query.bindValue(1,idProducto);
+                            query.bindValue(2,s->getIdColaborador());
+
+                            if(query.exec())
+                            {
+                                //algo con historial de almacen
+                                return true;
+                            }
+                            else return false;
+                        }
                         break;
 
                     case QMessageBox::Cancel:

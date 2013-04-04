@@ -458,7 +458,6 @@ void ui_tienda::on_imprimir_vitrina_clicked()
 
 void ui_tienda::on_grilla_cellDoubleClicked(int row, int column)
 {
-    cout<<idItem.toStdString()<<endl;
     ui_item_posicion* posicion_agregar = new ui_item_posicion;
     posicion_agregar->set_ui_tienda_actual(this);
     if(traspaso)
@@ -599,7 +598,7 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
             ui_tienda_traspaso->set_dimension_grilla();
             ui_tienda_traspaso->actualizar_grilla();
         }
-        else
+        if(caso)
         {
             int row=ui->grilla->currentRow()+1;
             int col=ui->grilla->currentColumn()+1;

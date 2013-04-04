@@ -494,6 +494,7 @@
   <tabstop>comboBox_color</tabstop>
   <tabstop>comboBox_estado</tabstop>
   <tabstop>comboBox_talla</tabstop>
+  <tabstop>comboBox_genero</tabstop>
   <tabstop>pushButton_agregar</tabstop>
   <tabstop>pushButton_cancelar</tabstop>
   <tabstop>pushButton_xtipo</tabstop>
@@ -502,6 +503,7 @@
   <tabstop>pushButton_xcolor</tabstop>
   <tabstop>pushButton_xestado</tabstop>
   <tabstop>pushButton_xtalla</tabstop>
+  <tabstop>pushButton_xgenero</tabstop>
  </tabstops>
  <resources>
   <include location="../Icons/Icons.qrc"/>

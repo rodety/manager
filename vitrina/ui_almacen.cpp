@@ -94,7 +94,6 @@ void ui_almacen::update_comboBox_Tienda(QString idEmpresa)
 
 void ui_almacen::update_comboBox_Almacen(QString idTienda)
 {
-    qDebug()<<"Tienda: "<<idTienda;
     ui->comboBox_Almacen->clear();
 
     QSqlQuery query;
@@ -108,7 +107,6 @@ void ui_almacen::update_comboBox_Almacen(QString idTienda)
     {
         QString idalmacen = query.value(0).toString();
         QString nombre = query.value(1).toString();
-        qDebug()<<idalmacen<<" - "<<nombre;
         Almacenes[nombre] = idalmacen;
 
         ui->comboBox_Almacen->insertItem(c,nombre);
@@ -463,7 +461,8 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
                 query.bindValue(1,fila);
                 query.bindValue(2,col);
                 query.bindValue(3,nivel);
-                query.exec();
+                cout<<query.exec()<<endl;
+                qDebug()<<query.lastError().text()<<endl;
 
                 montura* m=new montura;
                 m->setIdProducto(idProducto);
