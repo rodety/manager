@@ -14,13 +14,13 @@ agenda_ui::agenda_ui(QWidget *parent) :
     ui->setupUi(this);
     show_personal_combox();
     const QDate FECHA = QDate::currentDate();
-    ui->dateEdit_Alerta_Personales->setDate(FECHA);
+    //ui->dateEdit_Alerta_Personales->setDate(FECHA);
     //update_table_alerta_personal();
-    ui->dateEdit_Alerta->setDate(FECHA);
-    ui->dateEdit_Agenda->setDate(FECHA);
+    //ui->dateEdit_Alerta->setDate(FECHA);
+    //ui->dateEdit_Agenda->setDate(FECHA);
     //----------- ocultando objetos ----
-    ui->comboBox_dni->hide();
-    ui->lineEdit_codigo->hide();
+    //ui->comboBox_dni->hide();
+    //ui->lineEdit_codigo->hide();
     ui->dateEdit_Agenda->setEnabled(false);
 
     ui->tableWidget_Alert->setColumnWidth(0,80);
@@ -52,7 +52,7 @@ void agenda_ui::on_pushButton_newTask_clicked()
 
     newTask_agenda_ui *NEW_TASK_FORM = new newTask_agenda_ui;
     NEW_TASK_FORM->set_cliked_type(2);
-    NEW_TASK_FORM->dni_task = ui->comboBox_dni->currentText();
+    //NEW_TASK_FORM->dni_task = ui->comboBox_dni->currentText();
     NEW_TASK_FORM->setDate(ui->dateEdit_Agenda->date());
     NEW_TASK_FORM->parent_ui_form = this;
     NEW_TASK_FORM->enableDate(false);
@@ -64,9 +64,9 @@ void agenda_ui::on_pushButton_showTask_clicked()
 {
     newTask_agenda_ui *SHOW_TASK_FORM = new newTask_agenda_ui;
     SHOW_TASK_FORM->set_cliked_type(0);
-    SHOW_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
-    SHOW_TASK_FORM->dni_task = ui->comboBox_dni->currentText(); // dni perteneciente al dueño de la agenda;
-    SHOW_TASK_FORM->code_task = ui->lineEdit_codigo->text();
+    //SHOW_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
+    //SHOW_TASK_FORM->dni_task = ui->comboBox_dni->currentText(); // dni perteneciente al dueño de la agenda;
+    //SHOW_TASK_FORM->code_task = ui->lineEdit_codigo->text();
     SHOW_TASK_FORM->enableDate(false);
     SHOW_TASK_FORM->hideButton();
     SHOW_TASK_FORM->setTitle("Ver Tarea");
@@ -77,8 +77,8 @@ void agenda_ui::on_pushButton_editTask_clicked()
 {
     newTask_agenda_ui *EDIT_TASK_FORM = new newTask_agenda_ui;
     EDIT_TASK_FORM->set_cliked_type(1);
-    EDIT_TASK_FORM->code_task = ui->lineEdit_codigo->text();
-    EDIT_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
+    //EDIT_TASK_FORM->code_task = ui->lineEdit_codigo->text();
+    //EDIT_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
     EDIT_TASK_FORM->parent_ui_form = this;
     EDIT_TASK_FORM->enableDate(true);
     EDIT_TASK_FORM->setTitle("Editar Tarea");
@@ -91,7 +91,7 @@ void agenda_ui::on_pushButton_deleteTask_clicked()
 
     QString CODIGO_TAREA;
 
-    CODIGO_TAREA = ui->lineEdit_codigo->text();
+    //CODIGO_TAREA = ui->lineEdit_codigo->text();
 
     QSqlQuery query;
 
@@ -192,8 +192,8 @@ void agenda_ui::show_personal_combox()
         {
             APELLIDOS_NOMBRES = query_dni.value(0).toString()+" "+query_dni.value(1).toString()+", "+query_dni.value(2).toString()+" "+query_dni.value(3).toString();
         }
-        ui->comboBox_Names->addItem(APELLIDOS_NOMBRES);
-        ui->comboBox_dni->addItem(DNI);
+        //ui->comboBox_Names->addItem(APELLIDOS_NOMBRES);
+        //ui->comboBox_dni->addItem(DNI);
     }
 
 
@@ -201,7 +201,7 @@ void agenda_ui::show_personal_combox()
 
 void agenda_ui::on_comboBox_Names_currentIndexChanged(int index)
 {
-    ui->comboBox_dni->setCurrentIndex(index);
+    //ui->comboBox_dni->setCurrentIndex(index);
 }
 
 void agenda_ui::on_dateEdit_Agenda_dateChanged(const QDate &date)
@@ -209,7 +209,7 @@ void agenda_ui::on_dateEdit_Agenda_dateChanged(const QDate &date)
     QString FECHA,HORA,NOMBRE,FICHA,CODIGO,DESCRIPCION,FECHA_CONSULTA,DNI_CONSULTA,COLOR,TELEFONO;
     int COUNT;
 
-    DNI_CONSULTA = ui->comboBox_dni->currentText();
+    //DNI_CONSULTA = ui->comboBox_dni->currentText();
     FECHA_CONSULTA = ui->dateEdit_Agenda->text();
     COUNT = 0;
 
@@ -258,8 +258,8 @@ void agenda_ui::on_tablaView_Agend_itemClicked(QTableWidgetItem *item)
     int FILA = item->row();
     QString CODIGO;
     CODIGO = ui->tablaView_Agend->item(FILA,5)->text();
-    ui->lineEdit_codigo->clear();
-    ui->lineEdit_codigo->insert(CODIGO);
+    //ui->lineEdit_codigo->clear();
+    //ui->lineEdit_codigo->insert(CODIGO);
 }
 
 
@@ -271,7 +271,7 @@ void agenda_ui::on_dateEdit_Alerta_dateChanged(const QDate &date)
     int COUNT;
 
 
-    FECHA_CONSULTA = ui->dateEdit_Alerta->text();
+    //FECHA_CONSULTA = ui->dateEdit_Alerta->text();
     COUNT = 0;
 
     for (int i=ui->tableWidget_Alert->rowCount()-1; i >= 0; --i)
@@ -315,7 +315,7 @@ void agenda_ui::on_comboBox_dni_currentIndexChanged(const QString &arg1)
     int COUNT;
 
     ui->tablaView_Agend->setSortingEnabled(0);
-    DNI_CONSULTA = ui->comboBox_dni->currentText();
+    //DNI_CONSULTA = ui->comboBox_dni->currentText();
     FECHA_CONSULTA = ui->dateEdit_Agenda->text();
     COUNT = 0;
 
@@ -365,7 +365,7 @@ void agenda_ui::on_pushButton_showSelect_clicked()
     QString FECHA,HORA,NOMBRE,FICHA,CODIGO,DESCRIPCION,FECHA_CONSULTA,DNI_CONSULTA,COLOR,TELEFONO;
     int COUNT;
 
-    DNI_CONSULTA = ui->comboBox_dni->currentText();
+    //DNI_CONSULTA = ui->comboBox_dni->currentText();
     FECHA_CONSULTA = ui->dateEdit_Agenda->text();
     COUNT = 0;
 
@@ -415,9 +415,9 @@ void agenda_ui::set_access_level(int access)
 
     if(access == 1)
     {
-        ui->pushButton_editTask->hide();
-        ui->pushButton_deleteTask->hide();
-        ui->pushButton_newTask->hide();
+        //ui->pushButton_editTask->hide();
+        //ui->pushButton_deleteTask->hide();
+        //ui->pushButton_newTask->hide();
         ui->pushButton_AlertaGeneral_changeColor->hide();
         ui->pushButton_agenda_changeColor->hide();
     }
@@ -429,7 +429,7 @@ void agenda_ui::on_pushButton_show_SelectAlert_clicked()
     int COUNT;
 
 
-    FECHA_CONSULTA = ui->dateEdit_Alerta->text();
+    //FECHA_CONSULTA = ui->dateEdit_Alerta->text();
     COUNT = 0;
 
     for (int i=ui->tableWidget_Alert->rowCount()-1; i >= 0; --i)
@@ -542,7 +542,7 @@ void agenda_ui::update_table_alerta_personal()
     int COUNT;
 
     CODIGO_USUARIO = curren_user_code_var;
-    FECHA_CONSULTA = ui->dateEdit_Alerta_Personales->text();
+//    FECHA_CONSULTA = ui->dateEdit_Alerta_Personales->text();
     COUNT = 0;
 
     for (int i=ui->tableWidget_Alert_Personales->rowCount()-1; i >= 0; --i)
@@ -694,9 +694,9 @@ void agenda_ui::on_pushButton_show_Agenda_clicked()
 {
     newTask_agenda_ui *SHOW_TASK_FORM = new newTask_agenda_ui;
     SHOW_TASK_FORM->set_cliked_type(0);
-    SHOW_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
-    SHOW_TASK_FORM->dni_task = ui->comboBox_dni->currentText(); // dni perteneciente al dueño de la agenda;
-    SHOW_TASK_FORM->code_task = ui->lineEdit_codigo->text();
+    //SHOW_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
+    //SHOW_TASK_FORM->dni_task = ui->comboBox_dni->currentText(); // dni perteneciente al dueño de la agenda;
+    //SHOW_TASK_FORM->code_task = ui->lineEdit_codigo->text();
     SHOW_TASK_FORM->show();
 }
 
@@ -706,7 +706,7 @@ void agenda_ui::on_pushButton_agenda_changeColor_clicked()
         return;
     QString AGENDA_CODE;
     QSqlQuery query;
-    AGENDA_CODE = ui->lineEdit_codigo->text();
+    //AGENDA_CODE = ui->lineEdit_codigo->text();
     QColor dfault = ui->tablaView_Agend->currentItem()->backgroundColor();
     QColorDialog *palette = new QColorDialog();
     palette->setCurrentColor(dfault);
@@ -743,13 +743,13 @@ void agenda_ui::on_tablaView_Agend_doubleClicked(const QModelIndex &index)
     int FILA = index.row();
     QString CODIGO;
     CODIGO = ui->tablaView_Agend->item(FILA,5)->text();
-    ui->lineEdit_codigo->clear();
-    ui->lineEdit_codigo->insert(CODIGO);
+    //ui->lineEdit_codigo->clear();
+    //ui->lineEdit_codigo->insert(CODIGO);
 
     newTask_agenda_ui *EDIT_TASK_FORM = new newTask_agenda_ui;
     EDIT_TASK_FORM->set_cliked_type(1);
-    EDIT_TASK_FORM->code_task = ui->lineEdit_codigo->text();
-    EDIT_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
+    //EDIT_TASK_FORM->code_task = ui->lineEdit_codigo->text();
+    //EDIT_TASK_FORM->show_data_task_form(ui->lineEdit_codigo->text());
     EDIT_TASK_FORM->parent_ui_form = this;
     EDIT_TASK_FORM->enableDate(true);
     EDIT_TASK_FORM->setTitle("Editar Tarea");

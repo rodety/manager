@@ -116,7 +116,8 @@ SOURCES += main.cpp\
     agenda/newalerta_alerta_ui.cpp \
     agenda/funciones.cpp \
     agenda/agenda_ui.cpp \
-    agenda/alertas_ui.cpp
+    agenda/alertas_ui.cpp \
+    agenda/alerta.cpp
 
 HEADERS  += mainwindow.h \
     configuracion/configprogram.h \
@@ -202,7 +203,8 @@ HEADERS  += mainwindow.h \
     agenda/newalerta_alerta_ui.h \
     agenda/funciones.h \
     agenda/agenda_ui.h \
-    agenda/alertas_ui.h
+    agenda/alertas_ui.h \
+    agenda/alerta.h
 
 FORMS    += mainwindow.ui \
     producto/ui_producto.ui \
