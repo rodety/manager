@@ -32,9 +32,9 @@
          <item>
           <layout class="QGridLayout" name="gridLayout_2">
            <item row="6" column="2">
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="pushButton_buscarProducto">
              <property name="text">
-              <string>Buscar&gt;</string>
+              <string>Buscar &gt;</string>
              </property>
             </widget>
            </item>
@@ -46,7 +46,7 @@
             </widget>
            </item>
            <item row="6" column="1">
-            <widget class="QLineEdit" name="lineEdit_4"/>
+            <widget class="QLineEdit" name="lineEdit_codProducto"/>
            </item>
            <item row="6" column="0">
             <widget class="QLabel" name="label_5">
@@ -56,10 +56,18 @@
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_3"/>
+            <widget class="QLineEdit" name="lineEdit_direccion">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_2"/>
+            <widget class="QLineEdit" name="lineEdit_ruc">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="label_2">
@@ -76,7 +84,11 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="lineEdit_razonSocial">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="2" column="0">
             <widget class="QRadioButton" name="radioButton_3">
@@ -96,6 +108,13 @@
             <widget class="QRadioButton" name="radioButton">
              <property name="text">
               <string>Cotizacion</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QPushButton" name="pushButton_buscarCliente">
+             <property name="text">
+              <string>Buscar &gt;</string>
              </property>
             </widget>
            </item>
@@ -124,7 +143,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+            <widget class="QDateTimeEdit" name="dateTimeEdit_entrega"/>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="label_18">
@@ -134,7 +153,14 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QDateEdit" name="dateEdit"/>
+            <widget class="QDateEdit" name="dateEdit_fecha">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label_20">
@@ -144,7 +170,14 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_12"/>
+            <widget class="QLineEdit" name="lineEdit_usuario">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="0" column="1">
             <widget class="QLabel" name="label_19">
@@ -165,15 +198,10 @@
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableWidget">
+        <widget class="QTableWidget" name="tableWidget_producto">
          <column>
           <property name="text">
            <string>Cod.</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Descripci</string>
           </property>
          </column>
          <column>
@@ -199,6 +227,11 @@
          <column>
           <property name="text">
            <string>Entregado</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>P. Cant</string>
           </property>
          </column>
         </widget>
@@ -236,7 +269,11 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_10"/>
+            <widget class="QLineEdit" name="lineEdit_10">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="2" column="1">
             <widget class="QLineEdit" name="lineEdit_8"/>
@@ -249,10 +286,18 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_9"/>
+            <widget class="QLineEdit" name="lineEdit_9">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_11"/>
+            <widget class="QLineEdit" name="lineEdit_11">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label_13">
@@ -293,7 +338,11 @@
          <item>
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_7"/>
+            <widget class="QLineEdit" name="lineEdit_7">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label_7">
@@ -303,10 +352,18 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_6"/>
+            <widget class="QLineEdit" name="lineEdit_6">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit_5"/>
+            <widget class="QLineEdit" name="lineEdit_5">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_8">

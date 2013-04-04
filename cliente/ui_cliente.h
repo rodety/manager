@@ -24,6 +24,7 @@ private slots:
     void listar_historial();
     void historial_clinico(const QModelIndex &);
     void medidas_historial(const QModelIndex &);
+    void enviar_cliente(const QModelIndex &);
     void on_tabWidget_currentChanged(int index);
 
     void on_pushButton_clicked();
@@ -37,9 +38,14 @@ private slots:
     void on_pushButton_buscar_clicked();
     void on_pushButton_Informe_clicked();
 
+public slots:
+    void setComportamiento(int a);
+signals:
+    void sentCliente(QString,QString,QString);
 private:
     Ui::ui_cliente *ui;
     cliente clt_his;
+    int comportamiento;
 };
 
 #endif // UI_CLIENTE_H
