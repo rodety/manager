@@ -709,10 +709,16 @@ void ui_producto::on_btnToAlmacen_clicked()
     QModelIndex ind=ui->tableView_productos->model()->index(row,0);
     QString cod=ui->tableView_productos->model()->data(ind).toString();
 
-    ui_almacen* almacen= new ui_almacen;
-    almacen->setToAlmacen(true);
-    almacen->set_currentCode(cod);
-    almacen->show();
+    bool ok;
+    int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+    if(ok)
+    {
+        ui_almacen* almacen= new ui_almacen;
+        almacen->setToAlmacen(true);
+        almacen->set_currentCode(cod);
+        almacen->set_cantidad(cant);
+        almacen->show();
+    }
 }
 
 

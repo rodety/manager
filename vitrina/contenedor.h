@@ -12,14 +12,11 @@ private:
     QString descripcion;
     QString pos_fila;
     QString pos_columna;
-    QString capacidad;
-
-
 
 public:
 
     contenedor();
-    contenedor(QString,QString,QString,QString,QString,QString,QString);
+    contenedor(QString,QString,QString,QString,QString,QString);
 
     QString getIdContenedor();
     QString getIdAndamio();
@@ -27,7 +24,6 @@ public:
     QString getDescripcion();
     QString getPosFila();
     QString getPosColumna();
-    QString getCapacidad();
 
     void setIdContenedor(QString);
     void setIdAndamio(QString);
@@ -35,7 +31,6 @@ public:
     void setDescripcion(QString);
     void setPosFila(QString);
     void setPosColumna(QString);
-    void setCapacidad(QString);
 
     bool agregar();
     bool actualizar();
