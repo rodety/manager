@@ -107,8 +107,9 @@ bool luna::agregar()
 
 bool luna::actualizar()
 {
+    Sesion* s=Sesion::getSesion();
     QSqlQuery query;
-    query.prepare("UPDATE Producto SET descripcion=?,precioCompra=?,precioVenta=?,precioDescuento=?,stock=?,observaciones=?,Estado_idEstado=? WHERE idProducto=?");//falta colaborador
+    query.prepare("UPDATE Producto SET descripcion=?,precioCompra=?,precioVenta=?,precioDescuento=?,stock=?,observaciones=?,Estado_idEstado=?,idColaborador=? WHERE idProducto=?");
     query.bindValue(0,descripcion);
     query.bindValue(1,precioCompra);
     query.bindValue(2,precioVenta);
@@ -116,7 +117,8 @@ bool luna::actualizar()
     query.bindValue(4,stock);
     query.bindValue(5,observaciones);
     query.bindValue(6,pEstado.getIdEstado());
-    query.bindValue(7,idProducto);
+    query.bindValue(7,s->getIdColaborador());
+    query.bindValue(8,idProducto);
     if(query.exec())
     {
         query.clear();

@@ -93,8 +93,9 @@ bool otros::agregar()
 }
 bool otros::actualizar()
 {
+    Sesion* s=Sesion::getSesion();
     QSqlQuery query;
-    query.prepare("UPDATE Producto SET codigo=?,descripcion=?,precioCompra=?,precioVenta=?,precioDescuento=?,accesorios=?,stock=?,observaciones=?,Estado_idEstado=?,Marca_idMarca=? WHERE idProducto=?");//falta colaborador
+    query.prepare("UPDATE Producto SET codigo=?,descripcion=?,precioCompra=?,precioVenta=?,precioDescuento=?,accesorios=?,stock=?,observaciones=?,Estado_idEstado=?,Marca_idMarca=?,idColaborador WHERE idProducto=?");
     query.bindValue(0,codigo);
     query.bindValue(1,descripcion);
     query.bindValue(2,precioCompra);
@@ -105,7 +106,8 @@ bool otros::actualizar()
     query.bindValue(7,observaciones);
     query.bindValue(8,pEstado.getIdEstado());
     query.bindValue(9,pMarca.getIdMarca());
-    query.bindValue(10,idProducto);
+    query.bindValue(10,s->getIdColaborador());
+    query.bindValue(11,idProducto);
     if(query.exec())
     {
         query.clear();

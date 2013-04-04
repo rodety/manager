@@ -107,7 +107,7 @@ void ui_contenedor_datos::update_form()
     ui->lineEdit_descripcion->clear();
 
     QSqlQuery query;
-    query.prepare("SELECT nombre,descripcion,posFila,posColumna,capacidad FROM Contenedor WHERE idContenedor=?");
+    query.prepare("SELECT nombre,descripcion,posFila,posColumna FROM Contenedor WHERE idContenedor=?");
     query.bindValue(0,idContenedor);
     query.exec();
 
@@ -117,13 +117,11 @@ void ui_contenedor_datos::update_form()
     QString descripcion = query.value(1).toString();
     int pos_fila = query.value(2).toInt();
     int pos_columna = query.value(3).toInt();
-    int capacidad = query.value(4).toInt();
 
     ui->lineEdit_nombre->setText(nombre);
     ui->lineEdit_descripcion->setText(descripcion);
     ui->spinBox_fila->setValue(pos_fila);
     ui->spinBox_columna->setValue(pos_columna);
-    ui->spinBox_capacidad->setValue(capacidad);
 
     uptate_widget_list_productos();
 }
@@ -266,7 +264,7 @@ void ui_contenedor_datos::on_pushButton_saveContenedor_clicked()
     QString descripcion = ui->lineEdit_descripcion->text();
     QString pos_fila = ui->spinBox_fila->text();
     QString pos_columna = ui->spinBox_columna->text();
-    QString capacidad = ui->spinBox_capacidad->text();
+//    QString capacidad = ui->spinBox_capacidad->text();
 
     contenedor *contenedor_data;
 
@@ -293,7 +291,7 @@ void ui_contenedor_datos::on_pushButton_saveContenedor_clicked()
         switch(behavior)
         {
             case 0:
-                contenedor_data = new contenedor("0",idAndamio,nombre,descripcion,pos_fila,pos_columna,capacidad);
+                contenedor_data = new contenedor("0",idAndamio,nombre,descripcion,pos_fila,pos_columna);
                 contenedor_data->agregar();
                 //ui_almacen_parent->set_currentIdContenedor((pos_fila.toInt()-1)+"-"+(pos_columna.toInt()-1));
                 ui_almacen_parent->update_widget_Contenedores();
@@ -304,7 +302,7 @@ void ui_contenedor_datos::on_pushButton_saveContenedor_clicked()
 
                 break;
             case 1:
-                contenedor_data = new contenedor(idContenedor,idAndamio,nombre,descripcion,pos_fila,pos_columna,capacidad);
+                contenedor_data = new contenedor(idContenedor,idAndamio,nombre,descripcion,pos_fila,pos_columna);
                 contenedor_data->actualizar();
                 ui_almacen_parent->update_widget_Contenedores();
                 close();
@@ -319,7 +317,7 @@ void ui_contenedor_datos::on_pushButton_saveContenedor_clicked()
 
 void ui_contenedor_datos::on_pushButton_deleteContenedor_clicked()
 {
-    contenedor *any_contenedor = new contenedor(idContenedor,"","","","","","");
+    contenedor *any_contenedor = new contenedor(idContenedor,"","","","","");
 
     QMessageBox *msgBox =new QMessageBox;
     msgBox->setIcon(QMessageBox::Warning);

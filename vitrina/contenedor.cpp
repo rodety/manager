@@ -4,7 +4,7 @@ contenedor::contenedor()
 {
 }
 
-contenedor::contenedor(QString idC, QString idAn, QString n, QString d, QString f, QString c,QString cap)
+contenedor::contenedor(QString idC, QString idAn, QString n, QString d, QString f, QString c)
 {
     idContenedor = idC;
     idAndamio = idAn;
@@ -12,7 +12,6 @@ contenedor::contenedor(QString idC, QString idAn, QString n, QString d, QString 
     descripcion = d;
     pos_fila = f;
     pos_columna = c;
-    capacidad = cap;
 }
 
 
@@ -47,11 +46,6 @@ QString contenedor::getPosColumna()
     return pos_columna;
 }
 
-QString contenedor::getCapacidad()
-{
-    return capacidad;
-}
-
 void contenedor::setIdContenedor(QString idC)
 {
     idContenedor = idC;
@@ -82,21 +76,15 @@ void contenedor::setPosColumna(QString c)
     pos_columna = c;
 }
 
-void contenedor::setCapacidad(QString cap)
-{
-    capacidad = cap;
-}
-
 bool contenedor::agregar()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Contenedor(Andamio_idAndamio,nombre,descripcion,posFila,posColumna,capacidad) VALUES(?,?,?,?,?,?)");
+    query.prepare("INSERT INTO Contenedor(Andamio_idAndamio,nombre,descripcion,posFila,posColumna) VALUES(?,?,?,?,?)");
     query.bindValue(0,idAndamio);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
     query.bindValue(3,pos_fila);
     query.bindValue(4,pos_columna);
-    query.bindValue(5,capacidad);
 
     if(query.exec())
         return true;
@@ -107,14 +95,13 @@ bool contenedor::agregar()
 bool contenedor::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE Contenedor SET Andamio_idAndamio=?,nombre=?,descripcion=?,posFila=?,posColumna=?,capacidad=? WHERE idContenedor=?");
+    query.prepare("UPDATE Contenedor SET Andamio_idAndamio=?,nombre=?,descripcion=?,posFila=?,posColumna=? WHERE idContenedor=?");
     query.bindValue(0,idAndamio);
     query.bindValue(1,nombre);
     query.bindValue(2,descripcion);
     query.bindValue(3,pos_fila);
     query.bindValue(4,pos_columna);
-    query.bindValue(5,capacidad);
-    query.bindValue(6,idContenedor);
+    query.bindValue(5,idContenedor);
 
     if(query.exec())
         return true;
