@@ -61,10 +61,12 @@ bool alerta::actualizar()
 bool alerta::eliminar()
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM Alerta")
+    //query.prepare("DELETE FROM Alerta")
 }
 
-static QSqlQueryModel* alerta::mostrar(){}
-bool alerta::completar(){}
+QSqlQueryModel* alerta::mostrar(){}
+bool alerta::completar(){
+    return false;
+}
 
-static QSqlQueryModel* alerta::buscarAlerta(QString _item){}
+QSqlQueryModel* alerta::buscarAlerta(QString _item){}

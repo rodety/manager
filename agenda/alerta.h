@@ -23,13 +23,13 @@ public:
     void setcolor(QString tmp);
     void settipo(QString tmp);
 
-    void getIdAlerta(QString tmp);
-    void getIdColaborador(QString tmp);
-    void getfecha(QString tmp);
-    void gethora(QString tmp);
-    void getdescripcion(QString tmp);
-    void getcolor(QString tmp);
-    void gettipo(QString tmp);
+    QString getIdAlerta();
+    QString getIdColaborador();
+    QString getfecha();
+    QString gethora();
+    QString getdescripcion();
+    QString getcolor();
+    QString gettipo();
 
 
 
