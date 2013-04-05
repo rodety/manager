@@ -6,6 +6,12 @@ uiventas::uiventas(QWidget *parent) :
     ui(new Ui::uiventas)
 {
     ui->setupUi(this);
+    count_row=0;
+
+    QDate hoy=QDate::currentDate();
+    ui->dateEdit_fecha->setDate(hoy);
+    ui->dateEdit_fecha->setMaximumDate(hoy);
+    //ui->lineEdit_igv->setText(tusuario::getNombre());
 }
 
 uiventas::~uiventas()
@@ -31,18 +37,23 @@ void uiventas::recojeCliente(QString razon,QString ruc,QString direccion)
 void uiventas::on_pushButton_buscarProducto_clicked()
 {
     ui_producto* form=new ui_producto;
-    form->setComportamiento(1);
-    form->setWindowTitle("Producto");
+    form->setComportamiento(2);
+    form->setWindowTitle("Productos");
     form->show();
-    connect(form,SIGNAL(sentProductoVenta(QString,QString,QString,QString,QString)),this,SLOT(recojeProducto(QString,QString,QString,QString,QString)));
+    connect(form,SIGNAL(sentProductoVenta(QString,QString,QString,QString,int)),this,SLOT(recojeProducto(QString,QString,QString,QString,int)));
+    connect(form,SIGNAL(sentProductoVenta(QString,QString,QString,QString,int)),form,SLOT(close()));
 }
 
-void uiventas::recojeProducto(QString codigo,QString descripcion,QString precioVenta,QString Descuento,QString stock)
+void uiventas::recojeProducto(QString codigo,QString descripcion,QString precioVenta,QString precioDescuento,int cant)
 {
-    ui->tableWidget_producto->insertRow(ui->tableWidget_producto->rowCount());
-    QTableWidgetItem* item=new QTableWidgetItem(codigo);
-    ui->tableWidget_producto->setItem(ui->tableWidget_producto->rowCount()-1,0,item);
-    /*ui->lineEdit_razonSocial->setText(razon);
-    ui->lineEdit_ruc->setText(ruc);
-    ui->lineEdit_direccion->setText(direccion);*/
+    ui->tableWidget_producto->insertRow(count_row);
+
+    ui->tableWidget_producto->setItem(count_row,0,new QTableWidgetItem(codigo));
+    ui->tableWidget_producto->setItem(count_row,1,new QTableWidgetItem(descripcion));
+    ui->tableWidget_producto->setItem(count_row,2,new QTableWidgetItem(precioVenta));
+    ui->tableWidget_producto->setItem(count_row,3,new QTableWidgetItem(precioDescuento));
+    ui->tableWidget_producto->setItem(count_row,4,new QTableWidgetItem(QString::number(cant)));
+    ui->tableWidget_producto->setItem(count_row,5,new QTableWidgetItem("si"));
+    ui->tableWidget_producto->setItem(count_row,6,new QTableWidgetItem(QString::number(cant*(precioVenta.toDouble()-precioDescuento.toDouble()))));
+    count_row++;
 }

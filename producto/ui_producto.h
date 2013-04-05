@@ -41,6 +41,7 @@ private slots:
     void agregar_etiqueta(const QModelIndex & model);
     void eliminar_etiqueta(const QModelIndex & model);
     void enviar_producto(const QModelIndex & model);
+    void enviar_venta(const QModelIndex & model);
     void on_pushButton_previsualizar_clicked();
     void on_pushButton_imprimir_clicked();
     void on_pushButton_anterior_clicked();
@@ -70,7 +71,7 @@ public slots:
     void setComportamiento(int);
 signals:
     void sentProductoCompra(QString,QString,QString,int);//codigo,descripcion,precioCompra,cantidad
-    void sentProductoVenta(QString,QString,QString,QString,QString);//codigo,descripcion,precioVenta,Descuento,stock
+    void sentProductoVenta(QString,QString,QString,QString,int);//codigo,descripcion,precioVenta,Descuento,stock
 
 };
 

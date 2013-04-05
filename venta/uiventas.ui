@@ -211,12 +211,12 @@
          </column>
          <column>
           <property name="text">
-           <string>Accesorios</string>
+           <string>P. Unit</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>P. Unit</string>
+           <string>P. Desc</string>
           </property>
          </column>
          <column>
@@ -269,31 +269,31 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLineEdit" name="lineEdit_10">
+            <widget class="QLineEdit" name="lineEdit_entregado">
              <property name="enabled">
               <bool>false</bool>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_8"/>
+            <widget class="QLineEdit" name="lineEdit_adelanto"/>
            </item>
            <item row="2" column="2">
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="pushButton_completar">
              <property name="text">
               <string>Completar</string>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QLineEdit" name="lineEdit_9">
+            <widget class="QLineEdit" name="lineEdit_restante">
              <property name="enabled">
               <bool>false</bool>
              </property>
             </widget>
            </item>
            <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_11">
+            <widget class="QLineEdit" name="lineEdit_vuelto">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -338,7 +338,7 @@
          <item>
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_7">
+            <widget class="QLineEdit" name="lineEdit_total">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -352,14 +352,14 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_6">
+            <widget class="QLineEdit" name="lineEdit_igv">
              <property name="enabled">
               <bool>false</bool>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="lineEdit_5">
+            <widget class="QLineEdit" name="lineEdit_subtotal">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -399,14 +399,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="pushButton_guardar">
            <property name="text">
             <string>Guardar</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="pushButton_imprimir">
            <property name="text">
             <string>Imprimir</string>
            </property>

@@ -734,6 +734,10 @@ void ui_producto::setComportamiento(int a)
     {
         connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (enviar_producto(const QModelIndex & )));
     }
+    if(a == 2)
+    {
+        connect(ui->tableView_productos, SIGNAL (doubleClicked (const QModelIndex & )), this, SLOT (enviar_venta(const QModelIndex & )));
+    }
 }
 
 
@@ -819,3 +823,147 @@ void ui_producto::enviar_producto(const QModelIndex & model)
         emit sentProductoCompra(codigo,descripcion,precioCompra,cant);
 }
 
+void ui_producto::enviar_venta(const QModelIndex &model)
+{
+    int fila=ui->tableView_productos->currentIndex().row();
+    if(fila!=-1)
+    {
+        if(posicion==0)
+        {
+            luna productoActual;
+            productoActual.setDescripcion(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString());
+            estado pEstado;pEstado.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString());pEstado.completar();
+            productoActual.setPrecioCompra(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString());
+            productoActual.setPrecioVenta(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,3)).toString());
+            productoActual.setPrecioDescuento(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString());
+            productoActual.setStock(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,5)).toString());
+            diametro pDiametro;pDiametro.setValor(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString());pDiametro.completar();
+            calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,7)).toString());pCalidad.completar();
+            tipoLuna pTipoLuna;pTipoLuna.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString());pTipoLuna.completar();
+            tratamiento pTratamiento;pTratamiento.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pTratamiento.completar();
+            productoActual.setValorInicial(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());
+            productoActual.setValorFinal(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());
+            productoActual.setPrecio(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());
+            productoActual.setEstado(pEstado);
+            productoActual.setDiametro(pDiametro);
+            productoActual.setCalidad(pCalidad);
+            productoActual.setTipoLuna(pTipoLuna);
+            productoActual.setTratamiento(pTratamiento);
+            productoActual.completar();
+            bool ok;
+            int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+            if(ok)
+                emit sentProductoVenta(productoActual.getIdProducto(),productoActual.getDescripcion(),productoActual.getPrecioVenta(),productoActual.getPrecioDescuento(),cant);
+        }
+        if(posicion==1)
+        {
+            montura productoActual;
+            productoActual.setCodigo(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString());
+            productoActual.setDescripcion(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString());
+            estado pEstado;pEstado.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString());pEstado.completar();
+            productoActual.setPrecioCompra(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,3)).toString());
+            productoActual.setPrecioVenta(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString());
+            productoActual.setPrecioDescuento(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,5)).toString());
+            productoActual.setStock(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString());
+            marca pMarca;pMarca.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,7)).toString());pMarca.completar();
+            forma pForma;pForma.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString());pForma.completar();
+            color pColor;pColor.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pColor.completar();
+            tamanio pTamanio;pTamanio.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pTamanio.completar();
+            calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pCalidad.completar();
+            genero pGenero;pGenero.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pGenero.completar();
+
+            productoActual.setEstado(pEstado);
+            productoActual.setMarca(pMarca);
+            productoActual.setForma(pForma);
+            productoActual.setColor(pColor);
+            productoActual.setTamanio(pTamanio);
+            productoActual.setCalidad(pCalidad);
+            productoActual.setGenero(pGenero);
+            productoActual.completar();
+            bool ok;
+            int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+            if(ok)
+                emit sentProductoVenta(productoActual.getCodigo(),productoActual.getDescripcion(),productoActual.getPrecioVenta(),productoActual.getPrecioDescuento(),cant);
+        }
+        if(posicion==2)
+        {
+            lenteContacto productoActual;
+            productoActual.setCodigo(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString());
+            productoActual.setDescripcion(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString());
+            estado pEstado;pEstado.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString());pEstado.completar();
+            productoActual.setPrecioCompra(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,3)).toString());
+            productoActual.setPrecioVenta(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString());
+            productoActual.setPrecioDescuento(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,5)).toString());
+            productoActual.setStock(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString());
+            marca pMarca;pMarca.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,7)).toString());pMarca.completar();
+            productoActual.setPresentacion(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString());
+            productoActual.setTinteVisibilidad(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());
+            productoActual.setContenidoAcuoso(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());
+            productoActual.setDiseno(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());
+            tipoLente pTipoLente;pTipoLente.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pTipoLente.completar();
+            potencia pPotencia;pPotencia.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,13)).toString());pPotencia.completar();
+            curvaBase pCurvaBase;pCurvaBase.setValor(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,14)).toString());pCurvaBase.completar();
+            diametro pDiametro;pDiametro.setValor(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,15)).toString());pDiametro.completar();
+            tiempoUso pTiempoUso;pTiempoUso.setValor(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,16)).toString());pTiempoUso.completar();
+            material pMaterial;pMaterial.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,17)).toString());pMaterial.completar();
+            productoActual.setEstado(pEstado);
+            productoActual.setMarca(pMarca);
+            productoActual.setTipoLente(pTipoLente);
+            productoActual.setPotencia(pPotencia);
+            productoActual.setCurvaBase(pCurvaBase);
+            productoActual.setDiametro(pDiametro);
+            productoActual.setTiempoUso(pTiempoUso);
+            productoActual.setMaterial(pMaterial);
+            productoActual.completar();
+
+            bool ok;
+            int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+            if(ok)
+                emit sentProductoVenta(productoActual.getCodigo(),productoActual.getDescripcion(),productoActual.getPrecioVenta(),productoActual.getPrecioDescuento(),cant);
+        }
+        if(posicion==3)
+        {
+            otros productoActual;
+            productoActual.setCodigo(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString());
+            productoActual.setDescripcion(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString());
+            estado pEstado;pEstado.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,2)).toString());pEstado.completar();
+            productoActual.setPrecioCompra(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,3)).toString());
+            productoActual.setPrecioVenta(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,4)).toString());
+            productoActual.setPrecioDescuento(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,5)).toString());
+            productoActual.setStock(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,6)).toString());
+            marca pMarca;pMarca.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,7)).toString());pMarca.completar();
+            color pColor;pColor.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,8)).toString());pColor.completar();
+            talla pTalla;pTalla.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,9)).toString());pTalla.completar();
+            calidad pCalidad;pCalidad.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,10)).toString());pCalidad.completar();
+            tipoOtros pTipoOtros;pTipoOtros.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,11)).toString());pTipoOtros.completar();
+            genero pGenero;pGenero.setNombre(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,12)).toString());pGenero.completar();
+
+            productoActual.setEstado(pEstado);
+            productoActual.setMarca(pMarca);
+            productoActual.setColor(pColor);
+            productoActual.setTalla(pTalla);
+            productoActual.setCalidad(pCalidad);
+            productoActual.setTipoOtros(pTipoOtros);
+            productoActual.setGenero(pGenero);
+            productoActual.completar();
+
+            bool ok;
+            int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+            if(ok)
+                emit sentProductoVenta(productoActual.getCodigo(),productoActual.getDescripcion(),productoActual.getPrecioVenta(),productoActual.getPrecioDescuento(),cant);
+        }
+        if(posicion==4)
+        {
+            trabajosExtras actual;
+            actual.setDescripcion(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,0)).toString());
+            actual.setPrecio(ui->tableView_productos->model()->data(ui->tableView_productos->model()->index(fila,1)).toString());
+            actual.completar();
+
+            bool ok;
+            int cant = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
+            if(ok)
+                emit sentProductoVenta(actual.getIdTrabajosExtras(),actual.getDescripcion(),actual.getPrecio(),"0",cant);
+        }
+    }
+
+}
