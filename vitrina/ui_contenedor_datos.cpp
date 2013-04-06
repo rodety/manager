@@ -147,112 +147,130 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
         close();
         return false;
     }
+
+    if(toAlmacen)
+    {
+        insert_Product();
+    }
     else
     {
-        QString producto_codigo = ui->lineEdit_codigoProducto->text(); //verificar si el producto existe;
+        bool ok;
+        cantidadProducto = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
 
-        QSqlQuery query;
-        query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
-        query.bindValue(0,producto_codigo);
+        if(ok)
+            insert_Product();
+        else
+            return false;
+    }
+}
+
+bool ui_contenedor_datos::insert_Product()
+{
+    QString producto_codigo = ui->lineEdit_codigoProducto->text(); //verificar si el producto existe;
+
+    QSqlQuery query;
+    query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
+    query.bindValue(0,producto_codigo);
+    query.exec();
+    if(!query.next())
+    {
+        QMessageBox *msgBox =new QMessageBox;
+        msgBox->setIcon(QMessageBox::Warning);
+        msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
+        msgBox->setWindowTitle("Información");
+        msgBox->setStandardButtons(QMessageBox::Ok);
+        msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
+        msgBox->setText("El producto asociado al código que ingreso no existe!");
+        msgBox->exec();
+    }
+    else
+    {
+        QString idProducto = query.value(0).toString();
+
+        query.prepare("SELECT * from Contenedor_has_Producto WHERE Producto_idProducto=?");
+        query.bindValue(0,idProducto);
         query.exec();
-        if(!query.next())
+
+        if(query.next())
         {
+            QString idCont=query.value(1).toString();
+            query.prepare("SELECT nombre,Andamio_idAndamio from Contenedor WHERE idContenedor=?");
+            query.bindValue(0,idCont);
+            query.exec();   query.next();
+
+            QString contenedorName=query.value(0).toString(), idAndamio=query.value(1).toString();
+
+            query.prepare("SELECT nombre,Almacen_idAlmacen from Andamio WHERE idAndamio=?");
+            query.bindValue(0,idAndamio);
+            query.exec();   query.next();
+
+            QString andamioName=query.value(0).toString(), idAlmacen=query.value(1).toString();
+
+            query.prepare("SELECT nombre,Tienda_idTienda from Almacen WHERE idAlmacen=?");
+            query.bindValue(0,idAlmacen);
+            query.exec();   query.next();
+
+            QString almacenName=query.value(0).toString(), idTienda=query.value(1).toString();
+
+            query.prepare("SELECT nombre FROM Tienda WHERE IdTienda=?");
+            query.bindValue(0,idTienda);
+            query.exec();   query.next();
+
+            QString tiendaName=query.value(0).toString();
+
             QMessageBox *msgBox =new QMessageBox;
             msgBox->setIcon(QMessageBox::Warning);
             msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
-            msgBox->setWindowTitle("Información");
-            msgBox->setStandardButtons(QMessageBox::Ok);
-            msgBox->setButtonText(QMessageBox::Ok,"Aceptar");
-            msgBox->setText("El producto asociado al código que ingreso no existe!");
-            msgBox->exec();
+            msgBox->setWindowTitle("Informacion");
+            msgBox->setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+            msgBox->setText("El producto ya esta asignado a otro contenedor : Tienda:'"+tiendaName+"', Almacen:'"+almacenName+"', Andamio:'"+andamioName+"', Contenedor:'"+contenedorName+"' ¿Aun desea asignarlo en esta posicion? ");
+            int op=msgBox->exec();
+            Sesion* s=Sesion::getSesion();
+            switch(op)
+            {
+                case QMessageBox::Ok:
+
+                    if(idCont.compare(idContenedor)==0)
+                    {
+                        return true;
+                    }
+                    else
+                    {   query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona,cantidadProducto) VALUES(?,?,now(),?,?)");
+                        query.bindValue(0,idContenedor);
+                        query.bindValue(1,idProducto);
+                        query.bindValue(2,s->getIdColaborador());
+                        query.bindValue(3,cantidadProducto);
+
+                        if(query.exec())
+                        {
+                            //algo con historial de almacen
+                            return true;
+                        }
+                        else return false;
+                    }
+                    break;
+
+                case QMessageBox::Cancel:
+                    return false;
+                    break;
+            }
         }
         else
         {
-            QString idProducto = query.value(0).toString();
+            Sesion* s=Sesion::getSesion();
 
-            query.prepare("SELECT * from Contenedor_has_Producto WHERE Producto_idProducto=?");
-            query.bindValue(0,idProducto);
-            query.exec();
+            query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona,cantidadProducto) VALUES(?,?,now(),?,?)");
+            query.bindValue(0,idContenedor);
+            query.bindValue(1,idProducto);
+            query.bindValue(2,s->getIdColaborador());
+            query.bindValue(3,cantidadProducto);
 
-            if(query.next())
+            if(query.exec())
             {
-                QString idCont=query.value(1).toString();
-                query.prepare("SELECT nombre,Andamio_idAndamio from Contenedor WHERE idContenedor=?");
-                query.bindValue(0,idCont);
-                query.exec();   query.next();
-
-                QString contenedorName=query.value(0).toString(), idAndamio=query.value(1).toString();
-
-                query.prepare("SELECT nombre,Almacen_idAlmacen from Andamio WHERE idAndamio=?");
-                query.bindValue(0,idAndamio);
-                query.exec();   query.next();
-
-                QString andamioName=query.value(0).toString(), idAlmacen=query.value(1).toString();
-
-                query.prepare("SELECT nombre,Tienda_idTienda from Almacen WHERE idAlmacen=?");
-                query.bindValue(0,idAlmacen);
-                query.exec();   query.next();
-
-                QString almacenName=query.value(0).toString(), idTienda=query.value(1).toString();
-
-                query.prepare("SELECT nombre FROM Tienda WHERE IdTienda=?");
-                query.bindValue(0,idTienda);
-                query.exec();   query.next();
-
-                QString tiendaName=query.value(0).toString();
-
-                QMessageBox *msgBox =new QMessageBox;
-                msgBox->setIcon(QMessageBox::Warning);
-                msgBox->setWindowIcon(QIcon(":/Icons/abiword.png"));
-                msgBox->setWindowTitle("Informacion");
-                msgBox->setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-                msgBox->setText("El producto ya esta asignado a otro contenedor : Tienda:'"+tiendaName+"', Almacen:'"+almacenName+"', Andamio:'"+andamioName+"', Contenedor:'"+contenedorName+"' ¿Aun desea asignarlo en esta posicion? ");
-                int op=msgBox->exec();
-                Sesion* s=Sesion::getSesion();
-                switch(op)
-                {
-                    case QMessageBox::Ok:
-
-                        if(idCont.compare(idContenedor)==0)
-                        {
-                            return true;
-                        }
-                        else
-                        {   query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona) VALUES(?,?,now(),?)");
-                            query.bindValue(0,idContenedor);
-                            query.bindValue(1,idProducto);
-                            query.bindValue(2,s->getIdColaborador());
-
-                            if(query.exec())
-                            {
-                                //algo con historial de almacen
-                                return true;
-                            }
-                            else return false;
-                        }
-                        break;
-
-                    case QMessageBox::Cancel:
-                        return false;
-                        break;
-                }
+                //algo con historial de almacen
+                return true;
             }
-            else
-            {
-                Sesion* s=Sesion::getSesion();
-
-                query.prepare("INSERT INTO Contenedor_has_Producto(Contenedor_idContenedor,Producto_idProducto,fecha,Colaborador_Persona_idPersona) VALUES(?,?,now(),?)");
-                query.bindValue(0,idContenedor);
-                query.bindValue(1,idProducto);
-                query.bindValue(2,s->getIdColaborador());
-
-                if(query.exec())
-                {
-                    //algo con historial de almacen
-                    return true;
-                }
-                else return false;
-            }
+            else return false;
         }
     }
 }

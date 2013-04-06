@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "ui_almacen.h"
 #include "configuracion/sesion.h"
+#include <QInputDialog>
 
 namespace Ui {
 class ui_contenedor_datos;
@@ -17,6 +18,8 @@ private:
     QString idContenedor;
     ui_almacen* ui_almacen_parent;
     int behavior;
+    int cantidadProducto;
+    bool toAlmacen;
 
 public:
 
@@ -29,8 +32,12 @@ public:
     int get_behavior();
     void set_behavior(int);
 
+    void setToAlmacen(bool tmp)                 { toAlmacen=tmp;}
+    void setCantidadProducto(int tmp)           { cantidadProducto=tmp;}
+
     void set_idProducto(QString);
     bool add_Product();
+    bool insert_Product();
 
     void set_spinBox_fila(int);
     void set_spinBox_columna(int);

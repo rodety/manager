@@ -24,7 +24,7 @@ private:
     bool fromVitrina;
 
     bool toAlmacen;
-    int cantidad;
+    int cantidadProducto;
 
     QString currentIdEmpresa;
     QString currentIdTienda;
@@ -58,7 +58,7 @@ public:
     void set_currentIdAndamio(QString);
     void set_currentIdContenedor(QString);
     void set_currentCode(QString);
-    void set_cantidad(int tmp)              { cantidad=tmp;}
+    void set_cantidad(int tmp)               { cantidadProducto=tmp;}
     void set_query(QSqlQuery query);
 
     void update_comboBox_Empresa();

@@ -122,6 +122,17 @@ void producto::addToAlmacen(int tmp)
     query.bindValue(0,cantidadAlmacen);
     query.bindValue(1,idProducto);
     query.exec();
+
+    query.prepare("SELECT cantidadProducto FROM Contenedor_has_Producto WHERE idProducto=?");
+    query.bindValue(0,idProducto);
+    query.exec();   query.next();
+    int cant=query.value(0).toInt() + tmp;
+
+    query.prepare("UPDATE Contenedor_has_Producto SET cantidadProducto=? WHERE idProducto=?");
+    query.bindValue(0,cant);
+    query.bindValue(1,idProducto);
+    query.exec();
+
 }
 
 void producto::vitrinaToAlmacen()

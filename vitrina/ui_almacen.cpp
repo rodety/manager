@@ -393,8 +393,6 @@ void ui_almacen::on_pushButton_deleteAndamio_clicked()
 
 void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int column)
 {
-    /*QString fila = QString::number(ui->tableWidget_griContenedores->currentRow()+1);
-    QString columna = QString::number(ui->tableWidget_griContenedores->currentColumn()+1);*/
     QString fila = QString::number(row+1);
     QString columna = QString::number(column+1);
     QString pos = fila+"-"+columna;
@@ -419,6 +417,8 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
             contenedor_form->update_form();
             contenedor_form->setWindowTitle("Contenedor");
             contenedor_form->set_idProducto(currentCod);
+            contenedor_form->setToAlmacen(true);
+            contenedor_form->setCantidadProducto(cantidadProducto);
             bool add=contenedor_form->add_Product();
             if(add)
             {
@@ -430,7 +430,7 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
 
                 montura* m=new montura;
                 m->setIdProducto(id);
-                m->addToAlmacen();
+                m->addToAlmacen(cantidadProducto);
 
                 close();
             }
