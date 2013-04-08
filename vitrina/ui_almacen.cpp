@@ -422,18 +422,10 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
             bool add=contenedor_form->add_Product();
             if(add)
             {
-                QSqlQuery query;
-                query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
-                query.bindValue(0,currentCod);
-                query.exec();   query.next();
-                QString id=query.value(0).toString();
-
-                montura* m=new montura;
-                m->setIdProducto(id);
-                m->addToAlmacen(cantidadProducto);
-
                 close();
+                contenedor_form->close();
             }
+
         }
         if(fromVitrina)
         {
@@ -461,12 +453,8 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
                 query.bindValue(1,fila);
                 query.bindValue(2,col);
                 query.bindValue(3,nivel);
-                cout<<query.exec()<<endl;
-                qDebug()<<query.lastError().text()<<endl;
+                query.exec();
 
-                montura* m=new montura;
-                m->setIdProducto(idProducto);
-                m->vitrinaToAlmacen();
             }
         }
         else

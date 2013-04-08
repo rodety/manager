@@ -133,7 +133,8 @@ void ui_contenedor_datos::on_pushButton_salir_clicked()
 
 bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
 {
-    if(ui->lineEdit_codigoProducto->text().compare("")==0)
+    QString codigo=ui->lineEdit_codigoProducto->text();
+    if(codigo.compare("")==0)
     {
         QMessageBox *msgBox =new QMessageBox;
         msgBox->setIcon(QMessageBox::Information);
@@ -148,9 +149,20 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
         return false;
     }
 
+    QSqlQuery query;
+    query.prepare("SELECT idProducto FROM Producto WHERE codigo=?");
+    query.bindValue(0,codigo);
+    query.exec();   query.next();
+    QString id=query.value(0).toString();
+
     if(toAlmacen)
     {
-        insert_Product();
+        if(insert_Product())
+        {
+            montura* m=new montura;
+            m->setIdProducto(id);
+            m->addToAlmacen(cantidadProducto);
+        }
     }
     else
     {
@@ -158,7 +170,12 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
         cantidadProducto = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
 
         if(ok)
-            insert_Product();
+            if(insert_Product())
+            {
+                montura* m=new montura;
+                m->setIdProducto(id);
+                m->addToAlmacen(cantidadProducto);
+            }
         else
             return false;
     }
@@ -232,6 +249,16 @@ bool ui_contenedor_datos::insert_Product()
 
                     if(idCont.compare(idContenedor)==0)
                     {
+                        query.prepare("SELECT cantidadProducto FROM Contenedor_has_Producto WHERE Contenedor_idContenedor=?");
+                        query.bindValue(0,idContenedor);
+                        query.exec();   query.next();
+                        cantidadProducto+=query.value(0).toInt();
+
+                        query.prepare("UPDATE Contenedor_has_Producto SET cantidadProducto=? WHERE Contenedor_idContenedor=?");
+                        query.bindValue(0,cantidadProducto);
+                        query.bindValue(1,idContenedor);
+                        query.exec();
+
                         return true;
                     }
                     else
