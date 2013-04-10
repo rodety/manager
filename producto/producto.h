@@ -21,6 +21,9 @@
 #include <producto/tipootros.h>
 #include <configuracion/sesion.h>
 
+#include <iostream>
+using namespace std;
+
 class producto:public ObjetoPersistente
 {
 protected:
@@ -66,8 +69,9 @@ public:
     void setObservaciones(QString tmp);
     void setEstado(estado tmp);
     void setMarca(marca tmp);
-    void addToVitrina();
-    void addToAlmacen(int tmp=1);
+    int  checkStock();                      //retorna cuantos productos faltan asignar
+    bool addToVitrina();
+    bool addToAlmacen(int tmp=1);
     void almacenToVitrina();    //se debe de borrar si es que cantidadAlmacen llega a 0
     void vitrinaToAlmacen();
     //setColaborador

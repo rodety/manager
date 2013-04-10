@@ -17,7 +17,7 @@ ui_tienda::ui_tienda(QWidget *parent) :
 {
     ui->setupUi(this);
     actualizar_combo_empresa();
-    caso=false;    traspaso=false;
+    caso=false;    toVitrina=false;
     habilitar_botones();
     actual=Empresa;
     ui->pushButton_aceptar_traspaso->hide();    
@@ -460,16 +460,9 @@ void ui_tienda::on_grilla_cellDoubleClicked(int row, int column)
 {
     ui_item_posicion* posicion_agregar = new ui_item_posicion;
     posicion_agregar->set_ui_tienda_actual(this);
-    if(traspaso)
+    if(toVitrina)
     {
-        posicion_agregar->set_caso(true);
-        posicion_agregar->setWindowTitle("Nueva Posicion");
-        posicion_agregar->set_posicion(row+1,column+1,actual_nivel);
-        posicion_agregar->habilitar();
-//        posicion_agregar->set_iditem(get_idItem_tras());
-        posicion_agregar->fillText(get_idItem_tras());
-//        posicion_agregar->on_pushButton_addProducto_clicked();
-//        posicion_agregar->on_pushButton_guardar_clicked();
+       return;
     }
     if(idItem.isEmpty())
     {
@@ -537,7 +530,7 @@ void ui_tienda::on_pushButton_traspaso_clicked()
 
 void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
 {
-    if(traspaso)
+    if(toVitrina)
     {
         int row=ui->grilla->currentRow()+1;
         int col=ui->grilla->currentColumn()+1;
@@ -546,26 +539,21 @@ void ui_tienda::on_pushButton_aceptar_traspaso_clicked()
 
         Sesion* s= Sesion::getSesion();
 
-        QSqlQuery query;
-        query.prepare("INSERT INTO Producto_has_Vitrina(Producto_idProducto,Vitrina_Ubicacion_idUbicacion,fila,columna,nivel,fecha,Colaborador_Persona_idPersona) VALUES(?,?,?,?,?,now(),?) ");
-        query.bindValue(0,idTraspaso);
-        query.bindValue(1,idVitrina);
-        query.bindValue(2,row);
-        query.bindValue(3,col);
-        query.bindValue(4,level);
-        query.bindValue(5,s->getIdColaborador());
-        if(query.exec())
+        montura * m=new montura;
+        m->setIdProducto(idTraspaso);
+        if(m->addToVitrina())
         {
-            montura * m=new montura;
-            m->setIdProducto(idTraspaso);
-            m->addToVitrina();
-            close();
+            QSqlQuery query;
+            query.prepare("INSERT INTO Producto_has_Vitrina(Producto_idProducto,Vitrina_Ubicacion_idUbicacion,fila,columna,nivel,fecha,Colaborador_Persona_idPersona) VALUES(?,?,?,?,?,now(),?) ");
+            query.bindValue(0,idTraspaso);
+            query.bindValue(1,idVitrina);
+            query.bindValue(2,row);
+            query.bindValue(3,col);
+            query.bindValue(4,level);
+            query.bindValue(5,s->getIdColaborador());
+            query.exec();
         }
-        else
-        {
-            cout<<query.lastError().text().toStdString()<<endl;
-            close();
-        }
+        close();
     }
 
     if(caso)

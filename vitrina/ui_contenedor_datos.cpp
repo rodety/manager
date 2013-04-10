@@ -20,20 +20,20 @@ ui_contenedor_datos::~ui_contenedor_datos()
     delete ui;
 }
 
-QString ui_contenedor_datos::get_idContenedor(){return idContenedor;}
-void ui_contenedor_datos::set_idContenedor(QString c){idContenedor = c;}
+QString ui_contenedor_datos::get_idContenedor()         {return idContenedor;}
+void ui_contenedor_datos::set_idContenedor(QString c)   {idContenedor = c;}
 
 ui_almacen* ui_contenedor_datos::get_ui_almacen_parent(){return ui_almacen_parent;}
 void ui_contenedor_datos::set_ui_almacen_parent(ui_almacen * al){ui_almacen_parent = al;}
 
-int ui_contenedor_datos::get_behavior(){return behavior;}
-void ui_contenedor_datos::set_behavior(int b){behavior = b;}
+int ui_contenedor_datos::get_behavior()                 {return behavior;}
+void ui_contenedor_datos::set_behavior(int b)           {behavior = b;}
 
-void ui_contenedor_datos::set_idProducto(QString tmp){ui->lineEdit_codigoProducto->setText(tmp);}
-bool ui_contenedor_datos::add_Product(){return on_pushButton_addProducto_clicked();}
+void ui_contenedor_datos::set_idProducto(QString tmp)   {ui->lineEdit_codigoProducto->setText(tmp);}
+bool ui_contenedor_datos::add_Product()                 {return on_pushButton_addProducto_clicked();}
 
-void ui_contenedor_datos::set_spinBox_fila(int f){ui->spinBox_fila->setValue(f);}
-void ui_contenedor_datos::set_spinBox_columna(int c){ui->spinBox_columna->setValue(c);}
+void ui_contenedor_datos::set_spinBox_fila(int f)       {ui->spinBox_fila->setValue(f);}
+void ui_contenedor_datos::set_spinBox_columna(int c)    {ui->spinBox_columna->setValue(c);}
 
 void ui_contenedor_datos::clear_widget_list_productos()
 {
@@ -44,7 +44,7 @@ void ui_contenedor_datos::clear_widget_list_productos()
 
 void ui_contenedor_datos::uptate_widget_list_productos()
 {
-    QString s_query = "SELECT idProducto,codigo as Codigo,descripcion as Descripcion,Marca_idMarca as Marca,stock,precioVenta,accesorios,precioDescuento,Estado_idEstado FROM Producto ";
+    QString s_query = "SELECT idProducto,codigo as Codigo,descripcion as Descripcion,Marca_idMarca as Marca,stock,precioVenta,accesorios,precioDescuento,Estado_idEstado,cantidadProducto FROM Producto ";
             s_query+= "INNER JOIN Contenedor_has_Producto ON idProducto = Producto_idProducto ";
             s_query+= "WHERE contenedor_idcontenedor = "+idContenedor;
 
@@ -66,28 +66,18 @@ void ui_contenedor_datos::uptate_widget_list_productos()
         QString accesorios = query.value(6).toString();
         QString p_descuento = query.value(7).toString();
         QString habilitado = query.value(8).toString();
+        QString cantidad = query.value(9).toString();
 
         ui->tableWidget_list_productos->insertRow(row);
         ui->tableWidget_list_productos->setItem(row,0,new QTableWidgetItem(codigo));
         ui->tableWidget_list_productos->setItem(row,1,new QTableWidgetItem(descripcion));
         ui->tableWidget_list_productos->setItem(row,2,new QTableWidgetItem(idmarca));
         ui->tableWidget_list_productos->setItem(row,3,new QTableWidgetItem(precio));
+        ui->tableWidget_list_productos->setItem(row,4,new QTableWidgetItem(cantidad));
     }
 
     QHeaderView *header = ui->tableWidget_list_productos->horizontalHeader();
     header->setResizeMode(QHeaderView::Stretch);
-
-    /*QSqlQueryModel* model=new QSqlQueryModel;
-    model->setQuery(query);
-    ui->tableView->setModel(model);
-    ui->tableView->setColumnHidden(0,true);
-    ui->tableView->setColumnHidden(4,true);
-    ui->tableView->setColumnHidden(6,true);
-    ui->tableView->setColumnHidden(7,true);
-    ui->tableView->setColumnHidden(8,true);
-
-    if(model->lastError().isValid())
-        qDebug()<<model->lastError();*/
 }
 
 void ui_contenedor_datos::update_form()
@@ -157,12 +147,10 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
 
     if(toAlmacen)
     {
-        if(insert_Product())
-        {
-            montura* m=new montura;
-            m->setIdProducto(id);
-            m->addToAlmacen(cantidadProducto);
-        }
+        montura* m=new montura;
+        m->setIdProducto(id);
+        if(m->addToAlmacen(cantidadProducto))
+            insert_Product();
     }
     else
     {
@@ -170,12 +158,12 @@ bool ui_contenedor_datos::on_pushButton_addProducto_clicked()
         cantidadProducto = QInputDialog::getInt(this,tr("Ingrese Cantidad"),tr("Cantidad"),1,0,1000,1,&ok);
 
         if(ok)
-            if(insert_Product())
-            {
-                montura* m=new montura;
-                m->setIdProducto(id);
-                m->addToAlmacen(cantidadProducto);
-            }
+        {
+            montura* m=new montura;
+            m->setIdProducto(id);
+            if(m->addToAlmacen(cantidadProducto))
+                insert_Product();
+        }
         else
             return false;
     }

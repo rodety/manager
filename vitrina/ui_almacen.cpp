@@ -419,13 +419,9 @@ void ui_almacen::on_tableWidget_griContenedores_cellDoubleClicked(int row, int c
             contenedor_form->set_idProducto(currentCod);
             contenedor_form->setToAlmacen(true);
             contenedor_form->setCantidadProducto(cantidadProducto);
-            bool add=contenedor_form->add_Product();
-            if(add)
-            {
-                close();
-                contenedor_form->close();
-            }
-
+            contenedor_form->add_Product();
+            contenedor_form->close();
+            close();
         }
         if(fromVitrina)
         {
