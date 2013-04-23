@@ -73,12 +73,12 @@ void newalerta_alerta_ui::create_alert(QString type)
     if(type == "general")
     {
 
-        parent_ui_form->update_table_alert_day();
+        //parent_ui_form->update_table_alert_day();
     }
     else
     {
 
-        parent_ui_form_agenda->update_table_alerta_personal();
+        //parent_ui_form_agenda->update_table_alerta_personal();
 
     }
 }
@@ -181,7 +181,7 @@ void newalerta_alerta_ui::on_pushButton_Save_clicked()
             //parent_ui_form = new alertas_ui;
             //parent_ui_form = new alertas_ui;
 
-            if(parent_ui_form_agenda)
+            /*if(parent_ui_form_agenda)
             {
                 parent_ui_form_agenda->update_table_agenda_form();
                 parent_ui_form_agenda->update_table_alerta_personal();
@@ -190,7 +190,7 @@ void newalerta_alerta_ui::on_pushButton_Save_clicked()
             else
             {
                 parent_ui_form->update_table_alert_day();
-            }
+            }*/
            break;
        case QMessageBox::Discard:
            // Don't Save was clicked

@@ -38,9 +38,6 @@ bool alerta::agregar()
         return false;
 
 
-
-
-
 }
 bool alerta::actualizar()
 {

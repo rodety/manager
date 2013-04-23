@@ -3,8 +3,7 @@
 
 #include <QSqlQuery>
 #include <QWidget>
-#include "alertas_ui.h"
-#include "agenda_ui.h"
+
 
 class alertas_ui;
 class agenda_ui;
@@ -23,11 +22,7 @@ public:
     void set_clicked_type(int type);
     void update_new_alerta_form(QString code);
     QString code_var;
-    QString alert_type_var;
-
-    alertas_ui* parent_ui_form;
-    agenda_ui* parent_ui_form_agenda;
-
+    QString alert_type_var;    
     void create_alert(QString type);
 
 

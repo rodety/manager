@@ -525,7 +525,7 @@ void agenda_ui::on_pushButton_Alert_Personales_add_clicked()
     newalerta_alerta_ui* NEW_ALERTA_FORM = new newalerta_alerta_ui;
     NEW_ALERTA_FORM->set_clicked_type(2);
     NEW_ALERTA_FORM->alert_type_var = this->curren_user_code_var;
-    NEW_ALERTA_FORM->parent_ui_form_agenda = this;
+    //NEW_ALERTA_FORM->parent_ui_form_agenda = this;
     NEW_ALERTA_FORM->show();
 }
 
@@ -637,7 +637,7 @@ void agenda_ui::on_pushButton_Alert_Personal_show_clicked()
 void agenda_ui::on_pushButton_Alert_Personales_edit_clicked()
 {
     newalerta_alerta_ui *EDIT_ALERT_FORM = new newalerta_alerta_ui;
-    EDIT_ALERT_FORM->parent_ui_form_agenda = this;
+    //EDIT_ALERT_FORM->parent_ui_form_agenda = this;
     EDIT_ALERT_FORM->code_var = code_var_alerta_personal;
     EDIT_ALERT_FORM->update_new_alerta_form(code_var_alerta_personal);
 
