@@ -139,42 +139,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableWidget_Alert">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>400</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <column>
-          <property name="text">
-           <string>Hora</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Descripcion</string>
-          </property>
-          <property name="textAlignment">
-           <set>AlignLeft|AlignVCenter</set>
-          </property>
-         </column>
-        </widget>
+        <widget class="QTableView" name="tableView"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -364,39 +329,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableWidget_Alert_Personales">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>400</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <column>
-          <property name="text">
-           <string>Hora</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Descripcion</string>
-          </property>
-         </column>
-        </widget>
+        <widget class="QTableView" name="tableView_2"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -668,62 +601,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tablaView_Agend">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="midLineWidth">
-          <number>1</number>
-         </property>
-         <property name="sortingEnabled">
-          <bool>true</bool>
-         </property>
-         <column>
-          <property name="text">
-           <string>N. Doc</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Razon Social</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>M. Total</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Adelanto</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Fecha contrato</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Entregado</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Colaborador</string>
-          </property>
-         </column>
-        </widget>
+        <widget class="QTableView" name="tableView_3"/>
        </item>
       </layout>
      </item>
@@ -734,17 +612,14 @@
  <tabstops>
   <tabstop>pushButton_Alerta_General_show</tabstop>
   <tabstop>pushButton_AlertaGeneral_changeColor</tabstop>
-  <tabstop>tableWidget_Alert</tabstop>
   <tabstop>pushButton_Alert_Personal_show</tabstop>
   <tabstop>pushButton_Alert_Personal_changeColor</tabstop>
-  <tabstop>tableWidget_Alert_Personales</tabstop>
   <tabstop>pushButton_Alert_Personales_edit</tabstop>
   <tabstop>comboBox_Names</tabstop>
   <tabstop>pushButton_update_Agenda</tabstop>
   <tabstop>dateEdit_Agenda</tabstop>
   <tabstop>pushButton_show_Agenda</tabstop>
   <tabstop>pushButton_agenda_changeColor</tabstop>
-  <tabstop>tablaView_Agend</tabstop>
  </tabstops>
  <resources>
   <include location="../Icons/Icons.qrc"/>

@@ -69,6 +69,7 @@ private slots:
     void on_tablaView_Agend_doubleClicked(const QModelIndex &index);
     void on_pushButton_printList_clicked();
 
+    void on_pushButton_Alert_General_add_clicked();
 };
 
 #endif // AGENDA_UI_H
