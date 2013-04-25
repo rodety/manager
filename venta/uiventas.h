@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <cliente/ui_cliente.h>
 #include <producto/ui_producto.h>
-#include <configuracion/tusuario.h>
 
 namespace Ui {
 class uiventas;
@@ -27,6 +26,8 @@ private slots:
 private:
     Ui::uiventas *ui;
     int count_row;
+
+    map<int,QString> res;
 };
 
 #endif // UIVENTAS_H

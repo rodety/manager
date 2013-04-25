@@ -95,6 +95,9 @@
              <property name="text">
               <string>Boleta</string>
              </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="2" column="1">
@@ -143,7 +146,11 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QDateTimeEdit" name="dateTimeEdit_entrega"/>
+            <widget class="QDateTimeEdit" name="dateTimeEdit_entrega">
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item row="3" column="0">
             <widget class="QLabel" name="label_18">
@@ -180,7 +187,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLabel" name="label_19">
+            <widget class="QLabel" name="label_numero">
              <property name="text">
               <string>Numero #001-15</string>
              </property>
@@ -310,6 +317,9 @@
             <widget class="QCheckBox" name="checkBox">
              <property name="text">
               <string>Efectivo</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
              </property>
             </widget>
            </item>

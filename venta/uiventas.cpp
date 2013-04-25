@@ -11,7 +11,19 @@ uiventas::uiventas(QWidget *parent) :
     QDate hoy=QDate::currentDate();
     ui->dateEdit_fecha->setDate(hoy);
     ui->dateEdit_fecha->setMaximumDate(hoy);
-    //ui->lineEdit_igv->setText(tusuario::getNombre());
+    ui->dateTimeEdit_entrega->setDate(hoy);
+    ui->dateTimeEdit_entrega->setMinimumDate(hoy);
+    ui->lineEdit_subtotal->setText("0");
+    ui->lineEdit_total->setText("0");
+
+
+    QSqlQuery query;
+    query.prepare("SELECT igv,serieBoleta FROM Configuracion WHERE (Tienda_idTienda = 1)");
+    query.exec();
+    query.next();
+    ui->lineEdit_igv->setText(query.value(0).toString());
+    ui->label_numero->setText("Numero #"+query.value(1).toString());
+    ui->lineEdit_usuario->setText("admin");
 }
 
 uiventas::~uiventas()
@@ -56,4 +68,7 @@ void uiventas::recojeProducto(QString codigo,QString descripcion,QString precioV
     ui->tableWidget_producto->setItem(count_row,5,new QTableWidgetItem("si"));
     ui->tableWidget_producto->setItem(count_row,6,new QTableWidgetItem(QString::number(cant*(precioVenta.toDouble()-precioDescuento.toDouble()))));
     count_row++;
+
+    ui->lineEdit_subtotal->setText(QString::number(cant*(precioVenta.toDouble()-precioDescuento.toDouble()) + ui->lineEdit_subtotal->text().toDouble()));
+    ui->lineEdit_total->setText(QString::number(ui->lineEdit_subtotal->text().toDouble()+ui->lineEdit_subtotal->text().toDouble()*ui->lineEdit_igv->text().toDouble()/100));
 }
