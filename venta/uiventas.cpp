@@ -13,9 +13,6 @@ uiventas::uiventas(QWidget *parent) :
     ui->dateEdit_fecha->setMaximumDate(hoy);
     ui->dateTimeEdit_entrega->setDate(hoy);
     ui->dateTimeEdit_entrega->setMinimumDate(hoy);
-    ui->lineEdit_subtotal->setText("0");
-    ui->lineEdit_total->setText("0");
-
 
     QSqlQuery query;
     query.prepare("SELECT igv,serieBoleta FROM Configuracion WHERE (Tienda_idTienda = 1)");
@@ -71,4 +68,9 @@ void uiventas::recojeProducto(QString codigo,QString descripcion,QString precioV
 
     ui->lineEdit_subtotal->setText(QString::number(cant*(precioVenta.toDouble()-precioDescuento.toDouble()) + ui->lineEdit_subtotal->text().toDouble()));
     ui->lineEdit_total->setText(QString::number(ui->lineEdit_subtotal->text().toDouble()+ui->lineEdit_subtotal->text().toDouble()*ui->lineEdit_igv->text().toDouble()/100));
+}
+
+void uiventas::on_pushButton_completar_clicked()
+{
+
 }

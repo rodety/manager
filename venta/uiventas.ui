@@ -206,6 +206,12 @@
        </item>
        <item>
         <widget class="QTableWidget" name="tableWidget_producto">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
          <column>
           <property name="text">
            <string>Cod.</string>
@@ -280,10 +286,17 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="text">
+              <string>0</string>
+             </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_adelanto"/>
+            <widget class="QLineEdit" name="lineEdit_adelanto">
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
            </item>
            <item row="2" column="2">
             <widget class="QPushButton" name="pushButton_completar">
@@ -297,12 +310,18 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="text">
+              <string>0</string>
+             </property>
             </widget>
            </item>
            <item row="5" column="1">
             <widget class="QLineEdit" name="lineEdit_vuelto">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>0</string>
              </property>
             </widget>
            </item>
@@ -352,6 +371,9 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="text">
+              <string>0</string>
+             </property>
             </widget>
            </item>
            <item row="1" column="0">
@@ -366,12 +388,18 @@
              <property name="enabled">
               <bool>false</bool>
              </property>
+             <property name="text">
+              <string>0</string>
+             </property>
             </widget>
            </item>
            <item row="0" column="1">
             <widget class="QLineEdit" name="lineEdit_subtotal">
              <property name="enabled">
               <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>0</string>
              </property>
             </widget>
            </item>

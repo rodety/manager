@@ -23,6 +23,8 @@ private slots:
     void on_pushButton_buscarProducto_clicked();
     void recojeProducto(QString,QString,QString,QString,int);
 
+    void on_pushButton_completar_clicked();
+
 private:
     Ui::uiventas *ui;
     int count_row;
