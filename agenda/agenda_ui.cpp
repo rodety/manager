@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <configuracion/sesion.h>
 #include <configuracion/usuario.h>
+#include <agenda/alerta.h>
+#include <vitrina/tienda.h>
 agenda_ui::agenda_ui(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::agenda_ui)
@@ -14,7 +16,7 @@ agenda_ui::agenda_ui(QWidget *parent) :
     ui->setupUi(this);
 
     const QDate FECHA = QDate::currentDate();
-
+    actualizar_combo_tienda();
 
 
 
@@ -33,7 +35,7 @@ void agenda_ui::on_pushButton_newTask_clicked()
     newTask_agenda_ui *NEW_TASK_FORM = new newTask_agenda_ui;
     NEW_TASK_FORM->set_cliked_type(2);
     //NEW_TASK_FORM->dni_task = ui->comboBox_dni->currentText();
-    NEW_TASK_FORM->setDate(ui->dateEdit_Agenda->date());
+    //NEW_TASK_FORM->setDate(ui->dateEdit_Agenda->date());
     NEW_TASK_FORM->parent_ui_form = this;
     NEW_TASK_FORM->enableDate(false);
     NEW_TASK_FORM->setTitle("Nueva Tarea");
@@ -233,7 +235,7 @@ void agenda_ui::on_comboBox_dni_currentIndexChanged(int index)
 
 void agenda_ui::on_calendarWidget_clicked(const QDate &date)
 {
-    ui->dateEdit_Agenda->setDate(date);
+    //ui->dateEdit_Agenda->setDate(date);
 }
 
 
@@ -267,7 +269,46 @@ void agenda_ui::on_pushButton_Alert_General_add_clicked()
 {
     newalerta_alerta_ui* NEW_ALERTA_FORM = new newalerta_alerta_ui;
     NEW_ALERTA_FORM->set_clicked_type(2); //Configurando Comportamiento
-    //NEW_ALERTA_FORM->alert_type_var = Sesion::get_Usuario()->get_id();
-
+    NEW_ALERTA_FORM->set_type_alerta(0); //Configurando Tipo de alerta 0 Alerta General 1 alerta Personal
+    Sesion* s=Sesion::getSesion();
+    NEW_ALERTA_FORM->alert_type_var = s->getIdColaborador();
+    connect(NEW_ALERTA_FORM,SIGNAL(updateChange()),this,SLOT(updateTable_Alert_General()));
     NEW_ALERTA_FORM->show();
+}
+void agenda_ui::updateTable_Alert_General()
+{
+    ui->tableView_Alert_General->setModel(alerta::mostrar(0));
+}
+
+void agenda_ui::actualizar_combo_tienda()
+{
+    ui->comboBox_tienda->clear();
+
+    QSqlQuery query;
+    query.prepare("SELECT idTienda,nombre FROM Tienda");
+    query.exec();
+
+    int c = 0;
+
+    if(!query.next())
+        ui->comboBox_tienda->insertItem(c++,"");
+    else
+    {
+        QString idtienda = query.value(0).toString();
+        QString alias = query.value(1).toString();
+
+        Tiendas[alias] = idtienda;
+
+        ui->comboBox_tienda->insertItem(c++,alias);
+
+        while(query.next())
+        {
+            idtienda = query.value(0).toString();
+            alias = query.value(1).toString();
+
+            Tiendas[alias] = idtienda;
+
+            ui->comboBox_tienda->insertItem(c++,alias);
+        }
+    }
 }

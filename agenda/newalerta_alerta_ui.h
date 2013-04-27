@@ -24,6 +24,7 @@ public:
     QString code_var;
     QString alert_type_var;    
     void create_alert(QString type);
+    void set_type_alerta(int t){type_alert = t;}
 
 
 private slots:
@@ -32,9 +33,15 @@ private slots:
     void on_pushButton_Cancel_clicked();
 
     void on_pushButton_Save_clicked();
+public slots:
+signals:
+    void updateChange();
+
+
 
 private:
     Ui::newalerta_alerta_ui *ui;
+    int type_alert;
 };
 
 #endif // NEWALERTA_ALERTA_UI_H

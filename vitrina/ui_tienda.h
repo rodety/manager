@@ -59,6 +59,7 @@ private:
     map<QString,QString> Posiciones;
     ui_tienda_agregar* tienda_agregar;
 
+
 public:
 
     void changeActual(lbls num);

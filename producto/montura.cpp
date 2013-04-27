@@ -1,5 +1,7 @@
 #include "montura.h"
 #include <producto/genero.h>
+#include <configuracion/sesion.h>
+class Sesion;
 montura::montura()
 {
 }

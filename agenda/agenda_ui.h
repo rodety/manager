@@ -5,6 +5,8 @@
 #include <QTableWidget>
 #include "funciones.h"
 #include "newalerta_alerta_ui.h"
+#include <map>
+using namespace std;
 //hello
 namespace Ui {
     class agenda_ui;
@@ -29,6 +31,7 @@ public:
 
 private:
     Ui::agenda_ui *ui;
+    map<QString,QString> Tiendas;
 
 private slots:
     void on_pushButton_newTask_clicked();
@@ -70,6 +73,8 @@ private slots:
     void on_pushButton_printList_clicked();
 
     void on_pushButton_Alert_General_add_clicked();
+    void updateTable_Alert_General();
+    void actualizar_combo_tienda();
 };
 
 #endif // AGENDA_UI_H

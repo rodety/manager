@@ -2,6 +2,7 @@
 #include "ui_newalerta_alerta_ui.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <agenda/alerta.h>
 
 newalerta_alerta_ui::newalerta_alerta_ui(QWidget *parent) :
     QWidget(parent),
@@ -21,20 +22,14 @@ void newalerta_alerta_ui::create_alert(QString type)
 {
     QMessageBox *msgBox=new QMessageBox;
     int ret;
-    QSqlQuery query;
+    alerta nueva;
+    nueva.setfecha(ui->dateEdit->text());
+    nueva.sethora(ui->timeEdit->text());
+    nueva.setdescripcion(ui->lineEdit->text());
+    nueva.setcolor("#ffffff");
+    nueva.settipo(QString::number(type_alert));
 
-
-    query.prepare("INSERT INTO e_alerta(fecha,hora,descripcion,color,tipo) VALUES(?,?,?,?,?)");
-
-
-    query.bindValue(0,ui->dateEdit->text());
-    query.bindValue(1,ui->timeEdit->text());
-    query.bindValue(2,ui->lineEdit->text());
-    query.bindValue(3,"#ffffff");
-    query.bindValue(4,type);
-    query.exec();
-
-    if(query.numRowsAffected()==1)
+    if(nueva.agregar()==true)
     {
         QString info = "Se creo una nueva alerta con éxito.";
         msgBox->setIcon(QMessageBox::Information);
@@ -70,22 +65,13 @@ void newalerta_alerta_ui::create_alert(QString type)
 
     this->close();
 
-    if(type == "general")
-    {
-
-        //parent_ui_form->update_table_alert_day();
-    }
-    else
-    {
-
-        //parent_ui_form_agenda->update_table_alerta_personal();
-
-    }
+    emit updateChange();
 }
 
 void newalerta_alerta_ui::on_pushButton_Acept_clicked()
 {
     QString TIPO_ALERTA;
+    //TIPO DE ALERTA 0 ALERTA GENERA 1 ALERTA PERSONAL
 
     TIPO_ALERTA = alert_type_var;
 

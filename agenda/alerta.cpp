@@ -61,7 +61,23 @@ bool alerta::eliminar()
     //query.prepare("DELETE FROM Alerta")
 }
 
-QSqlQueryModel* alerta::mostrar(){}
+QSqlQueryModel* alerta::mostrar(int t)
+{
+    QSqlQueryModel* model=new QSqlQueryModel;
+    if(t = 0)
+    {
+
+        model->setQuery("SELECT nombre as 'Documento',numeroDocumento as 'Numero de Documento',nombres as 'Nombres',primer_apellido as 'Apellido Paterno',segundo_apellido as 'Apellido Materno',telefono as 'Telefono',movil as 'Celular' FROM Cliente,Documento WHERE idDocumento=Documento_idDocumento1");
+        return model;
+    }
+    else
+    {
+        model->setQuery("SELECT nombre as 'Documento',numeroDocumento as 'Numero de Documento',nombres as 'Nombres',primer_apellido as 'Apellido Paterno',segundo_apellido as 'Apellido Materno',telefono as 'Telefono',movil as 'Celular' FROM Cliente,Documento WHERE idDocumento=Documento_idDocumento1");
+        return model;
+    }
+
+}
+
 bool alerta::completar(){
     return false;
 }
