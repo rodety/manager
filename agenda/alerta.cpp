@@ -1,5 +1,7 @@
 #include "alerta.h"
 #include <QSqlQuery>
+#include <QMessageBox>
+#include <QSqlError>
 alerta::alerta()
 {
 }
@@ -25,24 +27,28 @@ QString alerta::gettipo(){return tipo;}
 bool alerta::agregar()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Alerta(fecha,hora,descripcion,color,tipo,Colaborador_idColaborador) VALUES (?,?,?,?,?,?)");
-    query.bindValue(0,fecha);
-    query.bindValue(1,hora);
-    query.bindValue(2,descripcion);
-    query.bindValue(3,color);
-    query.bindValue(4,tipo);
-    query.bindValue(5,idColaborador);
+    query.prepare("INSERT INTO Alerta(Colaborador_idColaborador,fecha,hora,descripcion,color,tipo) VALUES (?,?,?,?,?,?)");
+    qDebug()<<fecha+" "+hora+" "+descripcion+" "+color+" "+tipo+" "+idColaborador;
+    query.bindValue(0,idColaborador);
+    query.bindValue(1,fecha);
+    query.bindValue(2,hora);
+    query.bindValue(3,descripcion);
+    query.bindValue(4,color);
+    query.bindValue(5,tipo);
+
     if(query.exec())
         return true;
     else
+    {
+        QSqlError error(query.lastError());
+        QMessageBox::critical(0,"Error permisos",error.text(),0,0);
         return false;
-
-
+    }
 }
 bool alerta::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE Alerta SET fecha=?,hora=?,descripcion=?,color=?,Colaborador_idColaborador? WHERE idAlerta=?");
+    query.prepare("UPDATE Alerta SET fecha=?,hora=?,descripcion=?,color=?,Colaborador_idColaborador=? WHERE idAlerta=?");
     query.bindValue(0,fecha);
     query.bindValue(1,hora);
     query.bindValue(2,descripcion);

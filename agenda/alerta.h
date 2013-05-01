@@ -1,6 +1,7 @@
 #ifndef ALERTA_H
 #define ALERTA_H
 #include <objetopersistente.h>
+#include <QObject>
 
 class alerta:ObjetoPersistente
 {

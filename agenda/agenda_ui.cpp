@@ -31,7 +31,6 @@ agenda_ui::~agenda_ui()
 
 void agenda_ui::on_pushButton_newTask_clicked()
 {
-
     newTask_agenda_ui *NEW_TASK_FORM = new newTask_agenda_ui;
     NEW_TASK_FORM->set_cliked_type(2);
     //NEW_TASK_FORM->dni_task = ui->comboBox_dni->currentText();
