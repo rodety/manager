@@ -38,19 +38,17 @@ int main(int argc,char *argv[])
 
     QPixmap pix(":/Icons/splash.png");
     pix = pix.scaled(800,450);
-
     QSplashScreen splash(pix);
     splash.show();
     splash.showMessage("Cargando Modulos",Qt::AlignLeft,Qt::white);
     configurador config("config.ini");
-
     if(config.conectar_db())
-    {
+    {        
         Sesion::Configurar(3,10,6000);
         DialogLogin * log = new DialogLogin;
-        log->exec();
+        log->exec();        
         if(log->getOk())
-        {
+        {     
             MainWindow *MAIN_WINDOW;
             MAIN_WINDOW = new MainWindow;
             MAIN_WINDOW->showMaximized();

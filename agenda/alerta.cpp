@@ -2,6 +2,7 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QSqlError>
+#include <QDate>
 alerta::alerta()
 {
 }
@@ -28,7 +29,7 @@ bool alerta::agregar()
 {
     QSqlQuery query;
     query.prepare("INSERT INTO Alerta(Colaborador_idColaborador,fecha,hora,descripcion,color,tipo) VALUES (?,?,?,?,?,?)");
-    qDebug()<<fecha+" "+hora+" "+descripcion+" "+color+" "+tipo+" "+idColaborador;
+    qDebug()<<"Colaborador "<<idColaborador<<endl ;
     query.bindValue(0,idColaborador);
     query.bindValue(1,fecha);
     query.bindValue(2,hora);
@@ -48,18 +49,18 @@ bool alerta::agregar()
 bool alerta::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE Alerta SET fecha=?,hora=?,descripcion=?,color=?,Colaborador_idColaborador=? WHERE idAlerta=?");
+    query.prepare("UPDATE Alerta SET fecha=?,hora=?,descripcion=? WHERE idAlerta=?");
     query.bindValue(0,fecha);
     query.bindValue(1,hora);
-    query.bindValue(2,descripcion);
-    query.bindValue(3,color);
-    query.bindValue(4,idColaborador);
-    query.bindValue(5,idAlerta);
+    query.bindValue(2,descripcion);        
+    query.bindValue(3,idAlerta);
 
     if(query.exec())
         return true;
     else
+    {
         return false;
+    }
 }
 bool alerta::eliminar()
 {
@@ -67,25 +68,34 @@ bool alerta::eliminar()
     //query.prepare("DELETE FROM Alerta")
 }
 
-QSqlQueryModel* alerta::mostrar(int t)
+QSqlQueryModel* alerta::mostrar(int t, QDate d)
 {
-    QSqlQueryModel* model=new QSqlQueryModel;
-    if(t = 0)
-    {
-
-        model->setQuery("SELECT nombre as 'Documento',numeroDocumento as 'Numero de Documento',nombres as 'Nombres',primer_apellido as 'Apellido Paterno',segundo_apellido as 'Apellido Materno',telefono as 'Telefono',movil as 'Celular' FROM Cliente,Documento WHERE idDocumento=Documento_idDocumento1");
-        return model;
-    }
-    else
-    {
-        model->setQuery("SELECT nombre as 'Documento',numeroDocumento as 'Numero de Documento',nombres as 'Nombres',primer_apellido as 'Apellido Paterno',segundo_apellido as 'Apellido Materno',telefono as 'Telefono',movil as 'Celular' FROM Cliente,Documento WHERE idDocumento=Documento_idDocumento1");
-        return model;
-    }
-
+    QSqlQueryModel* model=new QSqlQueryModel;        
+    model->setQuery("SELECT hora as 'Hora',descripcion as 'Descripcion' FROM Alerta WHERE tipo ="+QString::number(t)+" AND fecha='"+d.toString(Qt::ISODate)+"' order by hora");
+    return model;
 }
 
-bool alerta::completar(){
-    return false;
+bool alerta::completar()
+{
+    QSqlQuery query;
+    query.prepare("SELECT idAlerta FROM Alerta WHERE fecha = ? AND hora = ? AND descripcion = ?");
+    query.bindValue(0,fecha);
+    query.bindValue(1,hora);
+    query.bindValue(2,descripcion);
+
+    if(query.exec())
+    {
+        if(query.size()!=0)
+        {
+            query.first();
+            idAlerta=query.value(0).toString();
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
 }
 
 QSqlQueryModel* alerta::buscarAlerta(QString _item){}

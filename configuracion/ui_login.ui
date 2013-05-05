@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>270</width>
-    <height>97</height>
+    <height>115</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -32,7 +32,7 @@
    <string>Inicio de Sesión</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="Icons/Icons.qrc">
+   <iconset resource="../Icons/Icons.qrc">
     <normaloff>:/Icons/add-group.png</normaloff>:/Icons/add-group.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
@@ -52,6 +52,9 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="text">
+        <string>admin</string>
        </property>
       </widget>
      </item>
@@ -74,6 +77,9 @@
         <font>
          <strikeout>false</strikeout>
         </font>
+       </property>
+       <property name="text">
+        <string>root</string>
        </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
@@ -141,7 +147,7 @@
   <tabstop>pushButton_Cancelar</tabstop>
  </tabstops>
  <resources>
-  <include location="Icons/Icons.qrc"/>
+  <include location="../Icons/Icons.qrc"/>
  </resources>
  <connections/>
 </ui>

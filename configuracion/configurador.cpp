@@ -7,7 +7,7 @@
 using namespace std;
 configurador::configurador(QString archivoBD)
 {
-    conexiondb =  ConexionBD::Instance();
+    conexiondb =  ConexionBD::Instance();    
     nombreArchivo =  archivoBD;
     if(!leerConfiguracion())
     {
@@ -23,8 +23,7 @@ bool configurador::leerConfiguracion()
 {
     QString namefile = nombreArchivo;
     QFile file(namefile);
-    file.open(QIODevice::ReadOnly|QIODevice::Text);
-
+    file.open(QIODevice::ReadOnly|QIODevice::Text);    
     if(!file.isOpen())
     {
       return false;
@@ -41,14 +40,15 @@ bool configurador::leerConfiguracion()
     conexiondb->setUser(tokens[2]);
     conexiondb->setPass(tokens[3]);
     conexiondb->setPort(tokens[4]);  
-    Sesion * actual = Sesion::getSesion();
-    actual->setUbicacion(tokens[5].toInt(),tokens[6].toInt());
+    //Pediente Sesion
+    /*Sesion * actual = Sesion::getSesion();
 
+    actual->setUbicacion(tokens[5].toInt(),tokens[6].toInt());
+    */
     for (int i = 0; i < tokens.size(); ++i)
     {
         res[i] = tokens.at(i);
-    }
-
+    }    
     return true;
 }
 

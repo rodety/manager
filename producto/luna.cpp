@@ -4,7 +4,6 @@ luna::luna()
 {
 }
 
-
 diametro luna::getDiametro()
 {
     return pDiametro;
@@ -63,7 +62,6 @@ void luna::setPrecio(QString tmp)
 {
     precio=tmp;
 }
-
 
 bool luna::agregar()
 {

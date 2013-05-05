@@ -33,21 +33,14 @@ alertas_ui::~alertas_ui()
 
 void alertas_ui::on_verAlerta_clicked()
 {
-    newalerta_alerta_ui *SHOW_ALERTA_FORM = new newalerta_alerta_ui;
-    SHOW_ALERTA_FORM->update_new_alerta_form(ui->lineEdit_code->text());
-    SHOW_ALERTA_FORM->set_clicked_type(0);
-    SHOW_ALERTA_FORM->show();
+
 }
 
 void alertas_ui::on_editar_alerta_clicked()
 {
     newalerta_alerta_ui *EDIT_ALERT_FORM = new newalerta_alerta_ui;
     EDIT_ALERT_FORM->setWindowTitle("Editar alerta");
-    EDIT_ALERT_FORM->update_new_alerta_form(ui->lineEdit_code->text());
-    EDIT_ALERT_FORM->code_var = ui->lineEdit_code->text();
-    EDIT_ALERT_FORM->set_clicked_type(1);
-    //EDIT_ALERT_FORM->parent_ui_form =this;
-    //EDIT_ALERT_FORM->parent_ui_form_agenda = NULL;
+    EDIT_ALERT_FORM->set_type_alert(1);
     EDIT_ALERT_FORM->show();
 }
 
@@ -55,9 +48,9 @@ void alertas_ui::on_newAlert_alerta_clicked()
 {
     newalerta_alerta_ui* NEW_ALERTA_FORM = new newalerta_alerta_ui;
     NEW_ALERTA_FORM->setWindowTitle("Nueva alerta");
-    NEW_ALERTA_FORM->set_clicked_type(2);
+
     //NEW_ALERTA_FORM->parent_ui_form = this;
-    NEW_ALERTA_FORM->alert_type_var = "general";
+
     NEW_ALERTA_FORM->show();
 }
 

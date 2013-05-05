@@ -32,49 +32,34 @@ public:
 private:
     Ui::agenda_ui *ui;
     map<QString,QString> Tiendas;
+    QDate fecha;
 
 private slots:
-    void on_pushButton_newTask_clicked();
-    void on_pushButton_showTask_clicked();
-    void on_pushButton_editTask_clicked();
-    void on_pushButton_deleteTask_clicked();
-    void on_pushButton_showAll_clicked();
-    void on_comboBox_Names_currentIndexChanged(int index);
-    void on_dateEdit_Agenda_dateChanged(const QDate &date);
-    void on_tablaView_Agend_itemClicked(QTableWidgetItem *item);
 
-    void on_dateEdit_Alerta_dateChanged(const QDate &date);
 
-    void on_comboBox_dni_currentIndexChanged(const QString &arg1);
-    void on_pushButton_showSelect_clicked();
-    void on_pushButton_show_SelectAlert_clicked();
-    void on_pushButton_Alerta_General_show_clicked();
-
-    void on_tableWidget_Alert_itemClicked(QTableWidgetItem *item);
     void on_pushButton_AlertaGeneral_changeColor_clicked();
     void on_pushButton_Alert_Personales_add_clicked();
-
     void on_dateEdit_Alerta_Personales_dateChanged(const QDate &date);
     void on_pushButton_show_SelectAlert_Personales_4_clicked();
-    void on_pushButton_Alert_Personal_changeColor_clicked();
-
-    void on_tableWidget_Alert_Personales_itemClicked(QTableWidgetItem *item);
-    void on_pushButton_Alert_Personal_show_clicked();
     void on_pushButton_Alert_Personales_edit_clicked();
     void on_pushButton_Alert_Personales_remove_clicked();
-    void on_pushButton_show_Agenda_clicked();
     void on_pushButton_agenda_changeColor_clicked();
     void on_pushButton_update_Agenda_clicked();
-    void on_comboBox_dni_currentIndexChanged(int index);
-
     void on_calendarWidget_clicked(const QDate &date);
-
     void on_tablaView_Agend_doubleClicked(const QModelIndex &index);
-    void on_pushButton_printList_clicked();
-
     void on_pushButton_Alert_General_add_clicked();
     void updateTable_Alert_General();
+    void updateTable_Alert_Personal();
     void actualizar_combo_tienda();
+    void actualizar_tiempo(const QDate &date);
+
+
+
+
+
+
+    void on_pushButton_Alert_General_edit_clicked();
+    void on_tableView_Alert_General_doubleClicked(const QModelIndex &index);
 };
 
 #endif // AGENDA_UI_H

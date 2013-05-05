@@ -67,8 +67,7 @@ bool tusuario::completar()
         if(query.size()!=0)
         {
             query.first();
-            idtusuario=query.value(0).toString();
-            qDebug()<<"idusuario"<<idtusuario<<endl;
+            idtusuario=query.value(0).toString();            
             return true;
         }
         return false;

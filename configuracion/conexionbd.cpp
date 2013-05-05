@@ -33,6 +33,7 @@ bool ConexionBD::connect()
     QString num2str;
     if(!db.open())
     {
+        qDebug()<<"bbb"<<endl;
         conErr = db.lastError();
         QMessageBox::critical(0,"Error de conexion a la Base de Datos"
                               ,conErr.text()+"\nError code: "+num2str.setNum(conErr.number())
