@@ -28,7 +28,8 @@ public:
 
     QString getIdAlerta();
     QString getIdColaborador();
-    QString getfecha();
+    QString getfechaInicio();
+    QString getfechaFin();
     QString gethora();
     QString getdescripcion();
     QString getcolor();

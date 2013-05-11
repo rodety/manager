@@ -18,7 +18,8 @@ void alerta::settipo(QString tmp){tipo = tmp;}
 
 QString alerta::getIdAlerta(){return idAlerta;}
 QString alerta::getIdColaborador(){return idColaborador;}
-QString alerta::getfecha(){return fechainicio;}
+QString alerta::getfechaInicio(){return fechainicio;}
+QString alerta::getfechaFin(){return fechafin;}
 QString alerta::gethora(){return hora;}
 QString alerta::getdescripcion(){return descripcion;}
 QString alerta::getcolor(){return color;}
@@ -51,12 +52,13 @@ bool alerta::agregar()
 bool alerta::actualizar()
 {
     QSqlQuery query;
-    query.prepare("UPDATE Alerta SET fechaInicio=?,fechaFin=?,hora=?,descripcion=? WHERE idAlerta=?");
+    query.prepare("UPDATE Alerta SET fechaInicio=?,fechaFin=?,hora=?,descripcion=?,color=? WHERE idAlerta=?");
     query.bindValue(0,fechainicio);
-    query.bindValue(0,fechafin);
-    query.bindValue(1,hora);
-    query.bindValue(2,descripcion);        
-    query.bindValue(3,idAlerta);
+    query.bindValue(1,fechafin);
+    query.bindValue(2,hora);
+    query.bindValue(3,descripcion);
+    query.bindValue(4,color);
+    query.bindValue(5,idAlerta);
 
     if(query.exec())
         return true;
@@ -68,24 +70,26 @@ bool alerta::actualizar()
 bool alerta::eliminar()
 {
     QSqlQuery query;
-    //query.prepare("DELETE FROM Alerta")
+    query.prepare("DELETE FROM Alerta WHERE idAlerta =?");
+    query.bindValue(0,idAlerta);
+    if(query.exec())
+        return true;
+    else return false;
 }
 
 QSqlQueryModel* alerta::mostrar(int t, QDate d)
 {
     QSqlQueryModel* model=new QSqlQueryModel;        
-    model->setQuery("SELECT hora as 'Hora',descripcion as 'Descripcion' FROM Alerta WHERE tipo ="+QString::number(t)+" AND fechaInicio <='"+d.toString(Qt::ISODate)+" AND fechaFin >='"+d.toString(Qt::ISODate)+"' order by hora");
+    model->setQuery("SELECT hora as 'Hora',descripcion as 'Descripcion' FROM Alerta WHERE tipo = "+QString::number(t)+" AND fechaInicio <= '"+d.toString(Qt::ISODate)+"' AND fechaFin >= '"+d.toString(Qt::ISODate)+"' order by hora");
     return model;
 }
 
 bool alerta::completar()
 {
     QSqlQuery query;
-    query.prepare("SELECT idAlerta FROM Alerta WHERE fechaInicio = ? AND fechaFin = ? AND hora = ? AND descripcion = ?");
-    query.bindValue(0,fechainicio);
-    query.bindValue(1,fechafin);
-    query.bindValue(2,hora);
-    query.bindValue(3,descripcion);
+    query.prepare("SELECT idAlerta,fechaInicio,fechaFin,color FROM Alerta WHERE hora = ? AND descripcion = ?");
+    query.bindValue(0,hora);
+    query.bindValue(1,descripcion);
 
     if(query.exec())
     {
@@ -93,6 +97,10 @@ bool alerta::completar()
         {
             query.first();
             idAlerta=query.value(0).toString();
+            fechainicio=query.value(1).toString();
+            fechafin=query.value(2).toString();
+            color=query.value(3).toString();
+
             return true;
         }
         else

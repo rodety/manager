@@ -50,6 +50,84 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="pushButton_Alert_General_add">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/1349716429_doc_plus.png</normaloff>:/Icons/1349716429_doc_plus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_Alert_General_edit">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/1349716425_doc_edit.png</normaloff>:/Icons/1349716425_doc_edit.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_Alert_General_remove">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../Icons/Icons.qrc">
+             <normaloff>:/Icons/1349716428_trash.png</normaloff>:/Icons/1349716428_trash.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="pushButton_AlertaGeneral_changeColor">
            <property name="enabled">
             <bool>true</bool>
@@ -90,25 +168,19 @@
         <widget class="QTableView" name="tableView_Alert_General"/>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <spacer name="horizontalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>100</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_Alert_General_add">
+          <widget class="QLabel" name="label_3">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -116,7 +188,20 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Nueva</string>
+            <string>Alertas Personales </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_Alert_Personales_add">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
            </property>
            <property name="icon">
             <iconset resource="../Icons/Icons.qrc">
@@ -134,7 +219,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_Alert_General_edit">
+          <widget class="QPushButton" name="pushButton_Alert_Personales_edit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -142,7 +227,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Editar</string>
+            <string/>
            </property>
            <property name="icon">
             <iconset resource="../Icons/Icons.qrc">
@@ -160,7 +245,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_Alert_General_remove">
+          <widget class="QPushButton" name="pushButton_Alert_Personales_remove">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -168,7 +253,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Borrar</string>
+            <string/>
            </property>
            <property name="icon">
             <iconset resource="../Icons/Icons.qrc">
@@ -182,23 +267,6 @@
            </property>
            <property name="flat">
             <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Alertas Personales </string>
            </property>
           </widget>
          </item>
@@ -234,102 +302,7 @@
         <widget class="QTableView" name="tableView_Alert_Personal"/>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>100</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_Alert_Personales_add">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Nueva</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../Icons/Icons.qrc">
-             <normaloff>:/Icons/1349716429_doc_plus.png</normaloff>:/Icons/1349716429_doc_plus.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_Alert_Personales_edit">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Editar</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../Icons/Icons.qrc">
-             <normaloff>:/Icons/1349716425_doc_edit.png</normaloff>:/Icons/1349716425_doc_edit.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_Alert_Personales_remove">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Borrar</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../Icons/Icons.qrc">
-             <normaloff>:/Icons/1349716428_trash.png</normaloff>:/Icons/1349716428_trash.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>16</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <layout class="QHBoxLayout" name="horizontalLayout_4"/>
        </item>
       </layout>
      </item>
@@ -502,7 +475,6 @@
  </widget>
  <tabstops>
   <tabstop>pushButton_AlertaGeneral_changeColor</tabstop>
-  <tabstop>pushButton_Alert_Personales_edit</tabstop>
   <tabstop>comboBox_tienda</tabstop>
   <tabstop>pushButton_update_Agenda</tabstop>
   <tabstop>pushButton_show_Agenda</tabstop>

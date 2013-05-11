@@ -60,6 +60,8 @@ private slots:
 
     void on_pushButton_Alert_General_edit_clicked();
     void on_tableView_Alert_General_doubleClicked(const QModelIndex &index);
+    void on_pushButton_Alert_General_remove_clicked();
+    void on_tableView_Alert_Personal_doubleClicked(const QModelIndex &index);
 };
 
 #endif // AGENDA_UI_H

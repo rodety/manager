@@ -11,7 +11,8 @@ newalerta_alerta_ui::newalerta_alerta_ui(QWidget *parent) :
 {
     ui->setupUi(this);
     QDate FECHA = QDate::currentDate();
-    ui->dateEdit->setDate(FECHA);
+    ui->dateEdit_fin->setDate(FECHA);
+    ui->dateEdit_inicio->setDate(FECHA);
 }
 
 newalerta_alerta_ui::~newalerta_alerta_ui()
@@ -26,7 +27,8 @@ void newalerta_alerta_ui::create_alert(QString type)
     if(comportamiento == 0)
     {
         alerta nueva;
-        nueva.setfecha(ui->dateEdit->text());
+        nueva.setfechainicio(ui->dateEdit_inicio->text());
+        nueva.setfechafin(ui->dateEdit_fin->text());
         nueva.sethora(ui->timeEdit->text());
         nueva.setdescripcion(ui->lineEdit->text());
         nueva.setcolor("#ffffff");
@@ -36,6 +38,7 @@ void newalerta_alerta_ui::create_alert(QString type)
 
         if(nueva.agregar()==true)
         {
+            emit updateChange();
             /*QString info = "Se creo una nueva alerta con éxito.";
             msgBox->setIcon(QMessageBox::Information);
             msgBox->setWindowTitle("Información");
@@ -50,7 +53,7 @@ void newalerta_alerta_ui::create_alert(QString type)
         }
         else
         {
-            QString str_warning = "Ingrese una alerta válida porfavor.";
+            QString str_warning = "Ingrese una alerta valida porfavor.";
             msgBox->setIcon(QMessageBox::Warning);
             msgBox->setWindowTitle("Advertencia");
             msgBox->setWindowIcon(QIcon(":/new/add1-.png"));
@@ -66,12 +69,15 @@ void newalerta_alerta_ui::create_alert(QString type)
     }
     if(comportamiento == 1)
     {
-        alerta_actual.setfecha(ui->dateEdit->date().toString(Qt::ISODate));
+        alerta_actual.setfechainicio(ui->dateEdit_inicio->date().toString(Qt::ISODate));
+        alerta_actual.setfechafin(ui->dateEdit_fin->date().toString(Qt::ISODate));
         alerta_actual.sethora(ui->timeEdit->time().toString());
-        alerta_actual.setdescripcion(ui->lineEdit->text());
+        alerta_actual.setdescripcion(ui->lineEdit->text());        
 
         if(alerta_actual.actualizar()==true)
         {
+            emit updateChange();
+
             /*QString info = "Se actualizo alerta con éxito.";
             msgBox->setIcon(QMessageBox::Information);
             msgBox->setWindowTitle("Información");
@@ -86,7 +92,7 @@ void newalerta_alerta_ui::create_alert(QString type)
         }
         else
         {
-            QString str_warning = "Ingrese una alerta válida porfavor.";
+            QString str_warning = "Ingrese una alerta valida porfavor.";
             msgBox->setIcon(QMessageBox::Warning);
             msgBox->setWindowTitle("Advertencia");
             msgBox->setWindowIcon(QIcon(":/new/add1-.png"));
@@ -103,7 +109,6 @@ void newalerta_alerta_ui::create_alert(QString type)
     }
 
     this->close();
-    emit updateChange();
 }
 
 void newalerta_alerta_ui::on_pushButton_Acept_clicked()
@@ -128,7 +133,8 @@ void newalerta_alerta_ui::set_alerta(alerta a)
 {
     alerta_actual = a;
     //ui->dateEdit->setDate(QDate::fromString(a.getfecha()));
-    ui->dateEdit->setDate(QDate::fromString(a.getfecha(),Qt::ISODate));
+    ui->dateEdit_inicio->setDate(QDate::fromString(a.getfechaInicio(),Qt::ISODate));
+    ui->dateEdit_fin->setDate(QDate::fromString(a.getfechaFin(),Qt::ISODate));
     ui->timeEdit->setTime(QTime::fromString(a.gethora()));
     ui->lineEdit->setText(a.getdescripcion());
 
