@@ -9,7 +9,8 @@ class alerta:ObjetoPersistente
 private:
     QString idAlerta;
     QString idColaborador;
-    QString fecha;
+    QString fechainicio;
+    QString fechafin;
     QString hora;
     QString descripcion;
     QString color;
@@ -18,7 +19,8 @@ public:
     alerta();
     void setIdAlerta(QString tmp);
     void setIdColaborador(QString tmp);
-    void setfecha(QString tmp);
+    void setfechainicio(QString tmp);
+    void setfechafin(QString tmp);
     void sethora(QString tmp);
     void setdescripcion(QString tmp);
     void setcolor(QString tmp);

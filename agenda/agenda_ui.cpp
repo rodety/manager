@@ -171,7 +171,7 @@ void agenda_ui::on_pushButton_Alert_General_edit_clicked()
         alerta actual_alerta;
         actual_alerta.sethora(ui->tableView_Alert_General->model()->data(ui->tableView_Alert_General->model()->index(fila,0)).toString());
         actual_alerta.setdescripcion(ui->tableView_Alert_General->model()->data(ui->tableView_Alert_General->model()->index(fila,1)).toString());
-        actual_alerta.setfecha(fecha.toString(Qt::ISODate));
+        actual_alerta.setfechainicio(fecha.toString(Qt::ISODate));
         actual_alerta.completar();
 
         newalerta_alerta_ui* NEW_ALERTA_FORM = new newalerta_alerta_ui;
