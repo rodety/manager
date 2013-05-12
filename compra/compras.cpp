@@ -71,23 +71,12 @@ void compras::on_pushButton_buscar_producto_clicked()
 
 void compras::on_tableWidget_proveedores_itemClicked(QTableWidgetItem *item)
 {
-    int count = item->row();
-    QString raz_social = "hola";//ui->tableWidget_proveedores->item(count,1)->text();
-    QString idproveedor = Proveedores[raz_social];
-    QSqlQuery query;
-    query.prepare("SELECT raz_social,ruc,direccion FROM  proveedor WHERE idproveedor = '"+idproveedor+"'");
-    query.exec();query.next();
-    ui->lineEdit_proveedor->setText(query.value(0).toString());
-    ui->lineEdit_ruc->setText(query.value(1).toString());
-    ui->lineEdit_direccion->setText(query.value(2).toString());
+
 }
 
 void compras::on_tableWidget_productos_itemClicked(QTableWidgetItem *item)
 {
-    ui_cant_item* viewCant = new ui_cant_item;
-    viewCant->setCurrentParent(this);
-    viewCant->setRow(item->row());
-    viewCant->show();
+
 }
 
 void compras::on_pushButton_guardar_clicked()
@@ -209,8 +198,8 @@ void compras::addItemProductos(QString codigo, QString descripcion, QString prec
 }
 void compras::updateListCompras()
 {
-    for (int i=ui->tableWidget_Compras->rowCount()-1; i >= 0; --i)
-        ui->tableWidget_Compras->removeRow(i);
+    //for (int i=ui->tableWidget_Compras->rowCount()-1; i >= 0; --i)
+    //    ui->tableWidget_Compras->removeRow(i);
 
     QString Razon_Social,Monto_total,idproveedor,idcompra;
     QDate Fecha;
@@ -230,10 +219,10 @@ void compras::updateListCompras()
 
         Razon_Social = sub_query.value(0).toString();
 
-        ui->tableWidget_Compras->insertRow(c);
-        ui->tableWidget_Compras->setItem(c,0,new QTableWidgetItem(Fecha.toString()));
-        ui->tableWidget_Compras->setItem(c,1,new QTableWidgetItem(Razon_Social));
-        ui->tableWidget_Compras->setItem(c,2,new QTableWidgetItem(Monto_total));
+      //  ui->tableWidget_Compras->insertRow(c);
+        //ui->tableWidget_Compras->setItem(c,0,new QTableWidgetItem(Fecha.toString()));
+        //ui->tableWidget_Compras->setItem(c,1,new QTableWidgetItem(Razon_Social));
+        //ui->tableWidget_Compras->setItem(c,2,new QTableWidgetItem(Monto_total));
         Compras[Razon_Social] = idcompra;
         c++;
     }
@@ -243,8 +232,8 @@ void compras::on_tableWidget_Compras_itemClicked(QTableWidgetItem *item)
 {
     int count = item->row();
     currentItem = item->row();
-    QString Razon_Social = ui->tableWidget_Compras->item(count,1)->text();
-    current_idCompras = Compras[Razon_Social];
+    //QString Razon_Social = ui->tableWidget_Compras->item(count,1)->text();
+    //current_idCompras = Compras[Razon_Social];
 }
 
 void compras::on_pushButton_ver_compra_clicked()

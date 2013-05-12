@@ -381,41 +381,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_agenda_changeColor">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string>Color</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../Icons/Icons.qrc">
-             <normaloff>:/Icons/color_swatch.png</normaloff>:/Icons/color_swatch.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="autoDefault">
-            <bool>false</bool>
-           </property>
-           <property name="default">
-            <bool>false</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="pushButton_update_Agenda">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -478,7 +443,6 @@
   <tabstop>comboBox_tienda</tabstop>
   <tabstop>pushButton_update_Agenda</tabstop>
   <tabstop>pushButton_show_Agenda</tabstop>
-  <tabstop>pushButton_agenda_changeColor</tabstop>
  </tabstops>
  <resources>
   <include location="../Icons/Icons.qrc"/>

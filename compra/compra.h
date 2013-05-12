@@ -1,7 +1,8 @@
 #ifndef COMPRA_H
 #define COMPRA_H
 #include <QString>
-class compra
+#include "objetopersistente.h"
+class compra : ObjetoPersistente
 {
 public:
     compra();
@@ -10,6 +11,15 @@ public:
     QString getruc(){return ruc;}
     QString getrazonSocial(){return razonSocial;}
     QString getDireccion(){return Direccion;}
+
+    bool agregar();
+    bool actualizar();
+    bool eliminar();
+    bool completar();
+
+    //static QSqlQueryModel* mostrar(int,QDate&);
+    static QSqlQueryModel* buscarAlerta(QString _item);
+
 private:
     QString idProveedor;
     QString ruc;

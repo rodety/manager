@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>957</width>
+    <width>929</width>
     <height>433</height>
    </rect>
   </property>
@@ -96,6 +96,16 @@
    <item row="0" column="2">
     <layout class="QGridLayout" name="gridLayout_3">
      <item row="2" column="1">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Salir</string>
+       </property>
+       <property name="shortcut">
+        <string>Esc</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
       <spacer name="verticalSpacer_3">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -109,32 +119,6 @@
       </spacer>
      </item>
      <item row="0" column="1">
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="4" column="1">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="1">
       <widget class="QGroupBox" name="groupBox_2">
        <property name="title">
         <string>Distancia:</string>
@@ -158,16 +142,6 @@
          </widget>
         </item>
        </layout>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Salir</string>
-       </property>
-       <property name="shortcut">
-        <string>Esc</string>
-       </property>
       </widget>
      </item>
     </layout>
