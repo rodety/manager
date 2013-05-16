@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     modulos.push_back(ui->actionReportes);
     modulos.push_back(ui->actionVentas);
     modulos.push_back(ui->actionConfiguracion);
+    modulos.push_back(ui->actionAgenda);
 
     for(size_t i = 0; i<modulos.size();i++)
         modulos[i]->setEnabled(false);
